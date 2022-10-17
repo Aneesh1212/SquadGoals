@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>804951063027-po1al74isbndqcq7al0e22m7sm5s4o5j.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.804951063027-po1al74isbndqcq7al0e22m7sm5s4o5j</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB6r6YbCUw-f0mR_e5__ae7X_cyLCPhzUc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>804951063027</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>agrawals.Squad-Goals</string>
+	<key>PROJECT_ID</key>
+	<string>squadgoals-b30da</string>
+	<key>STORAGE_BUCKET</key>
+	<string>squadgoals-b30da.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:804951063027:ios:2fdd8c4782f403d537ba86</string>
+</dict>
+</plist>
