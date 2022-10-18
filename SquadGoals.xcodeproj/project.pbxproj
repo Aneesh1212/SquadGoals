@@ -865,7 +865,7 @@
 				CODE_SIGN_ENTITLEMENTS = SquadGoals/SquadGoals.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_ASSET_PATHS = "\"SquadGoals/Preview Content\"";
 				DEVELOPMENT_TEAM = HPRJ8CFMWR;
 				ENABLE_PREVIEWS = YES;
@@ -901,7 +901,7 @@
 				CODE_SIGN_ENTITLEMENTS = SquadGoals/SquadGoals.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_ASSET_PATHS = "\"SquadGoals/Preview Content\"";
 				DEVELOPMENT_TEAM = HPRJ8CFMWR;
 				ENABLE_PREVIEWS = YES;

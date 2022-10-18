@@ -24,14 +24,11 @@ struct SquadGoalsApp: App {
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     
-    
-    
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
-        
-        
+        NSTimeZone.default = TimeZone(identifier: "America/New_York")!
         
         print("SwiftUI_2_Lifecycle_PhoneNumber_AuthApp application is starting up. ApplicationDelegate didFinishLaunchingWithOptions.")
         
