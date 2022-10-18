@@ -31,7 +31,6 @@ struct Main: View {
                                 .foregroundColor(.black)
                         }
                         .tag(1)
-                        .ignoresSafeArea()
                         .navigationBarTitle("", displayMode: .inline)
                         .navigationBarBackButtonHidden(true)
                     Homepage(viewModel: viewModel, showReflectionPrompt: showResultsModal)

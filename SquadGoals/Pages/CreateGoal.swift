@@ -117,6 +117,7 @@ struct CreateGoal: View {
     var body: some View {
         VStack(){
             OnboardingTitle(text: "LET'S CREATE GOALS!")
+                .padding(.top, Styling.mediumUnit)
                 .padding(.bottom, Styling.smallUnit)
                 .fixedSize(horizontal: false, vertical: true)
 

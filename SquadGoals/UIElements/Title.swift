@@ -17,7 +17,8 @@ struct Title : View {
             Text(text)
                 .foregroundColor(.white)
                 .font(.system(size: 32, weight: .heavy))
-                .lineLimit(nil)
+                .minimumScaleFactor(0.5)
+                .lineLimit(1)
                 .multilineTextAlignment(.center)
         }
     }

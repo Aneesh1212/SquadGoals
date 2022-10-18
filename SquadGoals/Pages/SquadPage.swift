@@ -27,6 +27,7 @@ struct SquadPage: View {
             VStack{
                 VStack(alignment: .leading){
                     Text("TEAM PROGRESS THIS WEEK")
+                        .padding(.top, Styling.smallUnit)
                         .multilineTextAlignment(.leading)
                         .font(.system(size: 30, weight: .heavy))
                         .foregroundColor(.white)
