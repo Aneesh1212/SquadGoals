@@ -51,12 +51,7 @@ struct SignIn: View {
                 }
             }, text: "SIGN IN")
             
-            Spacer()
-            
-            HStack{
-                Spacer()
-            }
-            
+            Filler()
         }
         .padding(.horizontal, Styling.mediumUnit)
         .background(Colors.darkOrangeForeground)

@@ -24,7 +24,7 @@ struct SundayPlanning: View {
     @State var frequencies : [[String]] = []
     @State var keys : [[String]] = []
     
-    var frequencyOptions : Array<String> = ["1x/week", "2x", "3x", "4x", "5x", "6x", "7x"]
+    var frequencyOptions : Array<String> = ["Once", "2x", "3x", "4x", "5x", "6x", "7x"]
     
     var targetEntryTable : some View {
         VStack(spacing: 24) {

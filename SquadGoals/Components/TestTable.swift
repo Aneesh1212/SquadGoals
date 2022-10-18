@@ -26,7 +26,7 @@ struct TestTable: View {
     @Binding var frequencies : [String]
     @Binding var keys : [String]
     
-    var frequencyOptions : Array<String> = ["1x/week", "2x", "3x", "4x", "5x", "6x", "7x"]
+    var frequencyOptions : Array<String> = ["Once", "2x", "3x", "4x", "5x", "6x", "7x"]
     
     var body: some View {
         VStack(spacing:0){
@@ -61,7 +61,7 @@ struct TestTable: View {
             HStack{
                 Button(action: {
                     self.titles.append("")
-                    self.frequencies.append("1x/week")
+                    self.frequencies.append("Once")
                     let targetsRef = self.ref.child("targets").child(goalKey)
                     let targetKey = targetsRef.childByAutoId().key ?? ""
                     self.keys.append(targetKey)

@@ -145,10 +145,7 @@ struct CreateGoal: View {
                 NavigationLink(destination: SundayPlanning(user: self.user, viewModel: GoalViewModel(user:self.user), mode: Mode.initial), isActive: $shouldNavigateSingleGoal) { EmptyView() }
             }
             
-            Spacer()
-            HStack{
-                Spacer()
-            }
+            Filler()
         }
         .padding(.horizontal, 25)
         .background(Colors.darkOrangeForeground)

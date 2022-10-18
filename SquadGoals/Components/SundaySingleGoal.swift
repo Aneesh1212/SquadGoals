@@ -14,10 +14,10 @@ struct SundaySingleGoal: View {
     @Binding var goalTargetMap : Dictionary<Goal, Array<Target>>
     @StateObject var viewModel : GoalViewModel
     @State var workingTitle : String = ""
-    @State var workingFrequency : String = "1x/week"
+    @State var workingFrequency : String = "Once"
     @State var submitClicked : Bool
     
-    var frequencies : Array<String> = ["1x/week", "2x", "3x", "4x", "5x", "6x", "7x"]
+    var frequencies : Array<String> = ["Once", "2x", "3x", "4x", "5x", "6x", "7x"]
     
     var body: some View {
         VStack(spacing:0){
@@ -68,7 +68,7 @@ struct SundaySingleGoal: View {
                     let targetFrequency = viewModel.convertFrequencyToNum(frequencyWord: self.workingFrequency)
                     let newTarget = Target(title: self.workingTitle, frequency: targetFrequency, original: targetFrequency, key: "ANSH")
                     self.workingTitle = ""
-                    self.workingFrequency = "1x/week"
+                    self.workingFrequency = "Once"
                     viewModel.createTargets(goalId: self.goal.key ?? "", targets: [newTarget])
                     goal.currTargets.append(newTarget)
                 }) {

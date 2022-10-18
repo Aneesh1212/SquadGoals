@@ -36,11 +36,7 @@ struct Completion: View {
                 .font(.system(size: 24))
                 .multilineTextAlignment(.center)
             
-            Spacer()
-            
-            HStack{
-                Spacer()
-            }
+            Filler()
         }
         .background(Colors.darkOrangeForeground)
         .cornerRadius(15)

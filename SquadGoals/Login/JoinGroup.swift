@@ -60,8 +60,7 @@ struct JoinGroup: View {
                 // showNewGroupId = true
             }, text: "CREATE A NEW SQUAD")
             
-            Spacer()
-            HStack{Spacer()}
+            Filler()
         }
         .padding(.horizontal, 30)
         .background(Colors.darkOrangeForeground)

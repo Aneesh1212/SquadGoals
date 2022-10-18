@@ -107,9 +107,10 @@ class GoalViewModel : ObservableObject {
                         let targetFrequency = Int(targetData["frequency"] ?? "0") ?? 1
                         let targetOriginal = Int(targetData["original"] ?? "0") ?? 1
                         let targetCreationDate = Date(timeIntervalSince1970: (Double(targetData["creationDate"] ?? "0") ?? 0.0))
+                        print("ANEESH target creation date: ", targetCreationDate)
                         let newTarget = Target(title: targetTitle, frequency: targetFrequency, original: targetOriginal, key: targetDataPair.key, creationDate: targetCreationDate)
                         let targetSunday = targetCreationDate.previous(.sunday, considerToday: true)
-                        
+                        print("ANEESH target sunday: ", targetSunday)
                         newGoal.pastTargets[targetSunday] = newGoal.pastTargets[targetSunday] ?? []
                         newGoal.pastTargets[targetSunday]?.append(newTarget)
                     }
@@ -173,6 +174,7 @@ class GoalViewModel : ObservableObject {
     
     func getTeammateGoals(){
         let lastSetSunday = (UserDefaults.standard.object(forKey: "lastSetSunday") as? Date) ?? Date(timeIntervalSince1970: 0)
+        print("LAST SET SUNDAY: ", lastSetSunday)
         for teammate in user.teammates {
             ref.child("goals/\(teammate.phoneNumber)/goals").getData(completion:  { error, goalSnapshot in
                 guard error == nil else {
@@ -204,9 +206,12 @@ class GoalViewModel : ObservableObject {
                             let targetCreationDate = Date(timeIntervalSince1970: (Double(targetData["creationDate"] ?? "0") ?? 0.0))
                             let newTarget = Target(title: targetTitle, frequency: targetFrequency, original: targetOriginal, key: targetDataPair.key, creationDate: targetCreationDate)
                             let targetSunday = targetCreationDate.previous(.sunday, considerToday: true)
+                            print("Target creation date: ", targetCreationDate)
+                            print("Target sunday: ", targetSunday)
                             newGoal.pastTargets[targetSunday] = newGoal.pastTargets[targetSunday] ?? []
                             newGoal.pastTargets[targetSunday]?.append(newTarget)
                         }
+                        print("HERE", newGoal.pastTargets)
                         for sundayDate in newGoal.pastTargets.keys {
                             if (Calendar.current.dateComponents([.day], from: sundayDate, to: lastSetSunday).day == 0){
                                 newGoal.currTargets = newGoal.pastTargets[sundayDate] ?? []
@@ -231,9 +236,15 @@ class GoalViewModel : ObservableObject {
     
     func calculateWeek() {
         self.ref.child("groups").child(self.user.groupId).child("creationDate").getData(completion:  { error, creationDateString in
-            let creationDate = Date(timeIntervalSince1970: Double(creationDateString.value as? String ?? "0") ?? 0.0)
-            let weekNumber = Calendar.current.dateComponents([.weekOfYear], from: creationDate, to: Date())
-            self.week = weekNumber.weekOfYear ?? 4
+            // let creationDate = Date(timeIntervalSince1970: Double(creationDateString.value as? String ?? "0") ?? 0.0)
+            let creationDate = Date()
+            let nextSunday = Calendar(identifier: .gregorian).startOfDay(for: creationDate.next(.sunday, considerToday: false))
+            let weekNumber = Calendar.current.dateComponents([.weekOfYear], from: nextSunday, to: Date())
+
+            print(nextSunday)
+            print("ANEESH")
+            print(weekNumber.weekOfYear)
+            self.week = (weekNumber.weekOfYear ?? 0) + 1
         })
     }
     
@@ -357,7 +368,7 @@ class GoalViewModel : ObservableObject {
     
     func convertFrequencyToNum(frequencyWord : String) -> Int {
         switch frequencyWord {
-        case "1x/week":
+        case "Once":
             return 1
         case "2x":
             return 2
@@ -377,10 +388,9 @@ class GoalViewModel : ObservableObject {
     }
     
     func convertFrequencyToString(frequency : Int) -> String {
-        print("KOMPY \(String(frequency))")
         switch frequency {
         case 1:
-            return "1x/week"
+            return "Once"
         case 2:
             return "2x"
         case 3:
@@ -394,7 +404,7 @@ class GoalViewModel : ObservableObject {
         case 7:
             return "7x"
         default:
-            return "1x/week"
+            return "Once"
         }
     }
     

@@ -60,8 +60,7 @@ struct CreateAccount: View {
             }, text: "CREATE ACCOUNT")
             
             NavigationLink(destination: JoinGroup(viewModel: self.viewModel), isActive: $viewModel.navigateToJoinGroup) { EmptyView() }
-            Spacer()
-            HStack{Spacer()}
+            Filler()
         }
         .padding(.horizontal, Styling.mediumUnit)
         .background(Colors.darkOrangeForeground)
