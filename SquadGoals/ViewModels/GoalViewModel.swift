@@ -236,15 +236,14 @@ class GoalViewModel : ObservableObject {
     
     func calculateWeek() {
         self.ref.child("groups").child(self.user.groupId).child("creationDate").getData(completion:  { error, creationDateString in
-            // let creationDate = Date(timeIntervalSince1970: Double(creationDateString.value as? String ?? "0") ?? 0.0)
-            let creationDate = Date()
-            let nextSunday = Calendar(identifier: .gregorian).startOfDay(for: creationDate.next(.sunday, considerToday: false))
-            let weekNumber = Calendar.current.dateComponents([.weekOfYear], from: nextSunday, to: Date())
-
-            print(nextSunday)
-            print("ANEESH")
-            print(weekNumber.weekOfYear)
-            self.week = (weekNumber.weekOfYear ?? 0) + 1
+            let creationDate = Date(timeIntervalSince1970: Double(creationDateString.value as? String ?? "0") ?? 0.0)
+            let nextSunday = Calendar(identifier: .gregorian).startOfDay(for: (creationDate.next(.sunday, considerToday: true)))
+            if (nextSunday.compare(Date()) != ComparisonResult.orderedAscending) {
+                self.week = 0
+            } else {
+                let weekNumber = Calendar.current.dateComponents([.weekOfYear], from: nextSunday, to: Date()).weekOfYear ?? 0
+                self.week = weekNumber + 1
+            }
         })
     }
     
