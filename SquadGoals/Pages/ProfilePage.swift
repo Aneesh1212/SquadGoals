@@ -29,7 +29,7 @@ struct ProfilePage: View {
                     Text("Sign out")
                         .font(.system(size:14))
                         .foregroundColor(Colors.darkOrangeForeground)
-                        .padding(.trailing, 10)
+                        .padding(.trailing, Styling.mediumUnit)
                 })
             }
             

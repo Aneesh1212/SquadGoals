@@ -22,5 +22,4 @@ struct Target : Hashable {
         self.key = key
         self.creationDate = creationDate
     }
-
 }

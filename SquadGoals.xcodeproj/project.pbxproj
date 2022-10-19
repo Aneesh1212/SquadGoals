@@ -27,9 +27,7 @@
 		5587C85B278780D1001A9999 /* SquadGoalsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C85A278780D1001A9999 /* SquadGoalsUITests.swift */; };
 		5587C85D278780D1001A9999 /* SquadGoalsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C85C278780D1001A9999 /* SquadGoalsUITestsLaunchTests.swift */; };
 		5587C8742787837C001A9999 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5587C8732787837C001A9999 /* GoogleService-Info.plist */; };
-		5587C89927878855001A9999 /* SundaySingleGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C8782787884E001A9999 /* SundaySingleGoal.swift */; };
 		5587C89A27878855001A9999 /* HomepageGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C8792787884E001A9999 /* HomepageGoalView.swift */; };
-		5587C89B27878855001A9999 /* TargetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C87A2787884E001A9999 /* TargetEntry.swift */; };
 		5587C89C27878855001A9999 /* Race.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C87B2787884E001A9999 /* Race.swift */; };
 		5587C89D27878855001A9999 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C87C2787884E001A9999 /* ProgressBar.swift */; };
 		5587C89E27878855001A9999 /* GoalDetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C87D2787884E001A9999 /* GoalDetailPage.swift */; };
@@ -120,9 +118,7 @@
 		5587C8732787837C001A9999 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5587C87527878462001A9999 /* SquadGoals.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SquadGoals.entitlements; sourceTree = "<group>"; };
 		5587C8762787849E001A9999 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		5587C8782787884E001A9999 /* SundaySingleGoal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SundaySingleGoal.swift; sourceTree = "<group>"; };
 		5587C8792787884E001A9999 /* HomepageGoalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomepageGoalView.swift; sourceTree = "<group>"; };
-		5587C87A2787884E001A9999 /* TargetEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetEntry.swift; sourceTree = "<group>"; };
 		5587C87B2787884E001A9999 /* Race.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Race.swift; sourceTree = "<group>"; };
 		5587C87C2787884E001A9999 /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		5587C87D2787884E001A9999 /* GoalDetailPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalDetailPage.swift; sourceTree = "<group>"; };
@@ -296,9 +292,7 @@
 		5587C8772787884E001A9999 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				5587C8782787884E001A9999 /* SundaySingleGoal.swift */,
 				5587C8792787884E001A9999 /* HomepageGoalView.swift */,
-				5587C87A2787884E001A9999 /* TargetEntry.swift */,
 				5587C87B2787884E001A9999 /* Race.swift */,
 				5587C87C2787884E001A9999 /* ProgressBar.swift */,
 				5587C87D2787884E001A9999 /* GoalDetailPage.swift */,
@@ -646,7 +640,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5587C89B27878855001A9999 /* TargetEntry.swift in Sources */,
 				552F626428FD0812002F0A5F /* OnboardingTextEntryWithTitle.swift in Sources */,
 				5587C8AB27878855001A9999 /* GoalAdded.swift in Sources */,
 				5587C8A527878855001A9999 /* Welcome.swift in Sources */,
@@ -681,7 +674,6 @@
 				55C0B0A428F680A1008BFA61 /* Tutorial3.swift in Sources */,
 				5587C89F27878855001A9999 /* Completion.swift in Sources */,
 				5587C8AE27878855001A9999 /* SundayReflection.swift in Sources */,
-				5587C89927878855001A9999 /* SundaySingleGoal.swift in Sources */,
 				55C81EDE278BC4DF00F341D5 /* NotificationViewModel.swift in Sources */,
 				55C81EE7278C084300F341D5 /* WhiteActionButton.swift in Sources */,
 				5587C8B227878855001A9999 /* Goal.swift in Sources */,
@@ -865,7 +857,7 @@
 				CODE_SIGN_ENTITLEMENTS = SquadGoals/SquadGoals.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_ASSET_PATHS = "\"SquadGoals/Preview Content\"";
 				DEVELOPMENT_TEAM = HPRJ8CFMWR;
 				ENABLE_PREVIEWS = YES;
@@ -901,7 +893,7 @@
 				CODE_SIGN_ENTITLEMENTS = SquadGoals/SquadGoals.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_ASSET_PATHS = "\"SquadGoals/Preview Content\"";
 				DEVELOPMENT_TEAM = HPRJ8CFMWR;
 				ENABLE_PREVIEWS = YES;

@@ -64,6 +64,7 @@ struct Main: View {
         //.banner(user: self.viewModel.user, show: self.$showReflection, color: Colors.lightOrangeBackground)
         .task {
             if (user.phoneNumber != "" && user.groupId != "") {
+                print("TONY")
                 await self.viewModel.getGoals(phoneNumber: user.phoneNumber)
                 self.viewModel.getTeamMemberPhoneNumbers()
                 self.viewModel.calculateWeek()
