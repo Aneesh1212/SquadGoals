@@ -10,10 +10,10 @@ import SwiftUI
 
 struct ProgressBar: View {
     var progressValue : Float
+    var weekPercentage : Float
     var text : String
     
     var body: some View {
-        let weekPercentage = Float(Calendar.current.component(.weekday, from: Date()) - 1) / 7.0
         let progressColor = (progressValue >= weekPercentage) ? Color.green : (progressValue >= weekPercentage / 2 ? Color.yellow : Color.red)
         
         ZStack {

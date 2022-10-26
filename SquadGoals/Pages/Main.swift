@@ -45,7 +45,7 @@ struct Main: View {
                         .tag(2)
                         .navigationBarTitle("", displayMode: .inline)
                         .navigationBarBackButtonHidden(true)
-                    SquadPage(viewModel: viewModel)
+                    SquadPage(viewModel: viewModel, isReviewing: $showBanner)
                         .tabItem {
                             Label ("Squad", systemImage: "person.3.fill")
                         }

@@ -11,6 +11,7 @@ import SwiftUI
 struct SquadPage: View {
     
     @StateObject var viewModel : GoalViewModel
+    @Binding var isReviewing: Bool
     @State var selectedUser : User = User(name: "", phoneNumber: "", groupId: "", goals: [], teammates: [])
     @State var shouldNavigateToProfile = false
     @State var showEncouragementModal = false
@@ -18,9 +19,9 @@ struct SquadPage: View {
     
     var body: some View {
         
-        let weekPercentage : Float = Float(viewModel.getDayOfWeek()) / 7.0
+        let weekPercentage : Float = isReviewing ? 1.0 : Float(viewModel.getDayOfWeek()) / 7.0
         let teamPercentage : Float = viewModel.calculateTeamTargetPercent()
-        let progressString = getProgressString(teamPercentage: teamPercentage, weekPercentage: weekPercentage)
+        let progressString = isReviewing ? getFinishedProgressString(teamPercentage: teamPercentage) : getCurrentProgressString(teamPercentage: teamPercentage, weekPercentage: weekPercentage)
         
         VStack(spacing: 0) {
             VStack{
@@ -30,11 +31,13 @@ struct SquadPage: View {
                         .multilineTextAlignment(.leading)
                         .font(.system(size: 30, weight: .heavy))
                         .foregroundColor(.white)
+                        .fixedSize(horizontal: false, vertical: true)
                     
                     Text(progressString)
                         .multilineTextAlignment(.leading)
                         .font(.system(size: 16))
                         .foregroundColor(.white)
+                        .fixedSize(horizontal: false, vertical: true)
                     
                     HStack { Spacer() }
                     
@@ -44,7 +47,7 @@ struct SquadPage: View {
                 VStack{
                     HStack { Spacer() }
                     
-                    ProgressBar(progressValue: teamPercentage, text: "\(String(Int(teamPercentage*100.0))) %")
+                    ProgressBar(progressValue: teamPercentage, weekPercentage: weekPercentage, text: "\(String(Int(teamPercentage*100.0))) %")
                         .frame(width: 100.0, height: 100.0)
                         .padding(.bottom, 10.0)
                     
@@ -104,7 +107,7 @@ struct SquadPage: View {
                                 self.shouldNavigateToProfile = true
                             }, label: {
                                 VStack {
-                                    ProgressBar(progressValue: teammatePercentage, text: teammate.name)
+                                    ProgressBar(progressValue: teammatePercentage, weekPercentage: weekPercentage, text: teammate.name)
                                         .frame(width: 100.0, height: 100.0)
                                         .padding(.bottom, 10.0)
                                     Text("\(completedTargets)/\(totalTargets) targets")
@@ -140,12 +143,22 @@ struct SquadPage: View {
     }
 }
 
-func getProgressString(teamPercentage: Float, weekPercentage: Float) -> String {
+func getCurrentProgressString(teamPercentage: Float, weekPercentage: Float) -> String {
     if (teamPercentage >= weekPercentage) {
         return "Kudos! Your squad is on track to complete all Tasks."
-    } else if (teamPercentage >= weekPercentage / 2) {
+    } else if (teamPercentage >= weekPercentage / 2 ) {
         return "Your squad is behind track to complete all Tasks."
     } else {
         return "Your squad is behind track to complete all Tasks."
+    }
+}
+
+func getFinishedProgressString(teamPercentage: Float) -> String {
+    if (teamPercentage == 1.0) {
+        return "Unreal job! Your squad completed all your Tasks. You deserve to celebrate."
+    } else if (teamPercentage >= 0.65) {
+        return "Kudos! Your squad finished most of your Tasks. Take some time to celebrate."
+    } else {
+        return "Your squad finished some tasks, let's work harder next week."
     }
 }

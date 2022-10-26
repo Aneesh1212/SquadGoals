@@ -44,11 +44,16 @@ struct ResultsAlert: View {
                     showReflectionModal = true
                 }
                 .fixedSize(horizontal: true, vertical: true)
-                .foregroundColor(.white)
+                .foregroundColor(Colors.blueText)
                 .padding(.horizontal)
                 .padding(.vertical, 3)
-                .background(Colors.blueText)
                 .cornerRadius(15)
+                .background(.white)
+                .buttonBorderShape(.automatic)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 15)
+                        .stroke(Colors.blueText, lineWidth: 2)
+                )
             }
         }
         .padding(.vertical, 10)
@@ -58,6 +63,5 @@ struct ResultsAlert: View {
         .cornerRadius(5)
         .clipped()
         .border(Colors.blueText, width: 2)
-        
     }
 }

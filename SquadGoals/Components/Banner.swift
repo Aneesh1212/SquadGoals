@@ -31,9 +31,9 @@ struct BannerModifier: View {
             .padding(12)
             .background(Color(red: 67/255, green: 154/255, blue: 215/255))
             .cornerRadius(8)
-            .animation(.easeInOut)
-            .transition(AnyTransition.move(edge: .top).combined(with: .opacity))
         }
+        .animation(.easeInOut)
+        .transition(AnyTransition.move(edge: .top).combined(with: .opacity))
         .padding(.horizontal)
         .padding(.bottom, 4)
         .background(tab == 1 ? Colors.lightOrangeBackground : Colors.darkOrangeForeground)
