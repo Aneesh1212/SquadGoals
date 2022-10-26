@@ -21,7 +21,7 @@ struct SquadPage: View {
         let weekPercentage : Float = Float(viewModel.getDayOfWeek()) / 7.0
         let teamPercentage : Float = viewModel.calculateTeamTargetPercent()
         let progressString = getProgressString(teamPercentage: teamPercentage, weekPercentage: weekPercentage)
-                
+        
         VStack(spacing: 0) {
             VStack{
                 VStack(alignment: .leading){
@@ -53,32 +53,32 @@ struct SquadPage: View {
                 }
                 .padding(.bottom, 10)
                 
-                HStack{
-                    Text("Send encouragement")
-                        .underline()
-                        .multilineTextAlignment(.center)
-                        .font(.system(size: 15).bold())
-                        .padding(.bottom, 4)
-                        .foregroundColor(Colors.lightOrangeBackground)
-                        .onTapGesture {
-                            self.showEncouragementModal = true
-                        }
+                HStack(spacing: 0) {
+                    VStack {
+                        Text("Nudge Team")
+                            .font(.system(size: 16).bold())
+                            .foregroundColor(Colors.lightOrangeBackground)
+                            .padding(.vertical, 4)
+                    }
+                    .frame(minWidth: 0, maxWidth: .infinity)
+                    .border(.white, width: 1)
+                    .onTapGesture {
+                        self.showEncouragementModal = true
+                    }
                     
-                    Spacer()
-                    
-                    Text("Send congrats")
-                        .underline()
-                        .multilineTextAlignment(.center)
-                        .font(.system(size: 15).bold())
-                        .padding(.bottom, 4)
-                        .foregroundColor(Colors.lightOrangeBackground)
-                        .onTapGesture {
-                            self.showCongratsModal = true
-                        }
+                    VStack {
+                        Text("Send a Congrats")
+                            .font(.system(size: 16).bold())
+                            .foregroundColor(Colors.lightOrangeBackground)
+                            .padding(.vertical, 4)
+                    }
+                    .frame(minWidth: 0, maxWidth: .infinity)
+                    .border(.white, width: 1)
+                    .onTapGesture {
+                        self.showCongratsModal = true
+                    }
                 }
-                .padding(.horizontal, 24)
-                .padding(.trailing, 32)
-                .padding(.bottom, 5)
+                .shadow(color: .gray, radius: 5, x: 0.0, y: -5.0)
             }
             .background(Colors.darkOrangeForeground)
             
@@ -91,7 +91,7 @@ struct SquadPage: View {
                         GridItem(.flexible())]
                     
                     let teamList = [viewModel.user] + viewModel.user.teammates
-                
+                    
                     
                     LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(teamList, id: \.self) { teammate in
