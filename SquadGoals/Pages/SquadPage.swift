@@ -39,7 +39,7 @@ struct SquadPage: View {
                     HStack { Spacer() }
                     
                 }
-                .padding(.leading, 35)
+                .padding(.horizontal, 25)
                 
                 VStack{
                     HStack { Spacer() }

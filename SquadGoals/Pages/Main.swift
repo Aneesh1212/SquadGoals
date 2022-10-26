@@ -15,6 +15,8 @@ struct Main: View {
     @State var selection = 2
     @State var showResultsModal : Bool
     @State var showReflectionModal = false
+    @State var showBanner = false
+
     
     init (user: User, showReflection : Bool) {
         self.user = user
@@ -23,7 +25,10 @@ struct Main: View {
     }
     var body: some View {
         ZStack{
-            VStack {
+            VStack(spacing:0) {
+                if (showBanner) {
+                    BannerModifier(user: self.viewModel.user, tab: $selection)
+                }
                 TabView(selection: $selection) {
                     ProfilePage(viewModel: viewModel)
                         .tabItem {
@@ -33,7 +38,7 @@ struct Main: View {
                         .tag(1)
                         .navigationBarTitle("", displayMode: .inline)
                         .navigationBarBackButtonHidden(true)
-                    Homepage(viewModel: viewModel, showReflectionPrompt: showResultsModal)
+                    Homepage(viewModel: viewModel, showReflectionPrompt: showBanner)
                         .tabItem {
                             Label ("Home", systemImage: "house.fill")
                         }
@@ -52,19 +57,16 @@ struct Main: View {
             .overlay(Color.gray.opacity((showResultsModal || showReflectionModal) ? 0.6 : 0.0))
             .disabled(showResultsModal || showReflectionModal)
 
-
             if (showResultsModal) {
-                ResultsAlert(shown: $showResultsModal, showReflectionModal: $showReflectionModal, viewModel: self.viewModel, tab: $selection)
+                ResultsAlert(shown: $showResultsModal, showReflectionModal: $showReflectionModal, showBanner: $showBanner, viewModel: self.viewModel, tab: $selection)
             }
             
             if (showReflectionModal) {
                 ReflectionAlert(user: self.user, shown: $showReflectionModal)
             }
         }
-        //.banner(user: self.viewModel.user, show: self.$showReflection, color: Colors.lightOrangeBackground)
         .task {
             if (user.phoneNumber != "" && user.groupId != "") {
-                print("TONY")
                 await self.viewModel.getGoals(phoneNumber: user.phoneNumber)
                 self.viewModel.getTeamMemberPhoneNumbers()
                 self.viewModel.calculateWeek()

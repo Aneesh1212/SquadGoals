@@ -16,6 +16,7 @@ struct ReflectionAlert: View {
     @State var navigateToSundayPlanning = false
     
     
+    
     var body: some View {
         VStack(alignment: .center) {
             Spacer()

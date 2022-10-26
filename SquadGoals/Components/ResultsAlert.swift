@@ -12,6 +12,7 @@ struct ResultsAlert: View {
     
     @Binding var shown: Bool
     @Binding var showReflectionModal: Bool
+    @Binding var showBanner : Bool
     @StateObject var viewModel : GoalViewModel
     @Binding var tab : Int
     
@@ -28,7 +29,7 @@ struct ResultsAlert: View {
                 .frame(height:20)
             HStack {
                 Button("Review Week") {
-                    tab = 3
+                    showBanner = true
                     shown.toggle()
                 }
                 .fixedSize(horizontal: true, vertical: true)

@@ -48,7 +48,6 @@ struct CongratsModal: View {
                 }
             }
             .pickerStyle(.wheel)
-            .padding(.bottom, 12)
             
             TextEditor(
                 text: $customMessage
