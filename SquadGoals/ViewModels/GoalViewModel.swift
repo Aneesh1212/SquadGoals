@@ -107,10 +107,8 @@ class GoalViewModel : ObservableObject {
                         let targetFrequency = Int(targetData["frequency"] ?? "0") ?? 1
                         let targetOriginal = Int(targetData["original"] ?? "0") ?? 1
                         let targetCreationDate = Date(timeIntervalSince1970: (Double(targetData["creationDate"] ?? "0") ?? 0.0))
-                        print("ANEESH target creation date: ", targetCreationDate)
                         let newTarget = Target(title: targetTitle, frequency: targetFrequency, original: targetOriginal, key: targetDataPair.key, creationDate: targetCreationDate)
                         let targetSunday = targetCreationDate.previous(.sunday, considerToday: true)
-                        print("ANEESH target sunday: ", targetSunday)
                         newGoal.pastTargets[targetSunday] = newGoal.pastTargets[targetSunday] ?? []
                         newGoal.pastTargets[targetSunday]?.append(newTarget)
                     }
@@ -177,10 +175,6 @@ class GoalViewModel : ObservableObject {
         print("LAST SET SUNDAY: ", lastSetSunday)
         for teammate in user.teammates {
             ref.child("goals/\(teammate.phoneNumber)/goals").getData(completion:  { error, goalSnapshot in
-                guard error == nil else {
-                    print(error!.localizedDescription)
-                    return;
-                }
                 let teammateIndex : Int = self.user.teammates.firstIndex(of: teammate) ?? 0
                 let goals = goalSnapshot.value as? Dictionary<String, Dictionary<String, String>> ?? [:]
                 for goalDataPair in goals {
@@ -206,30 +200,28 @@ class GoalViewModel : ObservableObject {
                             let targetCreationDate = Date(timeIntervalSince1970: (Double(targetData["creationDate"] ?? "0") ?? 0.0))
                             let newTarget = Target(title: targetTitle, frequency: targetFrequency, original: targetOriginal, key: targetDataPair.key, creationDate: targetCreationDate)
                             let targetSunday = targetCreationDate.previous(.sunday, considerToday: true)
-                            print("Target creation date: ", targetCreationDate)
-                            print("Target sunday: ", targetSunday)
                             newGoal.pastTargets[targetSunday] = newGoal.pastTargets[targetSunday] ?? []
                             newGoal.pastTargets[targetSunday]?.append(newTarget)
                         }
-                        print("HERE", newGoal.pastTargets)
                         for sundayDate in newGoal.pastTargets.keys {
                             if (Calendar.current.dateComponents([.day], from: sundayDate, to: lastSetSunday).day == 0){
                                 newGoal.currTargets = newGoal.pastTargets[sundayDate] ?? []
                             }
                         }
                         self.user.teammates[teammateIndex].goals.append(newGoal)
+                        self.calculateTeamStrings()
                     })
                 }
             })
         }
-        self.calculateTeamStrings()
     }
     
     func calculateTeamStrings() {
+        print("CALCULATING TEAM STRINGS", self.user.teammates)
         self.teammateStrings = []
         for teammate in self.user.teammates {
             let percentage = calculateWeeklyTargetPercent(goals: teammate.goals)
-            self.teammateStrings.append("\(teammate.name) completed \(String(round(percentage)))%")
+            self.teammateStrings.append("\(teammate.name) completed \(String(Int(percentage * 100)))%")
             print("\(teammate.name) completed \(String(round(percentage)))%")
         }
     }
@@ -304,7 +296,7 @@ class GoalViewModel : ObservableObject {
     func calculateWeeklyTargetPercent(goals : Array<Goal>) -> Float {
         let totalTargets = calculateTotalTargets(goals: goals)
         let completedTargets = calculateCompletedTargets(goals: goals)
-        let result = (totalTargets == 0) ? 0.0 : Float(completedTargets) / Float(totalTargets)
+        let result = (totalTargets == 0) ? 0.0 : Float(Float(completedTargets) / Float(totalTargets))
         return result
     }
     

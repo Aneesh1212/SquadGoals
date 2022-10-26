@@ -20,9 +20,8 @@ struct SquadPage: View {
         
         let weekPercentage : Float = Float(viewModel.getDayOfWeek()) / 7.0
         let teamPercentage : Float = viewModel.calculateTeamTargetPercent()
-        
-        let progressWord : String = (teamPercentage >= weekPercentage) ? "GREEN" : (teamPercentage >= weekPercentage / 2 ? "YELLOW" : "RED")
-        
+        let progressString = getProgressString(teamPercentage: teamPercentage, weekPercentage: weekPercentage)
+                
         VStack(spacing: 0) {
             VStack{
                 VStack(alignment: .leading){
@@ -32,8 +31,7 @@ struct SquadPage: View {
                         .font(.system(size: 30, weight: .heavy))
                         .foregroundColor(.white)
                     
-                    
-                    Text("You are currently on track for \(progressWord)")
+                    Text(progressString)
                         .multilineTextAlignment(.leading)
                         .font(.system(size: 16))
                         .foregroundColor(.white)
@@ -139,5 +137,15 @@ struct SquadPage: View {
                 }
         })
         .background(Colors.lightOrangeBackground)
+    }
+}
+
+func getProgressString(teamPercentage: Float, weekPercentage: Float) -> String {
+    if (teamPercentage >= weekPercentage) {
+        return "Kudos! Your squad is on track to complete all Tasks."
+    } else if (teamPercentage >= weekPercentage / 2) {
+        return "Your squad is behind track to complete all Tasks."
+    } else {
+        return "Your squad is behind track to complete all Tasks."
     }
 }
