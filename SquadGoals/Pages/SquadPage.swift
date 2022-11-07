@@ -81,7 +81,6 @@ struct SquadPage: View {
                         self.showCongratsModal = true
                     }
                 }
-                .shadow(color: .gray, radius: 5, x: 0.0, y: -5.0)
             }
             .background(Colors.darkOrangeForeground)
             
