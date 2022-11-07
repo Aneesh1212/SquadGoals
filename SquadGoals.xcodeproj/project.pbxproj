@@ -46,10 +46,8 @@
 		5587C8AB27878855001A9999 /* GoalAdded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C88D27878853001A9999 /* GoalAdded.swift */; };
 		5587C8AC27878855001A9999 /* Homepage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C88E27878853001A9999 /* Homepage.swift */; };
 		5587C8AD27878855001A9999 /* UserPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C88F27878853001A9999 /* UserPage.swift */; };
-		5587C8AE27878855001A9999 /* SundayReflection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C89027878853001A9999 /* SundayReflection.swift */; };
 		5587C8AF27878855001A9999 /* ProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C89127878853001A9999 /* ProfilePage.swift */; };
 		5587C8B027878855001A9999 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C89227878853001A9999 /* Main.swift */; };
-		5587C8B127878855001A9999 /* SundayPlanning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C89327878853001A9999 /* SundayPlanning.swift */; };
 		5587C8B227878855001A9999 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C89527878855001A9999 /* Goal.swift */; };
 		5587C8B327878855001A9999 /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C89627878855001A9999 /* Target.swift */; };
 		5587C8B427878855001A9999 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C89727878855001A9999 /* User.swift */; };
@@ -70,6 +68,8 @@
 		55D7CEFC283C9AED0064CE4D /* TestTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D7CEFB283C9AED0064CE4D /* TestTable.swift */; };
 		55EA757C28FD120500ACB448 /* Filler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EA757B28FD120500ACB448 /* Filler.swift */; };
 		55EB219F28EE812800F3E765 /* Tutorial1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EB219E28EE812800F3E765 /* Tutorial1.swift */; };
+		55F7CAE42919AB7700448F10 /* MondayReflection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F7CAE32919AB7700448F10 /* MondayReflection.swift */; };
+		55F7CAE62919ABAE00448F10 /* MondayPlanning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F7CAE52919ABAE00448F10 /* MondayPlanning.swift */; };
 		C691A93F2EC28C9E1D22E05A /* Pods_SquadGoals_SquadGoalsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5781A7B9BA2083BDC8B11F45 /* Pods_SquadGoals_SquadGoalsUITests.framework */; };
 		F4BCFFEC69633D405BF38435 /* Pods_SquadGoals.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AAC44B50437FA1D41861F86 /* Pods_SquadGoals.framework */; };
 /* End PBXBuildFile section */
@@ -137,10 +137,8 @@
 		5587C88D27878853001A9999 /* GoalAdded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalAdded.swift; sourceTree = "<group>"; };
 		5587C88E27878853001A9999 /* Homepage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Homepage.swift; sourceTree = "<group>"; };
 		5587C88F27878853001A9999 /* UserPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPage.swift; sourceTree = "<group>"; };
-		5587C89027878853001A9999 /* SundayReflection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SundayReflection.swift; sourceTree = "<group>"; };
 		5587C89127878853001A9999 /* ProfilePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePage.swift; sourceTree = "<group>"; };
 		5587C89227878853001A9999 /* Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
-		5587C89327878853001A9999 /* SundayPlanning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SundayPlanning.swift; sourceTree = "<group>"; };
 		5587C89527878855001A9999 /* Goal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		5587C89627878855001A9999 /* Target.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Target.swift; sourceTree = "<group>"; };
 		5587C89727878855001A9999 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -161,6 +159,8 @@
 		55D7CEFB283C9AED0064CE4D /* TestTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTable.swift; sourceTree = "<group>"; };
 		55EA757B28FD120500ACB448 /* Filler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filler.swift; sourceTree = "<group>"; };
 		55EB219E28EE812800F3E765 /* Tutorial1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial1.swift; sourceTree = "<group>"; };
+		55F7CAE32919AB7700448F10 /* MondayReflection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MondayReflection.swift; sourceTree = "<group>"; };
+		55F7CAE52919ABAE00448F10 /* MondayPlanning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MondayPlanning.swift; sourceTree = "<group>"; };
 		5781A7B9BA2083BDC8B11F45 /* Pods_SquadGoals_SquadGoalsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SquadGoals_SquadGoalsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A44A3827C3CC6A909862ED8 /* Pods-SquadGoals.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SquadGoals.release.xcconfig"; path = "Target Support Files/Pods-SquadGoals/Pods-SquadGoals.release.xcconfig"; sourceTree = "<group>"; };
 		6AAC44B50437FA1D41861F86 /* Pods_SquadGoals.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SquadGoals.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -344,10 +344,10 @@
 				5587C88D27878853001A9999 /* GoalAdded.swift */,
 				5587C88E27878853001A9999 /* Homepage.swift */,
 				5587C88F27878853001A9999 /* UserPage.swift */,
-				5587C89027878853001A9999 /* SundayReflection.swift */,
+				55F7CAE32919AB7700448F10 /* MondayReflection.swift */,
 				5587C89127878853001A9999 /* ProfilePage.swift */,
 				5587C89227878853001A9999 /* Main.swift */,
-				5587C89327878853001A9999 /* SundayPlanning.swift */,
+				55F7CAE52919ABAE00448F10 /* MondayPlanning.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -664,7 +664,6 @@
 				5587C89E27878855001A9999 /* GoalDetailPage.swift in Sources */,
 				55C0B0A028F67E82008BFA61 /* Tutorial2.swift in Sources */,
 				55C1811C2803CB6B002F956B /* EncouragementModel.swift in Sources */,
-				5587C8B127878855001A9999 /* SundayPlanning.swift in Sources */,
 				5587C89A27878855001A9999 /* HomepageGoalView.swift in Sources */,
 				5587C8A227878855001A9999 /* GoalViewModel.swift in Sources */,
 				5587C840278780CF001A9999 /* SquadGoalsApp.swift in Sources */,
@@ -673,7 +672,6 @@
 				5587C89C27878855001A9999 /* Race.swift in Sources */,
 				55C0B0A428F680A1008BFA61 /* Tutorial3.swift in Sources */,
 				5587C89F27878855001A9999 /* Completion.swift in Sources */,
-				5587C8AE27878855001A9999 /* SundayReflection.swift in Sources */,
 				55C81EDE278BC4DF00F341D5 /* NotificationViewModel.swift in Sources */,
 				55C81EE7278C084300F341D5 /* WhiteActionButton.swift in Sources */,
 				5587C8B227878855001A9999 /* Goal.swift in Sources */,
@@ -684,8 +682,10 @@
 				550FD659278F8C18005BE35D /* Brag.swift in Sources */,
 				552F625828FB7F25002F0A5F /* Styling.swift in Sources */,
 				55C1D908279384E000B9F4E4 /* Banner.swift in Sources */,
+				55F7CAE42919AB7700448F10 /* MondayReflection.swift in Sources */,
 				55C81EDC278B9F8E00F341D5 /* BottomSheet.swift in Sources */,
 				5587C8A327878855001A9999 /* AuthViewModel.swift in Sources */,
+				55F7CAE62919ABAE00448F10 /* MondayPlanning.swift in Sources */,
 				5587C89D27878855001A9999 /* ProgressBar.swift in Sources */,
 				552F626228FCFE39002F0A5F /* Spacing.swift in Sources */,
 				5587C8AF27878855001A9999 /* ProfilePage.swift in Sources */,

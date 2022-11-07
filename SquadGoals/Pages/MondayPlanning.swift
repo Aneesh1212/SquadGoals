@@ -11,7 +11,7 @@ import SwiftUI
 enum Mode {
     case editing, initial, weekly
 }
-struct SundayPlanning: View {
+struct MondayPlanning: View {
     
     @State var user : User
     @StateObject var viewModel : GoalViewModel
@@ -86,7 +86,7 @@ struct SundayPlanning: View {
                     .padding(.bottom, 20)
                     .foregroundColor(Colors.lightOrangeBackground)
             case .weekly:
-                Title(text:"SUNDAY PLANNING")
+                Title(text:"MONDAY PLANNING")
                     .padding(.bottom, 20)
                     .foregroundColor(Colors.lightOrangeBackground)
             case .initial:
@@ -157,7 +157,7 @@ struct SundayPlanning: View {
         }
         .onAppear {
             Task {
-                await self.viewModel.getGoals(phoneNumber: user.phoneNumber, isSundayPlanning: true)
+                await self.viewModel.getGoals(phoneNumber: user.phoneNumber, isMondayPlanning: true)
             }
         }
     }

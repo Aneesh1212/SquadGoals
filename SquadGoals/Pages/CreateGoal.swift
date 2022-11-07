@@ -143,7 +143,7 @@ struct CreateGoal: View {
             
             VStack {
                 NavigationLink(destination: GoalAdded(user: self.user, goalTitle: self.goalTitle), isActive: $shouldNavigate) { EmptyView() }
-                NavigationLink(destination: SundayPlanning(user: self.user, viewModel: GoalViewModel(user:self.user), mode: Mode.initial), isActive: $shouldNavigateSingleGoal) { EmptyView() }
+                NavigationLink(destination: MondayPlanning(user: self.user, viewModel: GoalViewModel(user:self.user), mode: Mode.initial), isActive: $shouldNavigateSingleGoal) { EmptyView() }
             }
             
             Filler()

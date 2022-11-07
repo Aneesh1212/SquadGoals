@@ -13,7 +13,7 @@ struct ReflectionAlert: View {
     var user : User
     @Binding var shown : Bool
     @State var navigateToReflection = false
-    @State var navigateToSundayPlanning = false
+    @State var navigateToMondayPlanning = false
     
     
     
@@ -38,7 +38,7 @@ struct ReflectionAlert: View {
             .cornerRadius(15)
             
             Button("Skip") {
-                navigateToSundayPlanning = true
+                navigateToMondayPlanning = true
             }
             .fixedSize(horizontal: true, vertical: true)
             .foregroundColor(Colors.blueText)
@@ -52,9 +52,9 @@ struct ReflectionAlert: View {
                     .stroke(Colors.blueText, lineWidth: 2)
             )
             
-            NavigationLink(destination: SundayReflection(user: self.user), isActive: $navigateToReflection) { EmptyView() }
+            NavigationLink(destination: MondayReflection(user: self.user), isActive: $navigateToReflection) { EmptyView() }
             
-            NavigationLink(destination: SundayPlanning(user: self.user, viewModel: GoalViewModel(user:self.user), mode: Mode.weekly), isActive: $navigateToSundayPlanning) { EmptyView() }
+            NavigationLink(destination: MondayPlanning(user: self.user, viewModel: GoalViewModel(user:self.user), mode: Mode.weekly), isActive: $navigateToMondayPlanning) { EmptyView() }
             
             
         }

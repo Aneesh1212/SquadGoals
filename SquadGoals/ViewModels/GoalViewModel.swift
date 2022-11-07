@@ -73,8 +73,10 @@ class GoalViewModel : ObservableObject {
         self.ref.child("targets").child(goalId).child(targetId).setValue(["title" : targetTitle, "frequency" : String(targetFrequency), "original": String(targetOriginal), "creationDate" : String(creationDate.timeIntervalSince1970)])
     }
     
-    func getGoals(phoneNumber : String, isSundayPlanning: Bool = false) async {
-        let lastSetSunday = (UserDefaults.standard.object(forKey: "lastSetSunday") as? Date) ?? Date(timeIntervalSince1970: 0)
+    func getGoals(phoneNumber : String, isMondayPlanning: Bool = false) async {
+        let lastSetSunday = ((UserDefaults.standard.object(forKey: "lastSetSunday") as? Date) ?? Date(timeIntervalSince1970: 0))
+        let fakeLastSetMonday = Calendar.current.date(byAdding: .day, value: 1, to: lastSetSunday)
+        let lastSetMonday = (UserDefaults.standard.object(forKey: "lastSetMonday") as? Date) ?? (fakeLastSetMonday ?? Date(timeIntervalSince1970: 0))
         self.completedTargets = 0
         self.totalTargets = 0
         print("GETTING GOALS")
@@ -108,15 +110,14 @@ class GoalViewModel : ObservableObject {
                         let targetOriginal = Int(targetData["original"] ?? "0") ?? 1
                         let targetCreationDate = Date(timeIntervalSince1970: (Double(targetData["creationDate"] ?? "0") ?? 0.0))
                         let newTarget = Target(title: targetTitle, frequency: targetFrequency, original: targetOriginal, key: targetDataPair.key, creationDate: targetCreationDate)
-                        let targetSunday = targetCreationDate.previous(.sunday, considerToday: true)
-                        newGoal.pastTargets[targetSunday] = newGoal.pastTargets[targetSunday] ?? []
-                        newGoal.pastTargets[targetSunday]?.append(newTarget)
+                        let targetMonday = targetCreationDate.previous(.monday, considerToday: true)
+                        newGoal.pastTargets[targetMonday] = newGoal.pastTargets[targetMonday] ?? []
+                        newGoal.pastTargets[targetMonday]?.append(newTarget)
                     }
-                    for sundayDate in newGoal.pastTargets.keys {
+                    for mondayDate in newGoal.pastTargets.keys {
                         
-                        if (Calendar.current.dateComponents([.day], from: sundayDate, to: lastSetSunday).day == 0){
-                            newGoal.currTargets = newGoal.pastTargets[sundayDate] ?? []
-                            
+                        if (Calendar.current.dateComponents([.day], from: mondayDate, to: lastSetMonday).day == 0){
+                            newGoal.currTargets = newGoal.pastTargets[mondayDate] ?? []
                             
                             for target in newGoal.currTargets {
                                 self.totalTargets += target.original
@@ -171,8 +172,9 @@ class GoalViewModel : ObservableObject {
     }
     
     func getTeammateGoals(){
-        let lastSetSunday = (UserDefaults.standard.object(forKey: "lastSetSunday") as? Date) ?? Date(timeIntervalSince1970: 0)
-        print("LAST SET SUNDAY: ", lastSetSunday)
+        let lastSetSunday = ((UserDefaults.standard.object(forKey: "lastSetSunday") as? Date) ?? Date(timeIntervalSince1970: 0))
+        let fakeLastSetMonday = Calendar.current.date(byAdding: .day, value: 1, to: lastSetSunday)
+        let lastSetMonday = (UserDefaults.standard.object(forKey: "lastSetMonday") as? Date) ?? (fakeLastSetMonday ?? Date(timeIntervalSince1970: 0))
         for teammate in user.teammates {
             ref.child("goals/\(teammate.phoneNumber)/goals").getData(completion:  { error, goalSnapshot in
                 let teammateIndex : Int = self.user.teammates.firstIndex(of: teammate) ?? 0
@@ -199,13 +201,13 @@ class GoalViewModel : ObservableObject {
                             let targetOriginal = Int(targetData["original"] ?? "0") ?? 1
                             let targetCreationDate = Date(timeIntervalSince1970: (Double(targetData["creationDate"] ?? "0") ?? 0.0))
                             let newTarget = Target(title: targetTitle, frequency: targetFrequency, original: targetOriginal, key: targetDataPair.key, creationDate: targetCreationDate)
-                            let targetSunday = targetCreationDate.previous(.sunday, considerToday: true)
-                            newGoal.pastTargets[targetSunday] = newGoal.pastTargets[targetSunday] ?? []
-                            newGoal.pastTargets[targetSunday]?.append(newTarget)
+                            let targetMonday = targetCreationDate.previous(.monday, considerToday: true)
+                            newGoal.pastTargets[targetMonday] = newGoal.pastTargets[targetMonday] ?? []
+                            newGoal.pastTargets[targetMonday]?.append(newTarget)
                         }
-                        for sundayDate in newGoal.pastTargets.keys {
-                            if (Calendar.current.dateComponents([.day], from: sundayDate, to: lastSetSunday).day == 0){
-                                newGoal.currTargets = newGoal.pastTargets[sundayDate] ?? []
+                        for mondayDate in newGoal.pastTargets.keys {
+                            if (Calendar.current.dateComponents([.day], from: mondayDate, to: lastSetMonday).day == 0){
+                                newGoal.currTargets = newGoal.pastTargets[mondayDate] ?? []
                             }
                         }
                         self.user.teammates[teammateIndex].goals.append(newGoal)
@@ -229,11 +231,11 @@ class GoalViewModel : ObservableObject {
     func calculateWeek() {
         self.ref.child("groups").child(self.user.groupId).child("creationDate").getData(completion:  { error, creationDateString in
             let creationDate = Date(timeIntervalSince1970: Double(creationDateString.value as? String ?? "0") ?? 0.0)
-            let nextSunday = Calendar(identifier: .gregorian).startOfDay(for: (creationDate.next(.sunday, considerToday: true)))
-            if (nextSunday.compare(Date()) != ComparisonResult.orderedAscending) {
+            let nextMonday = Calendar(identifier: .gregorian).startOfDay(for: (creationDate.next(.monday, considerToday: true)))
+            if (nextMonday.compare(Date()) != ComparisonResult.orderedAscending) {
                 self.week = 0
             } else {
-                let weekNumber = Calendar.current.dateComponents([.weekOfYear], from: nextSunday, to: Date()).weekOfYear ?? 0
+                let weekNumber = Calendar.current.dateComponents([.weekOfYear], from: nextMonday, to: Date()).weekOfYear ?? 0
                 self.week = weekNumber + 1
             }
         })
@@ -354,7 +356,7 @@ class GoalViewModel : ObservableObject {
     }
     
     func getDayOfWeek() -> Int {
-        return Calendar.current.component(.weekday, from: Date()) - 1
+        return Calendar.current.component(.weekday, from: Date())
     }
     
     func convertFrequencyToNum(frequencyWord : String) -> Int {
@@ -419,11 +421,5 @@ class GoalViewModel : ObservableObject {
                 self.currBrags.append(newBrag)
             }
         })
-    }
-    
-    func getLastTargets(pastTargets: Dictionary<Date, Array<Target>>) {
-        let lastSetSunday = (UserDefaults.standard.object(forKey: "lastSetSunday") as? Date) ?? Date(timeIntervalSince1970: 0)
-        print("Last set sunday", lastSetSunday)
-        let daysSinceSunday = (Calendar.current.dateComponents([.day], from: lastSetSunday, to: Date())).day!
     }
 }

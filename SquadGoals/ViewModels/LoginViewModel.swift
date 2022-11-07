@@ -132,10 +132,11 @@ class LoginViewModel : ObservableObject {
     
     private func signInNavigation() {
         let defaults = UserDefaults.standard
-        let lastSetSunday = (defaults.object(forKey: "lastSetSunday") as? Date) ?? Date(timeIntervalSince1970: 0)
-        print("Last set sunday", lastSetSunday)
-        let daysSinceSunday = (Calendar.current.dateComponents([.day], from: lastSetSunday, to: Date())).day!
-        if (daysSinceSunday >= 7) {
+        let lastSetSunday = ((defaults.object(forKey: "lastSetSunday") as? Date) ?? Date(timeIntervalSince1970: 0))
+        let fakeLastSetMonday = Calendar.current.date(byAdding: .day, value: 1, to: lastSetSunday)
+        let lastSetMonday = (defaults.object(forKey: "lastSetMonday") as? Date) ?? (fakeLastSetMonday ?? Date(timeIntervalSince1970: 0))
+        let daysSinceMonday = (Calendar.current.dateComponents([.day], from: lastSetMonday, to: Date())).day!
+        if (daysSinceMonday >= 7) {
         // if (true) {
             self.showReflection = true 
         } else {

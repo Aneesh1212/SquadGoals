@@ -15,14 +15,14 @@ struct BannerModifier: View {
     
     var body : some View {
         
-        NavigationLink(destination: SundayReflection(user: self.user), isActive: $navigateToReflection) { EmptyView() }
+        NavigationLink(destination: MondayReflection(user: self.user), isActive: $navigateToReflection) { EmptyView() }
         
         VStack {
             HStack {
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Congrats on the week!")
                         .bold()
-                    Text("Click here to visit the Sunday Reflections page to create your new weekly goals")
+                    Text("Click here to visit the Monday Reflections page to create your new weekly goals")
                         .font(Font.system(size: 15, weight: Font.Weight.light, design: Font.Design.default))
                 }
                 Spacer()

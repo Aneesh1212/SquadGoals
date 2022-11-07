@@ -12,7 +12,7 @@ struct GoalAdded: View {
     
     @State var user : User
     @State var goalTitle : String
-    @State var navigateToSundayPlanning = false
+    @State var navigateToMondayPlanning = false
     @State var navigateToCreateGoal = false
     
     var body: some View {
@@ -34,7 +34,7 @@ struct GoalAdded: View {
             }
             
             Button(action: {
-                self.navigateToSundayPlanning = true
+                self.navigateToMondayPlanning = true
             }) {
                 Text("Finished")
                     .foregroundColor(Colors.lightOrangeBackground)
@@ -46,7 +46,7 @@ struct GoalAdded: View {
             
             NavigationLink(destination: CreateGoal(user: self.user, isSingleGoal: false), isActive: $navigateToCreateGoal) { EmptyView() }
             
-            NavigationLink(destination: SundayPlanning(user: self.user, viewModel: GoalViewModel(user:self.user), mode: Mode.initial), isActive: $navigateToSundayPlanning) { EmptyView() }
+            NavigationLink(destination: MondayPlanning(user: self.user, viewModel: GoalViewModel(user:self.user), mode: Mode.initial), isActive: $navigateToMondayPlanning) { EmptyView() }
             
             Filler()
             
