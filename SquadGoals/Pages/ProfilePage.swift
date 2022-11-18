@@ -46,7 +46,7 @@ struct ProfilePage: View {
             
             VStack {
                 NavigationLink(destination: GoalDetailPage(goal: self.selectedGoal, viewModel: self.viewModel), isActive: $shouldNavigateToGoalDetails) { EmptyView() }
-                NavigationLink(destination: Welcome(), isActive: $shouldNavigateToWelcome) { EmptyView() }
+                NavigationLink(destination: Welcome(shouldTryToSignIn: false), isActive: $shouldNavigateToWelcome) { EmptyView() }
                 NavigationLink(destination: CreateGoal(user: self.viewModel.user, isSingleGoal: true), isActive: $navigateToCreateGoal) { EmptyView() }
             }
             

@@ -90,6 +90,11 @@ class LoginViewModel : ObservableObject {
         return groupId
     }
     
+    func tryAutoSignIn() {
+        let phoneNumber : String = UserDefaults.standard.string(forKey: "phoneNumber") ?? "X"
+        signUserIn(phoneNumber: phoneNumber)
+    }
+    
     func signUserIn(phoneNumber : String) {
         ref.child("users/\(phoneNumber)").getData(completion:  { error, snapshot in
             guard error == nil else {
@@ -105,6 +110,7 @@ class LoginViewModel : ObservableObject {
                 self.showUnableToFindUser = false
                 self.logUserFCMtoken(phoneNumber: phoneNumber)
                 self.signInNavigation()
+                UserDefaults.standard.set(phoneNumber, forKey: "phoneNumber")
             }
             else {
                 self.showUnableToFindUser = true

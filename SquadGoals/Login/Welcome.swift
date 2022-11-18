@@ -9,13 +9,12 @@ import Foundation
 import SwiftUI
 
 struct Welcome: View {
-    
-    @StateObject var loginData = LoginViewModel()
-    
+        
+    var shouldTryToSignIn : Bool
     @State var navigateToSignIn = false
     @State var navigateToCreateAccount = false
-    var viewModel = NotificationViewModel()
-    
+    @StateObject var viewModel = LoginViewModel()
+
     var body: some View {
         VStack{
             Image(uiImage: UIImage(named: "boat")!)
@@ -44,8 +43,11 @@ struct Welcome: View {
             }
             
             
-            NavigationLink(destination: CreateAccount(), isActive: $navigateToCreateAccount) { EmptyView() }
-            NavigationLink(destination: SignIn(), isActive: $navigateToSignIn) { EmptyView() }
+            VStack {
+                NavigationLink(destination: CreateAccount(), isActive: $navigateToCreateAccount) { EmptyView() }
+                NavigationLink(destination: SignIn(), isActive: $navigateToSignIn) { EmptyView() }
+                NavigationLink(destination: Main(user: viewModel.currentUser, showReflection : viewModel.showReflection), isActive: $viewModel.navigateToHome) { EmptyView() }
+            }
             
             HStack {
                 Spacer()
@@ -58,5 +60,10 @@ struct Welcome: View {
         .navigationBarTitle("", displayMode: .inline)
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)
+        .onAppear {
+            if (shouldTryToSignIn) {
+                viewModel.tryAutoSignIn()
+            }
+        }
     }
 }
