@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Firebase
 
 enum Mode {
     case editing, initial, weekly
@@ -23,6 +24,7 @@ struct MondayPlanning: View {
     @State var titles : [[String]] = []
     @State var frequencies : [[String]] = []
     @State var keys : [[String]] = []
+    var ref = Database.database().reference()
     
     var frequencyOptions : Array<String> = ["Once", "2x", "3x", "4x", "5x", "6x", "7x"]
     
@@ -65,8 +67,10 @@ struct MondayPlanning: View {
             var currentKeys : [String] = []
             if (!justGoals) {
                 for currentTarget in goal.currTargets {
+                    let targetsRef = self.ref.child("targets").child(goal.key)
+                    let targetKey = targetsRef.childByAutoId().key ?? ""
                     currentTitles.append(currentTarget.title)
-                    currentKeys.append(currentTarget.key)
+                    currentKeys.append(targetKey)
                     currentFrequencies.append(viewModel.convertFrequencyToString(frequency: currentTarget.original))
                 }
             }
