@@ -67,12 +67,10 @@ struct CongratsModal: View {
             
             Button(action: {
                 if (teammate.phoneNumber != "") {
-                    print("HERE1")
                     self.teammateNotSelected = false
-                    viewModel.sendNotification(users: [teammate], title: "Squad Goals: Congrats!", message: self.customMessage == placeholder ? "Congrats on accomplishing your goals so well this week! - \(String(viewModel.user.name))" : self.customMessage)
+                    viewModel.sendNotification(users: [teammate], title: "Squad Goals: Congrats!", message: self.customMessage == placeholder ? "Congrats on accomplishing your goals so well this week! - \(String(viewModel.user.name))" : "\(self.customMessage) - \(String(viewModel.user.name))")
                     self.showModal = false
                 } else {
-                    print("HERE2")
                     self.teammateNotSelected = true
                 }
                 

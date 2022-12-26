@@ -50,7 +50,7 @@ struct EncouragementModal: View {
                 }
             
             Button(action: {
-                viewModel.sendNotification(users: viewModel.user.teammates + [viewModel.user], title: "Squad Goals: Midweek Encouragement", message: self.customMessage == placeholder ? "There's time left in the week, lets finish a few more goals! - \(String(viewModel.user.name))" : self.customMessage)
+                viewModel.sendNotification(users: viewModel.user.teammates + [viewModel.user], title: "Squad Goals: Midweek Encouragement", message: self.customMessage == placeholder ? "There's time left in the week, lets finish a few more goals! - \(String(viewModel.user.name))" : "\(self.customMessage) - \(String(viewModel.user.name))")
                 self.showModal = false
             }) {
                 Text("Send to team")
