@@ -77,7 +77,6 @@ struct TestTable: View {
                         .padding(.leading, 3)
                         .foregroundColor(.black)
                 }
-
                 
                 Spacer()
                 

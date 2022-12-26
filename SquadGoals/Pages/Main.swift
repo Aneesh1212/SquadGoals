@@ -57,7 +57,7 @@ struct Main: View {
             .disabled(showResultsModal)
 
             if (showResultsModal) {
-                ResultsAlert(shown: $showResultsModal, showBanner: $showBanner, viewModel: self.viewModel, tab: $selection)
+                ResultsAlert(shown: $showResultsModal, showBanner: $showBanner, viewModel: self.viewModel)
             }
         }
         .task {

@@ -58,6 +58,7 @@ struct Homepage : View {
                     .multilineTextAlignment(.leading)
                     .font(.system(size: 22))
                     .foregroundColor(Colors.lightOrangeBackground)
+                    .help("TOOLTIP")
                 
                 Race(viewModel: self.viewModel)
                     .frame(alignment: .leading)

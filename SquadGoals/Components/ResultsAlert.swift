@@ -13,7 +13,6 @@ struct ResultsAlert: View {
     @Binding var shown: Bool
     @Binding var showBanner : Bool
     @StateObject var viewModel : GoalViewModel
-    @Binding var tab : Int
     @State var navigateToMondayPlanning = false
     @State private var maxWidth: CGFloat = .zero
     
@@ -57,16 +56,16 @@ struct ResultsAlert: View {
             .frame(minWidth: maxWidth)
             .background(Colors.blueText)
             .cornerRadius(15)
+            .shadow(color: .gray, radius: 2, x: 0.0, y: 4.0)
             
             Spacer()
             
             NavigationLink(destination: MondayPlanning(user: self.viewModel.user, viewModel:self.viewModel, mode: Mode.weekly), isActive: $navigateToMondayPlanning) { EmptyView() }
         }
-        .padding(.vertical, 10)
+        .padding(.vertical, 20)
         .frame(width: UIScreen.main.bounds.width-75)
         .fixedSize(horizontal: false, vertical: true)
         .background(Colors.lightOrangeBackground)
-        .cornerRadius(5)
         .clipped()
         .border(Colors.blueText, width: 2)
     }

@@ -25,6 +25,7 @@ struct MondayPlanning: View {
     @State var frequencies : [[String]] = []
     @State var keys : [[String]] = []
     var ref = Database.database().reference()
+    @State var showExample : Bool = false
     
     var frequencyOptions : Array<String> = ["Once", "2x", "3x", "4x", "5x", "6x", "7x"]
     
@@ -83,67 +84,89 @@ struct MondayPlanning: View {
     
     
     var body: some View {
-        ScrollView(showsIndicators: false){
-            switch (mode) {
-            case .editing:
-                Title(text:"EDIT TARGETS")
-                    .padding(.bottom, 20)
-                    .foregroundColor(Colors.lightOrangeBackground)
-            case .weekly:
-                Title(text:"MONDAY PLANNING")
-                    .padding(.bottom, 20)
-                    .foregroundColor(Colors.lightOrangeBackground)
-            case .initial:
-                Title(text:"ENTER TARGETS")
-                    .padding(.bottom, 20)
-                    .foregroundColor(Colors.lightOrangeBackground)
-            }
-            
-            Text("Break down your goals - how can you make progress this week?")
-                .multilineTextAlignment(.center)
-                .font(.system(size: 20))
-                .padding(.bottom, 15)
-                .padding(.horizontal, 25)
-                .foregroundColor(Colors.lightOrangeBackground)
-            
-            if (mode == Mode.weekly) {
-                Button(action: {
-                    loadPastTargets(user: self.viewModel.user, justGoals: false)
-                }) {
-                    Text("Load Past Targets")
+        ZStack{
+            VStack() {
+                switch (mode) {
+                case .editing:
+                    Title(text:"EDIT TARGETS")
+                        .padding(.bottom, 20)
                         .foregroundColor(Colors.lightOrangeBackground)
-                        .font(.system(size: 16))
-                        .frame(width: 150, height: 40, alignment: .center)
-                        .background(Colors.blueText)
-                        .cornerRadius(15)
+                case .weekly:
+                    Title(text:"MONDAY PLANNING")
+                        .padding(.bottom, 20)
+                        .foregroundColor(Colors.lightOrangeBackground)
+                case .initial:
+                    Title(text:"ENTER TARGETS")
+                        .padding(.bottom, 20)
+                        .foregroundColor(Colors.lightOrangeBackground)
                 }
-            }
-            
-            targetEntryTable
-                .onChange(of: self.viewModel.user) { value in
-                    loadPastTargets(user: value, justGoals: (mode == Mode.weekly))
-                }
-                .padding(.top, 10)
-            
-            NavigationLink(destination: Main(user: self.user, showReflection: false), isActive: $navigateToHome) { EmptyView() }
-            
-            Button(action: {
-                self.showEditWarning = true
-            }) {
-                Text("Submit")
+                
+                Text("Break down your goals - how can you make progress this week?")
+                    .multilineTextAlignment(.center)
+                    .font(.system(size: 20))
+                    .padding(.bottom, 15)
+                    .padding(.horizontal, 25)
                     .foregroundColor(Colors.lightOrangeBackground)
-                    .font(.system(size: 22))
-                    .frame(width: 200, height: 60, alignment: .center)
-                    .background(Colors.blueText)
-                    .cornerRadius(15)
-            }
-            
-            HStack {
+                
+                if (mode == Mode.weekly) {
+                    Button(action: {
+                        loadPastTargets(user: self.viewModel.user, justGoals: false)
+                    }) {
+                        Text("Load Past Targets")
+                            .foregroundColor(Colors.lightOrangeBackground)
+                            .font(.system(size: 16))
+                            .frame(width: 150, height: 40, alignment: .center)
+                            .background(Colors.blueText)
+                            .cornerRadius(15)
+                    }
+                }
+                
+                if (mode == Mode.initial) {
+                    Button(action: {
+                        showExample.toggle()
+                    }) {
+                        Text("Show Example")
+                            .foregroundColor(Colors.lightOrangeBackground)
+                            .font(.system(size: 16))
+                            .frame(width: 150, height: 40, alignment: .center)
+                            .background(Colors.blueText)
+                            .cornerRadius(15)
+                    }
+                }
+                
+                ScrollView {
+                    targetEntryTable
+                        .onChange(of: self.viewModel.user) { value in
+                            loadPastTargets(user: value, justGoals: (mode == Mode.weekly))
+                        }
+                        .padding(.top, 10)
+                    
+                    NavigationLink(destination: Main(user: self.user, showReflection: false), isActive: $navigateToHome) { EmptyView() }
+                    
+                    Button(action: {
+                        self.showEditWarning = true
+                    }) {
+                        Text("Submit")
+                            .foregroundColor(Colors.lightOrangeBackground)
+                            .font(.system(size: 22))
+                            .frame(width: 200, height: 60, alignment: .center)
+                            .background(Colors.blueText)
+                            .cornerRadius(15)
+                    }
+                }
+                
+                HStack {
+                    Spacer()
+                }
+                
                 Spacer()
+                
             }
+            .overlay(Color.gray.opacity(showExample ? 0.6 : 0.0))
             
-            Spacer()
-            
+            if (showExample) {
+                ExampleTargetsModal(shown: $showExample)
+            }
         }
         .background(Colors.darkOrangeForeground)
         .alert("Please note weekly targets will be cleared every SUNDAY @ MIDNIGHT. If need be, edit your targets to fit this timeline", isPresented: $showEditWarning) {
