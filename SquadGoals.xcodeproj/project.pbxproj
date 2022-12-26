@@ -851,7 +851,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7A7A0CC836B6A1BD5F8D8EA0 /* Pods-SquadGoals.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon2;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = SquadGoals/SquadGoals.entitlements;
@@ -887,7 +887,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5A44A3827C3CC6A909862ED8 /* Pods-SquadGoals.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon2;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = SquadGoals/SquadGoals.entitlements;
