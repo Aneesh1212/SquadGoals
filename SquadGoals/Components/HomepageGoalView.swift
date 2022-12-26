@@ -95,11 +95,11 @@ struct HomepageGoalView : View {
             viewModel.user.goals[goalIndex] = self.goal
             viewModel.completedTargets += 1
         }
-        sendNotification()
+        sendNotification(targetTitle: target.title)
         viewModel.writeResults()
     }
     
-    func sendNotification() {
+    func sendNotification(targetTitle: String) {
         let new = Float(Float(viewModel.completedTargets) / Float(viewModel.totalTargets))
         let old = Float((Float(viewModel.completedTargets) - 1) / Float(viewModel.totalTargets))
         if (new == 1.0) {
@@ -113,6 +113,8 @@ struct HomepageGoalView : View {
         }
         else if (old < 0.75 && new >= 0.75){
             viewModel.sendNotification(users: viewModel.user.teammates + [viewModel.user], title: "Squad Goals: Team Update", message: "Omg \(viewModel.user.name) has finished 75% of their week goals. A little bit more for that 100% and 🍷")
+        } else {
+            viewModel.sendNotification(users: viewModel.user.teammates + [viewModel.user], title: "Squad Goals: Team Update", message: "\(String(viewModel.user.name)) just checked off \(targetTitle)")
         }
     }
 }
