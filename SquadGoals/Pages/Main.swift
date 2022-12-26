@@ -14,7 +14,6 @@ struct Main: View {
     @State var viewModel : GoalViewModel
     @State var selection = 2
     @State var showResultsModal : Bool
-    @State var showReflectionModal = false
     @State var showBanner = false
 
     
@@ -54,15 +53,11 @@ struct Main: View {
                         .navigationBarBackButtonHidden(true)
                 }
             }
-            .overlay(Color.gray.opacity((showResultsModal || showReflectionModal) ? 0.6 : 0.0))
-            .disabled(showResultsModal || showReflectionModal)
+            .overlay(Color.gray.opacity(showResultsModal ? 0.6 : 0.0))
+            .disabled(showResultsModal)
 
             if (showResultsModal) {
-                ResultsAlert(shown: $showResultsModal, showReflectionModal: $showReflectionModal, showBanner: $showBanner, viewModel: self.viewModel, tab: $selection)
-            }
-            
-            if (showReflectionModal) {
-                ReflectionAlert(user: self.user, shown: $showReflectionModal)
+                ResultsAlert(shown: $showResultsModal, showBanner: $showBanner, viewModel: self.viewModel, tab: $selection)
             }
         }
         .task {

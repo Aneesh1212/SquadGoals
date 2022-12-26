@@ -11,18 +11,18 @@ struct BannerModifier: View {
     
     var user : User
     @Binding var tab : Int
-    @State var navigateToReflection = false
+    @State var navigateToPlanning = false
     
     var body : some View {
         
-        NavigationLink(destination: MondayReflection(user: self.user), isActive: $navigateToReflection) { EmptyView() }
+        NavigationLink(destination: MondayPlanning(user: self.user, viewModel: GoalViewModel(user:self.user), mode: Mode.weekly), isActive: $navigateToPlanning) { EmptyView() }
         
         VStack {
             HStack {
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Congrats on the week!")
                         .bold()
-                    Text("Click here to visit the Monday Reflections page to create your new weekly goals")
+                    Text("Click here to visit the Monday Planning page to create your new weekly goals")
                         .font(Font.system(size: 15, weight: Font.Weight.light, design: Font.Design.default))
                 }
                 Spacer()
@@ -38,7 +38,7 @@ struct BannerModifier: View {
         .padding(.bottom, 4)
         .background(tab == 1 ? Colors.lightOrangeBackground : Colors.darkOrangeForeground)
         .onTapGesture {
-            self.navigateToReflection = true
+            self.navigateToPlanning = true
         }
     }
     
