@@ -32,7 +32,8 @@ struct MondayPlanning: View {
     var targetEntryTable : some View {
         VStack(spacing: 24) {
             ForEach(0..<self.goals.count, id: \.self) { goalIndex in
-                TestTable(goalKey: goals[goalIndex].key, goalTitle: goals[goalIndex].title, titles: $titles[goalIndex], frequencies: $frequencies[goalIndex], keys: $keys[goalIndex])
+                TestTable(goalKey: goals[goalIndex].key, goalTitle: goals[goalIndex].title, titles: $titles[goalIndex], frequencies: $frequencies[goalIndex], keys: $keys[goalIndex], showToolTip: goalIndex == 0 && mode == Mode.initial)
+                    .zIndex(Double(self.goals.count - goalIndex))
             }
         }
         .padding(.horizontal, 30)
