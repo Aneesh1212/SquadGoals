@@ -56,7 +56,7 @@ struct MondayPlanning: View {
         }
     }
     
-    func loadPastTargets(user: User, justGoals: Bool) {
+    func loadPastTargets(user: User, justGoals: Bool, newGoals: Bool) {
         self.goals = []
         self.titles = []
         self.frequencies = []
@@ -71,7 +71,11 @@ struct MondayPlanning: View {
                     let targetsRef = self.ref.child("targets").child(goal.key)
                     let targetKey = targetsRef.childByAutoId().key ?? ""
                     currentTitles.append(currentTarget.title)
-                    currentKeys.append(targetKey)
+                    if newGoals {
+                        currentKeys.append(targetKey)
+                    } else {
+                        currentKeys.append(currentTarget.key)
+                    }
                     currentFrequencies.append(viewModel.convertFrequencyToString(frequency: currentTarget.original))
                 }
             }
@@ -110,7 +114,7 @@ struct MondayPlanning: View {
                 
                 if (mode == Mode.weekly) {
                     Button(action: {
-                        loadPastTargets(user: self.viewModel.user, justGoals: false)
+                        loadPastTargets(user: self.viewModel.user, justGoals: false, newGoals: true)
                     }) {
                         Text("Load Past Targets")
                             .foregroundColor(Colors.lightOrangeBackground)
@@ -137,7 +141,7 @@ struct MondayPlanning: View {
                 ScrollView {
                     targetEntryTable
                         .onChange(of: self.viewModel.user) { value in
-                            loadPastTargets(user: value, justGoals: (mode == Mode.weekly))
+                            loadPastTargets(user: value, justGoals: (mode == Mode.weekly), newGoals:false)
                         }
                         .padding(.top, 10)
                     
