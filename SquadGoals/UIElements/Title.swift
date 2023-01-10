@@ -11,6 +11,7 @@ import SwiftUI
 struct Title : View {
     
     var text : String
+    var lineLimit : Int?
     
     var body : some View {
         VStack{
@@ -18,7 +19,7 @@ struct Title : View {
                 .foregroundColor(.white)
                 .font(.system(size: 32, weight: .heavy))
                 .minimumScaleFactor(0.5)
-                .lineLimit(1)
+                .lineLimit(lineLimit ?? 1)
                 .multilineTextAlignment(.center)
         }
     }

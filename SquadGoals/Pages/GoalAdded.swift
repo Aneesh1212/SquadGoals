@@ -17,7 +17,7 @@ struct GoalAdded: View {
     
     var body: some View {
         VStack{
-            Title(text:"\"\(goalTitle.uppercased())\" ADDED!")
+            Title(text:"\"\(goalTitle.uppercased())\" ADDED!", lineLimit: 2)
                 .padding(.top, Styling.onboardingTitlePadding)
                 .padding(.bottom, Styling.largeUnit)
 
@@ -51,6 +51,7 @@ struct GoalAdded: View {
             Filler()
             
         }
+        .padding(.horizontal, 25)
         .background(Colors.darkOrangeForeground)
     }
 }

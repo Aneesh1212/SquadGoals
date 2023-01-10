@@ -26,28 +26,6 @@ struct CreateGoal: View {
     
     let placeholder = "Don't skip this step! It's valuable to write this down, so you can look back when lacking motivation"
     
-    var goalTitleView: some View {
-        
-        VStack(alignment: .leading, spacing: 2){
-            Text("Goal Title")
-                .foregroundColor(Colors.lightOrangeBackground)
-            TextField(
-                "",
-                text: $goalTitle
-            )
-                .font(.system(size: 20))
-                .frame(height: 45, alignment: .center)
-                .fixedSize(horizontal: false, vertical: false)
-                .foregroundColor(.black)
-                .padding(.leading, 10)
-                .background(Color.white)
-                .cornerRadius(10)
-                .lineLimit(nil)
-            Spacer()
-                .frame(height: 15)
-        }
-    }
-    
     var goalReasonView: some View {
         VStack(alignment: .leading, spacing: 2) {
             Text("Why is this Goal Important to you?")
@@ -69,26 +47,6 @@ struct CreateGoal: View {
                 }
             Spacer()
                 .frame(height: 15)
-        }
-    }
-    
-    var goalCategoryView: some View {
-        VStack(alignment: .leading, spacing: 2) {
-            Text("Goal Category")
-                .foregroundColor(Colors.lightOrangeBackground)
-            TextField(
-                "Mental Health, Fitness, Professional",
-                text: $goalCategory
-            )
-                .font(.system(size: 20))
-                .frame(height: 45, alignment: .center)
-                .fixedSize(horizontal: false, vertical: true)
-                .padding(.leading, 10)
-                .background(Color.white)
-                .foregroundColor(.black)
-                .cornerRadius(10)
-            Spacer()
-                .frame(height: 12)
         }
     }
     
@@ -119,7 +77,6 @@ struct CreateGoal: View {
             OnboardingTitle(text: "LET'S CREATE GOALS!")
                 .padding(.top, Styling.mediumUnit)
                 .padding(.bottom, Styling.smallUnit)
-                .fixedSize(horizontal: false, vertical: true)
 
             Subtitle(text: "What are 1-3 goals that are important and realistic for you?")
                 .padding(.bottom, Styling.mediumUnit)

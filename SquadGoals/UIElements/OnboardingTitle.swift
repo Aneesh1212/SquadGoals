@@ -15,10 +15,9 @@ struct OnboardingTitle : View {
             Text(text)
                 .foregroundColor(.white)
                 .font(.system(size: 36, weight: .heavy))
-                .minimumScaleFactor(0.85)
+                .minimumScaleFactor(0.75)
                 .lineLimit(1)
                 .multilineTextAlignment(.center)
-                .fixedSize()
         }
     }
 }
