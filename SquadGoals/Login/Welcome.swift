@@ -8,8 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct Welcome: View {
-        
+struct Welcome: View {        
     var shouldTryToSignIn : Bool
     @State var navigateToSignIn = false
     @State var navigateToCreateAccount = false
@@ -46,7 +45,7 @@ struct Welcome: View {
             VStack {
                 NavigationLink(destination: CreateAccount(), isActive: $navigateToCreateAccount) { EmptyView() }
                 NavigationLink(destination: SignIn(), isActive: $navigateToSignIn) { EmptyView() }
-                NavigationLink(destination: Main(user: viewModel.currentUser, showReflection : viewModel.showReflection), isActive: $viewModel.navigateToHome) { EmptyView() }
+                NavigationLink(destination: Main(user: viewModel.currentUser, viewModel: GoalViewModel(user: viewModel.currentUser), showResultsModal : viewModel.showReflection), isActive: $viewModel.navigateToHome) { EmptyView() }
             }
             
             HStack {

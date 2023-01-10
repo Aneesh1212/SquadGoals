@@ -73,17 +73,14 @@ class GoalViewModel : ObservableObject {
         self.ref.child("targets").child(goalId).child(targetId).setValue(["title" : targetTitle, "frequency" : String(targetFrequency), "original": String(targetOriginal), "creationDate" : String(creationDate.timeIntervalSince1970)])
     }
     
-    func getGoals(phoneNumber : String, isMondayPlanning: Bool = false) async {
+    func getGoals(phoneNumber : String, isMondayPlanning: Bool = false) {
         let lastSetSunday = ((UserDefaults.standard.object(forKey: "lastSetSunday") as? Date) ?? Date(timeIntervalSince1970: 0))
         let fakeLastSetMonday = Calendar.current.date(byAdding: .day, value: 1, to: lastSetSunday)
         let lastSetMonday = (UserDefaults.standard.object(forKey: "lastSetMonday") as? Date) ?? (fakeLastSetMonday ?? Date(timeIntervalSince1970: 0))
         self.completedTargets = 0
         self.totalTargets = 0
-        print("GETTING GOALS")
-        
-        //ref.child("goals/\(phoneNumber)/goals").getData(completion:  { error, goalSnapshot in
-        
-        await ref.child("goals/\(phoneNumber)/goals").observe(DataEventType.value, with: { goalSnapshot in
+                
+        ref.child("goals/\(phoneNumber)/goals").observe(DataEventType.value, with: { goalSnapshot in
             print("DELETING GOALS")
             self.user.goals = []
             let goals = goalSnapshot.value as? Dictionary<String, Dictionary<String, String>> ?? [:]
