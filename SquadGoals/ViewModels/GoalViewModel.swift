@@ -81,7 +81,6 @@ class GoalViewModel : ObservableObject {
         self.totalTargets = 0
                 
         ref.child("goals/\(phoneNumber)/goals").observe(DataEventType.value, with: { goalSnapshot in
-            print("DELETING GOALS")
             self.user.goals = []
             let goals = goalSnapshot.value as? Dictionary<String, Dictionary<String, String>> ?? [:]
             for goalDataPair in goals {
@@ -173,7 +172,7 @@ class GoalViewModel : ObservableObject {
         let fakeLastSetMonday = Calendar.current.date(byAdding: .day, value: 1, to: lastSetSunday)
         let lastSetMonday = (UserDefaults.standard.object(forKey: "lastSetMonday") as? Date) ?? (fakeLastSetMonday ?? Date(timeIntervalSince1970: 0))
         for teammate in user.teammates {
-            ref.child("goals/\(teammate.phoneNumber)/goals").getData(completion:  { error, goalSnapshot in
+            ref.child("goals/\(teammate.phoneNumber)/goals").observe(DataEventType.value, with: { goalSnapshot in
                 let teammateIndex : Int = self.user.teammates.firstIndex(of: teammate) ?? 0
                 let goals = goalSnapshot.value as? Dictionary<String, Dictionary<String, String>> ?? [:]
                 for goalDataPair in goals {
