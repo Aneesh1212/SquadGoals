@@ -151,7 +151,7 @@ struct MondayPlanning: View {
                         }
                         .padding(.top, 10)
                     
-                    NavigationLink(destination: Main(user: self.user, viewModel: GoalViewModel(user: self.user), showResultsModal: false), isActive: $navigateToHome) { EmptyView() }
+                    NavigationLink(destination: Main(user: self.user, showReflection: false), isActive: $navigateToHome) { EmptyView() }
                     
                     Button(action: {
                         self.showEditWarning = true

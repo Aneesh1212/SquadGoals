@@ -10,14 +10,17 @@ import SwiftUI
 
 
 struct Main: View {
-    @Environment(\.scenePhase) var scenePhase
-    
     @State var user : User
     @State var viewModel : GoalViewModel
     @State var showResultsModal : Bool
     @State var selection = 2
     @State var showBanner = false
     
+    init(user: User, showReflection: Bool) {
+        self.user = user
+        self.viewModel = GoalViewModel(user: user)
+        self.showResultsModal = showReflection
+    }
     var body: some View {
         ZStack{
             VStack(spacing:0) {
@@ -58,14 +61,6 @@ struct Main: View {
         }
         .task {
             if (user.phoneNumber != "" && user.groupId != "") {
-                self.viewModel.getGoals(phoneNumber: user.phoneNumber)
-                self.viewModel.getTeamMemberPhoneNumbers()
-                self.viewModel.calculateWeek()
-            }
-        }
-        .onChange(of: scenePhase) { newPhase in
-            if newPhase == .active {
-                print("LOADING DATA")
                 self.viewModel.getGoals(phoneNumber: user.phoneNumber)
                 self.viewModel.getTeamMemberPhoneNumbers()
                 self.viewModel.calculateWeek()
