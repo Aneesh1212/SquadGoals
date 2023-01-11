@@ -23,6 +23,7 @@ struct MondayPlanning: View {
     @State var goals : Array<Goal> = []
     @State var titles : [[String]] = []
     @State var frequencies : [[String]] = []
+    @State var completedNums : [[Int]] = []
     @State var keys : [[String]] = []
     var ref = Database.database().reference()
     @State var showExample : Bool = false
@@ -32,7 +33,7 @@ struct MondayPlanning: View {
     var targetEntryTable : some View {
         VStack(spacing: 24) {
             ForEach(0..<self.goals.count, id: \.self) { goalIndex in
-                TestTable(goalKey: goals[goalIndex].key, goalTitle: goals[goalIndex].title, titles: $titles[goalIndex], frequencies: $frequencies[goalIndex], keys: $keys[goalIndex], showToolTip: goalIndex == 0 && mode == Mode.initial)
+                TestTable(goalKey: goals[goalIndex].key, goalTitle: goals[goalIndex].title, titles: $titles[goalIndex], frequencies: $frequencies[goalIndex], completedNums: $completedNums[goalIndex], keys: $keys[goalIndex], showToolTip: goalIndex == 0 && mode == Mode.initial)
                     .zIndex(Double(self.goals.count - goalIndex))
             }
         }
@@ -43,13 +44,13 @@ struct MondayPlanning: View {
     func saveGoals() {
         for goalIndex in 0..<goals.count {
             let goal = goals[goalIndex]
-            print(titles, frequencies, keys)
             for targetIndex in 0..<titles[goalIndex].count {
                 let targetTitle = titles[goalIndex][targetIndex]
                 let targetFrequencyString = frequencies[goalIndex][targetIndex]
                 let targetKey = keys[goalIndex][targetIndex]
                 let targetFrequency = viewModel.convertFrequencyToNum(frequencyWord: targetFrequencyString)
-                let newTarget = Target(title: targetTitle, frequency: targetFrequency, original: targetFrequency, key: targetKey)
+                let targetCompletedNum = completedNums[goalIndex][targetIndex]
+                let newTarget = Target(title: targetTitle, frequency: max(targetFrequency - targetCompletedNum, 0), original: targetFrequency, key: targetKey)
                 if (targetTitle != "") {
                     viewModel.createTargets(goalId: goal.key, targets: [newTarget])
                 }
@@ -61,11 +62,13 @@ struct MondayPlanning: View {
         self.goals = []
         self.titles = []
         self.frequencies = []
+        self.completedNums = []
         self.keys = []
         for goal in user.goals {
             self.goals.append(goal)
             var currentTitles : [String] = []
             var currentFrequencies : [String] = []
+            var currentCompletedNums : [Int] = []
             var currentKeys : [String] = []
             if (!justGoals) {
                 for currentTarget in goal.currTargets {
@@ -74,16 +77,18 @@ struct MondayPlanning: View {
                     currentTitles.append(currentTarget.title)
                     if newGoals {
                         currentKeys.append(targetKey)
+                        currentCompletedNums.append(0)
                     } else {
                         currentKeys.append(currentTarget.key)
+                        currentCompletedNums.append(currentTarget.original - currentTarget.frequency)
                     }
                     currentFrequencies.append(viewModel.convertFrequencyToString(frequency: currentTarget.original))
                 }
             }
             self.titles.append(currentTitles)
             self.frequencies.append(currentFrequencies)
+            self.completedNums.append(currentCompletedNums)
             self.keys.append(currentKeys)
-            
         }
     }
     

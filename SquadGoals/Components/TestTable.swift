@@ -25,6 +25,7 @@ struct TestTable: View {
     @State var goalTitle : String
     @Binding var titles : [String]
     @Binding var frequencies : [String]
+    @Binding var completedNums : [Int]
     @Binding var keys : [String]
     @State var toolTipConfig = DefaultTooltipConfig()
     @State var showToolTip : Bool
@@ -65,6 +66,7 @@ struct TestTable: View {
                 Button(action: {
                     self.titles.append("")
                     self.frequencies.append("Once")
+                    self.completedNums.append(0)
                     let targetsRef = self.ref.child("targets").child(goalKey)
                     let targetKey = targetsRef.childByAutoId().key ?? ""
                     self.keys.append(targetKey)
@@ -87,6 +89,7 @@ struct TestTable: View {
                 Button(action: {
                     self.titles.popLast()
                     self.frequencies.popLast()
+                    self.completedNums.popLast()
                     let deletedTargetKey = self.keys.popLast() ?? ""
                     if (deletedTargetKey != "") {
                         let reference = ref.child("targets").child(goalKey).child(deletedTargetKey)
