@@ -16,6 +16,7 @@ struct SquadPage: View {
     @State var shouldNavigateToProfile = false
     @State var showEncouragementModal = false
     @State var showCongratsModal = false
+    @State var customMessage = "Test"
     
     var body: some View {
         
@@ -58,31 +59,41 @@ struct SquadPage: View {
                 
                 HStack(spacing: 0) {
                     VStack {
-                        Text("Nudge Team")
+                        Text("Message Squad")
                             .font(.system(size: 16).bold())
                             .foregroundColor(Colors.lightOrangeBackground)
-                            .padding(.vertical, 4)
+                            .padding(.vertical, 8)
                     }
                     .frame(minWidth: 0, maxWidth: .infinity)
-                    .border(.white, width: 1)
+                    .border(.white, width: 1.5)
                     .onTapGesture {
                         self.showEncouragementModal = true
                     }
                     
                     VStack {
-                        Text("Send a Congrats")
+                        Text("Message Teammate")
                             .font(.system(size: 16).bold())
                             .foregroundColor(Colors.lightOrangeBackground)
-                            .padding(.vertical, 4)
+                            .padding(.vertical, 8)
                     }
                     .frame(minWidth: 0, maxWidth: .infinity)
-                    .border(.white, width: 1)
+                    .border(.white, width: 1.5)
                     .onTapGesture {
                         self.showCongratsModal = true
                     }
                 }
             }
             .background(Colors.darkOrangeForeground)
+            
+            TextEditor(
+                text: $customMessage
+            )
+            .font(.system(size: 20))
+            .frame(height: 90, alignment: .center)
+            .fixedSize(horizontal: false, vertical: false)
+            .background(Color.white)
+            .cornerRadius(10)
+            .foregroundColor(.black)
             
             NavigationLink(destination: UserPage(user: self.selectedUser), isActive: $shouldNavigateToProfile) { EmptyView() }
             
@@ -126,19 +137,39 @@ struct SquadPage: View {
         }
         .sheet(isPresented: $showEncouragementModal, onDismiss: {}, content: {
             EncouragementModal(viewModel: self.viewModel, showModal: $showEncouragementModal)
-                .background(.white)
-                .onAppear{
-                    UITextView.appearance().backgroundColor = .clear
-                }
+                .background(BackgroundClearView())
+
         })
         .sheet(isPresented: $showCongratsModal, onDismiss: {}, content: {
             CongratsModal(viewModel: self.viewModel, showModal: $showCongratsModal)
-                .background(.white)
-                .onAppear{
-                    UITextView.appearance().backgroundColor = .clear
-                }
+                .background(BackgroundClearView())
         })
         .background(Colors.lightOrangeBackground)
+    }
+}
+
+struct BackgroundClearView: UIViewRepresentable {
+    func makeUIView(context: Context) -> UIView {
+        let view = UIView()
+        DispatchQueue.main.async {
+            view.superview?.backgroundColor = .clear
+            view.backgroundColor = .clear
+            view.superview?.superview?.backgroundColor = .clear
+            view.superview?.superview?.superview?.backgroundColor = .clear
+            view.superview?.superview?.superview?.superview?.backgroundColor = .clear
+
+        }
+        return view
+    }
+
+    func updateUIView(_ uiView: UIView, context: Context) {
+        DispatchQueue.main.async {
+            uiView.superview?.backgroundColor = .clear
+            uiView.backgroundColor = .clear
+            uiView.superview?.superview?.backgroundColor = .clear
+            uiView.superview?.superview?.superview?.backgroundColor = .clear
+            uiView.superview?.superview?.superview?.superview?.backgroundColor = .clear
+        }
     }
 }
 

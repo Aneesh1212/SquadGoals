@@ -51,11 +51,10 @@ struct EditGoal: View {
                 .font(.system(size: 20))
                 .frame(height: 90, alignment: .center)
                 .fixedSize(horizontal: false, vertical: false)
-                .padding(.leading, 10)
+                .padding(.leading, 5)
                 .background(Color.white)
                 .cornerRadius(10)
                 .foregroundColor(.black)
-
             Spacer()
                 .frame(height: 15)
         }
@@ -79,11 +78,12 @@ struct EditGoal: View {
             Spacer()
                 .frame(height: 12)
         }
+        .padding(.bottom, 10)
     }
     
     var goalPrivateView : some View {
         HStack(spacing: 0) {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 2) {
                 Text("Private?")
                     .foregroundColor(Colors.lightOrangeBackground)
                 Text("Only your goal category will be visible to teammate")
@@ -145,7 +145,6 @@ struct EditGoal: View {
             UIApplication.shared.endEditing()
         }
         .onAppear {
-            UITextView.appearance().backgroundColor = .clear
             self.viewModel = viewModel
             self.goalKey = goal.key
             self.goalTitle = goal.title

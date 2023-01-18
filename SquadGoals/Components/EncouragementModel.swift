@@ -26,7 +26,7 @@ struct EncouragementModal: View {
                 .padding(.top, 40)
                 .padding(.bottom, 54)
                 .fixedSize(horizontal: false, vertical: true)
-
+            
             
             Text("\"There's time left in the week, lets finish a few more goals!\"")
                 .font(.system(size: 20))
@@ -36,18 +36,14 @@ struct EncouragementModal: View {
             TextEditor(
                 text: $customMessage
             )
-                .font(.system(size: 20))
-                .frame(height: 90, alignment: .center)
-                .fixedSize(horizontal: false, vertical: false)
-                .background(Color.white)
-                .cornerRadius(10)
-                .foregroundColor(self.customMessage == placeholder ? .gray : .black)
-                .padding(.bottom, 48)
-                .onTapGesture {
-                    if self.customMessage == placeholder {
-                        self.customMessage = ""
-                    }
-                }
+            .font(.system(size: 20))
+            .frame(height: 90, alignment: .center)
+            .fixedSize(horizontal: false, vertical: false)
+            .background(BackgroundClearView())
+            .cornerRadius(10)
+            .foregroundColor(.black)
+            .padding(.bottom, 48)
+
             
             Button(action: {
                 viewModel.sendNotification(users: viewModel.user.teammates + [viewModel.user], title: "Squad Goals: Midweek Encouragement", message: self.customMessage == placeholder ? "There's time left in the week, lets finish a few more goals! - \(String(viewModel.user.name))" : "\(self.customMessage) - \(String(viewModel.user.name))")
@@ -68,7 +64,7 @@ struct EncouragementModal: View {
         .padding(.horizontal, 24)
         .background(Colors.lightOrangeBackground)
         .onAppear {
-            UITextView.appearance().backgroundColor = .white
+            UITextView.appearance().backgroundColor = .clear
         }
     }
 }
