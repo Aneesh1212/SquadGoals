@@ -92,8 +92,5 @@ struct CongratsModal: View {
         }
         .padding(.horizontal, 16)
         .background(Colors.lightOrangeBackground)
-        .onAppear {
-            UITextView.appearance().backgroundColor = .white
-        }
     }
 }

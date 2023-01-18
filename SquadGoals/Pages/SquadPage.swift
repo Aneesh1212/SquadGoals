@@ -126,32 +126,13 @@ struct SquadPage: View {
         }
         .sheet(isPresented: $showEncouragementModal, onDismiss: {}, content: {
             EncouragementModal(viewModel: self.viewModel, showModal: $showEncouragementModal)
-                .background(BackgroundClearView())
 
         })
         .sheet(isPresented: $showCongratsModal, onDismiss: {}, content: {
             CongratsModal(viewModel: self.viewModel, showModal: $showCongratsModal)
-                .background(BackgroundClearView())
         })
         .background(Colors.lightOrangeBackground)
     }
-}
-
-struct BackgroundClearView: UIViewRepresentable {
-    func makeUIView(context: Context) -> UIView {
-        let view = UIView()
-        DispatchQueue.main.async {
-            view.superview?.backgroundColor = .clear
-            view.backgroundColor = .clear
-            view.superview?.superview?.backgroundColor = .clear
-            view.superview?.superview?.superview?.backgroundColor = .clear
-            view.superview?.superview?.superview?.superview?.backgroundColor = .clear
-
-        }
-        return view
-    }
-
-    func updateUIView(_ uiView: UIView, context: Context) {}
 }
 
 func getCurrentProgressString(teamPercentage: Float, weekPercentage: Float) -> String {

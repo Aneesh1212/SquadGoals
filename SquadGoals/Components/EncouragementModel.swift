@@ -67,8 +67,5 @@ struct EncouragementModal: View {
         }
         .padding(.horizontal, 24)
         .background(Colors.lightOrangeBackground)
-        .onAppear {
-            UITextView.appearance().backgroundColor = .clear
-        }
     }
 }
