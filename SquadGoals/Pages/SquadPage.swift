@@ -58,25 +58,25 @@ struct SquadPage: View {
                 
                 HStack(spacing: 0) {
                     VStack {
-                        Text("Nudge Team")
+                        Text("Message Squad")
                             .font(.system(size: 16).bold())
                             .foregroundColor(Colors.lightOrangeBackground)
-                            .padding(.vertical, 4)
+                            .padding(.vertical, 8)
                     }
                     .frame(minWidth: 0, maxWidth: .infinity)
-                    .border(.white, width: 1)
+                    .border(.white, width: 1.5)
                     .onTapGesture {
                         self.showEncouragementModal = true
                     }
                     
                     VStack {
-                        Text("Send a Congrats")
+                        Text("Message Teammate")
                             .font(.system(size: 16).bold())
                             .foregroundColor(Colors.lightOrangeBackground)
-                            .padding(.vertical, 4)
+                            .padding(.vertical, 8)
                     }
                     .frame(minWidth: 0, maxWidth: .infinity)
-                    .border(.white, width: 1)
+                    .border(.white, width: 1.5)
                     .onTapGesture {
                         self.showCongratsModal = true
                     }
@@ -126,20 +126,32 @@ struct SquadPage: View {
         }
         .sheet(isPresented: $showEncouragementModal, onDismiss: {}, content: {
             EncouragementModal(viewModel: self.viewModel, showModal: $showEncouragementModal)
-                .background(.white)
-                .onAppear{
-                    UITextView.appearance().backgroundColor = .clear
-                }
+                .background(BackgroundClearView())
+
         })
         .sheet(isPresented: $showCongratsModal, onDismiss: {}, content: {
             CongratsModal(viewModel: self.viewModel, showModal: $showCongratsModal)
-                .background(.white)
-                .onAppear{
-                    UITextView.appearance().backgroundColor = .clear
-                }
+                .background(BackgroundClearView())
         })
         .background(Colors.lightOrangeBackground)
     }
+}
+
+struct BackgroundClearView: UIViewRepresentable {
+    func makeUIView(context: Context) -> UIView {
+        let view = UIView()
+        DispatchQueue.main.async {
+            view.superview?.backgroundColor = .clear
+            view.backgroundColor = .clear
+            view.superview?.superview?.backgroundColor = .clear
+            view.superview?.superview?.superview?.backgroundColor = .clear
+            view.superview?.superview?.superview?.superview?.backgroundColor = .clear
+
+        }
+        return view
+    }
+
+    func updateUIView(_ uiView: UIView, context: Context) {}
 }
 
 func getCurrentProgressString(teamPercentage: Float, weekPercentage: Float) -> String {
