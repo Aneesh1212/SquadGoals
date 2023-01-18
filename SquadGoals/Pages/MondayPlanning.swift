@@ -98,25 +98,34 @@ struct MondayPlanning: View {
             VStack() {
                 switch (mode) {
                 case .editing:
-                    Title(text:"EDIT TARGETS")
-                        .padding(.bottom, 20)
+                    Title(text:"EDIT WEEKLY TASKS")
+                        .padding(.bottom, 6)
                         .foregroundColor(Colors.lightOrangeBackground)
                 case .weekly:
                     Title(text:"MONDAY PLANNING")
-                        .padding(.bottom, 20)
+                        .padding(.bottom, 6)
                         .foregroundColor(Colors.lightOrangeBackground)
                 case .initial:
-                    Title(text:"ENTER TARGETS")
-                        .padding(.bottom, 20)
+                    Title(text:"ENTER WEEKLY TASKS")
+                        .padding(.bottom, 6)
                         .foregroundColor(Colors.lightOrangeBackground)
                 }
                 
-                Text("Break down your goals - how can you make progress this week?")
-                    .multilineTextAlignment(.center)
-                    .font(.system(size: 20))
-                    .padding(.bottom, 15)
-                    .padding(.horizontal, 25)
-                    .foregroundColor(Colors.lightOrangeBackground)
+                VStack(alignment: .leading) {
+                    Text("Break down your goals - how can you make progress this week?")
+                        .multilineTextAlignment(.leading)
+                        .font(.system(size: 16))
+                        .padding(.bottom, 6)
+                        .padding(.horizontal, 25)
+                        .foregroundColor(Colors.lightOrangeBackground)
+                    
+                    Text("These will clear every Sunday at midnight.")
+                        .multilineTextAlignment(.leading)
+                        .font(.system(size: 16))
+                        .padding(.horizontal, 25)
+                        .padding(.bottom, 10)
+                        .foregroundColor(Colors.lightOrangeBackground)
+                }
                 
                 if (mode == Mode.weekly) {
                     Button(action: {
@@ -179,7 +188,7 @@ struct MondayPlanning: View {
             }
         }
         .background(Colors.darkOrangeForeground)
-        .alert("Please note weekly targets will be cleared every SUNDAY @ MIDNIGHT. If need be, edit your targets to fit this timeline", isPresented: $showEditWarning) {
+        .alert("Weekly tasks are cleared every Sunday at Midnight. Please ensure your tasks fit this timeline", isPresented: $showEditWarning) {
             Button("Submit") {
                 self.navigateToHome = true
                 let defaults = UserDefaults.standard

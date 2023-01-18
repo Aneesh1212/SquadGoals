@@ -352,7 +352,7 @@ class GoalViewModel : ObservableObject {
     }
     
     func getDayOfWeek() -> Int {
-        return Calendar.current.component(.weekday, from: Date())
+        return max(Calendar.current.component(.weekday, from: Date()) - 1, 0)
     }
     
     func convertFrequencyToNum(frequencyWord : String) -> Int {

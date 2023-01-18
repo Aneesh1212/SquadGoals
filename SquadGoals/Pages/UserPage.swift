@@ -29,7 +29,7 @@ struct UserPage: View {
             let totalTargets = viewModel.calculateTotalTargets(goals: user.goals)
             let completedTargets = viewModel.calculateCompletedTargets(goals: user.goals)
             
-            Text("\(String(completedTargets)) / \(String(totalTargets)) weekly targets completed")
+            Text("\(String(completedTargets)) / \(String(totalTargets)) weekly tasks completed")
                 .multilineTextAlignment(.leading)
                 .font(.system(size: 18).italic())
                 .padding(.top, 10)

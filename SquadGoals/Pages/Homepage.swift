@@ -17,7 +17,7 @@ struct Homepage : View {
     
     var openTargets : some View {
         VStack{
-            Text("\(String(viewModel.completedTargets)) / \(String(viewModel.totalTargets)) weekly targets completed")
+            Text("\(String(viewModel.completedTargets)) / \(String(viewModel.totalTargets)) weekly tasks completed")
                 .multilineTextAlignment(.leading)
                 .font(.system(size: 18).italic())
                 .padding(.top, 10)
@@ -43,10 +43,10 @@ struct Homepage : View {
                 Button(action: {
                     self.shouldNavigateToEditGoals = true
                 }, label: {
-                    Text("Edit")
+                    Text("Edit tasks")
                         .font(.system(size:16, weight: .heavy))
                         .foregroundColor(Colors.lightOrangeBackground)
-                        .padding(.leading, 300)
+                        .padding(.leading, 250)
                 })
                 
                 Text("WEEK \(viewModel.week + 1)")

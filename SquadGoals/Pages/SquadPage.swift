@@ -144,11 +144,11 @@ struct SquadPage: View {
 
 func getCurrentProgressString(teamPercentage: Float, weekPercentage: Float) -> String {
     if (teamPercentage >= weekPercentage) {
-        return "Kudos! Your squad is on track to complete all Tasks."
+        return "Kudos! Your squad is on track to complete all tasks."
     } else if (teamPercentage >= weekPercentage / 2 ) {
-        return "Your squad is behind track to complete all Tasks."
+        return "Your squad is making good progress but behind the day of the week pace."
     } else {
-        return "Your squad is behind track to complete all Tasks."
+        return "Your squad is behind track to complete all tasks."
     }
 }
 
