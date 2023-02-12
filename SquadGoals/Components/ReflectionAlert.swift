@@ -54,7 +54,7 @@ struct ReflectionAlert: View {
             
             NavigationLink(destination: MondayReflection(user: self.user), isActive: $navigateToReflection) { EmptyView() }
             
-            NavigationLink(destination: MondayPlanning(user: self.user, viewModel: GoalViewModel(user:self.user), mode: Mode.weekly), isActive: $navigateToMondayPlanning) { EmptyView() }
+            NavigationLink(destination: MondayPlanning(user: self.user, mode: Mode.weekly), isActive: $navigateToMondayPlanning) { EmptyView() }
             
             
         }

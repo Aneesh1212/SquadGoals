@@ -12,7 +12,7 @@ struct EditGoal: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     @State var goalReason: String = ""
-    @State var viewModel : GoalViewModel
+    @EnvironmentObject var viewModel : GoalViewModel
     @Binding var goal : Goal
     @State private var goalKey : String = ""
     @State private var goalTitle: String = ""
@@ -145,7 +145,6 @@ struct EditGoal: View {
             UIApplication.shared.endEditing()
         }
         .onAppear {
-            self.viewModel = viewModel
             self.goalKey = goal.key
             self.goalTitle = goal.title
             self.goalReason = goal.reason

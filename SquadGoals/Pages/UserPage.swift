@@ -13,8 +13,7 @@ struct UserPage: View {
     @State var user : User
     @State var selectedGoal : Goal = Goal(title: "", reason: "", category: "", isPrivate: false, currTargets: [])
     @State var shouldNavigateToGoalDetails = false
-
-    var viewModel = GoalViewModel(user: User(name: "", phoneNumber: "", groupId: "", goals: [], teammates: []))
+    @EnvironmentObject var viewModel : GoalViewModel
     
     var body: some View {
         VStack{
@@ -38,7 +37,7 @@ struct UserPage: View {
             
             ScrollView(showsIndicators: false){
                 ForEach(user.goals, id: \.self) { goal in
-                    HomepageGoalView(goal: goal, viewModel: self.viewModel, clickableTargets: false)
+                    HomepageGoalView(goal: goal, clickableTargets: false)
                         .padding(.bottom, 20)
                 }
             }

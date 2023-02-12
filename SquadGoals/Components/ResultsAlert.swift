@@ -12,7 +12,7 @@ struct ResultsAlert: View {
     
     @Binding var shown: Bool
     @Binding var showBanner : Bool
-    @StateObject var viewModel : GoalViewModel
+    @EnvironmentObject var viewModel : GoalViewModel
     @State var navigateToMondayPlanning = false
     @State private var maxWidth: CGFloat = .zero
     
@@ -60,7 +60,7 @@ struct ResultsAlert: View {
             
             Spacer()
             
-            NavigationLink(destination: MondayPlanning(user: self.viewModel.user, viewModel:self.viewModel, mode: Mode.weekly), isActive: $navigateToMondayPlanning) { EmptyView() }
+            NavigationLink(destination: MondayPlanning(user: self.viewModel.user, mode: Mode.weekly), isActive: $navigateToMondayPlanning) { EmptyView() }
         }
         .padding(.vertical, 20)
         .frame(width: UIScreen.main.bounds.width-75)

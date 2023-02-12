@@ -15,7 +15,7 @@ enum Mode {
 struct MondayPlanning: View {
     
     @State var user : User
-    @StateObject var viewModel : GoalViewModel
+    @EnvironmentObject var viewModel : GoalViewModel
     var mode: Mode
     @State var navigateToHome = false
     @State var showEditWarning = false

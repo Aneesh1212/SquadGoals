@@ -9,7 +9,7 @@ import Foundation
 
 struct JoinGroup: View {
     
-    @StateObject var viewModel = LoginViewModel()
+    @EnvironmentObject var viewModel : LoginViewModel
     @State private var shouldNavigate: Bool = false
     @State private var groupID: String = ""
     @State private var groupName: String = ""

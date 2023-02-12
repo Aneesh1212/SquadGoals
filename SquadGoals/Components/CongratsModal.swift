@@ -9,7 +9,8 @@ import Foundation
 import SwiftUI
 
 struct CongratsModal: View {
-    @StateObject var viewModel : GoalViewModel
+    @EnvironmentObject var viewModel : GoalViewModel
+    
     @Binding var showModal : Bool
     @State var teammate: User;
     @State var teammateNotSelected = false
@@ -18,10 +19,9 @@ struct CongratsModal: View {
     
     let placeholder = "Congrats on accomplishing your goals so well this week!"
     
-    init(viewModel: GoalViewModel, showModal: Binding<Bool>) {
-        self._viewModel = StateObject(wrappedValue: viewModel)
+    init(showModal: Binding<Bool>, initialTeammate: User) {
         self._showModal = showModal
-        self._teammate = State(wrappedValue: viewModel.user.teammates.first ?? User(name: "", phoneNumber: "", groupId: "", goals: [], teammates: []))
+        self._teammate = State(wrappedValue: initialTeammate ?? User(name: "", phoneNumber: "", groupId: "", goals: [], teammates: []))
     }
     
     var body: some View {

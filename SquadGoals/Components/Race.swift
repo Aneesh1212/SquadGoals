@@ -10,7 +10,7 @@ import SwiftUI
 
 struct Race : View {
     
-    @StateObject var viewModel : GoalViewModel
+    @EnvironmentObject var viewModel : GoalViewModel
     var colorList = [Color.green, Color.red, Color.blue, Color.pink, Color.gray, Color.purple]
     
     

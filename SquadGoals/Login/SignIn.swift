@@ -9,8 +9,7 @@ import Foundation
 
 struct SignIn: View {
     
-    @StateObject var viewModel = LoginViewModel()
-    
+    @EnvironmentObject var viewModel : LoginViewModel
     @State private var phoneNumber: String = ""
     @State private var showInvalidNameOrPhone = false
     

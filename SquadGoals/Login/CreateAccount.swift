@@ -9,7 +9,7 @@ import Foundation
 
 struct CreateAccount: View {
     
-    @StateObject var viewModel = LoginViewModel()
+    @EnvironmentObject var viewModel : LoginViewModel
     
     @State private var shouldNavigate = false
     
@@ -59,7 +59,7 @@ struct CreateAccount: View {
                 }
             }, text: "CREATE ACCOUNT")
             
-            NavigationLink(destination: JoinGroup(viewModel: self.viewModel), isActive: $viewModel.navigateToJoinGroup) { EmptyView() }
+            NavigationLink(destination: JoinGroup(), isActive: $viewModel.navigateToJoinGroup) { EmptyView() }
             Filler()
         }
         .padding(.horizontal, Styling.mediumUnit)

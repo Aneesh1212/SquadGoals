@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct Completion: View {
-    @State var viewModel : GoalViewModel
+    @EnvironmentObject var viewModel : GoalViewModel
     
     var body: some View {
         VStack {

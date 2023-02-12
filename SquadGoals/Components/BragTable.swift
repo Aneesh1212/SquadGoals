@@ -11,7 +11,7 @@ import SwiftUI
 struct BragTable : View {
     
     @State var goalKey : String
-    @StateObject var viewModel = GoalViewModel(user: User(name: "", phoneNumber: "", groupId: "", goals: [], teammates: []))
+    @EnvironmentObject var viewModel : GoalViewModel
     @State var bragText = ""
     
     var body : some View {

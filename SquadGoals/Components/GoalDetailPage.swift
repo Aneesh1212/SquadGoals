@@ -11,7 +11,7 @@ import SwiftUI
 struct GoalDetailPage: View {
     
     @State var goal : Goal
-    var viewModel : GoalViewModel
+    @EnvironmentObject var viewModel : GoalViewModel
     var sortedDates : Array<Date> = []
     @State var shouldNavigateToEditGoal = false
     
@@ -73,7 +73,7 @@ struct GoalDetailPage: View {
         let completedTargets = viewModel.calculateCompletedTargets(goals: [self.goal])
         let completionPercentage = viewModel.calculateWeeklyTargetPercent(goals: [self.goal])
         
-        NavigationLink(destination: EditGoal(viewModel: self.viewModel, goal: self.$goal), isActive: $shouldNavigateToEditGoal) { EmptyView() }
+        NavigationLink(destination: EditGoal( goal: self.$goal), isActive: $shouldNavigateToEditGoal) { EmptyView() }
         
         VStack(spacing:0){
             ScrollView(showsIndicators: false){

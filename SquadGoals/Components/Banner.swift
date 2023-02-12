@@ -15,7 +15,7 @@ struct BannerModifier: View {
     
     var body : some View {
         
-        NavigationLink(destination: MondayPlanning(user: self.user, viewModel: GoalViewModel(user:self.user), mode: Mode.weekly), isActive: $navigateToPlanning) { EmptyView() }
+        NavigationLink(destination: MondayPlanning(user: self.user, mode: Mode.weekly), isActive: $navigateToPlanning) { EmptyView() }
         
         VStack {
             HStack {

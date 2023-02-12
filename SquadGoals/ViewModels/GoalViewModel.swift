@@ -13,7 +13,7 @@ import FirebaseMessaging
 
 class GoalViewModel : ObservableObject {
     
-    @Published var user : User
+    var user : User
     @Published var completedTargets : Int = 0
     @Published var teammatePhones : Array<String> = []
     var ref = Database.database().reference()

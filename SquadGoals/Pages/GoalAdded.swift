@@ -46,7 +46,7 @@ struct GoalAdded: View {
             
             NavigationLink(destination: CreateGoal(user: self.user, isSingleGoal: false), isActive: $navigateToCreateGoal) { EmptyView() }
             
-            NavigationLink(destination: MondayPlanning(user: self.user, viewModel: GoalViewModel(user:self.user), mode: Mode.initial), isActive: $navigateToMondayPlanning) { EmptyView() }
+            NavigationLink(destination: MondayPlanning(user: self.user, mode: Mode.initial), isActive: $navigateToMondayPlanning) { EmptyView() }
             
             Filler()
             

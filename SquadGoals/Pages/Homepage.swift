@@ -10,7 +10,7 @@ import SwiftUI
 
 struct Homepage : View {
     
-    @StateObject var viewModel : GoalViewModel
+    @EnvironmentObject var viewModel : GoalViewModel
     @State var targetProgressValue: Float = 0.0
     var showReflectionPrompt : Bool
     @State var shouldNavigateToEditGoals : Bool = false
@@ -26,7 +26,7 @@ struct Homepage : View {
                 
             ScrollView(showsIndicators: false){
                 ForEach(viewModel.user.goals, id: \.self) { goal in
-                    HomepageGoalView(goal: goal, viewModel: self.viewModel, clickableTargets: !showReflectionPrompt)
+                    HomepageGoalView(goal: goal, clickableTargets: !showReflectionPrompt)
                         .padding(.bottom, 20)
                 }
             }
@@ -60,7 +60,7 @@ struct Homepage : View {
                     .foregroundColor(Colors.lightOrangeBackground)
                     .help("TOOLTIP")
                 
-                Race(viewModel: self.viewModel)
+                Race()
                     .frame(alignment: .leading)
                     .padding(.bottom, 18)
             }
@@ -68,12 +68,12 @@ struct Homepage : View {
             .background(Colors.darkOrangeForeground)
             
             if (viewModel.completedTargets >= viewModel.totalTargets) {
-                Completion(viewModel: self.viewModel)
+                Completion()
             } else {
                 openTargets
             }
         
-            NavigationLink(destination: MondayPlanning(user: self.viewModel.user, viewModel: self.viewModel, mode: Mode.editing), isActive: $shouldNavigateToEditGoals) { EmptyView() }
+            NavigationLink(destination: MondayPlanning(user: self.viewModel.user, mode: Mode.editing), isActive: $shouldNavigateToEditGoals) { EmptyView() }
             
             Spacer()
         }

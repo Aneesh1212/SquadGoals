@@ -12,7 +12,7 @@ struct Welcome: View {
     var shouldTryToSignIn : Bool
     @State var navigateToSignIn = false
     @State var navigateToCreateAccount = false
-    @StateObject var viewModel = LoginViewModel()
+    @EnvironmentObject var viewModel : LoginViewModel
 
     var body: some View {
         VStack{

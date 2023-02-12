@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct EncouragementModal: View {
-    @StateObject var viewModel : GoalViewModel
+    @EnvironmentObject var viewModel : GoalViewModel
     @Binding var showModal : Bool
     @State var customMessage = "Or write custom note.."
     

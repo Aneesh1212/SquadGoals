@@ -11,7 +11,7 @@ import SwiftUI
 struct HomepageGoalView : View {
     
     @State var goal : Goal
-    @State var viewModel : GoalViewModel
+    @EnvironmentObject var viewModel : GoalViewModel
     var clickableTargets: Bool
     
     var body : some View {

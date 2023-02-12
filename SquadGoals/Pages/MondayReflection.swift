@@ -121,7 +121,7 @@ struct MondayReflection: View {
                 .foregroundColor(Colors.lightOrangeBackground)
                 .fixedSize(horizontal: false, vertical: true)
             
-            NavigationLink(destination: MondayPlanning(user: self.user, viewModel: GoalViewModel(user:self.user), mode: Mode.weekly), isActive: $navigateToPlanning) { EmptyView() }
+            NavigationLink(destination: MondayPlanning(user: self.user, mode: Mode.weekly), isActive: $navigateToPlanning) { EmptyView() }
             
             VStack(alignment: .leading) {
                 wentWellView

@@ -5,14 +5,14 @@
 //  Created by Aneesh Agrawal on 1/6/22.
 //
 import SwiftUI
-
+                    
+                    
 struct ContentView: View {
+    @StateObject var user = User(name: "Aneesh", phoneNumber: "7329393212", groupId: "454545", goals: [], teammates: [])
+
     var body: some View {
-        NavigationView{
-            Welcome(shouldTryToSignIn: true)
-                .navigationBarTitle("")
-                .navigationBarHidden(true)
-        }
+        RootView(user: user)
+            .environmentObject(user)
     }
 }
 

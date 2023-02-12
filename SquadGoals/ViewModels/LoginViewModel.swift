@@ -17,8 +17,9 @@ import FirebaseFirestore
 class LoginViewModel : ObservableObject {
     
     var ref = Database.database().reference()
+    @Published var currentUser : User
+
     @Published var userName : String? = nil
-    @Published var currentUser : User = User(name: "", phoneNumber: "", groupId: "", goals : [], teammates: [])
     
     // Flags
     @Published var showUserExists = false
@@ -30,6 +31,10 @@ class LoginViewModel : ObservableObject {
     @Published var showUnableToFindUser = false
     @Published var showReflection = false
     weak var gestureRecognizer: GestureRecognizerInteractor? = UIApplication.shared
+    
+    init(currentUser: User) {
+        self.currentUser = currentUser
+    }
     
     func createUser(userName : String, phoneNumber : String) {
         print("Creating user with name: \(userName) and phoneNumber \(phoneNumber)")

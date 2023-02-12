@@ -11,14 +11,13 @@ import SwiftUI
 
 struct Main: View {
     @State var user : User
-    @State var viewModel : GoalViewModel
+    @EnvironmentObject var viewModel : GoalViewModel
     @State var showResultsModal : Bool
     @State var selection = 2
     @State var showBanner = false
     
     init(user: User, showReflection: Bool) {
         self.user = user
-        self.viewModel = GoalViewModel(user: user)
         self.showResultsModal = showReflection
     }
     var body: some View {
@@ -28,7 +27,7 @@ struct Main: View {
                     BannerModifier(user: self.viewModel.user, tab: $selection)
                 }
                 TabView(selection: $selection) {
-                    ProfilePage(viewModel: viewModel)
+                    ProfilePage()
                         .tabItem {
                             Label ("Profile", systemImage: "person.crop.circle")
                                 .foregroundColor(.black)
@@ -36,14 +35,14 @@ struct Main: View {
                         .tag(1)
                         .navigationBarTitle("", displayMode: .inline)
                         .navigationBarBackButtonHidden(true)
-                    Homepage(viewModel: viewModel, showReflectionPrompt: showBanner)
+                    Homepage(showReflectionPrompt: showBanner)
                         .tabItem {
                             Label ("Home", systemImage: "house.fill")
                         }
                         .tag(2)
                         .navigationBarTitle("", displayMode: .inline)
                         .navigationBarBackButtonHidden(true)
-                    SquadPage(viewModel: viewModel, isReviewing: $showBanner)
+                    SquadPage(isReviewing: $showBanner)
                         .tabItem {
                             Label ("Squad", systemImage: "person.3.fill")
                         }
@@ -56,7 +55,7 @@ struct Main: View {
             .disabled(showResultsModal)
             
             if (showResultsModal) {
-                ResultsAlert(shown: $showResultsModal, showBanner: $showBanner, viewModel: self.viewModel)
+                ResultsAlert(shown: $showResultsModal, showBanner: $showBanner)
             }
         }
         .task {

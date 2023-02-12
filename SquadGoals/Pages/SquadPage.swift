@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SquadPage: View {
     
-    @StateObject var viewModel : GoalViewModel
+    @EnvironmentObject var viewModel : GoalViewModel
     @Binding var isReviewing: Bool
     @State var selectedUser : User = User(name: "", phoneNumber: "", groupId: "", goals: [], teammates: [])
     @State var shouldNavigateToProfile = false
@@ -125,11 +125,11 @@ struct SquadPage: View {
             Spacer()
         }
         .sheet(isPresented: $showEncouragementModal, onDismiss: {}, content: {
-            EncouragementModal(viewModel: self.viewModel, showModal: $showEncouragementModal)
+            EncouragementModal(showModal: $showEncouragementModal)
 
         })
         .sheet(isPresented: $showCongratsModal, onDismiss: {}, content: {
-            CongratsModal(viewModel: self.viewModel, showModal: $showCongratsModal)
+            CongratsModal(showModal: $showCongratsModal, initialTeammate: viewModel.user)
         })
         .background(Colors.lightOrangeBackground)
     }

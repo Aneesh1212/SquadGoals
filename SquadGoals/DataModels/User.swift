@@ -7,7 +7,9 @@
 
 import Foundation
 
-struct User : Hashable {
+class User :  ObservableObject, Hashable {
+
+    
     var name : String
     var phoneNumber : String
     var groupId : String
@@ -20,5 +22,13 @@ struct User : Hashable {
         self.groupId = groupId
         self.goals = goals
         self.teammates = teammates
+    }
+    
+    static func == (lhs: User, rhs: User) -> Bool {
+        lhs.phoneNumber == rhs.phoneNumber
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
     }
 }

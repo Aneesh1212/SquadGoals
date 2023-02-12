@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ProfilePage: View {
     
-    @StateObject var viewModel : GoalViewModel
+    @EnvironmentObject var viewModel : GoalViewModel
     @State var selectedGoal : Goal = Goal(title: "", reason: "", category: "", isPrivate: false, currTargets: [])
     @State var shouldNavigateToGoalDetails = false
     @State var shouldNavigateToWelcome = false
@@ -45,7 +45,7 @@ struct ProfilePage: View {
                 .foregroundColor(Colors.darkOrangeForeground)
             
             VStack {
-                NavigationLink(destination: GoalDetailPage(goal: self.selectedGoal, viewModel: self.viewModel), isActive: $shouldNavigateToGoalDetails) { EmptyView() }
+                NavigationLink(destination: GoalDetailPage(goal: self.selectedGoal), isActive: $shouldNavigateToGoalDetails) { EmptyView() }
                 NavigationLink(destination: Welcome(shouldTryToSignIn: false), isActive: $shouldNavigateToWelcome) { EmptyView() }
                 NavigationLink(destination: CreateGoal(user: self.viewModel.user, isSingleGoal: true), isActive: $navigateToCreateGoal) { EmptyView() }
             }
