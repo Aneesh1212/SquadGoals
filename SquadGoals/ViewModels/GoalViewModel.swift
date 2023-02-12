@@ -215,7 +215,6 @@ class GoalViewModel : ObservableObject {
     }
     
     func calculateTeamStrings() {
-        print("CALCULATING TEAM STRINGS", self.user.teammates)
         self.teammateStrings = []
         for teammate in self.user.teammates {
             let percentage = calculateWeeklyTargetPercent(goals: teammate.goals)

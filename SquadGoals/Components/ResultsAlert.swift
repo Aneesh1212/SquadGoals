@@ -60,7 +60,7 @@ struct ResultsAlert: View {
             
             Spacer()
             
-            NavigationLink(destination: MondayPlanning(user: self.viewModel.user, mode: Mode.weekly), isActive: $navigateToMondayPlanning) { EmptyView() }
+            NavigationLink(destination: MondayPlanning(mode: Mode.weekly), isActive: $navigateToMondayPlanning) { EmptyView() }
         }
         .padding(.vertical, 20)
         .frame(width: UIScreen.main.bounds.width-75)

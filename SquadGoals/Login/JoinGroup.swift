@@ -39,10 +39,8 @@ struct JoinGroup: View {
             }, text: "JOIN GROUP")
             .padding(.bottom, Styling.largeUnit)
             
-            NavigationLink(destination: BaseTutorial(user: viewModel.currentUser), isActive: $viewModel.navigateToCreateGoal) { EmptyView() }
-            
-            NavigationLink(destination: BaseTutorial(user: viewModel.currentUser), isActive: $viewModel.navigateToCreateGoal) { EmptyView() }
-            
+            NavigationLink(destination: BaseTutorial(), isActive: $viewModel.navigateToCreateGoal) { EmptyView() }
+                        
             VStack(alignment: .leading, spacing: 5) {
                 Text("Don't have one?")
                     .foregroundColor(.white)

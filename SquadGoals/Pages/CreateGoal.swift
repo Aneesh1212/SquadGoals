@@ -10,7 +10,7 @@ import Foundation
 struct CreateGoal: View {
     
     @EnvironmentObject var viewModel : GoalViewModel
-    @State var user : User
+    @EnvironmentObject var user : User
     @State var isSingleGoal : Bool
     @State private var shouldNavigate = false
     @State private var shouldNavigateSingleGoal = false
@@ -99,8 +99,8 @@ struct CreateGoal: View {
             }, text: "ADD GOAL")
             
             VStack {
-                NavigationLink(destination: GoalAdded(user: self.user, goalTitle: self.goalTitle), isActive: $shouldNavigate) { EmptyView() }
-                NavigationLink(destination: MondayPlanning(user: self.user, mode: Mode.initial), isActive: $shouldNavigateSingleGoal) { EmptyView() }
+                NavigationLink(destination: GoalAdded(goalTitle: self.goalTitle), isActive: $shouldNavigate) { EmptyView() }
+                NavigationLink(destination: MondayPlanning(mode: Mode.initial), isActive: $shouldNavigateSingleGoal) { EmptyView() }
             }
             
             Filler()

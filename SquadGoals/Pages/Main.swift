@@ -10,21 +10,20 @@ import SwiftUI
 
 
 struct Main: View {
-    @State var user : User
+    @EnvironmentObject var user : User
     @EnvironmentObject var viewModel : GoalViewModel
     @State var showResultsModal : Bool
     @State var selection = 2
     @State var showBanner = false
     
-    init(user: User, showReflection: Bool) {
-        self.user = user
+    init(showReflection: Bool) {
         self.showResultsModal = showReflection
     }
     var body: some View {
         ZStack{
             VStack(spacing:0) {
                 if (showBanner) {
-                    BannerModifier(user: self.viewModel.user, tab: $selection)
+                    BannerModifier(tab: $selection)
                 }
                 TabView(selection: $selection) {
                     ProfilePage()

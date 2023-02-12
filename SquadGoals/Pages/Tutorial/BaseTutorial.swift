@@ -10,7 +10,6 @@ import SwiftUI
 
 struct BaseTutorial: View {
     
-    var user : User
     @State var count = 0
     @State var navigateToCreateGoal = false
     
@@ -72,7 +71,7 @@ struct BaseTutorial: View {
                 Spacer()
             }
             
-            NavigationLink(destination: CreateGoal(user: self.user, isSingleGoal: false), isActive: $navigateToCreateGoal) { EmptyView() }
+            NavigationLink(destination: CreateGoal(isSingleGoal: false), isActive: $navigateToCreateGoal) { EmptyView() }
             
         }
         .padding(.horizontal, 16)

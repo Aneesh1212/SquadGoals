@@ -35,7 +35,6 @@
 		5587C8A027878855001A9999 /* ProgressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C87F2787884E001A9999 /* ProgressButton.swift */; };
 		5587C8A127878855001A9999 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C88127878850001A9999 /* LoginViewModel.swift */; };
 		5587C8A227878855001A9999 /* GoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C88227878850001A9999 /* GoalViewModel.swift */; };
-		5587C8A327878855001A9999 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C88327878850001A9999 /* AuthViewModel.swift */; };
 		5587C8A427878855001A9999 /* TeamViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C88427878850001A9999 /* TeamViewModel.swift */; };
 		5587C8A527878855001A9999 /* Welcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C88627878852001A9999 /* Welcome.swift */; };
 		5587C8A627878855001A9999 /* CreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C88727878852001A9999 /* CreateAccount.swift */; };
@@ -128,7 +127,6 @@
 		5587C87F2787884E001A9999 /* ProgressButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressButton.swift; sourceTree = "<group>"; };
 		5587C88127878850001A9999 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		5587C88227878850001A9999 /* GoalViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalViewModel.swift; sourceTree = "<group>"; };
-		5587C88327878850001A9999 /* AuthViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		5587C88427878850001A9999 /* TeamViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamViewModel.swift; sourceTree = "<group>"; };
 		5587C88627878852001A9999 /* Welcome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Welcome.swift; sourceTree = "<group>"; };
 		5587C88727878852001A9999 /* CreateAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccount.swift; sourceTree = "<group>"; };
@@ -324,7 +322,6 @@
 			children = (
 				5587C88127878850001A9999 /* LoginViewModel.swift */,
 				5587C88227878850001A9999 /* GoalViewModel.swift */,
-				5587C88327878850001A9999 /* AuthViewModel.swift */,
 				5587C88427878850001A9999 /* TeamViewModel.swift */,
 				55C81EDD278BC4DF00F341D5 /* NotificationViewModel.swift */,
 			);
@@ -700,7 +697,6 @@
 				55C1D908279384E000B9F4E4 /* Banner.swift in Sources */,
 				55F7CAE42919AB7700448F10 /* MondayReflection.swift in Sources */,
 				55C81EDC278B9F8E00F341D5 /* BottomSheet.swift in Sources */,
-				5587C8A327878855001A9999 /* AuthViewModel.swift in Sources */,
 				55F7CAE62919ABAE00448F10 /* MondayPlanning.swift in Sources */,
 				5587C89D27878855001A9999 /* ProgressBar.swift in Sources */,
 				552F626228FCFE39002F0A5F /* Spacing.swift in Sources */,

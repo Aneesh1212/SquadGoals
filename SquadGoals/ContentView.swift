@@ -8,7 +8,7 @@ import SwiftUI
                     
                     
 struct ContentView: View {
-    @StateObject var user = User(name: "Aneesh", phoneNumber: "7329393212", groupId: "454545", goals: [], teammates: [])
+    @StateObject var user = User(name: "Aneesh", phoneNumber: "7329393212", groupId: "990757", goals: [], teammates: [])
 
     var body: some View {
         RootView(user: user)

@@ -9,13 +9,12 @@ import SwiftUI
 
 struct BannerModifier: View {
     
-    var user : User
     @Binding var tab : Int
     @State var navigateToPlanning = false
     
     var body : some View {
         
-        NavigationLink(destination: MondayPlanning(user: self.user, mode: Mode.weekly), isActive: $navigateToPlanning) { EmptyView() }
+        NavigationLink(destination: MondayPlanning(mode: Mode.weekly), isActive: $navigateToPlanning) { EmptyView() }
         
         VStack {
             HStack {

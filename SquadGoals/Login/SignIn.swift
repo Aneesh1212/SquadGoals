@@ -39,7 +39,7 @@ struct SignIn: View {
             .cornerRadius(5)
             .padding(.bottom, Styling.mediumUnit)
             
-            NavigationLink(destination: Main(user: viewModel.currentUser, showReflection : viewModel.showReflection), isActive: $viewModel.navigateToHome) { EmptyView() }
+            NavigationLink(destination: Main(showReflection : viewModel.showReflection), isActive: $viewModel.navigateToHome) { EmptyView() }
             
             OnboardingActionButton(action: {
                 let parsedPhoneNumber = viewModel.parsePhoneNumber(phoneNumber: self.phoneNumber)

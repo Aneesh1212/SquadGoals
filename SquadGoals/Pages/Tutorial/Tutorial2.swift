@@ -11,7 +11,6 @@ import SwiftUI
 struct Tutorial2: View {
     
     @State var navigateToTutorial3 = false
-    var user: User
     let count = 2
     let subtitle = "Every week, you will create subtasks for these goals. These can remain consistent or adjust to fit your schedule."
     let image = "Tutorial2"
@@ -20,7 +19,7 @@ struct Tutorial2: View {
     }
     
     var body: some View {
-        NavigationLink(destination: Tutorial3(user: self.user), isActive: $navigateToTutorial3) { EmptyView() }
+        NavigationLink(destination: Tutorial3(), isActive: $navigateToTutorial3) { EmptyView() }
         // BaseTutorial(count: count, subtitle: subtitle, image: image, onClick: onClick)
     }
 }

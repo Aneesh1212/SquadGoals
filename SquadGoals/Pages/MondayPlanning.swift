@@ -14,7 +14,7 @@ enum Mode {
 }
 struct MondayPlanning: View {
     
-    @State var user : User
+    @EnvironmentObject var user : User
     @EnvironmentObject var viewModel : GoalViewModel
     var mode: Mode
     @State var navigateToHome = false
@@ -160,7 +160,7 @@ struct MondayPlanning: View {
                         }
                         .padding(.top, 10)
                     
-                    NavigationLink(destination: Main(user: self.user, showReflection: false), isActive: $navigateToHome) { EmptyView() }
+                    NavigationLink(destination: Main(showReflection: false), isActive: $navigateToHome) { EmptyView() }
                     
                     Button(action: {
                         self.showEditWarning = true

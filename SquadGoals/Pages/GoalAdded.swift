@@ -10,7 +10,6 @@ import SwiftUI
 
 struct GoalAdded: View {
     
-    @State var user : User
     @State var goalTitle : String
     @State var navigateToMondayPlanning = false
     @State var navigateToCreateGoal = false
@@ -44,9 +43,9 @@ struct GoalAdded: View {
                     .cornerRadius(15)
             }
             
-            NavigationLink(destination: CreateGoal(user: self.user, isSingleGoal: false), isActive: $navigateToCreateGoal) { EmptyView() }
+            NavigationLink(destination: CreateGoal(isSingleGoal: false), isActive: $navigateToCreateGoal) { EmptyView() }
             
-            NavigationLink(destination: MondayPlanning(user: self.user, mode: Mode.initial), isActive: $navigateToMondayPlanning) { EmptyView() }
+            NavigationLink(destination: MondayPlanning(mode: Mode.initial), isActive: $navigateToMondayPlanning) { EmptyView() }
             
             Filler()
             
