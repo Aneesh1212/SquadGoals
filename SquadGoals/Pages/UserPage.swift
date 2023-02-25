@@ -13,8 +13,8 @@ struct UserPage: View {
     @State var user : User
     @State var selectedGoal : Goal = Goal(title: "", reason: "", category: "", isPrivate: false, currTargets: [])
     @State var shouldNavigateToGoalDetails = false
-    @EnvironmentObject var viewModel : GoalViewModel
-    
+    @EnvironmentObject var userSession : UserSession
+
     var body: some View {
         VStack{
             Text(user.name)
@@ -25,8 +25,8 @@ struct UserPage: View {
                 .foregroundColor(Colors.lightOrangeBackground)
                 .background(Colors.darkOrangeForeground)
             
-            let totalTargets = viewModel.calculateTotalTargets(goals: user.goals)
-            let completedTargets = viewModel.calculateCompletedTargets(goals: user.goals)
+            let totalTargets = userSession.calculateTotalTargets(goals: user.goals)
+            let completedTargets = userSession.calculateCompletedTargets(goals: user.goals)
             
             Text("\(String(completedTargets)) / \(String(totalTargets)) weekly tasks completed")
                 .multilineTextAlignment(.leading)

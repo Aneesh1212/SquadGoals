@@ -14,8 +14,7 @@ enum Mode {
 }
 struct MondayPlanning: View {
     
-    @EnvironmentObject var user : User
-    @EnvironmentObject var viewModel : GoalViewModel
+    @EnvironmentObject var userSession : UserSession
     var mode: Mode
     @State var navigateToHome = false
     @State var showEditWarning = false
@@ -48,11 +47,11 @@ struct MondayPlanning: View {
                 let targetTitle = titles[goalIndex][targetIndex]
                 let targetFrequencyString = frequencies[goalIndex][targetIndex]
                 let targetKey = keys[goalIndex][targetIndex]
-                let targetFrequency = viewModel.convertFrequencyToNum(frequencyWord: targetFrequencyString)
+                let targetFrequency = UtilFunctions.convertFrequencyToNum(frequencyWord: targetFrequencyString)
                 let targetCompletedNum = completedNums[goalIndex][targetIndex]
                 let newTarget = Target(title: targetTitle, frequency: max(targetFrequency - targetCompletedNum, 0), original: targetFrequency, key: targetKey)
                 if (targetTitle != "") {
-                    viewModel.createTargets(goalId: goal.key, targets: [newTarget])
+                    userSession.createTargets(goalId: goal.key, targets: [newTarget])
                 }
             }
         }
@@ -82,7 +81,7 @@ struct MondayPlanning: View {
                         currentKeys.append(currentTarget.key)
                         currentCompletedNums.append(currentTarget.original - currentTarget.frequency)
                     }
-                    currentFrequencies.append(viewModel.convertFrequencyToString(frequency: currentTarget.original))
+                    currentFrequencies.append(UtilFunctions.convertFrequencyToString(frequency: currentTarget.original))
                 }
             }
             self.titles.append(currentTitles)
@@ -129,7 +128,7 @@ struct MondayPlanning: View {
                 
                 if (mode == Mode.weekly) {
                     Button(action: {
-                        loadPastTargets(user: self.viewModel.user, justGoals: false, newGoals: true)
+                        loadPastTargets(user: userSession.user, justGoals: false, newGoals: true)
                     }) {
                         Text("Load Past Targets")
                             .foregroundColor(Colors.lightOrangeBackground)
@@ -155,7 +154,7 @@ struct MondayPlanning: View {
                 
                 ScrollView {
                     targetEntryTable
-                        .onChange(of: self.viewModel.user) { value in
+                        .onChange(of: userSession.user) { value in
                             loadPastTargets(user: value, justGoals: (mode == Mode.weekly), newGoals:false)
                         }
                         .padding(.top, 10)
@@ -200,11 +199,6 @@ struct MondayPlanning: View {
         }
         .onTapGesture {
             UIApplication.shared.endEditing()
-        }
-        .onAppear {
-            Task {
-                await self.viewModel.getGoals(phoneNumber: user.phoneNumber)
-            }
         }
     }
 }

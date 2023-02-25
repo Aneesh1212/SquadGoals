@@ -9,8 +9,7 @@ import Foundation
 
 struct CreateGoal: View {
     
-    @EnvironmentObject var viewModel : GoalViewModel
-    @EnvironmentObject var user : User
+    @EnvironmentObject var userSession : UserSession
     @State var isSingleGoal : Bool
     @State private var shouldNavigate = false
     @State private var shouldNavigateSingleGoal = false
@@ -94,7 +93,7 @@ struct CreateGoal: View {
                 .padding(.bottom, Styling.smallUnit)
 
             OnboardingActionButton(action: {
-                viewModel.createGoal(phoneNumber: user.phoneNumber, goalTitle: self.goalTitle, goalReason: self.goalReason, goalCategory: self.goalCategory, goalPrivate: self.goalPrivate)
+                userSession.createGoal(goalTitle: self.goalTitle, goalReason: self.goalReason, goalCategory: self.goalCategory, goalPrivate: self.goalPrivate)
                 self.shouldNavigate = true
             }, text: "ADD GOAL")
             

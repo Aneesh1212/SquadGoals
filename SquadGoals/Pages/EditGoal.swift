@@ -12,7 +12,7 @@ struct EditGoal: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     @State var goalReason: String = ""
-    @EnvironmentObject var viewModel : GoalViewModel
+    @EnvironmentObject var userSession : UserSession
     @Binding var goal : Goal
     @State private var goalKey : String = ""
     @State private var goalTitle: String = ""
@@ -119,7 +119,7 @@ struct EditGoal: View {
             Spacer()
             
             Button(action: {
-                viewModel.editGoal(key: goalKey, goalTitle: goalTitle, goalReason: goalReason, goalCategory: goalCategory, goalPrivate: goalPrivate)
+                userSession.editGoal(key: goalKey, goalTitle: goalTitle, goalReason: goalReason, goalCategory: goalCategory, goalPrivate: goalPrivate)
                 self.goal.title = goalTitle
                 self.presentationMode.wrappedValue.dismiss()
             }) {

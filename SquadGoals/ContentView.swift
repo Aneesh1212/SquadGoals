@@ -8,11 +8,15 @@ import SwiftUI
                     
                     
 struct ContentView: View {
-    @StateObject var user = User(name: "Aneesh", phoneNumber: "1111111111", groupId: "248412", goals: [], teammates: [])
+    @StateObject var userSession = UserSession()
 
     var body: some View {
-        RootView(user: user)
-            .environmentObject(user)
+        NavigationView{
+            Welcome(shouldTryToSignIn: true)
+                .navigationBarTitle("")
+                .navigationBarHidden(true)
+        }
+        .environmentObject(userSession)
     }
 }
 

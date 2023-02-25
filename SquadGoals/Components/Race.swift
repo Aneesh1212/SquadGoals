@@ -10,12 +10,12 @@ import SwiftUI
 
 struct Race : View {
     
-    @EnvironmentObject var viewModel : GoalViewModel
+    @EnvironmentObject var userSession : UserSession
     var colorList = [Color.green, Color.red, Color.blue, Color.pink, Color.gray, Color.purple]
     
     
     var body : some View {
-        let teamList = [viewModel.user] + viewModel.user.teammates
+        let teamList = [userSession.user] + userSession.user.teammates
         VStack(alignment: .leading, spacing: 0) {
             ZStack {
                 ForEach(teamList, id: \.self) { teammate in
@@ -30,7 +30,7 @@ struct Race : View {
                             .foregroundColor(.white)
                         
                     }
-                    .offset(x: CGFloat.init(self.viewModel.calculateWeeklyTargetPercent(goals: teammate.goals) * 320.0))
+                    .offset(x: CGFloat.init(self.userSession.calculateWeeklyTargetPercent(goals: teammate.goals) * 320.0))
                     .offset(y: CGFloat.init(Float(index)*10.0))
                 }
             }

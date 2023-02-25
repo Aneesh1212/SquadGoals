@@ -9,12 +9,11 @@ import Foundation
 import SwiftUI
 
 struct RootView: View {
-    @StateObject var goalViewModel: GoalViewModel
-    @StateObject var loginViewModel : LoginViewModel
+    @EnvironmentObject var userSession : UserSession
     
     init(user: User) {
         _goalViewModel = StateObject<GoalViewModel>(wrappedValue: GoalViewModel(user: user))
-        _loginViewModel = StateObject<LoginViewModel>(wrappedValue: LoginViewModel(currentUser: user))
+        _loginViewModel = StateObject<LoginViewModel>(wrappedValue: LoginViewModel(currentUser: user, goalViewModel: GoalViewModel(user: user)))
     }
     
     var body: some View {

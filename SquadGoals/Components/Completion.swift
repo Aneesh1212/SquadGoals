@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct Completion: View {
-    @EnvironmentObject var viewModel : GoalViewModel
+    @EnvironmentObject var userSession : UserSession
     
     var body: some View {
         VStack {
@@ -17,7 +17,7 @@ struct Completion: View {
                 Image(uiImage: UIImage(named: "completion_badge_light")!)
                     .resizable()
                     .offset(y: 13)
-                Text("\(viewModel.completedTargets) / \(viewModel.totalTargets) \n TARGETS \n COMPLETED")
+                Text("\(userSession.completedTargets) / \(userSession.totalTargets) \n TARGETS \n COMPLETED")
                     .foregroundColor(Colors.blueText)
                     .font(.system(size: 20))
                     .multilineTextAlignment(.center)

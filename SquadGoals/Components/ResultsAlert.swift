@@ -12,7 +12,7 @@ struct ResultsAlert: View {
     
     @Binding var shown: Bool
     @Binding var showBanner : Bool
-    @EnvironmentObject var viewModel : GoalViewModel
+    @EnvironmentObject var userSession : UserSession
     @State var navigateToMondayPlanning = false
     @State private var maxWidth: CGFloat = .zero
     
@@ -22,7 +22,7 @@ struct ResultsAlert: View {
             Text("TEAM SUMMARY").foregroundColor(Colors.blueText).fontWeight(.heavy)
             Spacer()
                 .frame(height:20)
-            ForEach(self.viewModel.teammateStrings, id: \.self) { teammateString in
+            ForEach(userSession.teammateStrings, id: \.self) { teammateString in
                 Text(teammateString).foregroundColor(Colors.blueText).padding(.bottom, 3)
             }
             Spacer()

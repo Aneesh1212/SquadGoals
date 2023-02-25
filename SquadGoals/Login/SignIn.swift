@@ -9,7 +9,7 @@ import Foundation
 
 struct SignIn: View {
     
-    @EnvironmentObject var viewModel : LoginViewModel
+    @EnvironmentObject var userSession : UserSession
     @State private var phoneNumber: String = ""
     @State private var showInvalidNameOrPhone = false
     
@@ -39,12 +39,12 @@ struct SignIn: View {
             .cornerRadius(5)
             .padding(.bottom, Styling.mediumUnit)
             
-            NavigationLink(destination: Main(showReflection : viewModel.showReflection), isActive: $viewModel.navigateToHome) { EmptyView() }
+            NavigationLink(destination: Main(showReflection : userSession.showReflection), isActive: $userSession.navigateToHome) { EmptyView() }
             
             OnboardingActionButton(action: {
-                let parsedPhoneNumber = viewModel.parsePhoneNumber(phoneNumber: self.phoneNumber)
-                if (viewModel.isValidNameAndPhone(name: "Ansh", phoneNumber: parsedPhoneNumber)) {
-                    viewModel.signUserIn(phoneNumber: parsedPhoneNumber)
+                let parsedPhoneNumber = UtilFunctions.parsePhoneNumber(phoneNumber: self.phoneNumber)
+                if (UtilFunctions.isValidNameAndPhone(name: "Ansh", phoneNumber: parsedPhoneNumber)) {
+                    userSession.signUserIn(phoneNumber: parsedPhoneNumber)
                 } else {
                     self.showInvalidNameOrPhone = true
                 }
@@ -54,7 +54,7 @@ struct SignIn: View {
         }
         .padding(.horizontal, Styling.mediumUnit)
         .background(Colors.darkOrangeForeground)
-        .alert("Unable to find a user account with this phone number", isPresented: $viewModel.showUnableToFindUser) {
+        .alert("Unable to find a user account with this phone number", isPresented: $userSession.showUnableToFindUser) {
             Button("Retry", role: .cancel) { }
         }
         .alert("Please enter a name and valid 10 digit phone number", isPresented: $showInvalidNameOrPhone) {

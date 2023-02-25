@@ -10,14 +10,14 @@ import SwiftUI
 
 struct Homepage : View {
     
-    @EnvironmentObject var viewModel : GoalViewModel
+    @EnvironmentObject var userSession : UserSession
     @State var targetProgressValue: Float = 0.0
     var showReflectionPrompt : Bool
     @State var shouldNavigateToEditGoals : Bool = false
     
     var openTargets : some View {
         VStack{
-            Text("\(String(viewModel.completedTargets)) / \(String(viewModel.totalTargets)) weekly tasks completed")
+            Text("\(String(userSession.completedTargets)) / \(String(userSession.totalTargets)) weekly tasks completed")
                 .multilineTextAlignment(.leading)
                 .font(.system(size: 18).italic())
                 .padding(.top, 10)
@@ -25,7 +25,7 @@ struct Homepage : View {
                 .foregroundColor(Colors.blueText)
                 
             ScrollView(showsIndicators: false){
-                ForEach(viewModel.user.goals, id: \.self) { goal in
+                ForEach(userSession.user.goals, id: \.self) { goal in
                     HomepageGoalView(goal: goal, clickableTargets: !showReflectionPrompt)
                         .padding(.bottom, 20)
                 }
@@ -49,7 +49,7 @@ struct Homepage : View {
                         .padding(.leading, 250)
                 })
                 
-                Text("WEEK \(viewModel.week + 1)")
+                Text("WEEK \(userSession.week + 1)")
                     .multilineTextAlignment(.leading)
                     .font(.system(size: 30, weight: .heavy))
                     .foregroundColor(Colors.lightOrangeBackground)
@@ -67,7 +67,7 @@ struct Homepage : View {
             .padding(.horizontal, 25)
             .background(Colors.darkOrangeForeground)
             
-            if (viewModel.completedTargets >= viewModel.totalTargets) {
+            if (userSession.completedTargets >= userSession.totalTargets) {
                 Completion()
             } else {
                 openTargets

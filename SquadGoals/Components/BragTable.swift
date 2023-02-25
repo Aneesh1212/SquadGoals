@@ -11,7 +11,7 @@ import SwiftUI
 struct BragTable : View {
     
     @State var goalKey : String
-    @EnvironmentObject var viewModel : GoalViewModel
+    @EnvironmentObject var userSession : UserSession
     @State var bragText = ""
     
     var body : some View {
@@ -22,7 +22,7 @@ struct BragTable : View {
                 .padding(.bottom, 5)
             
             VStack(spacing: 0){
-                ForEach(self.viewModel.currBrags, id: \.self) { brag in
+                ForEach(self.userSession.currBrags, id: \.self) { brag in
                     HStack(spacing : 0){
                         Text("\"\(brag.text)\"")
                             .foregroundColor(.black)
@@ -43,8 +43,8 @@ struct BragTable : View {
                         .foregroundColor(.black)
                     
                     Button(action: {
-                        self.viewModel.createBrag(goalId: self.goalKey, brag: Brag(text: self.bragText))
-                        self.viewModel.currBrags.append(Brag(text: self.bragText))
+                        self.userSession.createBrag(goalId: self.goalKey, brag: Brag(text: self.bragText))
+                        self.userSession.currBrags.append(Brag(text: self.bragText))
                         self.bragText = ""
                     }) {
                         Text("Submit")
@@ -64,7 +64,7 @@ struct BragTable : View {
             .border(.gray, width: 0.5)
         }
         .onAppear{
-            self.viewModel.getBrags(goalKey: self.goalKey)
+            self.userSession.getBrags(goalKey: self.goalKey)
         }
     }
 }

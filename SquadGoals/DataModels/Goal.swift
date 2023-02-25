@@ -10,7 +10,7 @@ import SwiftUI
 
 struct Goal : Hashable {
     
-    var title : String
+    public var title : String
     var reason : String
     var category : String
     var isPrivate : Bool
@@ -29,4 +29,5 @@ struct Goal : Hashable {
         self.pastTargets = pastTargets
         self.brags = brags
     }
+    
 }

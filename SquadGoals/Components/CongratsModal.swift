@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct CongratsModal: View {
-    @EnvironmentObject var viewModel : GoalViewModel
+    @EnvironmentObject var userSession : UserSession
     
     @Binding var showModal : Bool
     @State var teammate: User;
@@ -41,7 +41,7 @@ struct CongratsModal: View {
                 .fixedSize(horizontal: true, vertical: true)
             
             Picker("Teammate", selection: $teammate) {
-                ForEach(viewModel.user.teammates, id: \.self) {
+                ForEach(userSession.user.teammates, id: \.self) {
                     Text($0.name)
                         .foregroundColor(Color.black)
                         .tag($0)
@@ -68,7 +68,7 @@ struct CongratsModal: View {
             Button(action: {
                 if (teammate.phoneNumber != "") {
                     self.teammateNotSelected = false
-                    viewModel.sendNotification(users: [teammate], title: "Squad Goals: Congrats!", message: self.customMessage == placeholder ? "Congrats on accomplishing your goals so well this week! - \(String(viewModel.user.name))" : "\(self.customMessage) - \(String(viewModel.user.name))")
+                    userSession.sendNotification(users: [teammate], title: "Squad Goals: Congrats!", message: self.customMessage == placeholder ? "Congrats on accomplishing your goals so well this week! - \(String(userSession.user.name))" : "\(self.customMessage) - \(String(userSession.user.name))")
                     self.showModal = false
                 } else {
                     self.teammateNotSelected = true

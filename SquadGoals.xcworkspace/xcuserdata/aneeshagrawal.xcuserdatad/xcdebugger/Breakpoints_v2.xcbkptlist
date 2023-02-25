@@ -52,5 +52,229 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "026D112F-431A-4463-86A3-347FD38946AB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SquadGoals/ViewModels/GoalViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "getGoals(phoneNumber:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "026D112F-431A-4463-86A3-347FD38946AB - 1310939e6a647b02"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Squad_Goals.GoalViewModel.getGoals(phoneNumber: Swift.String) -&gt; ()"
+                  moduleName = "Squad Goals"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aneeshagrawal/Documents/SquadGoals/SquadGoals/ViewModels/GoalViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "83"
+                  endingLineNumber = "83"
+                  offsetFromSymbolStart = "1748">
+               </Location>
+               <Location
+                  uuid = "026D112F-431A-4463-86A3-347FD38946AB - 7a1c0fa7cfb11b6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in Squad_Goals.GoalViewModel.getGoals(phoneNumber: Swift.String) -&gt; ()"
+                  moduleName = "Squad Goals"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aneeshagrawal/Documents/SquadGoals/SquadGoals/ViewModels/GoalViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "252">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CC83918E-7290-49DD-BC80-F828B03478FA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SquadGoals/ViewModels/GoalViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "getGoals(phoneNumber:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "CC83918E-7290-49DD-BC80-F828B03478FA - 7a1c0fa7cfb13e5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in Squad_Goals.GoalViewModel.getGoals(phoneNumber: Swift.String) -&gt; ()"
+                  moduleName = "Squad Goals"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aneeshagrawal/Documents/SquadGoals/SquadGoals/ViewModels/GoalViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "2192">
+               </Location>
+               <Location
+                  uuid = "CC83918E-7290-49DD-BC80-F828B03478FA - 4fcc25c09fb056eb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;, __C.FIRDataSnapshot) -&gt; () in closure #1 (__C.FIRDataSnapshot) -&gt; () in Squad_Goals.GoalViewModel.getGoals(phoneNumber: Swift.String) -&gt; ()"
+                  moduleName = "Squad Goals"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aneeshagrawal/Documents/SquadGoals/SquadGoals/ViewModels/GoalViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "93"
+                  endingLineNumber = "93"
+                  offsetFromSymbolStart = "876">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9FE6FA13-4351-488C-956B-D9456E42A306"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SquadGoals/ViewModels/GoalViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "getTeamMemberPhoneNumbers()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9FE6FA13-4351-488C-956B-D9456E42A306 - 6a37ed63a9c589af"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Squad_Goals.GoalViewModel.getTeamMemberPhoneNumbers() -&gt; ()"
+                  moduleName = "Squad Goals"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aneeshagrawal/Documents/SquadGoals/SquadGoals/ViewModels/GoalViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "136"
+                  endingLineNumber = "136"
+                  offsetFromSymbolStart = "552">
+               </Location>
+               <Location
+                  uuid = "9FE6FA13-4351-488C-956B-D9456E42A306 - 6b582c459b752839"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;, __C.FIRDataSnapshot) -&gt; () in Squad_Goals.GoalViewModel.getTeamMemberPhoneNumbers() -&gt; ()"
+                  moduleName = "Squad Goals"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aneeshagrawal/Documents/SquadGoals/SquadGoals/ViewModels/GoalViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "137"
+                  endingLineNumber = "137"
+                  offsetFromSymbolStart = "176">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6AAC86C3-36F9-4C6C-B3CB-8947D256FE3F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SquadGoals/ViewModels/GoalViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
+            landmarkName = "getTeammateInfo()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6AAC86C3-36F9-4C6C-B3CB-8947D256FE3F - ae5129ee2da309f4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Squad_Goals.GoalViewModel.getTeammateInfo() -&gt; ()"
+                  moduleName = "Squad Goals"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aneeshagrawal/Documents/SquadGoals/SquadGoals/ViewModels/GoalViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "154"
+                  endingLineNumber = "154"
+                  offsetFromSymbolStart = "284">
+               </Location>
+               <Location
+                  uuid = "6AAC86C3-36F9-4C6C-B3CB-8947D256FE3F - 2654fe699e091458"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;, __C.FIRDataSnapshot) -&gt; () in Squad_Goals.GoalViewModel.getTeammateInfo() -&gt; ()"
+                  moduleName = "Squad Goals"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aneeshagrawal/Documents/SquadGoals/SquadGoals/ViewModels/GoalViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "155"
+                  endingLineNumber = "155"
+                  offsetFromSymbolStart = "216">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D96F0A4E-6E4F-4EBE-9736-2FA97C07270A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SquadGoals/ViewModels/GoalViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "createGoal(phoneNumber:goalTitle:goalReason:goalCategory:goalPrivate:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C899ED76-17F4-4C36-93F2-B97B28257BC6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SquadGoals/UserSession.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "signUserIn(phoneNumber:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

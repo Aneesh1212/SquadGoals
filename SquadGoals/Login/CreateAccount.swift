@@ -9,7 +9,7 @@ import Foundation
 
 struct CreateAccount: View {
     
-    @EnvironmentObject var viewModel : LoginViewModel
+    @EnvironmentObject var userSession : UserSession
     
     @State private var shouldNavigate = false
     
@@ -50,16 +50,16 @@ struct CreateAccount: View {
             Spacing(height: Styling.largeUnit)
             
             OnboardingActionButton(action: {
-                let parsedPhoneNumber = viewModel.parsePhoneNumber(phoneNumber: self.phoneNumber)
-                if (viewModel.isValidNameAndPhone(name: self.name, phoneNumber: parsedPhoneNumber)) {
-                    viewModel.createUser(userName: self.name, phoneNumber: parsedPhoneNumber)
+                let parsedPhoneNumber = UtilFunctions.parsePhoneNumber(phoneNumber: self.phoneNumber)
+                if (UtilFunctions.isValidNameAndPhone(name: self.name, phoneNumber: parsedPhoneNumber)) {
+                    userSession.createUser(userName: self.name, phoneNumber: parsedPhoneNumber)
                     shouldNavigate = true
                 } else {
                     self.showInvalidNameOrPhone = true
                 }
             }, text: "CREATE ACCOUNT")
             
-            NavigationLink(destination: JoinGroup(), isActive: $viewModel.navigateToJoinGroup) { EmptyView() }
+            NavigationLink(destination: JoinGroup(), isActive: $userSession.navigateToJoinGroup) { EmptyView() }
             Filler()
         }
         .padding(.horizontal, Styling.mediumUnit)
@@ -67,7 +67,7 @@ struct CreateAccount: View {
         .alert("Please enter a name and valid 10 digit phone number", isPresented: $showInvalidNameOrPhone) {
             Button("OK", role: .cancel) { }
         }
-        .alert("A user with this number already exists", isPresented: $viewModel.showUserExists) {
+        .alert("A user with this number already exists", isPresented: $userSession.showUserExists) {
             Button("OK", role: .cancel) { }
         }
         .onTapGesture {

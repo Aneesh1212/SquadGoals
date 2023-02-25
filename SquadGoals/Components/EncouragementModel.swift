@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct EncouragementModal: View {
-    @EnvironmentObject var viewModel : GoalViewModel
+    @EnvironmentObject var userSession : UserSession
     @Binding var showModal : Bool
     @State var customMessage = "Or write custom note.."
     
@@ -50,7 +50,7 @@ struct EncouragementModal: View {
             }
             
             Button(action: {
-                viewModel.sendNotification(users: viewModel.user.teammates + [viewModel.user], title: "Squad Goals: Midweek Encouragement", message: self.customMessage == placeholder ? "There's time left in the week, lets finish a few more goals! - \(String(viewModel.user.name))" : "\(self.customMessage) - \(String(viewModel.user.name))")
+                userSession.sendNotification(users: userSession.user.teammates + [userSession.user], title: "Squad Goals: Midweek Encouragement", message: self.customMessage == placeholder ? "There's time left in the week, lets finish a few more goals! - \(String(userSession.user.name))" : "\(self.customMessage) - \(String(userSession.user.name))")
                 self.showModal = false
             }) {
                 Text("Send to team")

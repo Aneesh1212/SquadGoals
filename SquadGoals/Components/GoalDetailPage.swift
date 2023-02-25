@@ -11,14 +11,14 @@ import SwiftUI
 struct GoalDetailPage: View {
     
     @State var goal : Goal
-    @EnvironmentObject var viewModel : GoalViewModel
+    @EnvironmentObject var userSession : UserSession
     var sortedDates : Array<Date> = []
     @State var shouldNavigateToEditGoal = false
     
     @ViewBuilder func getView(date : String, targets : Array<Target>) -> some View {
         
-        let completedTargets = viewModel.calculateCompletedTargetsFromTarget(targets: targets)
-        let totalTargets = viewModel.calculateTotalTargetsFromTarget(targets: targets)
+        let completedTargets = userSession.calculateCompletedTargetsFromTarget(targets: targets)
+        let totalTargets = userSession.calculateTotalTargetsFromTarget(targets: targets)
         
         VStack(alignment: .leading){
             Text("\(String(date)) - \(String(completedTargets)) / \(String(totalTargets)) this week")
@@ -69,9 +69,9 @@ struct GoalDetailPage: View {
     }
     
     var body: some View {
-        let totalTargets = viewModel.calculateTotalTargets(goals: [self.goal])
-        let completedTargets = viewModel.calculateCompletedTargets(goals: [self.goal])
-        let completionPercentage = viewModel.calculateWeeklyTargetPercent(goals: [self.goal])
+        let totalTargets = userSession.calculateTotalTargets(goals: [self.goal])
+        let completedTargets = userSession.calculateCompletedTargets(goals: [self.goal])
+        let completionPercentage = userSession.calculateWeeklyTargetPercent(goals: [self.goal])
         
         NavigationLink(destination: EditGoal( goal: self.$goal), isActive: $shouldNavigateToEditGoal) { EmptyView() }
         

@@ -11,7 +11,7 @@ import SwiftUI
 
 struct Main: View {
     @EnvironmentObject var user : User
-    @EnvironmentObject var viewModel : GoalViewModel
+    @EnvironmentObject var userSession : UserSession
     @State var showResultsModal : Bool
     @State var selection = 2
     @State var showBanner = false
@@ -55,13 +55,6 @@ struct Main: View {
             
             if (showResultsModal) {
                 ResultsAlert(shown: $showResultsModal, showBanner: $showBanner)
-            }
-        }
-        .task {
-            if (user.phoneNumber != "" && user.groupId != "") {
-                self.viewModel.getGoals(phoneNumber: user.phoneNumber)
-                self.viewModel.getTeamMemberPhoneNumbers()
-                self.viewModel.calculateWeek()
             }
         }
     }

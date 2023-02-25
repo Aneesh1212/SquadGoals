@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ProfilePage: View {
     
-    @EnvironmentObject var viewModel : GoalViewModel
+    @EnvironmentObject var userSession : UserSession
     @State var selectedGoal : Goal = Goal(title: "", reason: "", category: "", isPrivate: false, currTargets: [])
     @State var shouldNavigateToGoalDetails = false
     @State var shouldNavigateToWelcome = false
@@ -33,12 +33,12 @@ struct ProfilePage: View {
                 })
             }
             
-            Text(viewModel.user.name)
+            Text(userSession.user.name)
                 .multilineTextAlignment(.leading)
                 .font(.system(size: 40, weight: .heavy))
                 .foregroundColor(Colors.darkOrangeForeground)
             
-            Text("Team \(viewModel.user.groupId)")
+            Text("Team \(userSession.user.groupId)")
                 .multilineTextAlignment(.leading)
                 .font(.system(size: 20, weight: .heavy))
                 .padding(.bottom, 75)
@@ -52,7 +52,7 @@ struct ProfilePage: View {
             
             VStack{
                 ScrollView {
-                    ForEach(viewModel.user.goals, id: \.self) { goal in
+                    ForEach(userSession.user.goals, id: \.self) { goal in
                         Button(action: {
                             self.selectedGoal = goal
                             self.shouldNavigateToGoalDetails = true

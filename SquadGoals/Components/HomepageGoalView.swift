@@ -11,7 +11,7 @@ import SwiftUI
 struct HomepageGoalView : View {
     
     @State var goal : Goal
-    @EnvironmentObject var viewModel : GoalViewModel
+    @EnvironmentObject var userSession : UserSession
     var clickableTargets: Bool
     
     var body : some View {
@@ -89,32 +89,32 @@ struct HomepageGoalView : View {
         withAnimation {
             let newFrequency = target.frequency - 1
             let targetIndex = self.goal.currTargets.firstIndex(of: target) ?? 0
-            let goalIndex = viewModel.user.goals.firstIndex(of: self.goal) ?? 0
+            let goalIndex = userSession.user.goals.firstIndex(of: self.goal) ?? 0
             self.goal.currTargets[targetIndex].frequency = newFrequency
-            viewModel.overwriteTarget(goalId: goal.key ?? "", targetId: target.key ?? "", targetTitle: target.title, targetFrequency: newFrequency, targetOriginal: target.original, creationDate : target.creationDate)
-            viewModel.user.goals[goalIndex] = self.goal
-            viewModel.completedTargets += 1
+            userSession.overwriteTarget(goalId: goal.key ?? "", targetId: target.key ?? "", targetFrequency: newFrequency)
+            userSession.user.goals[goalIndex] = self.goal
+            userSession.completedTargets += 1
         }
         sendNotification(targetTitle: target.title)
-        viewModel.writeResults()
+        userSession.writeResults()
     }
     
     func sendNotification(targetTitle: String) {
-        let new = Float(Float(viewModel.completedTargets) / Float(viewModel.totalTargets))
-        let old = Float((Float(viewModel.completedTargets) - 1) / Float(viewModel.totalTargets))
+        let new = Float(Float(userSession.completedTargets) / Float(userSession.totalTargets))
+        let old = Float((Float(userSession.completedTargets) - 1) / Float(userSession.totalTargets))
         if (new == 1.0) {
-            viewModel.sendNotification(users: viewModel.user.teammates + [viewModel.user], title: "Squad Goals: Team Update", message: "Chef's Kiss! \(viewModel.user.name) has finished ALL their goals this week. Congratulate \(viewModel.user.name) on their determination and grit!")
+            userSession.sendNotification(users: userSession.user.teammates + [userSession.user], title: "Squad Goals: Team Update", message: "Chef's Kiss! \(userSession.user.name) has finished ALL their goals this week. Congratulate \(userSession.user.name) on their determination and grit!")
         }
         else if (old < 0.25 && new >= 0.25){
-            viewModel.sendNotification(users: viewModel.user.teammates + [viewModel.user], title: "Squad Goals: Team Update", message: "\(viewModel.user.name) is out of the gates with 25% of their goals done!")
+            userSession.sendNotification(users: userSession.user.teammates + [userSession.user], title: "Squad Goals: Team Update", message: "\(userSession.user.name) is out of the gates with 25% of their goals done!")
         }
         else if (old < 0.5 && new >= 0.5){
-            viewModel.sendNotification(users: viewModel.user.teammates + [viewModel.user], title: "Squad Goals: Team Update", message: "\(viewModel.user.name) is halfway there! Let's send a note of encouragement to keep up the progress.")
+            userSession.sendNotification(users: userSession.user.teammates + [userSession.user], title: "Squad Goals: Team Update", message: "\(userSession.user.name) is halfway there! Let's send a note of encouragement to keep up the progress.")
         }
         else if (old < 0.75 && new >= 0.75){
-            viewModel.sendNotification(users: viewModel.user.teammates + [viewModel.user], title: "Squad Goals: Team Update", message: "Omg \(viewModel.user.name) has finished 75% of their week goals. A little bit more for that 100% and 🍷")
+            userSession.sendNotification(users: userSession.user.teammates + [userSession.user], title: "Squad Goals: Team Update", message: "Omg \(userSession.user.name) has finished 75% of their week goals. A little bit more for that 100% and 🍷")
         } else {
-            viewModel.sendNotification(users: viewModel.user.teammates + [viewModel.user], title: "Squad Goals: Team Update", message: "\(String(viewModel.user.name)) just checked off \(targetTitle)")
+            userSession.sendNotification(users: userSession.user.teammates + [userSession.user], title: "Squad Goals: Team Update", message: "\(String(userSession.user.name)) just checked off \(targetTitle)")
         }
     }
 }

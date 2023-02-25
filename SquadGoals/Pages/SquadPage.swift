@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SquadPage: View {
     
-    @EnvironmentObject var viewModel : GoalViewModel
+    @EnvironmentObject var userSession : UserSession
     @Binding var isReviewing: Bool
     @State var selectedUser : User = User(name: "", phoneNumber: "", groupId: "", goals: [], teammates: [])
     @State var shouldNavigateToProfile = false
@@ -19,8 +19,8 @@ struct SquadPage: View {
     
     var body: some View {
         
-        let weekPercentage : Float = isReviewing ? 1.0 : Float(viewModel.getDayOfWeek()) / 7.0
-        let teamPercentage : Float = viewModel.calculateTeamTargetPercent()
+        let weekPercentage : Float = isReviewing ? 1.0 : Float(UtilFunctions.getDayOfWeek()) / 7.0
+        let teamPercentage : Float = userSession.calculateTeamTargetPercent()
         let progressString = isReviewing ? getFinishedProgressString(teamPercentage: teamPercentage) : getCurrentProgressString(teamPercentage: teamPercentage, weekPercentage: weekPercentage)
         
         VStack(spacing: 0) {
@@ -92,14 +92,14 @@ struct SquadPage: View {
                         GridItem(.flexible()),
                         GridItem(.flexible())]
                     
-                    let teamList = [viewModel.user] + viewModel.user.teammates
+                    let teamList = [userSession.user] + userSession.user.teammates
                     
                     
                     LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(teamList, id: \.self) { teammate in
-                            let teammatePercentage = viewModel.calculateWeeklyTargetPercent(goals: teammate.goals)
-                            let totalTargets = viewModel.calculateTotalTargets(goals: teammate.goals)
-                            let completedTargets = viewModel.calculateCompletedTargets(goals: teammate.goals)
+                            let teammatePercentage = userSession.calculateWeeklyTargetPercent(goals: teammate.goals)
+                            let totalTargets = userSession.calculateTotalTargets(goals: teammate.goals)
+                            let completedTargets = userSession.calculateCompletedTargets(goals: teammate.goals)
                             
                             Button(action: {
                                 self.selectedUser = teammate
@@ -129,7 +129,7 @@ struct SquadPage: View {
 
         })
         .sheet(isPresented: $showCongratsModal, onDismiss: {}, content: {
-            CongratsModal(showModal: $showCongratsModal, initialTeammate: viewModel.user)
+            CongratsModal(showModal: $showCongratsModal, initialTeammate: userSession.user)
         })
         .background(Colors.lightOrangeBackground)
     }

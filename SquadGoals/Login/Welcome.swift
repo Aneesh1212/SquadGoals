@@ -12,7 +12,7 @@ struct Welcome: View {
     var shouldTryToSignIn : Bool
     @State var navigateToSignIn = false
     @State var navigateToCreateAccount = false
-    @EnvironmentObject var viewModel : LoginViewModel
+    @EnvironmentObject var userSession : UserSession
 
     var body: some View {
         VStack{
@@ -45,7 +45,7 @@ struct Welcome: View {
             VStack {
                 NavigationLink(destination: CreateAccount(), isActive: $navigateToCreateAccount) { EmptyView() }
                 NavigationLink(destination: SignIn(), isActive: $navigateToSignIn) { EmptyView() }
-                NavigationLink(destination: Main(showReflection: viewModel.showReflection), isActive: $viewModel.navigateToHome) { EmptyView() }
+                NavigationLink(destination: Main(showReflection: userSession.showReflection), isActive: $userSession.navigateToHome) { EmptyView() }
             }
             
             HStack {
@@ -61,7 +61,7 @@ struct Welcome: View {
         .navigationBarHidden(true)
         .onAppear {
             if (shouldTryToSignIn) {
-                viewModel.tryAutoSignIn()
+                userSession.tryAutoSignIn()
             }
         }
     }
