@@ -12,6 +12,7 @@ import Firebase
 enum Mode {
     case editing, initial, weekly
 }
+
 struct MondayPlanning: View {
     
     @EnvironmentObject var userSession : UserSession
@@ -57,13 +58,13 @@ struct MondayPlanning: View {
         }
     }
     
-    func loadPastTargets(user: User, justGoals: Bool, newGoals: Bool) {
+    func loadPastTargets(justGoals: Bool, newGoals: Bool) {
         self.goals = []
         self.titles = []
         self.frequencies = []
         self.completedNums = []
         self.keys = []
-        for goal in user.goals {
+        for goal in userSession.user.goals {
             self.goals.append(goal)
             var currentTitles : [String] = []
             var currentFrequencies : [String] = []
@@ -128,7 +129,7 @@ struct MondayPlanning: View {
                 
                 if (mode == Mode.weekly) {
                     Button(action: {
-                        loadPastTargets(user: userSession.user, justGoals: false, newGoals: true)
+                        loadPastTargets(justGoals: false, newGoals: true)
                     }) {
                         Text("Load Past Targets")
                             .foregroundColor(Colors.lightOrangeBackground)
@@ -154,9 +155,6 @@ struct MondayPlanning: View {
                 
                 ScrollView {
                     targetEntryTable
-                        .onChange(of: userSession.user) { value in
-                            loadPastTargets(user: value, justGoals: (mode == Mode.weekly), newGoals:false)
-                        }
                         .padding(.top, 10)
                     
                     NavigationLink(destination: Main(showReflection: false), isActive: $navigateToHome) { EmptyView() }
@@ -199,6 +197,9 @@ struct MondayPlanning: View {
         }
         .onTapGesture {
             UIApplication.shared.endEditing()
+        }
+        .onAppear {
+            loadPastTargets(justGoals: (mode == Mode.weekly), newGoals:false)
         }
     }
 }

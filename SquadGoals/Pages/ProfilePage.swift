@@ -23,7 +23,6 @@ struct ProfilePage: View {
             HStack() {
                 Spacer()
                 Button(action: {
-                    // SIGN OUT FUNCTIONALITY
                     self.shouldNavigateToWelcome = true
                 }, label: {
                     Text("Sign out")
@@ -55,6 +54,7 @@ struct ProfilePage: View {
                     ForEach(userSession.user.goals, id: \.self) { goal in
                         Button(action: {
                             self.selectedGoal = goal
+                            print(selectedGoal)
                             self.shouldNavigateToGoalDetails = true
                         }, label: {
                             HStack{
@@ -102,6 +102,9 @@ struct ProfilePage: View {
         .background(Colors.lightOrangeBackground)
         .onTapGesture {
             UIApplication.shared.endEditing()
+        }
+        .onAppear{
+            print ("happen")
         }
     }
 }

@@ -9,12 +9,13 @@ import SwiftUI
                     
 struct ContentView: View {
     @StateObject var userSession = UserSession()
-
+r
     var body: some View {
-        NavigationView{
+        NavigationStack{
             Welcome(shouldTryToSignIn: true)
                 .navigationBarTitle("")
                 .navigationBarHidden(true)
+
         }
         .environmentObject(userSession)
     }

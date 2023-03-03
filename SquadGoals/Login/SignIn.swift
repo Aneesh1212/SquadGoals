@@ -40,12 +40,15 @@ struct SignIn: View {
             .padding(.bottom, Styling.mediumUnit)
             
             NavigationLink(destination: Main(showReflection : userSession.showReflection), isActive: $userSession.navigateToHome) { EmptyView() }
+            NavigationLink(destination: Main(showReflection: userSession.showReflection), label: { EmptyView() })
             
             OnboardingActionButton(action: {
                 let parsedPhoneNumber = UtilFunctions.parsePhoneNumber(phoneNumber: self.phoneNumber)
                 if (UtilFunctions.isValidNameAndPhone(name: "Ansh", phoneNumber: parsedPhoneNumber)) {
+                    print("here")
                     userSession.signUserIn(phoneNumber: parsedPhoneNumber)
                 } else {
+                    print("here2")
                     self.showInvalidNameOrPhone = true
                 }
             }, text: "SIGN IN")

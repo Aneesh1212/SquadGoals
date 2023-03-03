@@ -109,9 +109,7 @@ class UserSession : ObservableObject {
     
     private func signInNavigation() {
         let defaults = UserDefaults.standard
-        let lastSetSunday = ((defaults.object(forKey: "lastSetSunday") as? Date) ?? Date(timeIntervalSince1970: 0))
-        let fakeLastSetMonday = Calendar.current.date(byAdding: .day, value: 1, to: lastSetSunday)
-        let lastSetMonday = (defaults.object(forKey: "lastSetMonday") as? Date) ?? (fakeLastSetMonday ?? Date(timeIntervalSince1970: 0))
+        let lastSetMonday = (defaults.object(forKey: "lastSetMonday") as? Date) ?? Date(timeIntervalSince1970: 0)
         let daysSinceMonday = (Calendar.current.dateComponents([.day], from: lastSetMonday, to: Date())).day!
         if (daysSinceMonday >= 7) {
         // if (true) {
@@ -202,7 +200,6 @@ class UserSession : ObservableObject {
     
     
     func getGoals() {
-        let lastSetSunday = ((UserDefaults.standard.object(forKey: "lastSetSunday") as? Date) ?? Date(timeIntervalSince1970: 0))
         let lastSetMonday = (UserDefaults.standard.object(forKey: "lastSetMonday") as? Date) ?? Date(timeIntervalSince1970: 0)
         self.completedTargets = 0
         self.totalTargets = 0

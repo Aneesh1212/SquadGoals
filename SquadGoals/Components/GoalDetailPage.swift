@@ -135,6 +135,10 @@ struct GoalDetailPage: View {
         .onTapGesture {
             UIApplication.shared.endEditing()
         }
+        .onAppear {
+            print("HERE")
+            print(goal)
+        }
     }
 }
 
