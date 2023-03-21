@@ -10,7 +10,6 @@ import SwiftUI
 
 
 struct Main: View {
-    @EnvironmentObject var user : User
     @EnvironmentObject var userSession : UserSession
     @State var showResultsModal : Bool
     @State var selection = 2

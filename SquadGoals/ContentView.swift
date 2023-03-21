@@ -9,7 +9,7 @@ import SwiftUI
                     
 struct ContentView: View {
     @StateObject var userSession = UserSession()
-r
+
     var body: some View {
         NavigationStack{
             Welcome(shouldTryToSignIn: true)
