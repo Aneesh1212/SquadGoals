@@ -40,14 +40,14 @@ struct Homepage : View {
     var body: some View {
         VStack{
             VStack(alignment: .leading) {
-                Button(action: {
-                    self.shouldNavigateToEditGoals = true
-                }, label: {
-                    Text("Edit tasks")
-                        .font(.system(size:16, weight: .heavy))
-                        .foregroundColor(Colors.lightOrangeBackground)
-                        .padding(.leading, 250)
-                })
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        self.shouldNavigateToEditGoals = true
+                    }, label: {
+                        PillActionButton(text: "Edit tasks", icon: "pencil", foregroundColor: .white, backgroundColor: Colors.opaqueWhite)
+                    })
+                }
                 
                 Text("WEEK \(viewModel.week + 1)")
                     .multilineTextAlignment(.leading)

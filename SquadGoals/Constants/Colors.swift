@@ -16,6 +16,8 @@ struct Colors{
     static let lightOrangeBackground = Color(UIColor(#colorLiteral(red: 1, green: 0.9568627451, blue: 0.9411764706, alpha: 1)))
     static let darkOrangeForeground = Color(UIColor(#colorLiteral(red: 0.9450980392, green: 0.4980392157, blue: 0.3450980392, alpha: 1)))
     static let blueText = Color(UIColor(#colorLiteral(red: 0.1529411765, green: 0.3490196078, blue: 0.5568627451, alpha: 1)))
+    
+    static let opaqueWhite = Color(white: 1.0, opacity: 0.2)
 }
 
 
