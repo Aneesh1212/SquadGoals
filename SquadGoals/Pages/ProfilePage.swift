@@ -26,12 +26,10 @@ struct ProfilePage: View {
                     // SIGN OUT FUNCTIONALITY
                     self.shouldNavigateToWelcome = true
                 }, label: {
-                    Text("Sign out")
-                        .font(.system(size:14))
-                        .foregroundColor(Colors.darkOrangeForeground)
-                        .padding(.trailing, Styling.mediumUnit)
+                    PillActionButton(text: "Sign out", foregroundColor: Colors.darkOrangeForeground, backgroundColor: Colors.opaqueOrangeBackground)
                 })
             }
+            .padding(.trailing, Styling.mediumUnit)
             
             Text(viewModel.user.name)
                 .multilineTextAlignment(.leading)
