@@ -20,6 +20,8 @@
 		552F69E92886548800AAF287 /* ResultsAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F69E82886548800AAF287 /* ResultsAlert.swift */; };
 		552F69EB288674D300AAF287 /* ReflectionAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F69EA288674D300AAF287 /* ReflectionAlert.swift */; };
 		5544594B295E463500F21D9F /* SwiftUITooltip in Frameworks */ = {isa = PBXBuildFile; productRef = 5544594A295E463500F21D9F /* SwiftUITooltip */; };
+		557568B829CC131A005C9A76 /* BlueActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557568B729CC131A005C9A76 /* BlueActionButton.swift */; };
+		557568BA29CC1335005C9A76 /* OrangeActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557568B929CC1335005C9A76 /* OrangeActionButton.swift */; };
 		5587C840278780CF001A9999 /* SquadGoalsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C83F278780CF001A9999 /* SquadGoalsApp.swift */; };
 		5587C844278780D0001A9999 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5587C843278780D0001A9999 /* Assets.xcassets */; };
 		5587C847278780D0001A9999 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5587C846278780D0001A9999 /* Preview Assets.xcassets */; };
@@ -64,7 +66,6 @@
 		55C81EDC278B9F8E00F341D5 /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C81EDB278B9F8E00F341D5 /* BottomSheet.swift */; };
 		55C81EDE278BC4DF00F341D5 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C81EDD278BC4DF00F341D5 /* NotificationViewModel.swift */; };
 		55C81EE1278C060800F341D5 /* Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C81EE0278C060800F341D5 /* Title.swift */; };
-		55C81EE7278C084300F341D5 /* WhiteActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C81EE6278C084300F341D5 /* WhiteActionButton.swift */; };
 		55D696ED296E304200E9EA7D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D696EC296E304200E9EA7D /* ContentView.swift */; };
 		55D77E0829CB495900BAFA1D /* PillActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D77E0729CB495900BAFA1D /* PillActionButton.swift */; };
 		55D77E0A29CB4E4000BAFA1D /* TrailingViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D77E0929CB4E4000BAFA1D /* TrailingViewHelper.swift */; };
@@ -109,6 +110,8 @@
 		552F626528FD0953002F0A5F /* Subtitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subtitle.swift; sourceTree = "<group>"; };
 		552F69E82886548800AAF287 /* ResultsAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsAlert.swift; sourceTree = "<group>"; };
 		552F69EA288674D300AAF287 /* ReflectionAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectionAlert.swift; sourceTree = "<group>"; };
+		557568B729CC131A005C9A76 /* BlueActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueActionButton.swift; sourceTree = "<group>"; };
+		557568B929CC1335005C9A76 /* OrangeActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrangeActionButton.swift; sourceTree = "<group>"; };
 		5587C83C278780CF001A9999 /* Squad Goals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Squad Goals.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5587C83F278780CF001A9999 /* SquadGoalsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadGoalsApp.swift; sourceTree = "<group>"; };
 		5587C843278780D0001A9999 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -158,7 +161,6 @@
 		55C81EDB278B9F8E00F341D5 /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
 		55C81EDD278BC4DF00F341D5 /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
 		55C81EE0278C060800F341D5 /* Title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Title.swift; sourceTree = "<group>"; };
-		55C81EE6278C084300F341D5 /* WhiteActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteActionButton.swift; sourceTree = "<group>"; };
 		55D696EC296E304200E9EA7D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		55D77E0729CB495900BAFA1D /* PillActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillActionButton.swift; sourceTree = "<group>"; };
 		55D77E0929CB4E4000BAFA1D /* TrailingViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailingViewHelper.swift; sourceTree = "<group>"; };
@@ -377,7 +379,6 @@
 			children = (
 				55C81EE0278C060800F341D5 /* Title.swift */,
 				552F626528FD0953002F0A5F /* Subtitle.swift */,
-				55C81EE6278C084300F341D5 /* WhiteActionButton.swift */,
 				552F625928FCEFFE002F0A5F /* OnboardingTitle.swift */,
 				552F625B28FCF69E002F0A5F /* OnboardingTextEntry.swift */,
 				552F626328FD0812002F0A5F /* OnboardingTextEntryWithTitle.swift */,
@@ -386,6 +387,8 @@
 				55EA757B28FD120500ACB448 /* Filler.swift */,
 				55D77E0729CB495900BAFA1D /* PillActionButton.swift */,
 				55D77E0929CB4E4000BAFA1D /* TrailingViewHelper.swift */,
+				557568B729CC131A005C9A76 /* BlueActionButton.swift */,
+				557568B929CC1335005C9A76 /* OrangeActionButton.swift */,
 			);
 			path = UIElements;
 			sourceTree = "<group>";
@@ -692,10 +695,10 @@
 				55C0B0A428F680A1008BFA61 /* Tutorial3.swift in Sources */,
 				5587C89F27878855001A9999 /* Completion.swift in Sources */,
 				55C81EDE278BC4DF00F341D5 /* NotificationViewModel.swift in Sources */,
-				55C81EE7278C084300F341D5 /* WhiteActionButton.swift in Sources */,
 				5587C8B227878855001A9999 /* Goal.swift in Sources */,
 				55C1811E2803D81C002F956B /* CongratsModal.swift in Sources */,
 				5587C8A027878855001A9999 /* ProgressButton.swift in Sources */,
+				557568B829CC131A005C9A76 /* BlueActionButton.swift in Sources */,
 				5587C8A927878855001A9999 /* CreateGoal.swift in Sources */,
 				550FD65B278F8DCB005BE35D /* BragTable.swift in Sources */,
 				550FD659278F8C18005BE35D /* Brag.swift in Sources */,
@@ -704,6 +707,7 @@
 				55F7CAE42919AB7700448F10 /* MondayReflection.swift in Sources */,
 				55C81EDC278B9F8E00F341D5 /* BottomSheet.swift in Sources */,
 				5587C8A327878855001A9999 /* AuthViewModel.swift in Sources */,
+				557568BA29CC1335005C9A76 /* OrangeActionButton.swift in Sources */,
 				55F7CAE62919ABAE00448F10 /* MondayPlanning.swift in Sources */,
 				5587C89D27878855001A9999 /* ProgressBar.swift in Sources */,
 				552F626228FCFE39002F0A5F /* Spacing.swift in Sources */,

@@ -15,30 +15,35 @@ struct Welcome: View {
     @StateObject var viewModel = LoginViewModel()
 
     var body: some View {
-        VStack{
+        VStack(alignment: .center) {
+            Spacer()
+            
             Image(uiImage: UIImage(named: "boat")!)
-                .padding(.top, 50)
-            
-            Title(text: "SQUAD GOALS")
-            
-            Text("A rising tide lifts all boats")
-                .font(.system(size: 16))
-                .foregroundColor(.white)
-                .padding(.bottom, 35)
-                        
-            Button(action: {
-                navigateToCreateAccount = true
-            }) {
-                WhiteActionButton(text: "CREATE ACCOUNT")
-            }
             
             Spacer()
-                .frame(height: 25)
             
+            Title(text: "Squad Goals", size: 40)
+            
+            Subtitle(text: "A rising tide lifts all boats")
+                .padding(.bottom, Styling.mediumUnit)
+                     
+            HStack {
+                Spacer()
+            }
+                        
             Button(action: {
                 navigateToSignIn = true
             }) {
-                WhiteActionButton(text: "SIGN IN")
+                BlueActionButton(text: "Log In")
+            }
+            
+            Spacer()
+                .frame(height: 20)
+            
+            Button(action: {
+                navigateToCreateAccount = true
+            }) {
+                OrangeActionButton(text: "Create Account")
             }
             
             
@@ -48,14 +53,10 @@ struct Welcome: View {
                 NavigationLink(destination: Main(user: viewModel.currentUser, showReflection: viewModel.showReflection), isActive: $viewModel.navigateToHome) { EmptyView() }
             }
             
-            HStack {
-                Spacer()
-            }
-            
-            Spacer()
-            
+                        
         }
-        .background(Colors.darkOrangeForeground)
+        .padding(.horizontal, Styling.mediumUnit)
+        .background(Colors.background)
         .navigationBarTitle("", displayMode: .inline)
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)

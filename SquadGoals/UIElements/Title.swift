@@ -12,12 +12,13 @@ struct Title : View {
     
     var text : String
     var lineLimit : Int?
+    var size : CGFloat?
     
     var body : some View {
         VStack{
             Text(text)
-                .foregroundColor(.white)
-                .font(.system(size: 32, weight: .heavy))
+                .foregroundColor(.black)
+                .font(.system(size: size ?? 24, weight: .semibold))
                 .minimumScaleFactor(0.5)
                 .lineLimit(lineLimit ?? 1)
                 .multilineTextAlignment(.center)

@@ -15,10 +15,10 @@ struct Subtitle : View {
     var body : some View {
         VStack{
             Text(text)
-                .foregroundColor(.white)
+                .foregroundColor(.black)
                 .font(.system(size: 16))
                 .lineLimit(nil)
-                .multilineTextAlignment(.center)
+                .multilineTextAlignment(.leading)
                 .fixedSize(horizontal: false, vertical: true)
         }
     }
