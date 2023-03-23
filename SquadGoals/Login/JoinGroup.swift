@@ -20,50 +20,54 @@ struct JoinGroup: View {
     
     
     var body: some View {
-        VStack{
-            OnboardingTitle(text: "WELCOME \(viewModel.currentUser.name.uppercased())!")
-                .padding(.top, Styling.onboardingTitlePadding)
-                .padding(.bottom, Styling.largeUnit)
+        VStack(alignment: .leading){
+            Title(text: "Welcome \(viewModel.currentUser.name)!")
                 .lineLimit(nil)
+            Subtitle(text: "Let's join a squad")
             
-            OnboardingTextEntry(placeholder: "Enter an existing squad ID", value: $groupID)
-                .padding(.bottom, Styling.smallUnit)
+            Spacing(height: Styling.largeUnit)
             
-            OnboardingActionButton(action: {
-                if (viewModel.isValidGroupId(groupId: self.groupID)) {
-                    viewModel.joinGroup(phoneNumber: viewModel.currentUser.phoneNumber, groupId: self.groupID)
-                    self.shouldNavigate = true
-                } else {
-                    self.showInvalidGroupId = true
+            VStack(alignment: .leading){
+                Subtitle(text: "Squad ID")
+                OnboardingTextEntry(placeholder: "Enter an existing squad ID", value: $groupID)
+                Button(action: {
+                    if (viewModel.isValidGroupId(groupId: self.groupID)) {
+                        // viewModel.joinGroup(phoneNumber: viewModel.currentUser.phoneNumber, groupId: self.groupID)
+                        self.shouldNavigate = true
+                    } else {
+                        self.showInvalidGroupId = true
+                    }
+                }) {
+                    BlueActionButton(text: "Join Squad")
                 }
-            }, text: "JOIN GROUP")
-            .padding(.bottom, Styling.largeUnit)
-            
-            NavigationLink(destination: BaseTutorial(user: viewModel.currentUser), isActive: $viewModel.navigateToCreateGoal) { EmptyView() }
-            
-            NavigationLink(destination: BaseTutorial(user: viewModel.currentUser), isActive: $viewModel.navigateToCreateGoal) { EmptyView() }
-            
-            VStack(alignment: .leading, spacing: 5) {
-                Text("Don't have one?")
-                    .foregroundColor(.white)
-                    .fixedSize(horizontal: false, vertical: true)
-                OnboardingTextEntry(placeholder: "Name your new squad", value: $groupName)
-                    .padding(.bottom, Styling.smallUnit)
             }
             
-            OnboardingActionButton(action: {
-                if (self.groupName == "") {
-                    self.showNoGroupName = true
+            Spacing(height: Styling.largeUnit)
+            
+            VStack(alignment: .leading){
+                Subtitle(text: "Don't have one?")
+                OnboardingTextEntry(placeholder: "Name your new squad", value: $groupName)
+                Button(action: {
+                    if (self.groupName == "") {
+                        self.showNoGroupName = true
+                    }
+                    let groupId = viewModel.createGroup(groupName: self.groupName)
+                    self.newGroupId = groupId
+                    // showNewGroupId = true
+                }) {
+                    BlueActionButton(text: "Create a New Squad")
                 }
-                let groupId = viewModel.createGroup(groupName: self.groupName)
-                self.newGroupId = groupId
-                // showNewGroupId = true
-            }, text: "CREATE A NEW SQUAD")
+            }
+            
+            NavigationLink(destination: BaseTutorial(user: viewModel.currentUser), isActive: $viewModel.navigateToCreateGoal) { EmptyView() }
+            
+            NavigationLink(destination: BaseTutorial(user: viewModel.currentUser), isActive: $viewModel.navigateToCreateGoal) { EmptyView() }
+            
             
             Filler()
         }
         .padding(.horizontal, 30)
-        .background(Colors.darkOrangeForeground)
+        .background(Colors.background)
         .alert("Please enter a 6 digit group ID", isPresented: $showInvalidGroupId) {
             Button("OK", role: .cancel) { }
         }

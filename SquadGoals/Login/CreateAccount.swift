@@ -10,9 +10,7 @@ import Foundation
 struct CreateAccount: View {
     
     @StateObject var viewModel = LoginViewModel()
-    
-    @State private var shouldNavigate = false
-    
+        
     @State private var name: String = ""
     @State private var phoneNumber: String = ""
     
@@ -24,7 +22,7 @@ struct CreateAccount: View {
                 Title(text: "Create New Account")
                 Subtitle(text: "Please enter your information below to create a new account for using the app.")
                 
-                Spacing(height: Styling.mediumUnit)
+                Spacing(height: Styling.largeUnit)
                 
                 Subtitle(text: "Name")
                 OnboardingTextEntry(placeholder: "Enter here", value: $name)
@@ -39,13 +37,14 @@ struct CreateAccount: View {
             Filler()
             
             Button(action: {
-                let parsedPhoneNumber = viewModel.parsePhoneNumber(phoneNumber: self.phoneNumber)
+                /*let parsedPhoneNumber = viewModel.parsePhoneNumber(phoneNumber: self.phoneNumber)
                 if (viewModel.isValidNameAndPhone(name: self.name, phoneNumber: parsedPhoneNumber)) {
                     viewModel.createUser(userName: self.name, phoneNumber: parsedPhoneNumber)
                     shouldNavigate = true
                 } else {
                     self.showInvalidNameOrPhone = true
-                }
+                }*/
+                self.viewModel.navigateToJoinGroup = true
             }) {
                 BlueActionButton(text: "Create Account")
             }

@@ -46,14 +46,11 @@ struct Welcome: View {
                 OrangeActionButton(text: "Create Account")
             }
             
-            
             VStack {
                 NavigationLink(destination: CreateAccount(), isActive: $navigateToCreateAccount) { EmptyView() }
                 NavigationLink(destination: SignIn(), isActive: $navigateToSignIn) { EmptyView() }
                 NavigationLink(destination: Main(user: viewModel.currentUser, showReflection: viewModel.showReflection), isActive: $viewModel.navigateToHome) { EmptyView() }
             }
-            
-                        
         }
         .padding(.horizontal, Styling.mediumUnit)
         .background(Colors.background)
@@ -62,7 +59,7 @@ struct Welcome: View {
         .navigationBarHidden(true)
         .onAppear {
             if (shouldTryToSignIn) {
-                viewModel.tryAutoSignIn()
+                // viewModel.tryAutoSignIn()
             }
         }
     }
