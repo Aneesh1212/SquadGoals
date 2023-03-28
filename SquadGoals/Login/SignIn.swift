@@ -26,16 +26,7 @@ struct SignIn: View {
             
             Filler()
             
-            Button(action: {
-                let parsedPhoneNumber = viewModel.parsePhoneNumber(phoneNumber: self.phoneNumber)
-                if (viewModel.isValidNameAndPhone(name: "Ansh", phoneNumber: parsedPhoneNumber)) {
-                    viewModel.signUserIn(phoneNumber: parsedPhoneNumber)
-                } else {
-                    self.showInvalidNameOrPhone = true
-                }
-            }) {
-                BlueActionButton(text: "Log In")
-            }
+            BlueActionButton(text: "Log In", action: signIn)
             
             NavigationLink(destination: Main(user: viewModel.currentUser, showReflection : viewModel.showReflection), isActive: $viewModel.navigateToHome) { EmptyView() }
         }
@@ -49,6 +40,15 @@ struct SignIn: View {
         }
         .onTapGesture {
             UIApplication.shared.endEditing()
+        }
+    }
+    
+    func signIn() {
+        let parsedPhoneNumber = viewModel.parsePhoneNumber(phoneNumber: self.phoneNumber)
+        if (viewModel.isValidNameAndPhone(name: "Ansh", phoneNumber: parsedPhoneNumber)) {
+            viewModel.signUserIn(phoneNumber: parsedPhoneNumber)
+        } else {
+            self.showInvalidNameOrPhone = true
         }
     }
 }

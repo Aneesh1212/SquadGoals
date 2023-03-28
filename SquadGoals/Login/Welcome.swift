@@ -31,20 +31,12 @@ struct Welcome: View {
                 Spacer()
             }
                         
-            Button(action: {
-                navigateToSignIn = true
-            }) {
-                BlueActionButton(text: "Log In")
-            }
+            BlueActionButton(text: "Log In", action: signIn)
             
             Spacer()
                 .frame(height: 20)
             
-            Button(action: {
-                navigateToCreateAccount = true
-            }) {
-                OrangeActionButton(text: "Create Account")
-            }
+            OrangeActionButton(text: "Create Account", action: createAccount)
             
             VStack {
                 NavigationLink(destination: CreateAccount(), isActive: $navigateToCreateAccount) { EmptyView() }
@@ -62,5 +54,13 @@ struct Welcome: View {
                 viewModel.tryAutoSignIn()
             }
         }
+    }
+    
+    func signIn(){
+        navigateToSignIn = true
+    }
+    
+    func createAccount() {
+        navigateToCreateAccount = true
     }
 }

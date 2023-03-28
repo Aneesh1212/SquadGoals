@@ -33,21 +33,9 @@ struct CreateAccount: View {
                 OnboardingTextEntry(placeholder: "Enter here", value: $phoneNumber)
             }
             
-            
             Filler()
             
-            Button(action: {
-                /*let parsedPhoneNumber = viewModel.parsePhoneNumber(phoneNumber: self.phoneNumber)
-                if (viewModel.isValidNameAndPhone(name: self.name, phoneNumber: parsedPhoneNumber)) {
-                    viewModel.createUser(userName: self.name, phoneNumber: parsedPhoneNumber)
-                    shouldNavigate = true
-                } else {
-                    self.showInvalidNameOrPhone = true
-                }*/
-                self.viewModel.navigateToJoinGroup = true
-            }) {
-                BlueActionButton(text: "Create Account")
-            }
+            BlueActionButton(text: "Create Account", action: createAccount)
             
             NavigationLink(destination: JoinGroup(viewModel: self.viewModel), isActive: $viewModel.navigateToJoinGroup) { EmptyView() }
             
@@ -63,5 +51,16 @@ struct CreateAccount: View {
         .onTapGesture {
             UIApplication.shared.endEditing()
         }
+    }
+    
+    func createAccount() {
+        /*let parsedPhoneNumber = viewModel.parsePhoneNumber(phoneNumber: self.phoneNumber)
+        if (viewModel.isValidNameAndPhone(name: self.name, phoneNumber: parsedPhoneNumber)) {
+            viewModel.createUser(userName: self.name, phoneNumber: parsedPhoneNumber)
+            shouldNavigate = true
+        } else {
+            self.showInvalidNameOrPhone = true
+        }*/
+        self.viewModel.navigateToJoinGroup = true
     }
 }

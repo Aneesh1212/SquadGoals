@@ -22,6 +22,14 @@ struct BaseTutorial: View {
         "Track the progress of your squad, and their contribution to your team score. Send them a congrats or motivational push notification to keep them accountable."
     ]
     
+    func incrementStepper() -> Void {
+        if (count < 3) {
+            count += 1
+        } else {
+            navigateToCreateGoal = true
+        }
+    }
+    
     var body: some View {
         VStack (spacing: 4){
             HStack(alignment: .top) {
@@ -41,16 +49,8 @@ struct BaseTutorial: View {
             
             Filler()
             
-            Button(action: {
-                if (count < 3) {
-                    count += 1
-                } else {
-                    navigateToCreateGoal = true
-                }
-            }) {
-                BlueActionButton(text: count < 3 ? "Next" : "Got It")
-                    .padding(.bottom, 6)
-            }
+            BlueActionButton(text: count < 3 ? "Next" : "Got It", action: incrementStepper)
+                .padding(.bottom, 6)
             
             CarouselCounter(count: count + 1)
             

@@ -30,16 +30,7 @@ struct JoinGroup: View {
             VStack(alignment: .leading){
                 Subtitle(text: "Squad ID")
                 OnboardingTextEntry(placeholder: "Enter an existing squad ID", value: $groupID)
-                Button(action: {
-                    if (viewModel.isValidGroupId(groupId: self.groupID)) {
-                        // viewModel.joinGroup(phoneNumber: viewModel.currentUser.phoneNumber, groupId: self.groupID)
-                        self.shouldNavigate = true
-                    } else {
-                        self.showInvalidGroupId = true
-                    }
-                }) {
-                    BlueActionButton(text: "Join Squad")
-                }
+                BlueActionButton(text: "Join Squad", action: joinSquad)
             }
             
             Spacing(height: Styling.largeUnit)
@@ -47,16 +38,7 @@ struct JoinGroup: View {
             VStack(alignment: .leading){
                 Subtitle(text: "Don't have one?")
                 OnboardingTextEntry(placeholder: "Name your new squad", value: $groupName)
-                Button(action: {
-                    if (self.groupName == "") {
-                        self.showNoGroupName = true
-                    }
-                    let groupId = viewModel.createGroup(groupName: self.groupName)
-                    self.newGroupId = groupId
-                    // showNewGroupId = true
-                }) {
-                    BlueActionButton(text: "Create a New Squad")
-                }
+                BlueActionButton(text: "Create a New Squad", action: createSquad)
             }
             
             NavigationLink(destination: BaseTutorial(user: viewModel.currentUser), isActive: $shouldNavigate) { EmptyView() }
@@ -88,4 +70,21 @@ struct JoinGroup: View {
         }
     }
     
+    func joinSquad(){
+        if (viewModel.isValidGroupId(groupId: self.groupID)) {
+            // viewModel.joinGroup(phoneNumber: viewModel.currentUser.phoneNumber, groupId: self.groupID)
+            self.shouldNavigate = true
+        } else {
+            self.showInvalidGroupId = true
+        }
+    }
+    
+    func createSquad(){
+        if (self.groupName == "") {
+            self.showNoGroupName = true
+        }
+        let groupId = viewModel.createGroup(groupName: self.groupName)
+        self.newGroupId = groupId
+        // showNewGroupId = true
+    }
 }

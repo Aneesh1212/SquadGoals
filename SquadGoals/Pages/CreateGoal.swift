@@ -71,6 +71,10 @@ struct CreateGoal: View {
         .padding(.bottom, 15)
     }
     
+    func addGoal() -> Void {
+        viewModel.createGoal(phoneNumber: user.phoneNumber, goalTitle: self.goalTitle, goalReason: self.goalReason, goalCategory: self.goalCategory, goalPrivate: self.goalPrivate)
+        self.shouldNavigate = true
+    }
     
     var body: some View {
         VStack(){
@@ -96,12 +100,7 @@ struct CreateGoal: View {
             Filler()
             
             Subtitle(text: "In a later step, you will add Weekly Tasks")
-            Button(action: {
-                viewModel.createGoal(phoneNumber: user.phoneNumber, goalTitle: self.goalTitle, goalReason: self.goalReason, goalCategory: self.goalCategory, goalPrivate: self.goalPrivate)
-                self.shouldNavigate = true
-            }) {
-                BlueActionButton(text: "Add Goal")
-            }
+            BlueActionButton(text: "Add Goal", action: addGoal)
             
             VStack {
                 NavigationLink(destination: GoalAdded(user: self.user, goalTitle: self.goalTitle), isActive: $shouldNavigate) { EmptyView() }
