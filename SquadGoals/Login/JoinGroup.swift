@@ -59,9 +59,7 @@ struct JoinGroup: View {
                 }
             }
             
-            NavigationLink(destination: BaseTutorial(user: viewModel.currentUser), isActive: $viewModel.navigateToCreateGoal) { EmptyView() }
-            
-            NavigationLink(destination: BaseTutorial(user: viewModel.currentUser), isActive: $viewModel.navigateToCreateGoal) { EmptyView() }
+            NavigationLink(destination: BaseTutorial(user: viewModel.currentUser), isActive: $shouldNavigate) { EmptyView() }
             
             
             Filler()
