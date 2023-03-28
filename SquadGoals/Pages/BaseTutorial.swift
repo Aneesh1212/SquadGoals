@@ -33,7 +33,6 @@ struct BaseTutorial: View {
             }
             
             Subtitle(text: subtitles[count])
-                .padding(.bottom, 24)
             
             Spacer()
             

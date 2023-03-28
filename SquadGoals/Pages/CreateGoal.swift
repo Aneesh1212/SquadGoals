@@ -74,39 +74,42 @@ struct CreateGoal: View {
     
     var body: some View {
         VStack(){
-            OnboardingTitle(text: "LET'S CREATE GOALS!")
-                .padding(.top, Styling.mediumUnit)
-                .padding(.bottom, Styling.smallUnit)
-
-            Subtitle(text: "What are 1-3 goals that are important and realistic for you?")
-                .padding(.bottom, Styling.mediumUnit)
+            VStack(alignment: .leading) {
+                Title(text: "Let's Create Goals!")
+                Subtitle(text: "What are 1-3 goals that are important and realistic for you?")
+                
+                Spacing(height: Styling.mediumUnit)
+                
+                Subtitle(text: "Goal Title")
+                OnboardingTextEntry(placeholder: "Enter here", value: $goalTitle)
+                    .padding(.bottom, Styling.smallUnit)
+                
+                
+                Subtitle(text: "Why is this goal important to you?")
+                goalReasonView
+                    .padding(.bottom, Styling.smallUnit)
+                
+                Subtitle(text: "Goal Category")
+                OnboardingTextEntry(placeholder: "Enter here", value: $goalCategory)
+            }
             
-            OnboardingTextEntryWithTitle(title: "Goal Title", placeholder: "", value: $goalTitle)
-                .padding(.bottom, Styling.smallUnit)
-            
-            goalReasonView
-                .padding(.bottom, Styling.smallUnit)
-
-            OnboardingTextEntryWithTitle(title: "Goal Category", placeholder: "Fitness, Professional, Well Being", value: $goalCategory)
-                .padding(.bottom, Styling.mediumUnit)
+            Filler()
             
             Subtitle(text: "In a later step, you will add Weekly Tasks")
-                .padding(.bottom, Styling.smallUnit)
-
-            OnboardingActionButton(action: {
+            Button(action: {
                 viewModel.createGoal(phoneNumber: user.phoneNumber, goalTitle: self.goalTitle, goalReason: self.goalReason, goalCategory: self.goalCategory, goalPrivate: self.goalPrivate)
                 self.shouldNavigate = true
-            }, text: "ADD GOAL")
+            }) {
+                BlueActionButton(text: "Add Goal")
+            }
             
             VStack {
                 NavigationLink(destination: GoalAdded(user: self.user, goalTitle: self.goalTitle), isActive: $shouldNavigate) { EmptyView() }
                 NavigationLink(destination: MondayPlanning(user: self.user, viewModel: GoalViewModel(user:self.user), mode: Mode.initial), isActive: $shouldNavigateSingleGoal) { EmptyView() }
             }
-            
-            Filler()
         }
         .padding(.horizontal, 25)
-        .background(Colors.darkOrangeForeground)
+        .background(Colors.background)
         .onTapGesture {
             UIApplication.shared.endEditing()
         }
