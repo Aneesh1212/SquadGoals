@@ -23,7 +23,7 @@ struct Welcome: View {
             Spacer()
             
             Title(text: "Squad Goals", size: 40)
-            
+
             Subtitle(text: "A rising tide lifts all boats")
                 .padding(.bottom, Styling.mediumUnit)
                      
@@ -59,7 +59,7 @@ struct Welcome: View {
         .navigationBarHidden(true)
         .onAppear {
             if (shouldTryToSignIn) {
-                // viewModel.tryAutoSignIn()
+                viewModel.tryAutoSignIn()
             }
         }
     }

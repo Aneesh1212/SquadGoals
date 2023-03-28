@@ -22,6 +22,9 @@
 		5544594B295E463500F21D9F /* SwiftUITooltip in Frameworks */ = {isa = PBXBuildFile; productRef = 5544594A295E463500F21D9F /* SwiftUITooltip */; };
 		557568B829CC131A005C9A76 /* BlueActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557568B729CC131A005C9A76 /* BlueActionButton.swift */; };
 		557568BA29CC1335005C9A76 /* OrangeActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557568B929CC1335005C9A76 /* OrangeActionButton.swift */; };
+		55766C2329D2A5780060E6D7 /* OrangeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55766C2229D2A5780060E6D7 /* OrangeCard.swift */; };
+		55766C2529D2ABD40060E6D7 /* SubtitleV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55766C2429D2ABD40060E6D7 /* SubtitleV2.swift */; };
+		55766C2729D2AC270060E6D7 /* TitleV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55766C2629D2AC270060E6D7 /* TitleV2.swift */; };
 		5587C840278780CF001A9999 /* SquadGoalsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C83F278780CF001A9999 /* SquadGoalsApp.swift */; };
 		5587C844278780D0001A9999 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5587C843278780D0001A9999 /* Assets.xcassets */; };
 		5587C847278780D0001A9999 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5587C846278780D0001A9999 /* Preview Assets.xcassets */; };
@@ -112,6 +115,9 @@
 		552F69EA288674D300AAF287 /* ReflectionAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectionAlert.swift; sourceTree = "<group>"; };
 		557568B729CC131A005C9A76 /* BlueActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueActionButton.swift; sourceTree = "<group>"; };
 		557568B929CC1335005C9A76 /* OrangeActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrangeActionButton.swift; sourceTree = "<group>"; };
+		55766C2229D2A5780060E6D7 /* OrangeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrangeCard.swift; sourceTree = "<group>"; };
+		55766C2429D2ABD40060E6D7 /* SubtitleV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleV2.swift; sourceTree = "<group>"; };
+		55766C2629D2AC270060E6D7 /* TitleV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleV2.swift; sourceTree = "<group>"; };
 		5587C83C278780CF001A9999 /* Squad Goals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Squad Goals.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5587C83F278780CF001A9999 /* SquadGoalsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadGoalsApp.swift; sourceTree = "<group>"; };
 		5587C843278780D0001A9999 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -378,7 +384,9 @@
 			isa = PBXGroup;
 			children = (
 				55C81EE0278C060800F341D5 /* Title.swift */,
+				55766C2629D2AC270060E6D7 /* TitleV2.swift */,
 				552F626528FD0953002F0A5F /* Subtitle.swift */,
+				55766C2429D2ABD40060E6D7 /* SubtitleV2.swift */,
 				552F625928FCEFFE002F0A5F /* OnboardingTitle.swift */,
 				552F625B28FCF69E002F0A5F /* OnboardingTextEntry.swift */,
 				552F626328FD0812002F0A5F /* OnboardingTextEntryWithTitle.swift */,
@@ -389,6 +397,7 @@
 				55D77E0929CB4E4000BAFA1D /* TrailingViewHelper.swift */,
 				557568B729CC131A005C9A76 /* BlueActionButton.swift */,
 				557568B929CC1335005C9A76 /* OrangeActionButton.swift */,
+				55766C2229D2A5780060E6D7 /* OrangeCard.swift */,
 			);
 			path = UIElements;
 			sourceTree = "<group>";
@@ -660,6 +669,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55766C2529D2ABD40060E6D7 /* SubtitleV2.swift in Sources */,
 				552F626428FD0812002F0A5F /* OnboardingTextEntryWithTitle.swift in Sources */,
 				5587C8AB27878855001A9999 /* GoalAdded.swift in Sources */,
 				55D696ED296E304200E9EA7D /* ContentView.swift in Sources */,
@@ -699,6 +709,7 @@
 				55C1811E2803D81C002F956B /* CongratsModal.swift in Sources */,
 				5587C8A027878855001A9999 /* ProgressButton.swift in Sources */,
 				557568B829CC131A005C9A76 /* BlueActionButton.swift in Sources */,
+				55766C2729D2AC270060E6D7 /* TitleV2.swift in Sources */,
 				5587C8A927878855001A9999 /* CreateGoal.swift in Sources */,
 				550FD65B278F8DCB005BE35D /* BragTable.swift in Sources */,
 				550FD659278F8C18005BE35D /* Brag.swift in Sources */,
@@ -717,6 +728,7 @@
 				55D77E0829CB495900BAFA1D /* PillActionButton.swift in Sources */,
 				552F625A28FCEFFE002F0A5F /* OnboardingTitle.swift in Sources */,
 				5587C8A427878855001A9999 /* TeamViewModel.swift in Sources */,
+				55766C2329D2A5780060E6D7 /* OrangeCard.swift in Sources */,
 				5587C8A627878855001A9999 /* CreateAccount.swift in Sources */,
 				55EB219F28EE812800F3E765 /* Tutorial1.swift in Sources */,
 			);
