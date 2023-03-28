@@ -60,9 +60,7 @@
 		5587C8B7278798C8001A9999 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5587C8B6278798C8001A9999 /* LaunchScreen.storyboard */; };
 		55BE93EA283B3F8B0004EDB9 /* EditGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BE93E9283B3F8B0004EDB9 /* EditGoal.swift */; };
 		55C0B09E28F67896008BFA61 /* CarouselCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0B09D28F67896008BFA61 /* CarouselCounter.swift */; };
-		55C0B0A028F67E82008BFA61 /* Tutorial2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0B09F28F67E82008BFA61 /* Tutorial2.swift */; };
 		55C0B0A228F67FAC008BFA61 /* BaseTutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0B0A128F67FAC008BFA61 /* BaseTutorial.swift */; };
-		55C0B0A428F680A1008BFA61 /* Tutorial3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0B0A328F680A1008BFA61 /* Tutorial3.swift */; };
 		55C1811C2803CB6B002F956B /* EncouragementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1811B2803CB6B002F956B /* EncouragementModel.swift */; };
 		55C1811E2803D81C002F956B /* CongratsModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1811D2803D81C002F956B /* CongratsModal.swift */; };
 		55C1D908279384E000B9F4E4 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1D907279384E000B9F4E4 /* Banner.swift */; };
@@ -75,7 +73,6 @@
 		55D7CEFC283C9AED0064CE4D /* TestTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D7CEFB283C9AED0064CE4D /* TestTable.swift */; };
 		55E3174B295A26B400311024 /* ExampleTargetsModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E3174A295A26B400311024 /* ExampleTargetsModal.swift */; };
 		55EA757C28FD120500ACB448 /* Filler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EA757B28FD120500ACB448 /* Filler.swift */; };
-		55EB219F28EE812800F3E765 /* Tutorial1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EB219E28EE812800F3E765 /* Tutorial1.swift */; };
 		55F7CAE42919AB7700448F10 /* MondayReflection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F7CAE32919AB7700448F10 /* MondayReflection.swift */; };
 		55F7CAE62919ABAE00448F10 /* MondayPlanning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F7CAE52919ABAE00448F10 /* MondayPlanning.swift */; };
 		C691A93F2EC28C9E1D22E05A /* Pods_SquadGoals_SquadGoalsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5781A7B9BA2083BDC8B11F45 /* Pods_SquadGoals_SquadGoalsUITests.framework */; };
@@ -158,9 +155,7 @@
 		5587C8B6278798C8001A9999 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		55BE93E9283B3F8B0004EDB9 /* EditGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGoal.swift; sourceTree = "<group>"; };
 		55C0B09D28F67896008BFA61 /* CarouselCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCounter.swift; sourceTree = "<group>"; };
-		55C0B09F28F67E82008BFA61 /* Tutorial2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial2.swift; sourceTree = "<group>"; };
 		55C0B0A128F67FAC008BFA61 /* BaseTutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTutorial.swift; sourceTree = "<group>"; };
-		55C0B0A328F680A1008BFA61 /* Tutorial3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial3.swift; sourceTree = "<group>"; };
 		55C1811B2803CB6B002F956B /* EncouragementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncouragementModel.swift; sourceTree = "<group>"; };
 		55C1811D2803D81C002F956B /* CongratsModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratsModal.swift; sourceTree = "<group>"; };
 		55C1D907279384E000B9F4E4 /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
@@ -173,7 +168,6 @@
 		55D7CEFB283C9AED0064CE4D /* TestTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTable.swift; sourceTree = "<group>"; };
 		55E3174A295A26B400311024 /* ExampleTargetsModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleTargetsModal.swift; sourceTree = "<group>"; };
 		55EA757B28FD120500ACB448 /* Filler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filler.swift; sourceTree = "<group>"; };
-		55EB219E28EE812800F3E765 /* Tutorial1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial1.swift; sourceTree = "<group>"; };
 		55F7CAE32919AB7700448F10 /* MondayReflection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MondayReflection.swift; sourceTree = "<group>"; };
 		55F7CAE52919ABAE00448F10 /* MondayPlanning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MondayPlanning.swift; sourceTree = "<group>"; };
 		5781A7B9BA2083BDC8B11F45 /* Pods_SquadGoals_SquadGoalsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SquadGoals_SquadGoalsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -354,7 +348,7 @@
 		5587C88A27878853001A9999 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
-				55EB219D28EE811C00F3E765 /* Tutorial */,
+				55C0B0A128F67FAC008BFA61 /* BaseTutorial.swift */,
 				5587C88B27878853001A9999 /* CreateGoal.swift */,
 				55BE93E9283B3F8B0004EDB9 /* EditGoal.swift */,
 				5587C88C27878853001A9999 /* SquadPage.swift */,
@@ -400,17 +394,6 @@
 				55766C2229D2A5780060E6D7 /* OrangeCard.swift */,
 			);
 			path = UIElements;
-			sourceTree = "<group>";
-		};
-		55EB219D28EE811C00F3E765 /* Tutorial */ = {
-			isa = PBXGroup;
-			children = (
-				55EB219E28EE812800F3E765 /* Tutorial1.swift */,
-				55C0B09F28F67E82008BFA61 /* Tutorial2.swift */,
-				55C0B0A328F680A1008BFA61 /* Tutorial3.swift */,
-				55C0B0A128F67FAC008BFA61 /* BaseTutorial.swift */,
-			);
-			path = Tutorial;
 			sourceTree = "<group>";
 		};
 		F97693B9D0F796323018D6AA /* Frameworks */ = {
@@ -693,7 +676,6 @@
 				55D7CEFC283C9AED0064CE4D /* TestTable.swift in Sources */,
 				552F625C28FCF69E002F0A5F /* OnboardingTextEntry.swift in Sources */,
 				5587C89E27878855001A9999 /* GoalDetailPage.swift in Sources */,
-				55C0B0A028F67E82008BFA61 /* Tutorial2.swift in Sources */,
 				55C1811C2803CB6B002F956B /* EncouragementModel.swift in Sources */,
 				5587C89A27878855001A9999 /* HomepageGoalView.swift in Sources */,
 				5587C8A227878855001A9999 /* GoalViewModel.swift in Sources */,
@@ -702,7 +684,6 @@
 				5587C8B327878855001A9999 /* Target.swift in Sources */,
 				55D77E0A29CB4E4000BAFA1D /* TrailingViewHelper.swift in Sources */,
 				5587C89C27878855001A9999 /* Race.swift in Sources */,
-				55C0B0A428F680A1008BFA61 /* Tutorial3.swift in Sources */,
 				5587C89F27878855001A9999 /* Completion.swift in Sources */,
 				55C81EDE278BC4DF00F341D5 /* NotificationViewModel.swift in Sources */,
 				5587C8B227878855001A9999 /* Goal.swift in Sources */,
@@ -730,7 +711,6 @@
 				5587C8A427878855001A9999 /* TeamViewModel.swift in Sources */,
 				55766C2329D2A5780060E6D7 /* OrangeCard.swift in Sources */,
 				5587C8A627878855001A9999 /* CreateAccount.swift in Sources */,
-				55EB219F28EE812800F3E765 /* Tutorial1.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
