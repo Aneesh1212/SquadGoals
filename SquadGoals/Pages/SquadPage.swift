@@ -19,7 +19,7 @@ struct SquadPage: View {
     
     var body: some View {
         
-        let weekPercentage : Float = isReviewing ? 1.0 : Float(viewModel.getDayOfWeek()) / 7.0
+        let weekPercentage : Float = isReviewing ? 1.0 : Float(UtilFunctions.getDayOfWeek()) / 7.0
         let teamPercentage : Float = viewModel.calculateTeamTargetPercent()
         let progressString = isReviewing ? getFinishedProgressString(teamPercentage: teamPercentage) : getCurrentProgressString(teamPercentage: teamPercentage, weekPercentage: weekPercentage)
         

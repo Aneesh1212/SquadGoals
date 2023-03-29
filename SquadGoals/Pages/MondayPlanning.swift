@@ -47,7 +47,7 @@ struct MondayPlanning: View {
                 let targetTitle = titles[goalIndex][targetIndex]
                 let targetFrequencyString = frequencies[goalIndex][targetIndex]
                 let targetKey = keys[goalIndex][targetIndex]
-                let targetFrequency = viewModel.convertFrequencyToNum(frequencyWord: targetFrequencyString)
+                let targetFrequency = UtilFunctions.convertFrequencyToNum(frequencyWord: targetFrequencyString)
                 let targetCompletedNum = completedNums[goalIndex][targetIndex]
                 let newTarget = Target(title: targetTitle, frequency: max(targetFrequency - targetCompletedNum, 0), original: targetFrequency, key: targetKey)
                 if (targetTitle != "") {
@@ -81,7 +81,7 @@ struct MondayPlanning: View {
                         currentKeys.append(currentTarget.key)
                         currentCompletedNums.append(currentTarget.original - currentTarget.frequency)
                     }
-                    currentFrequencies.append(viewModel.convertFrequencyToString(frequency: currentTarget.original))
+                    currentFrequencies.append(UtilFunctions.convertFrequencyToString(frequency: currentTarget.original))
                 }
             }
             self.titles.append(currentTitles)

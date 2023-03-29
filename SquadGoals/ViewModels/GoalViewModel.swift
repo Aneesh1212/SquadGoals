@@ -214,8 +214,26 @@ class GoalViewModel : ObservableObject {
         }
     }
     
+    func sendUpdateNotification(targetTitle: String) {
+        let new = Float(Float(self.completedTargets) / Float(self.totalTargets))
+        let old = Float((Float(self.completedTargets) - 1) / Float(self.totalTargets))
+        if (new == 1.0) {
+            UtilFunctions.sendNotification(users: self.user.teammates + [self.user], title: "Squad Goals: Team Update", message: "Chef's Kiss! \(self.user.name) has finished ALL their goals this week. Congratulate \(self.user.name) on their determination and grit!")
+        }
+        else if (old < 0.25 && new >= 0.25){
+            UtilFunctions.sendNotification(users: self.user.teammates + [self.user], title: "Squad Goals: Team Update", message: "\(self.user.name) is out of the gates with 25% of their goals done!")
+        }
+        else if (old < 0.5 && new >= 0.5){
+            UtilFunctions.sendNotification(users: self.user.teammates + [self.user], title: "Squad Goals: Team Update", message: "\(self.user.name) is halfway there! Let's send a note of encouragement to keep up the progress.")
+        }
+        else if (old < 0.75 && new >= 0.75){
+            UtilFunctions.sendNotification(users: self.user.teammates + [self.user], title: "Squad Goals: Team Update", message: "Omg \(self.user.name) has finished 75% of their week goals. A little bit more for that 100% and 🍷")
+        } else {
+            UtilFunctions.sendNotification(users: self.user.teammates + [self.user], title: "Squad Goals: Team Update", message: "\(String(self.user.name)) just checked off \(targetTitle)")
+        }
+    }
+    
     func calculateTeamStrings() {
-        print("CALCULATING TEAM STRINGS", self.user.teammates)
         self.teammateStrings = []
         for teammate in self.user.teammates {
             let percentage = calculateWeeklyTargetPercent(goals: teammate.goals)
@@ -235,60 +253,6 @@ class GoalViewModel : ObservableObject {
                 self.week = weekNumber + 1
             }
         })
-    }
-    
-    func sendNotification(users: Array<User>, title : String, message : String){
-        for user in users {
-            self.ref.child("fcmTokens").child(user.phoneNumber).child("token").getData(completion:  { error, fcmTokenSnapshot in
-                let token = fcmTokenSnapshot.value as? String ?? ""
-                self.postRequest(fcmToken: token, title: title, message: message)
-            })
-        }
-    }
-    
-    func postRequest(fcmToken : String, title: String, message : String) {
-        let url = NSURL(string: "https://fcm.googleapis.com/fcm/send")
-        let postParams = ["to": fcmToken, "notification": ["body": message, "title": title, "sound": "default"]] as [String : Any]
-        
-        let request = NSMutableURLRequest(url: url! as URL)
-        request.httpMethod = "POST"
-        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        request.setValue("key=AAAAu2rSefM:APA91bFa3h50iejCE77zayaKR_mMhHJJRgcBjx28VMX0XI23OxlARJFbiDZdmapp55UfLjQBP4lio8_QN9E1aciDZTpDhBqfc8vKlvTQEXVMobZ-U4MlypXLSVwOAsLyUIhZRywz6CYU", forHTTPHeaderField: "Authorization")
-        
-        do
-        {
-            request.httpBody = try JSONSerialization.data(withJSONObject: postParams, options: .prettyPrinted)
-            print("My paramaters: \(postParams)")
-        }
-        catch
-        {
-            print("Caught an error: \(error)")
-        }
-        
-        let task = URLSession.shared.dataTask(with: request as URLRequest) { (data, response, error) in
-            
-            if let realResponse = response as? HTTPURLResponse
-            {
-                if realResponse.statusCode != 200
-                {
-                    print("Not a 200 response")
-                }
-            }
-            guard let data = data,
-                  let response = response as? HTTPURLResponse,
-                  error == nil else {                                              // check for fundamental networking error
-                print("error", error ?? "Unknown error")
-                return
-            }
-            
-            guard (200 ... 299) ~= response.statusCode else {                    // check for http errors
-                print("response = \(response)")
-                return
-            }
-            let responseString = String(data: data, encoding: .utf8)
-            print("responseString = \(responseString)")
-        }
-        task.resume()
     }
     
     func calculateWeeklyTargetPercent(goals : Array<Goal>) -> Float {
@@ -349,52 +313,6 @@ class GoalViewModel : ObservableObject {
     func deleteAllGoals(phoneNumber : String) {
         ref.child("goals/\(phoneNumber)/goals").removeValue()
         ref.child("targets").removeValue()
-    }
-    
-    func getDayOfWeek() -> Int {
-        return max(Calendar.current.component(.weekday, from: Date()) - 1, 0)
-    }
-    
-    func convertFrequencyToNum(frequencyWord : String) -> Int {
-        switch frequencyWord {
-        case "Once":
-            return 1
-        case "2x":
-            return 2
-        case "3x":
-            return 3
-        case "4x":
-            return 4
-        case "5x":
-            return 5
-        case "6x":
-            return 6
-        case "7x":
-            return 7
-        default:
-            return 1
-        }
-    }
-    
-    func convertFrequencyToString(frequency : Int) -> String {
-        switch frequency {
-        case 1:
-            return "Once"
-        case 2:
-            return "2x"
-        case 3:
-            return "3x"
-        case 4:
-            return "4x"
-        case 5:
-            return "5x"
-        case 6:
-            return "6x"
-        case 7:
-            return "7x"
-        default:
-            return "Once"
-        }
     }
     
     func createBrag(goalId : String, brag : Brag) {
