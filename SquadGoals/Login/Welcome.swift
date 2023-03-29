@@ -51,7 +51,7 @@ struct Welcome: View {
         .navigationBarHidden(true)
         .onAppear {
             if (shouldTryToSignIn) {
-                viewModel.tryAutoSignIn()
+                // viewModel.tryAutoSignIn()
             }
         }
     }
