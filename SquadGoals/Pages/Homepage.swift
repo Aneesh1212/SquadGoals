@@ -16,13 +16,14 @@ struct Homepage : View {
     @State var shouldNavigateToEditGoals : Bool = false
     
     var openTargets : some View {
-        VStack{
-            Text("\(String(viewModel.completedTargets)) / \(String(viewModel.totalTargets)) weekly tasks completed")
-                .multilineTextAlignment(.leading)
-                .font(.system(size: 18).italic())
-                .padding(.top, 10)
-                .padding(.bottom, 22)
-                .foregroundColor(Colors.blueText)
+        VStack {
+            BlueCard{
+                HStack(spacing: 0) {
+                    Label ("", systemImage: "doc.plaintext")
+                        .foregroundColor(.white)
+                    TitleV2(text: "\(String(viewModel.completedTargets)) / \(String(viewModel.totalTargets)) Weekly Tasks Completed", size: 16)
+                }
+            }
                 
             ScrollView(showsIndicators: false){
                 ForEach(viewModel.user.goals, id: \.self) { goal in
@@ -39,33 +40,20 @@ struct Homepage : View {
     
     var body: some View {
         VStack{
-            VStack(alignment: .leading) {
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        self.shouldNavigateToEditGoals = true
-                    }, label: {
-                        PillActionButton(text: "Edit tasks", icon: "pencil", foregroundColor: .white, backgroundColor: Colors.opaqueWhite)
+            OrangeCard {
+                HStack(alignment: .top) {
+                    VStack(alignment: .leading) {
+                        TitleV2(text: "Week \(viewModel.week + 1)")
+                        SubtitleV2(text: "X days remaining in cycle")
+                    }
+                    PillActionButton(text: "Edit tasks", icon: "pencil",foregroundColor: .white, backgroundColor: Colors.opaqueWhite, action: {
+                            self.shouldNavigateToEditGoals = true
                     })
                 }
                 
-                Text("WEEK \(viewModel.week + 1)")
-                    .multilineTextAlignment(.leading)
-                    .font(.system(size: 30, weight: .heavy))
-                    .foregroundColor(Colors.lightOrangeBackground)
-                
-                Text("LETS PUSH FORWARD")
-                    .multilineTextAlignment(.leading)
-                    .font(.system(size: 22))
-                    .foregroundColor(Colors.lightOrangeBackground)
-                    .help("TOOLTIP")
-                
                 Race(viewModel: self.viewModel)
                     .frame(alignment: .leading)
-                    .padding(.bottom, 18)
             }
-            .padding(.horizontal, 25)
-            .background(Colors.darkOrangeForeground)
             
             if (viewModel.completedTargets >= viewModel.totalTargets) {
                 Completion(viewModel: self.viewModel)
@@ -77,6 +65,7 @@ struct Homepage : View {
             
             Spacer()
         }
+        .padding(.horizontal, 25)
         .background(Colors.lightOrangeBackground)
         .navigationBarHidden(true)
     }
