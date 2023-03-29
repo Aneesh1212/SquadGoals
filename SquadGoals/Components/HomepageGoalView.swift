@@ -19,12 +19,9 @@ struct HomepageGoalView : View {
         WhiteCard {
             VStack(spacing: 0) {
                 HStack{
-                    Text(self.goal.title.uppercased())
-                        .multilineTextAlignment(.leading)
-                        .foregroundColor(Colors.blueText)
-                        .padding(.horizontal, 23)
-                        .font(.system(size: 16).bold())
+                    Subtitle(text: self.goal.title)
                     Spacer()
+                    Subtitle(text: "🔥12")
                 }
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.bottom, 2)

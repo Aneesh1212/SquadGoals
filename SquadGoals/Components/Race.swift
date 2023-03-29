@@ -52,7 +52,6 @@ struct Race : View {
                 
                 Text("Finished")
                     .multilineTextAlignment(.trailing)
-                    .padding(.trailing, 21)
                     .foregroundColor(Colors.lightOrangeBackground)
             }
         }

@@ -44,7 +44,7 @@ struct Homepage : View {
                 HStack(alignment: .top) {
                     VStack(alignment: .leading) {
                         TitleV2(text: "Week \(viewModel.week + 1)")
-                        SubtitleV2(text: "X days remaining in cycle")
+                        SubtitleV2(text: "\(UtilFunctions.getDaysLeftInCycle()) days remaining in cycle")
                     }
                     PillActionButton(text: "Edit tasks", icon: "pencil",foregroundColor: .white, backgroundColor: Colors.opaqueWhite, action: {
                             self.shouldNavigateToEditGoals = true
@@ -66,7 +66,7 @@ struct Homepage : View {
             Spacer()
         }
         .padding(.horizontal, 25)
-        .background(Colors.lightOrangeBackground)
+        .background(Colors.background)
         .navigationBarHidden(true)
     }
 }
