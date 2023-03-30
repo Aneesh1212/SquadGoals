@@ -116,29 +116,15 @@ struct MondayPlanning: View {
                 }
                 
                 if (mode == Mode.weekly) {
-                    Button(action: {
+                    GreenActionButton(text: "Load Past Targets", action: {
                         loadPastTargets(user: self.viewModel.user, justGoals: false, newGoals: true)
-                    }) {
-                        Text("Load Past Targets")
-                            .foregroundColor(Colors.lightOrangeBackground)
-                            .font(.system(size: 16))
-                            .frame(width: 150, height: 40, alignment: .center)
-                            .background(Colors.blueText)
-                            .cornerRadius(15)
-                    }
+                    })
                 }
                 
                 if (mode == Mode.initial) {
-                    Button(action: {
+                    GreenActionButton(text: "Show Example", action: {
                         showExample.toggle()
-                    }) {
-                        Text("Show Example")
-                            .foregroundColor(Colors.lightOrangeBackground)
-                            .font(.system(size: 16))
-                            .frame(width: 150, height: 40, alignment: .center)
-                            .background(Colors.blueText)
-                            .cornerRadius(15)
-                    }
+                    })
                 }
                 
                 ScrollView {
