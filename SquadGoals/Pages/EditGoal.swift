@@ -19,27 +19,6 @@ struct EditGoal: View {
     @State private var goalCategory: String = ""
     @State var navigateBack = false
     
-    var goalTitleView: some View {
-        VStack(alignment: .leading, spacing: 2){
-            Text("Goal Title")
-                .foregroundColor(Colors.lightOrangeBackground)
-            TextField(
-                "",
-                text: $goalTitle
-            )
-                .font(.system(size: 20))
-                .frame(height: 45, alignment: .center)
-                .fixedSize(horizontal: false, vertical: false)
-                .foregroundColor(.black)
-                .padding(.leading, 10)
-                .background(Color.white)
-                .cornerRadius(10)
-                .lineLimit(nil)
-            Spacer()
-                .frame(height: 15)
-        }
-    }
-    
     var goalReasonView: some View {
         VStack(alignment: .leading, spacing: 2) {
             Text("Why is this Goal Important to you?")
@@ -58,65 +37,35 @@ struct EditGoal: View {
                 .frame(height: 15)
         }
     }
-    
-    var goalCategoryView: some View {
-        VStack(alignment: .leading, spacing: 2) {
-            Text("Goal Category")
-                .foregroundColor(Colors.lightOrangeBackground)
-            TextField(
-                "Mental Health, Fitness, Professional",
-                text: $goalCategory
-            )
-                .font(.system(size: 20))
-                .frame(height: 45, alignment: .center)
-                .fixedSize(horizontal: false, vertical: true)
-                .padding(.leading, 10)
-                .background(Color.white)
-                .foregroundColor(.black)
-                .cornerRadius(10)
-            Spacer()
-                .frame(height: 12)
-        }
-        .padding(.bottom, 10)
-    }
 
     var body: some View {
         VStack(alignment: .leading){
             Title(text: "Edit Goal")
-                .padding(.bottom, 20)
-                .fixedSize(horizontal: false, vertical: true)
             
-            VStack{
-                goalTitleView
-                goalReasonView
-                goalCategoryView
-            }
+            Spacing(height: Styling.mediumUnit)
             
-            Spacer()
+            Subtitle(text: "Goal Title")
+            OnboardingTextEntry(placeholder: "Enter here", value: $goalTitle)
+                .padding(.bottom, Styling.smallUnit)
             
-            Button(action: {
+            
+            Subtitle(text: "Why is this goal important to you?")
+            goalReasonView
+                .padding(.bottom, Styling.smallUnit)
+            
+            Subtitle(text: "Goal Category")
+            OnboardingTextEntry(placeholder: "Enter here", value: $goalCategory)
+            
+            Filler()
+            
+            BlueActionButton(text: "Save Changes", action: {
                 viewModel.editGoal(key: goalKey, goalTitle: goalTitle, goalReason: goalReason, goalCategory: goalCategory)
                 self.goal.title = goalTitle
                 self.presentationMode.wrappedValue.dismiss()
-            }) {
-                Text("Save changes")
-                    .foregroundColor(.white)
-                    .frame(width: 200, height: 40, alignment: .center)
-                    .background(Colors.blueText)
-                    .cornerRadius(15)
-            }
-            
-            Text("You can't make edits after submitting. If need be, please contact admin")
-                .foregroundColor(.white)
-                .multilineTextAlignment(.center)
-                .font(.system(size: 14))
-            
-            HStack{
-                Spacer()
-            }
+            })
         }
         .padding(.horizontal, 25)
-        .background(Colors.darkOrangeForeground)
+        .background(Colors.background)
         .onTapGesture {
             UIApplication.shared.endEditing()
         }
