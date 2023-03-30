@@ -22,7 +22,7 @@ struct ProfilePage: View {
         VStack{
             HStack() {
                 Spacer()
-                PillActionButton(text: "Sign out", foregroundColor: Colors.darkOrangeForeground, backgroundColor: Colors.opaqueOrangeBackground, action: {
+                PillActionButton(text: "Sign Out", icon: "rectangle.portrait.and.arrow.right", foregroundColor: .black, backgroundColor: Colors.buttonSignOut, action: {
                     self.shouldNavigateToWelcome = true
                 })
             }
