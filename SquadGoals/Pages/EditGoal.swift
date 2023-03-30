@@ -17,7 +17,6 @@ struct EditGoal: View {
     @State private var goalKey : String = ""
     @State private var goalTitle: String = ""
     @State private var goalCategory: String = ""
-    @State private var goalPrivate: Bool = false
     @State var navigateBack = false
     
     var goalTitleView: some View {
@@ -80,31 +79,9 @@ struct EditGoal: View {
         }
         .padding(.bottom, 10)
     }
-    
-    var goalPrivateView : some View {
-        HStack(spacing: 0) {
-            VStack(alignment: .leading, spacing: 2) {
-                Text("Private?")
-                    .foregroundColor(Colors.lightOrangeBackground)
-                Text("Only your goal category will be visible to teammate")
-                    .foregroundColor(Colors.lightOrangeBackground)
-                    .font(.system(size: 10))
-                    .fixedSize()
-            }
-            Spacer()
-            if #available(iOS 15.0, *) {
-                Toggle("", isOn: $goalPrivate)
-                    .tint(Colors.lightOrangeBackground)
-            } else {
-                Toggle("", isOn: $goalPrivate)
-            }
-        }
-        .padding(.bottom, 15)
-    }
-    
-    
+
     var body: some View {
-        VStack(){
+        VStack(alignment: .leading){
             Title(text: "Edit Goal")
                 .padding(.bottom, 20)
                 .fixedSize(horizontal: false, vertical: true)
@@ -113,13 +90,12 @@ struct EditGoal: View {
                 goalTitleView
                 goalReasonView
                 goalCategoryView
-                goalPrivateView
             }
             
             Spacer()
             
             Button(action: {
-                viewModel.editGoal(key: goalKey, goalTitle: goalTitle, goalReason: goalReason, goalCategory: goalCategory, goalPrivate: goalPrivate)
+                viewModel.editGoal(key: goalKey, goalTitle: goalTitle, goalReason: goalReason, goalCategory: goalCategory)
                 self.goal.title = goalTitle
                 self.presentationMode.wrappedValue.dismiss()
             }) {
@@ -150,7 +126,6 @@ struct EditGoal: View {
             self.goalTitle = goal.title
             self.goalReason = goal.reason
             self.goalCategory = goal.category
-            self.goalPrivate = goal.isPrivate
         }
     }
     

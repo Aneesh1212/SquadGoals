@@ -18,7 +18,6 @@ struct CreateGoal: View {
     @State private var goalTitle: String = ""
     @State private var goalReason: String = "Don't skip this step! It's valuable to write this down, so you can look back when lacking motivation"
     @State private var goalCategory: String = ""
-    @State private var goalPrivate = false
         
     @State private var currTargetTitle : String = ""
     @State private var currTargetFrequency : String = ""
@@ -50,29 +49,8 @@ struct CreateGoal: View {
         }
     }
     
-    var goalPrivateView : some View {
-        HStack(spacing: 0) {
-            VStack(alignment: .leading) {
-                Text("Private?")
-                    .foregroundColor(Colors.lightOrangeBackground)
-                Text("Only your goal category will be visible to teammate")
-                    .foregroundColor(Colors.lightOrangeBackground)
-                    .font(.system(size: 10))
-                    .fixedSize()
-            }
-            Spacer()
-            if #available(iOS 15.0, *) {
-                Toggle("", isOn: $goalPrivate)
-                    .tint(Colors.lightOrangeBackground)
-            } else {
-                Toggle("", isOn: $goalPrivate)
-            }
-        }
-        .padding(.bottom, 15)
-    }
-    
     func addGoal() -> Void {
-        // viewModel.createGoal(phoneNumber: user.phoneNumber, goalTitle: self.goalTitle, goalReason: self.goalReason, goalCategory: self.goalCategory, goalPrivate: self.goalPrivate)
+        // viewModel.createGoal(phoneNumber: user.phoneNumber, goalTitle: self.goalTitle, goalReason: self.goalReason, goalCategory: self.goalCategory)
         self.shouldNavigate = true
     }
     

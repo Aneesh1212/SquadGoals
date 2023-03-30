@@ -28,16 +28,16 @@ class GoalViewModel : ObservableObject {
     }
     
     func createGoal(phoneNumber : String, goalTitle : String, goalReason : String,
-                    goalCategory: String, goalPrivate: Bool) {
+                    goalCategory: String) {
         print("Creating goal with number: \(phoneNumber) and title \(goalTitle)")
         let goalRef = self.ref.child("goals").child(phoneNumber).child("goals")
         let goalKey = goalRef.childByAutoId().key ?? ""
-        goalRef.child(goalKey).setValue(["title" : goalTitle, "reason": goalReason, "category" : goalCategory, "private": String(goalPrivate)])
+        goalRef.child(goalKey).setValue(["title" : goalTitle, "reason": goalReason, "category" : goalCategory])
     }
     
-    func editGoal(key: String, goalTitle: String, goalReason: String, goalCategory: String, goalPrivate: Bool) {
+    func editGoal(key: String, goalTitle: String, goalReason: String, goalCategory: String) {
         let goalRef = self.ref.child("goals").child(self.user.phoneNumber).child("goals").child(key)
-        goalRef.setValue(["title" : goalTitle, "reason": goalReason, "category" : goalCategory, "private": String(goalPrivate)])
+        goalRef.setValue(["title" : goalTitle, "reason": goalReason, "category" : goalCategory])
     }
     
     func updateGoalName(phone: String, goalKey: String, title: String) {
@@ -88,8 +88,7 @@ class GoalViewModel : ObservableObject {
                 let goalTitle = goalData["title"] ?? ""
                 let goalReason = goalData["reason"] ?? ""
                 let goalCategory = goalData["category"] ?? ""
-                let goalPrivate = Bool(goalData["private"] ?? "") ?? false
-                var newGoal = Goal(title: goalTitle, reason: goalReason, category: goalCategory, isPrivate: goalPrivate, currTargets: [], key : goalDataPair.key)
+                var newGoal = Goal(title: goalTitle, reason: goalReason, category: goalCategory, currTargets: [], key : goalDataPair.key)
                 
                 let goalKey = goalDataPair.key
                 
@@ -180,8 +179,7 @@ class GoalViewModel : ObservableObject {
                     let goalTitle = goalData["title"] ?? ""
                     let goalReason = goalData["reason"] ?? ""
                     let goalCategory = goalData["category"] ?? ""
-                    let goalPrivate = Bool(goalData["private"] ?? "") ?? false
-                    var newGoal = Goal(title: goalTitle, reason: goalReason, category: goalCategory, isPrivate: goalPrivate, currTargets: [], key : goalDataPair.key)
+                    var newGoal = Goal(title: goalTitle, reason: goalReason, category: goalCategory, currTargets: [], key : goalDataPair.key)
                     
                     let goalKey = goalDataPair.key
                     self.ref.child("targets/\(goalKey)").getData(completion:  { error, targetsSnapshot in

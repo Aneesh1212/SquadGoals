@@ -11,7 +11,7 @@ import SwiftUI
 struct ProfilePage: View {
     
     @StateObject var viewModel : GoalViewModel
-    @State var selectedGoal : Goal = Goal(title: "", reason: "", category: "", isPrivate: false, currTargets: [])
+    @State var selectedGoal : Goal = Goal(title: "", reason: "", category: "", currTargets: [])
     @State var shouldNavigateToGoalDetails = false
     @State var shouldNavigateToWelcome = false
     @State var bottomSheetOpen = false
