@@ -18,13 +18,7 @@ struct UserPage: View {
     
     var body: some View {
         VStack{
-            Text(user.name)
-                .multilineTextAlignment(.center)
-                .font(.system(size: 40, weight: .heavy))
-                .frame(width: .infinity, height: 80)
-                .frame(maxWidth: .infinity)
-                .foregroundColor(Colors.lightOrangeBackground)
-                .background(Colors.darkOrangeForeground)
+            Title(text:user.name, size: 48)
             
             let totalTargets = viewModel.calculateTotalTargets(goals: user.goals)
             let completedTargets = viewModel.calculateCompletedTargets(goals: user.goals)
@@ -47,6 +41,7 @@ struct UserPage: View {
                 Spacer()
             }
         }
+        .padding(.horizontal, 25)
         .background(Colors.lightOrangeBackground)
     }
 }

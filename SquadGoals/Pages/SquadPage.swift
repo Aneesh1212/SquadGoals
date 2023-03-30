@@ -22,116 +22,48 @@ struct SquadPage: View {
         let weekPercentage : Float = isReviewing ? 1.0 : Float(UtilFunctions.getDayOfWeek()) / 7.0
         let teamPercentage : Float = viewModel.calculateTeamTargetPercent()
         let progressString = isReviewing ? getFinishedProgressString(teamPercentage: teamPercentage) : getCurrentProgressString(teamPercentage: teamPercentage, weekPercentage: weekPercentage)
+        let teamList = [viewModel.user] + viewModel.user.teammates
+        let columns = [GridItem(.flexible()), GridItem(.flexible())]
+        
         
         VStack(spacing: 0) {
-            VStack{
-                VStack(alignment: .leading){
-                    Text("TEAM PROGRESS THIS WEEK")
-                        .padding(.top, 20)
-                        .multilineTextAlignment(.leading)
-                        .font(.system(size: 30, weight: .heavy))
-                        .foregroundColor(.white)
-                        .fixedSize(horizontal: false, vertical: true)
-                    
-                    Text(progressString)
-                        .multilineTextAlignment(.leading)
-                        .font(.system(size: 16))
-                        .foregroundColor(.white)
-                        .fixedSize(horizontal: false, vertical: true)
-                    
-                    HStack { Spacer() }
-                    
-                }
-                .padding(.horizontal, 25)
-                
-                VStack{
-                    HStack { Spacer() }
-                    
+            OrangeCard {
+                    TitleV2(text: "Team Progress this Week")
+                    SubtitleV2(text: progressString)
                     ProgressBar(progressValue: teamPercentage, weekPercentage: weekPercentage, text: "\(String(Int(teamPercentage*100.0))) %")
-                        .frame(width: 100.0, height: 100.0)
-                        .padding(.bottom, 10.0)
-                    
-                    Spacer()
-                        .frame(height: 15)
-                }
-                .padding(.bottom, 10)
-                
-                HStack(spacing: 0) {
-                    VStack {
-                        Text("Message Squad")
-                            .font(.system(size: 16).bold())
-                            .foregroundColor(Colors.lightOrangeBackground)
-                            .padding(.vertical, 8)
-                    }
-                    .frame(minWidth: 0, maxWidth: .infinity)
-                    .border(.white, width: 1.5)
-                    .onTapGesture {
+                        .frame(width: 75.0, height: 75.0)
+                    WhiteActionButton(text: "Message Team", action: {
                         self.showEncouragementModal = true
-                    }
-                    
-                    VStack {
-                        Text("Message Teammate")
-                            .font(.system(size: 16).bold())
-                            .foregroundColor(Colors.lightOrangeBackground)
-                            .padding(.vertical, 8)
-                    }
-                    .frame(minWidth: 0, maxWidth: .infinity)
-                    .border(.white, width: 1.5)
-                    .onTapGesture {
-                        self.showCongratsModal = true
-                    }
-                }
+                    })
             }
-            .background(Colors.darkOrangeForeground)
+            .padding(.bottom, Styling.smallUnit)
             
             NavigationLink(destination: UserPage(user: self.selectedUser), isActive: $shouldNavigateToProfile) { EmptyView() }
             
-            VStack{
-                ScrollView{
-                    let columns = [
-                        GridItem(.flexible()),
-                        GridItem(.flexible())]
-                    
-                    let teamList = [viewModel.user] + viewModel.user.teammates
-                    
-                    
-                    LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(teamList, id: \.self) { teammate in
-                            let teammatePercentage = viewModel.calculateWeeklyTargetPercent(goals: teammate.goals)
-                            let totalTargets = viewModel.calculateTotalTargets(goals: teammate.goals)
-                            let completedTargets = viewModel.calculateCompletedTargets(goals: teammate.goals)
-                            
-                            Button(action: {
+            ScrollView{
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(teamList, id: \.self) { teammate in
+                        let teammatePercentage = viewModel.calculateWeeklyTargetPercent(goals: teammate.goals)
+                        
+                        UserProgressCard(percentage: teammatePercentage, weekPercentage: weekPercentage, name: teammate.name, momentum: 12, action: {
                                 self.selectedUser = teammate
                                 self.shouldNavigateToProfile = true
-                            }, label: {
-                                VStack {
-                                    ProgressBar(progressValue: teammatePercentage, weekPercentage: weekPercentage, text: teammate.name)
-                                        .frame(width: 100.0, height: 100.0)
-                                        .padding(.bottom, 10.0)
-                                    Text("\(completedTargets)/\(totalTargets) targets")
-                                        .foregroundColor(Colors.blueText)
-                                    Text("See more >")
-                                        .foregroundColor(Colors.blueText)
-                                        .underline()
-                                }
-                            })
-                        }
+                        })
                     }
-                    .padding(.top, 5)
                 }
-                .padding(.top, 20)
             }
+            
             Spacer()
         }
+        .padding(.horizontal, 25)
+        .background(Colors.background)
         .sheet(isPresented: $showEncouragementModal, onDismiss: {}, content: {
             EncouragementModal(viewModel: self.viewModel, showModal: $showEncouragementModal)
-
+            
         })
         .sheet(isPresented: $showCongratsModal, onDismiss: {}, content: {
             CongratsModal(viewModel: self.viewModel, showModal: $showCongratsModal)
         })
-        .background(Colors.lightOrangeBackground)
     }
 }
 

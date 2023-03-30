@@ -33,7 +33,7 @@ struct ProfilePage: View {
                         
             ScrollView {
                 ForEach(viewModel.user.goals, id: \.self) { goal in
-                    WhiteActionButton(text: goal.title, action: {
+                    WhiteActionButtonWithArrow(text: goal.title, action: {
                         self.selectedGoal = goal
                         self.shouldNavigateToGoalDetails = true
                     })
