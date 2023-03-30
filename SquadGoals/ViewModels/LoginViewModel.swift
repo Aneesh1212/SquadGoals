@@ -142,8 +142,8 @@ class LoginViewModel : ObservableObject {
         let fakeLastSetMonday = Calendar.current.date(byAdding: .day, value: 1, to: lastSetSunday)
         let lastSetMonday = (defaults.object(forKey: "lastSetMonday") as? Date) ?? (fakeLastSetMonday ?? Date(timeIntervalSince1970: 0))
         let daysSinceMonday = (Calendar.current.dateComponents([.day], from: lastSetMonday, to: Date())).day!
-        if (daysSinceMonday >= 7) {
-        // if (true) {
+        // if (daysSinceMonday >= 7) {
+        if (true) {
             self.showReflection = true 
         } else {
             self.showReflection = false

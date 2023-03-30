@@ -92,7 +92,7 @@ struct GoalDetailPage: View {
             ScrollView(showsIndicators: false){
                 
                 BragTable(goalKey: self.goal.key)
-                
+        
                 OrangeCard{
                     SubtitleV2(text: "Accomplished Targets")
                 }

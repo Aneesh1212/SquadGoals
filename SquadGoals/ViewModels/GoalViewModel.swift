@@ -20,7 +20,7 @@ class GoalViewModel : ObservableObject {
     @Published var totalTargets : Int = 0
     @Published var currBrags : Array<Brag> = []
     @Published var titles : Array<String> = []
-    @Published var teammateStrings : Array<String> = []
+    @Published var teammatePercentages : [String: Float] = [:]
     @Published var week : Int = 4
     
     init (user : User) {
@@ -205,7 +205,7 @@ class GoalViewModel : ObservableObject {
                             }
                         }
                         self.user.teammates[teammateIndex].goals.append(newGoal)
-                        self.calculateTeamStrings()
+                        self.calculateTeamPercentages()
                     })
                 }
             })
@@ -231,12 +231,11 @@ class GoalViewModel : ObservableObject {
         }
     }
     
-    func calculateTeamStrings() {
-        self.teammateStrings = []
+    func calculateTeamPercentages() {
+        self.teammatePercentages = [:]
         for teammate in self.user.teammates {
             let percentage = calculateWeeklyTargetPercent(goals: teammate.goals)
-            self.teammateStrings.append("\(teammate.name) completed \(String(Int(percentage * 100)))%")
-            print("\(teammate.name) completed \(String(round(percentage)))%")
+            self.teammatePercentages[teammate.name] = percentage
         }
     }
     

@@ -17,58 +17,39 @@ struct ResultsAlert: View {
     @State private var maxWidth: CGFloat = .zero
     
     var body: some View {
-        VStack {
-            Spacer()
-            Text("TEAM SUMMARY").foregroundColor(Colors.blueText).fontWeight(.heavy)
-            Spacer()
-                .frame(height:20)
-            ForEach(self.viewModel.teammateStrings, id: \.self) { teammateString in
-                Text(teammateString).foregroundColor(Colors.blueText).padding(.bottom, 3)
-            }
-            Spacer()
-                .frame(height:20)
-            Button("Review this Week") {
-                showBanner = true
-                shown.toggle()
-            }
-            .fixedSize(horizontal: true, vertical: true)
-            .foregroundColor(Colors.blueText)
-            .padding(.horizontal)
-            .padding(.vertical, 3)
-            .cornerRadius(15)
-            .background(rectReader($maxWidth))
-            .frame(minWidth: maxWidth)
-            .background(.white)
-            .buttonBorderShape(.automatic)
-            .overlay(
-                RoundedRectangle(cornerRadius: 15)
-                    .stroke(Colors.blueText, lineWidth: 1)
-            )
+        WhiteCard {
+            Title(text: "Team Summary")
             
-            Button("Continue to Next Week") {
-                navigateToMondayPlanning = true
+            ForEach(self.viewModel.teammatePercentages.sorted(by: >), id: \.key) { name, percentage in
+                HStack{
+                    Subtitle(text: "\(name) completed", weight: .semibold)
+                    Spacer()
+                    Subtitle(text: "\(String(Int(percentage * 100)))%", weight: .semibold)
+                }
+                    .padding(.horizontal, 10)
+                    .padding(.top, 20)
             }
-            .fixedSize(horizontal: true, vertical: true)
-            .foregroundColor(.white)
-            .padding(.horizontal)
-            .padding(.vertical, 3)
-            .background(rectReader($maxWidth))
-            .frame(minWidth: maxWidth)
-            .background(Colors.blueText)
-            .cornerRadius(15)
-            .shadow(color: .gray, radius: 2, x: 0.0, y: 4.0)
-            
-            Spacer()
-            
-            NavigationLink(destination: MondayPlanning(user: self.viewModel.user, viewModel:self.viewModel, mode: Mode.weekly), isActive: $navigateToMondayPlanning) { EmptyView() }
+                
+                HStack{
+                    BlueActionButton(text: "Review Week", action: {
+                        showBanner = true
+                        shown.toggle()
+                    })
+                    OrangeActionButton(text: "Continue", action: {
+                        navigateToMondayPlanning = true
+                    })
+                }
+                
+                GrayActionButton(text: "Cancel", action: {
+                    showBanner = true
+                    shown.toggle()
+                })
+                
+                NavigationLink(destination: MondayPlanning(user: self.viewModel.user, viewModel:self.viewModel, mode: Mode.weekly), isActive: $navigateToMondayPlanning) { EmptyView() }
+            }
+            .padding(.horizontal, 25)
         }
-        .padding(.vertical, 20)
-        .frame(width: UIScreen.main.bounds.width-75)
-        .fixedSize(horizontal: false, vertical: true)
-        .background(Colors.lightOrangeBackground)
-        .clipped()
-        .border(Colors.blueText, width: 2)
-    }
+    
     
     private func rectReader(_ binding: Binding<CGFloat>) -> some View {
         return GeometryReader { gp -> Color in
