@@ -19,17 +19,22 @@ struct UserProgressCard: View {
     var body: some View {
         
         Button(action: primaryAction, label: {
-            VStack {
+            VStack(spacing: 12) {
                 HStack{
-                    Subtitle(text: name)
+                    Subtitle(text: name, weight: .semibold)
                     Spacer()
                     Subtitle(text: "🔥\(momentum)")
                 }
                 
-                ProgressBar(progressValue: percentage, weekPercentage: weekPercentage, text: "\(String(Int(percentage*100.0))) %")
+                ProgressBar(progressValue: percentage, weekPercentage: weekPercentage, text: "\(String(Int(percentage*100.0)))%", isLargeVersion: false)
                     .frame(width: 60.0, height: 60.0)
                 
-                PurpleActionButton(text: "Message", action: buttonAction)
+                BlueActionButton(text: "Message", action: buttonAction, height: 32)
+                
+                Text("view more >")
+                    .underline()
+                    .font(.system(size: 12))
+                    .foregroundColor(.gray)
             }
             .padding()
             .frame(maxWidth: .infinity)

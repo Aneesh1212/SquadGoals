@@ -28,13 +28,17 @@ struct SquadPage: View {
         
         VStack(spacing: 0) {
             OrangeCard {
-                    TitleV2(text: "Team Progress this Week")
-                    SubtitleV2(text: progressString)
-                    ProgressBar(progressValue: teamPercentage, weekPercentage: weekPercentage, text: "\(String(Int(teamPercentage*100.0))) %")
+                VStack(spacing: 16){
+                    VStack{
+                        TitleV2(text: "Team Progress this Week")
+                        SubtitleV2(text: progressString)
+                    }
+                    ProgressBar(progressValue: teamPercentage, weekPercentage: weekPercentage, text: "\(String(Int(teamPercentage*100.0)))%", isLargeVersion: true)
                         .frame(width: 75.0, height: 75.0)
                     WhiteActionButton(text: "Message Team", action: {
                         self.showEncouragementModal = true
                     })
+                }
             }
             .padding(.bottom, Styling.smallUnit)
             
