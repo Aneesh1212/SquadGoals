@@ -52,7 +52,7 @@ struct HomepageGoalView : View {
                     }
                     
                     ForEach(0..<finished) { _ in
-                        WhiteCard(verticalPadding: Styling.smallUnit) {
+                        WhiteCard(verticalPadding: Styling.extraSmallUnit) {
                             HStack{
                                 Image(systemName: "checkmark")
                                     .resizable()
@@ -69,7 +69,7 @@ struct HomepageGoalView : View {
                         }
                         .padding(.vertical, 6)
                         .fixedSize(horizontal: false, vertical: true)
-                        .shadow(color: .gray, radius: 3, x: 0.0, y: 5.0)
+                        .shadow(color: .gray, radius: 1, x: 0.0, y: 1.0)
                     }
                 }
             }

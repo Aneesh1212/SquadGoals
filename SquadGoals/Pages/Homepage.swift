@@ -35,7 +35,7 @@ struct Homepage : View {
                 Spacer()
             }
         }
-        .background(Colors.lightOrangeBackground)
+        .background(Colors.background)
     }
     
     var body: some View {

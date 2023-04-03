@@ -67,7 +67,7 @@ struct EditGoal: View {
                 self.presentationMode.wrappedValue.dismiss()
             })
         }
-        .padding(.vertical, Styling.mediumUnit)
+        .padding(.bottom, Styling.mediumUnit)
         .padding(.horizontal, Styling.mediumUnit)
         .background(Colors.background)
         .onTapGesture {

@@ -46,7 +46,7 @@ struct JoinGroup: View {
             
             Filler()
         }
-        .padding(.vertical, Styling.mediumUnit)
+        .padding(.bottom, Styling.mediumUnit)
         .padding(.horizontal, Styling.mediumUnit)
         .background(Colors.background)
         .alert("Please enter a 6 digit group ID", isPresented: $showInvalidGroupId) {

@@ -41,7 +41,7 @@ struct CreateAccount: View {
             NavigationLink(destination: JoinGroup(viewModel: self.viewModel), isActive: $viewModel.navigateToJoinGroup) { EmptyView() }
             
         }
-        .padding(.vertical, Styling.mediumUnit)
+        .padding(.bottom, Styling.mediumUnit)
         .padding(.horizontal, Styling.mediumUnit)
         .background(Colors.background)
         .alert("Please enter a name and valid 10 digit phone number", isPresented: $showInvalidNameOrPhone) {

@@ -31,7 +31,7 @@ struct SignIn: View {
             
             NavigationLink(destination: Main(user: viewModel.currentUser, showReflection : viewModel.showReflection), isActive: $viewModel.navigateToHome) { EmptyView() }
         }
-        .padding(.vertical, Styling.mediumUnit)
+        .padding(.bottom, Styling.mediumUnit)
         .padding(.horizontal, Styling.mediumUnit)
         .background(Colors.background)
         .alert("Unable to find a user account with this phone number", isPresented: $viewModel.showUnableToFindUser) {

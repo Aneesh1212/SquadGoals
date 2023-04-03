@@ -26,18 +26,18 @@ struct BragTable : View {
                     .fixedSize(horizontal: false, vertical: true)
                     .padding()
                     .background(Rectangle().fill(.white))
+                    
+                    Divider()
                 }
-                
-                Divider()
                 
                 HStack{
                     TextField(
                         "",
                         text: $bragText
                     )
-                        .background(Colors.progressBarBackground)
-                        .padding(4)
-                        .foregroundColor(.black)
+                    .background(Colors.progressBarBackground)
+                    .padding(4)
+                    .foregroundColor(.black)
                     
                     PurpleActionButton(text: "Submit", action: {
                         self.viewModel.createBrag(goalId: self.goalKey, brag: Brag(text: self.bragText))

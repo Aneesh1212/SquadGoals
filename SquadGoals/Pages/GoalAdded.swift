@@ -37,7 +37,7 @@ struct GoalAdded: View {
             NavigationLink(destination: MondayPlanning(user: self.user, viewModel: GoalViewModel(user:self.user), mode: Mode.initial), isActive: $navigateToMondayPlanning) { EmptyView() }
                         
         }
-        .padding(.vertical, Styling.mediumUnit)
+        .padding(.bottom, Styling.mediumUnit)
         .padding(.horizontal, Styling.mediumUnit)
         .background(Colors.background)
     }
