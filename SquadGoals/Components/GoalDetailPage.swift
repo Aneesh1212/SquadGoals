@@ -80,6 +80,7 @@ struct GoalDetailPage: View {
                         shouldNavigateToEditGoal = true
                     })
                 }
+                Spacing(height: Styling.smallUnit)
                 HStack{
                     SubtitleV2(text: "Current Momentum:🔥45")
                     Spacer()
@@ -87,15 +88,25 @@ struct GoalDetailPage: View {
                 }
             }
             
+            Spacing(height: Styling.mediumUnit)
+            
             ScrollView(showsIndicators: false){
-                OrangeCard{
-                    SubtitleV2(text: "Brag about your Proud Acheivements")
+                VStack(alignment: .leading, spacing: 0) {
+                    LeftAligner(content: AnyView(SubtitleV2(text: "Brag about your Proud Acheivements", weight: .semibold)))
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 50)
+                        .background(Colors.darkOrangeForeground)
+                        .cornerRadius(50, corners: [.topLeft, .topRight])
+                    BragTable(goalKey: self.goal.key)
                 }
-                BragTable(goalKey: self.goal.key)
                 
-                OrangeCard{
-                    SubtitleV2(text: "Accomplished Targets")
-                }
+                Spacing(height: Styling.mediumUnit)
+                
+                LeftAligner(content: AnyView(SubtitleV2(text: "Accomplished Targets", weight: .semibold)))
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 50)
+                    .background(Colors.darkOrangeForeground)
+                    .cornerRadius(50, corners: [.topLeft, .topRight])
                 ForEach(self.goal.pastTargets.keys.sorted{
                     $0 > $1
                 }, id: \.self) {pastTargetDate in

@@ -22,6 +22,8 @@
 		5538D6E729D556F100BF76D4 /* GrayActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5538D6E629D556F100BF76D4 /* GrayActionButton.swift */; };
 		5544594B295E463500F21D9F /* SwiftUITooltip in Frameworks */ = {isa = PBXBuildFile; productRef = 5544594A295E463500F21D9F /* SwiftUITooltip */; };
 		55663CDF29DA48F80037F522 /* RedActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55663CDE29DA48F80037F522 /* RedActionButton.swift */; };
+		55663CE229DA5F830037F522 /* LeftAligner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55663CE129DA5F830037F522 /* LeftAligner.swift */; };
+		55663CE429DA85290037F522 /* CornerRadiusExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55663CE329DA85290037F522 /* CornerRadiusExtension.swift */; };
 		557568B829CC131A005C9A76 /* BlueActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557568B729CC131A005C9A76 /* BlueActionButton.swift */; };
 		557568BA29CC1335005C9A76 /* OrangeActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557568B929CC1335005C9A76 /* OrangeActionButton.swift */; };
 		55766C2329D2A5780060E6D7 /* OrangeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55766C2229D2A5780060E6D7 /* OrangeCard.swift */; };
@@ -120,6 +122,8 @@
 		552F69EA288674D300AAF287 /* ReflectionAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectionAlert.swift; sourceTree = "<group>"; };
 		5538D6E629D556F100BF76D4 /* GrayActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayActionButton.swift; sourceTree = "<group>"; };
 		55663CDE29DA48F80037F522 /* RedActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedActionButton.swift; sourceTree = "<group>"; };
+		55663CE129DA5F830037F522 /* LeftAligner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAligner.swift; sourceTree = "<group>"; };
+		55663CE329DA85290037F522 /* CornerRadiusExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadiusExtension.swift; sourceTree = "<group>"; };
 		557568B729CC131A005C9A76 /* BlueActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueActionButton.swift; sourceTree = "<group>"; };
 		557568B929CC1335005C9A76 /* OrangeActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrangeActionButton.swift; sourceTree = "<group>"; };
 		55766C2229D2A5780060E6D7 /* OrangeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrangeCard.swift; sourceTree = "<group>"; };
@@ -244,6 +248,16 @@
 				552F625728FB7F25002F0A5F /* Styling.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		55663CE029DA5F6A0037F522 /* HelperComponents */ = {
+			isa = PBXGroup;
+			children = (
+				55EA757B28FD120500ACB448 /* Filler.swift */,
+				552F626128FCFE39002F0A5F /* Spacing.swift */,
+				55663CE129DA5F830037F522 /* LeftAligner.swift */,
+			);
+			path = HelperComponents;
 			sourceTree = "<group>";
 		};
 		5587C833278780CF001A9999 = {
@@ -391,6 +405,7 @@
 		55C81EDF278C05F400F341D5 /* UIElements */ = {
 			isa = PBXGroup;
 			children = (
+				55663CE029DA5F6A0037F522 /* HelperComponents */,
 				55FDF84029D3FBB600082B72 /* Cards */,
 				55FDF83929D3F75900082B72 /* ActionButtons */,
 				55C81EE0278C060800F341D5 /* Title.swift */,
@@ -401,8 +416,6 @@
 				552F625B28FCF69E002F0A5F /* OnboardingTextEntry.swift */,
 				552F626328FD0812002F0A5F /* OnboardingTextEntryWithTitle.swift */,
 				552F625D28FCF8BD002F0A5F /* OnboardingActionButton.swift */,
-				552F626128FCFE39002F0A5F /* Spacing.swift */,
-				55EA757B28FD120500ACB448 /* Filler.swift */,
 				55D77E0729CB495900BAFA1D /* PillActionButton.swift */,
 				55D77E0929CB4E4000BAFA1D /* TrailingViewHelper.swift */,
 				55FDF84129D3FBCD00082B72 /* UserProgressCard.swift */,
@@ -415,6 +428,7 @@
 			children = (
 				55FDF83229D3DC5800082B72 /* UtilFunctions.swift */,
 				55FDF83429D3E04B00082B72 /* DateExtension.swift */,
+				55663CE329DA85290037F522 /* CornerRadiusExtension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -737,6 +751,7 @@
 				55C81EE1278C060800F341D5 /* Title.swift in Sources */,
 				5587C8B327878855001A9999 /* Target.swift in Sources */,
 				55D77E0A29CB4E4000BAFA1D /* TrailingViewHelper.swift in Sources */,
+				55663CE229DA5F830037F522 /* LeftAligner.swift in Sources */,
 				5587C89C27878855001A9999 /* Race.swift in Sources */,
 				5587C89F27878855001A9999 /* Completion.swift in Sources */,
 				5587C8B227878855001A9999 /* Goal.swift in Sources */,
@@ -758,6 +773,7 @@
 				55F7CAE62919ABAE00448F10 /* MondayPlanning.swift in Sources */,
 				5587C89D27878855001A9999 /* ProgressBar.swift in Sources */,
 				552F626228FCFE39002F0A5F /* Spacing.swift in Sources */,
+				55663CE429DA85290037F522 /* CornerRadiusExtension.swift in Sources */,
 				5587C8AF27878855001A9999 /* ProfilePage.swift in Sources */,
 				55C0B0A228F67FAC008BFA61 /* BaseTutorial.swift in Sources */,
 				55EA757C28FD120500ACB448 /* Filler.swift in Sources */,

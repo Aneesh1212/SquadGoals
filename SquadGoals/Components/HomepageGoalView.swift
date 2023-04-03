@@ -19,19 +19,40 @@ struct HomepageGoalView : View {
         WhiteCard {
             VStack(spacing: 0) {
                 HStack{
-                    Subtitle(text: self.goal.title)
+                    Subtitle(text: self.goal.title, size: 18)
                     Spacer()
                     Subtitle(text: "🔥12")
                 }
                 .fixedSize(horizontal: false, vertical: true)
-                .padding(.bottom, 2)
+                .padding(6)
                 
                 ForEach(self.goal.currTargets, id: \.self) { target in
                     let finished : Int = target.original - target.frequency
                     let unfinished : Int = target.frequency
                     
+                    ForEach(0..<unfinished) { _ in
+                        WhiteCard(verticalPadding: Styling.extraSmallUnit) {
+                            HStack(){
+                                Button(action: {
+                                    mainThing(target: target)
+                                },
+                                       label: { Image(systemName: "circle")
+                                        .clipShape(Circle())
+                                        .shadow(radius: 20)
+                                        .foregroundColor(Color.green)
+                                })
+                                    .disabled(!clickableTargets)
+                                Text(target.title)
+                                Spacer()
+                            }
+                        }
+                        .padding(.vertical, 6)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .shadow(color: .gray, radius: 1, x: 0.0, y: 1.0)
+                    }
+                    
                     ForEach(0..<finished) { _ in
-                        WhiteCard(verticalPadding: Styling.smallUnit){
+                        WhiteCard(verticalPadding: Styling.smallUnit) {
                             HStack{
                                 Image(systemName: "checkmark")
                                     .resizable()
@@ -42,31 +63,7 @@ struct HomepageGoalView : View {
                                     .foregroundColor(.white)
                                     .opacity(0.6)
                                 Text(target.title)
-                                    .foregroundColor(Colors.blueText)
                                     .opacity(0.6)
-                                Spacer()
-                            }
-                        }
-                        .padding(.vertical, 6)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .shadow(color: .gray, radius: 3, x: 0.0, y: 5.0)
-                    }
-                    
-                    ForEach(0..<unfinished) { _ in
-                        WhiteCard(verticalPadding: Styling.smallUnit){
-                            HStack(){
-                                Button(action: {
-                                    mainThing(target: target)
-                                },
-                                       label: { Image(systemName: "circle")
-                                        .clipShape(Circle())
-                                        .shadow(radius: 20)
-                                        .foregroundColor(Color.green)
-                                })
-                                .disabled(!clickableTargets)
-                                
-                                Text(target.title)
-                                    .foregroundColor(Colors.blueText)
                                 Spacer()
                             }
                         }

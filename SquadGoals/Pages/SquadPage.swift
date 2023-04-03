@@ -23,7 +23,7 @@ struct SquadPage: View {
         let teamPercentage : Float = viewModel.calculateTeamTargetPercent()
         let progressString = isReviewing ? getFinishedProgressString(teamPercentage: teamPercentage) : getCurrentProgressString(teamPercentage: teamPercentage, weekPercentage: weekPercentage)
         let teamList = [viewModel.user] + viewModel.user.teammates
-        let columns = [GridItem(.flexible()), GridItem(.flexible())]
+        let columns = [GridItem(.flexible(), alignment: .top), GridItem(.flexible(), alignment: .top)]
         
         
         VStack(spacing: 0) {

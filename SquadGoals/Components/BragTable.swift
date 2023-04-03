@@ -25,8 +25,10 @@ struct BragTable : View {
                     }
                     .fixedSize(horizontal: false, vertical: true)
                     .padding()
-                    .background(Rectangle().fill(.white).shadow(radius: 3))
+                    .background(Rectangle().fill(.white))
                 }
+                
+                Divider()
                 
                 HStack{
                     TextField(
@@ -42,11 +44,12 @@ struct BragTable : View {
                         self.viewModel.currBrags.append(Brag(text: self.bragText))
                         self.bragText = ""
                     })
+                    .frame(maxWidth: Styling.extraLargeUnit)
                 }
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.horizontal)
                 .padding(.vertical, 2)
-                .background(Rectangle().fill(.white).shadow(radius: 3))
+                .background(Rectangle().fill(.white))
             }
             .border(.gray, width: 0.5)
         }

@@ -26,29 +26,32 @@ struct ResultsAlert: View {
                     Spacer()
                     Subtitle(text: "\(String(Int(percentage * 100)))%", weight: .semibold)
                 }
-                    .padding(.horizontal, 10)
-                    .padding(.top, 20)
+                .padding(.horizontal, 10)
+                .padding(.top, 20)
             }
-                
-                HStack{
-                    BlueActionButton(text: "Review Week", action: {
-                        showBanner = true
-                        shown.toggle()
-                    })
-                    OrangeActionButton(text: "Continue", action: {
-                        navigateToMondayPlanning = true
-                    })
-                }
-                
-                GrayActionButton(text: "Cancel", action: {
+            
+            HStack{
+                BlueActionButton(text: "Review Week", action: {
                     showBanner = true
                     shown.toggle()
                 })
-                
-                NavigationLink(destination: MondayPlanning(user: self.viewModel.user, viewModel:self.viewModel, mode: Mode.weekly), isActive: $navigateToMondayPlanning) { EmptyView() }
+                OrangeActionButton(text: "Continue", action: {
+                    navigateToMondayPlanning = true
+                })
             }
-            .padding(.horizontal, 25)
+            .padding(.top, Styling.smallUnit)
+            
+            GrayActionButton(text: "Cancel", action: {
+                showBanner = true
+                shown.toggle()
+            })
+            .padding(.top, Styling.extraSmallUnit)
+            
+            
+            NavigationLink(destination: MondayPlanning(user: self.viewModel.user, viewModel:self.viewModel, mode: Mode.weekly), isActive: $navigateToMondayPlanning) { EmptyView() }
         }
+        .padding(.horizontal, 25)
+    }
     
     
     private func rectReader(_ binding: Binding<CGFloat>) -> some View {
