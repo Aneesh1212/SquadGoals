@@ -108,9 +108,7 @@ struct MondayPlanning: View {
                 OrangeCard{
                     VStack(spacing: 6){
                         TitleV2(text:getTitleString())
-                        
-                        SubtitleV2(text: "Break down each goal into smaller tasks to complete this week")
-                        
+                        SubtitleV2(text: "Break down each goal into smaller tasks to complete this week.")
                         SubtitleV2(text: "These will clear every Sunday at midnight.")
                     }
                 }
@@ -133,27 +131,13 @@ struct MondayPlanning: View {
                             loadPastTargets(user: value, justGoals: (mode == Mode.weekly), newGoals:false)
                         }
                         .padding(.top, 10)
-                    
-                    NavigationLink(destination: Main(user: self.user, showReflection: false), isActive: $navigateToHome) { EmptyView() }
-                    
-                    Button(action: {
-                        self.showEditWarning = true
-                    }) {
-                        Text("Submit")
-                            .foregroundColor(Colors.lightOrangeBackground)
-                            .font(.system(size: 22))
-                            .frame(width: 200, height: 60, alignment: .center)
-                            .background(Colors.blueText)
-                            .cornerRadius(15)
-                    }
                 }
                 
-                HStack {
-                    Spacer()
-                }
-                
-                Spacer()
-                
+                BlueActionButton(text:"Submit", action: {
+                    self.showEditWarning = true
+                })
+                                
+                NavigationLink(destination: Main(user: self.user, showReflection: false), isActive: $navigateToHome) { EmptyView() }
             }
             .overlay(Color.gray.opacity(showExample ? 0.6 : 0.0))
             
@@ -161,7 +145,8 @@ struct MondayPlanning: View {
                 ExampleTargetsModal(shown: $showExample)
             }
         }
-        .padding(.horizontal, 30)
+        .padding(.horizontal, Styling.mediumUnit)
+        .padding(.bottom, Styling.mediumUnit)
         .background(Colors.background)
         .alert("Weekly tasks are cleared every Sunday at Midnight. Please ensure your tasks fit this timeline", isPresented: $showEditWarning) {
             Button("Submit") {

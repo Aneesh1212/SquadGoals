@@ -42,6 +42,6 @@ struct UserPage: View {
             }
         }
         .padding(.horizontal, 25)
-        .background(Colors.lightOrangeBackground)
+        .background(Colors.background)
     }
 }

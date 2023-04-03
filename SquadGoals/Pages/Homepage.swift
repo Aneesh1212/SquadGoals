@@ -39,7 +39,8 @@ struct Homepage : View {
     }
     
     var body: some View {
-        VStack{
+        VStack(alignment: .leading){
+            Title(text: "Hi, \(viewModel.user.name)", size: 20)
             OrangeCard {
                 HStack(alignment: .top) {
                     VStack(alignment: .leading) {

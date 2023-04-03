@@ -23,10 +23,10 @@ struct Colors{
     static let opaqueOrangeBackground = Color(UIColor(#colorLiteral(red: 0.9450980392, green: 0.4980392157, blue: 0.3450980392, alpha: 0.1)))
     
     static let buttonBlue = Color(UIColor(#colorLiteral(red: 0.1529411765, green: 0.3490196078, blue: 0.5568627451, alpha: 1)))
-    static let buttonSignOut = Color(UIColor(#colorLiteral(red: 0.9333333333, green: 0.5411764706, blue: 0.4352941176, alpha: 0.5)))
+    static let buttonSignOut = Color(UIColor(#colorLiteral(red: 0.9333333333, green: 0.5411764706, blue: 0.4352941176, alpha: 0.25)))
     static let buttonGreen = Color(UIColor(#colorLiteral(red: 0.4470588235, green: 0.8039215686, blue: 0.6274509804, alpha: 1)))
     static let buttonPurple = Color(UIColor(#colorLiteral(red: 0.2705882353, green: 0.1764705882, blue: 0.3098039216, alpha: 1)))
-
+    static let buttonRed = Color(UIColor(#colorLiteral(red: 0.9411764706, green: 0.3294117647, blue: 0.3294117647, alpha: 1)))
 }
 
 

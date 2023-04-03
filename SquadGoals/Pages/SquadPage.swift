@@ -45,10 +45,7 @@ struct SquadPage: View {
                     ForEach(teamList, id: \.self) { teammate in
                         let teammatePercentage = viewModel.calculateWeeklyTargetPercent(goals: teammate.goals)
                         
-                        UserProgressCard(percentage: teammatePercentage, weekPercentage: weekPercentage, name: teammate.name, momentum: 12, action: {
-                                self.selectedUser = teammate
-                                self.shouldNavigateToProfile = true
-                        })
+                        UserProgressCard(percentage: teammatePercentage, weekPercentage: weekPercentage, name: teammate.name, momentum: 12, primaryAction: { onUserProgressCardClick(teammate: teammate) }, buttonAction: { onMessageUserClick(teammate: teammate) })
                     }
                 }
             }
@@ -62,8 +59,18 @@ struct SquadPage: View {
             
         })
         .sheet(isPresented: $showCongratsModal, onDismiss: {}, content: {
-            CongratsModal(viewModel: self.viewModel, showModal: $showCongratsModal)
+            CongratsModal(viewModel: self.viewModel, showModal: $showCongratsModal, teammate: self.selectedUser)
         })
+    }
+    
+    func onUserProgressCardClick(teammate: User) -> Void {
+        self.selectedUser = teammate
+        self.shouldNavigateToProfile = true
+    }
+    
+    func onMessageUserClick(teammate: User) -> Void {
+        self.selectedUser = teammate
+        self.showCongratsModal = true
     }
 }
 

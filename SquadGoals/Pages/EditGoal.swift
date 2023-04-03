@@ -26,7 +26,7 @@ struct EditGoal: View {
             TextEditor(
                 text: $goalReason
             )
-                .font(.system(size: 20))
+                .font(.system(size: 16))
                 .frame(height: 90, alignment: .center)
                 .fixedSize(horizontal: false, vertical: false)
                 .padding(.leading, 5)
@@ -41,20 +41,23 @@ struct EditGoal: View {
     var body: some View {
         VStack(alignment: .leading){
             Title(text: "Edit Goal")
-            
             Spacing(height: Styling.mediumUnit)
             
-            Subtitle(text: "Goal Title")
-            OnboardingTextEntry(placeholder: "Enter here", value: $goalTitle)
-                .padding(.bottom, Styling.smallUnit)
-            
-            
-            Subtitle(text: "Why is this goal important to you?")
-            goalReasonView
-                .padding(.bottom, Styling.smallUnit)
+            VStack(alignment: .leading) { // Need to be <= 10 elements
+                Subtitle(text: "Goal Title")
+                OnboardingTextEntry(placeholder: "Enter here", value: $goalTitle)
+                    .padding(.bottom, Styling.smallUnit)
+                
+                
+                Subtitle(text: "Why is this goal important to you?")
+                goalReasonView
+                    .padding(.bottom, Styling.smallUnit)
+            }
             
             Subtitle(text: "Goal Category")
             OnboardingTextEntry(placeholder: "Enter here", value: $goalCategory)
+            
+            RedActionButton(text: "Delete Goal", action: { viewModel.deleteGoal(goalKey: goal.key)})
             
             Filler()
             
@@ -64,7 +67,8 @@ struct EditGoal: View {
                 self.presentationMode.wrappedValue.dismiss()
             })
         }
-        .padding(.horizontal, 25)
+        .padding(.vertical, Styling.mediumUnit)
+        .padding(.horizontal, Styling.mediumUnit)
         .background(Colors.background)
         .onTapGesture {
             UIApplication.shared.endEditing()

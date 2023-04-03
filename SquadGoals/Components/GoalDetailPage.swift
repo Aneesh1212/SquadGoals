@@ -14,6 +14,7 @@ struct GoalDetailPage: View {
     var viewModel : GoalViewModel
     var sortedDates : Array<Date> = []
     @State var shouldNavigateToEditGoal = false
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @ViewBuilder func getView(date : String, targets : Array<Target>) -> some View {
         
@@ -74,6 +75,7 @@ struct GoalDetailPage: View {
             BlueCard {
                 HStack(alignment: .top) {
                     TitleV2(text: goal.title, lineLimit: 3, size: 24, shouldLeftAlign: true)
+                    Spacer()
                     PillActionButton(text: "Edit Goal", icon: "pencil", foregroundColor: .white, backgroundColor: Colors.opaqueWhite, action: {
                         shouldNavigateToEditGoal = true
                     })
@@ -85,26 +87,27 @@ struct GoalDetailPage: View {
                 }
             }
             
-            OrangeCard{
-                SubtitleV2(text: "Brag about your Proud Acheivements")
-            }
-            
             ScrollView(showsIndicators: false){
-                
+                OrangeCard{
+                    SubtitleV2(text: "Brag about your Proud Acheivements")
+                }
                 BragTable(goalKey: self.goal.key)
-        
+                
                 OrangeCard{
                     SubtitleV2(text: "Accomplished Targets")
                 }
-                
-                VStack {
-                    ForEach(self.goal.pastTargets.keys.sorted{
-                        $0 > $1
-                    }, id: \.self) {pastTargetDate in
-                        getView(date: goodFormat(date: pastTargetDate), targets: self.goal.pastTargets[pastTargetDate] ?? [])
-                    }
+                ForEach(self.goal.pastTargets.keys.sorted{
+                    $0 > $1
+                }, id: \.self) {pastTargetDate in
+                    getView(date: goodFormat(date: pastTargetDate), targets: self.goal.pastTargets[pastTargetDate] ?? [])
                 }
             }
+            
+            RedActionButton(text:"Delete Goal", action: {
+                self.presentationMode.wrappedValue.dismiss()
+                viewModel.deleteGoal(goalKey: goal.key)
+            })
+                .padding(.vertical, Styling.smallUnit)
         }
         .padding(.horizontal, 25)
         .background(Colors.background)

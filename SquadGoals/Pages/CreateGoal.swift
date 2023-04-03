@@ -32,7 +32,7 @@ struct CreateGoal: View {
             TextEditor(
                 text: $goalReason
             )
-                .font(.system(size: 20))
+                .font(.system(size: 16))
                 .frame(height: 90, alignment: .center)
                 .fixedSize(horizontal: false, vertical: false)
                 .padding(.leading, 10)
@@ -85,7 +85,8 @@ struct CreateGoal: View {
                 NavigationLink(destination: MondayPlanning(user: self.user, viewModel: GoalViewModel(user:self.user), mode: Mode.initial), isActive: $shouldNavigateSingleGoal) { EmptyView() }
             }
         }
-        .padding(.horizontal, 25)
+        .padding(.vertical, Styling.mediumUnit)
+        .padding(.horizontal, Styling.mediumUnit)
         .background(Colors.background)
         .onTapGesture {
             UIApplication.shared.endEditing()

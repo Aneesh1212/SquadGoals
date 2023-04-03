@@ -21,6 +21,7 @@
 		552F69EB288674D300AAF287 /* ReflectionAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F69EA288674D300AAF287 /* ReflectionAlert.swift */; };
 		5538D6E729D556F100BF76D4 /* GrayActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5538D6E629D556F100BF76D4 /* GrayActionButton.swift */; };
 		5544594B295E463500F21D9F /* SwiftUITooltip in Frameworks */ = {isa = PBXBuildFile; productRef = 5544594A295E463500F21D9F /* SwiftUITooltip */; };
+		55663CDF29DA48F80037F522 /* RedActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55663CDE29DA48F80037F522 /* RedActionButton.swift */; };
 		557568B829CC131A005C9A76 /* BlueActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557568B729CC131A005C9A76 /* BlueActionButton.swift */; };
 		557568BA29CC1335005C9A76 /* OrangeActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557568B929CC1335005C9A76 /* OrangeActionButton.swift */; };
 		55766C2329D2A5780060E6D7 /* OrangeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55766C2229D2A5780060E6D7 /* OrangeCard.swift */; };
@@ -118,6 +119,7 @@
 		552F69E82886548800AAF287 /* ResultsAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsAlert.swift; sourceTree = "<group>"; };
 		552F69EA288674D300AAF287 /* ReflectionAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectionAlert.swift; sourceTree = "<group>"; };
 		5538D6E629D556F100BF76D4 /* GrayActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayActionButton.swift; sourceTree = "<group>"; };
+		55663CDE29DA48F80037F522 /* RedActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedActionButton.swift; sourceTree = "<group>"; };
 		557568B729CC131A005C9A76 /* BlueActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueActionButton.swift; sourceTree = "<group>"; };
 		557568B929CC1335005C9A76 /* OrangeActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrangeActionButton.swift; sourceTree = "<group>"; };
 		55766C2229D2A5780060E6D7 /* OrangeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrangeCard.swift; sourceTree = "<group>"; };
@@ -427,6 +429,7 @@
 				55FDF83E29D3FAC400082B72 /* WhiteActionButtonWithArrow.swift */,
 				55FDF84329D3FF0900082B72 /* PurpleActionButton.swift */,
 				5538D6E629D556F100BF76D4 /* GrayActionButton.swift */,
+				55663CDE29DA48F80037F522 /* RedActionButton.swift */,
 			);
 			path = ActionButtons;
 			sourceTree = "<group>";
@@ -738,6 +741,7 @@
 				5587C89F27878855001A9999 /* Completion.swift in Sources */,
 				5587C8B227878855001A9999 /* Goal.swift in Sources */,
 				55C1811E2803D81C002F956B /* CongratsModal.swift in Sources */,
+				55663CDF29DA48F80037F522 /* RedActionButton.swift in Sources */,
 				5587C8A027878855001A9999 /* ProgressButton.swift in Sources */,
 				55FDF82E29D3CC7100082B72 /* WhiteCard.swift in Sources */,
 				557568B829CC131A005C9A76 /* BlueActionButton.swift in Sources */,

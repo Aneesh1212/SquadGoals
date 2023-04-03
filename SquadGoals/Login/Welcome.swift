@@ -17,25 +17,16 @@ struct Welcome: View {
     var body: some View {
         VStack(alignment: .center) {
             Spacer()
-            
             Image(uiImage: UIImage(named: "boat")!)
-            
-            Spacer()
+            Filler()
             
             Title(text: "Squad Goals", size: 40)
 
             Subtitle(text: "A rising tide lifts all boats")
                 .padding(.bottom, Styling.mediumUnit)
-                     
-            HStack {
-                Spacer()
-            }
                         
             BlueActionButton(text: "Log In", action: signIn)
-            
-            Spacer()
-                .frame(height: 20)
-            
+            Spacing(height: 20)
             OrangeActionButton(text: "Create Account", action: createAccount)
             
             VStack {
@@ -44,6 +35,7 @@ struct Welcome: View {
                 NavigationLink(destination: Main(user: viewModel.currentUser, showReflection: viewModel.showReflection), isActive: $viewModel.navigateToHome) { EmptyView() }
             }
         }
+        .padding(.vertical, Styling.mediumUnit)
         .padding(.horizontal, Styling.mediumUnit)
         .background(Colors.background)
         .navigationBarTitle("", displayMode: .inline)

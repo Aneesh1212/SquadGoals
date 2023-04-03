@@ -31,53 +31,48 @@ struct HomepageGoalView : View {
                     let unfinished : Int = target.frequency
                     
                     ForEach(0..<finished) { _ in
-                        HStack(){
-                            Image(systemName: "checkmark")
-                                .resizable()
-                                .padding(6)
-                                .frame(width: 24, height: 24)
-                                .background(Color.green)
-                                .clipShape(Circle())
-                                .foregroundColor(.white)
-                                .opacity(0.6)
-                            Text(target.title)
-                                .foregroundColor(Colors.blueText)
-                                .opacity(0.6)
-                            Spacer()
+                        WhiteCard(verticalPadding: Styling.smallUnit){
+                            HStack{
+                                Image(systemName: "checkmark")
+                                    .resizable()
+                                    .padding(6)
+                                    .frame(width: 20, height: 20)
+                                    .background(Color.green)
+                                    .clipShape(Circle())
+                                    .foregroundColor(.white)
+                                    .opacity(0.6)
+                                Text(target.title)
+                                    .foregroundColor(Colors.blueText)
+                                    .opacity(0.6)
+                                Spacer()
+                            }
                         }
-                        .fixedSize(horizontal: false, vertical: true)
-                        .padding(.horizontal)
                         .padding(.vertical, 6)
-                        .frame(width: 340, height: 50)
-                        .background(Colors.lightOrangeBackground)
-                        .shadow(color: .gray, radius: 5, x: 0.0, y: 5.0)
-                        .padding(.vertical, 8)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .shadow(color: .gray, radius: 3, x: 0.0, y: 5.0)
                     }
                     
                     ForEach(0..<unfinished) { _ in
-                        HStack(){
-                            Button(action: {
-                                mainThing(target: target)
-                            },
-                                   label: { Image(systemName: "circle")
-                                    .clipShape(Circle())
-                                    .shadow(radius: 20)
-                                    .foregroundColor(Color.green)
-                            })
-                            .disabled(!clickableTargets)
-                            
-                            Text(target.title)
-                                .foregroundColor(Colors.blueText)
-                            Spacer()
+                        WhiteCard(verticalPadding: Styling.smallUnit){
+                            HStack(){
+                                Button(action: {
+                                    mainThing(target: target)
+                                },
+                                       label: { Image(systemName: "circle")
+                                        .clipShape(Circle())
+                                        .shadow(radius: 20)
+                                        .foregroundColor(Color.green)
+                                })
+                                .disabled(!clickableTargets)
+                                
+                                Text(target.title)
+                                    .foregroundColor(Colors.blueText)
+                                Spacer()
+                            }
                         }
-                        .fixedSize(horizontal: false, vertical: true)
-                        .padding(.horizontal)
                         .padding(.vertical, 6)
-                        .frame(width: 340, height: 50)
-                        .background(Colors.lightOrangeBackground)
-                        .clipped()
-                        .shadow(color: .gray, radius: 5, x: 0.0, y: 5.0)
-                        .padding(.vertical, 8)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .shadow(color: .gray, radius: 3, x: 0.0, y: 5.0)
                     }
                 }
             }

@@ -27,9 +27,7 @@ class GoalViewModel : ObservableObject {
         self.user = user
     }
     
-    func createGoal(phoneNumber : String, goalTitle : String, goalReason : String,
-                    goalCategory: String) {
-        print("Creating goal with number: \(phoneNumber) and title \(goalTitle)")
+    func createGoal(phoneNumber : String, goalTitle : String, goalReason : String, goalCategory: String) {
         let goalRef = self.ref.child("goals").child(phoneNumber).child("goals")
         let goalKey = goalRef.childByAutoId().key ?? ""
         goalRef.child(goalKey).setValue(["title" : goalTitle, "reason": goalReason, "category" : goalCategory])
@@ -40,10 +38,10 @@ class GoalViewModel : ObservableObject {
         goalRef.setValue(["title" : goalTitle, "reason": goalReason, "category" : goalCategory])
     }
     
-    func updateGoalName(phone: String, goalKey: String, title: String) {
-        let goalPath = "goals/"+phone+"/goals/"+goalKey+"/title"
-        let updates = [goalPath: title]
-        self.ref.updateChildValues(updates)
+    func deleteGoal(goalKey: String) {
+        self.ref.child("goals").child(user.phoneNumber).child("goals").child(goalKey).removeValue()
+        self.ref.child("targets").child(goalKey).removeValue()
+        self.ref.child("brags").child(goalKey).removeValue()
     }
     
     func createTargets(goalId : String, targets : Array<Target>) {

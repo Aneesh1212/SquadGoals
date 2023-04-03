@@ -16,7 +16,7 @@ struct SubtitleV2 : View {
         VStack{
             Text(text)
                 .foregroundColor(.white)
-                .font(.system(size: 16, weight: .light))
+                .font(.system(size: 16, weight: .regular))
                 .lineLimit(nil)
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)

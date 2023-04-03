@@ -20,6 +20,7 @@ struct CreateAccount: View {
         VStack(alignment: .leading){
             VStack(alignment: .leading){
                 Title(text: "Create New Account")
+                Spacing(height:6)
                 Subtitle(text: "Please enter your information below to create a new account for using the app.")
                 
                 Spacing(height: Styling.largeUnit)
@@ -40,6 +41,7 @@ struct CreateAccount: View {
             NavigationLink(destination: JoinGroup(viewModel: self.viewModel), isActive: $viewModel.navigateToJoinGroup) { EmptyView() }
             
         }
+        .padding(.vertical, Styling.mediumUnit)
         .padding(.horizontal, Styling.mediumUnit)
         .background(Colors.background)
         .alert("Please enter a name and valid 10 digit phone number", isPresented: $showInvalidNameOrPhone) {
