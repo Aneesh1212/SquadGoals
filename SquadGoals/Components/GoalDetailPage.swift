@@ -74,7 +74,7 @@ struct GoalDetailPage: View {
         VStack(spacing:0){
             BlueCard {
                 HStack(alignment: .top) {
-                    TitleV2(text: goal.title, lineLimit: 3, size: 24, shouldLeftAlign: true)
+                    TitleV2(text: goal.title, lineLimit: 2, size: 28, shouldLeftAlign: true)
                     Spacer()
                     PillActionButton(text: "Edit Goal", icon: "pencil", foregroundColor: .white, backgroundColor: Colors.opaqueWhite, action: {
                         shouldNavigateToEditGoal = true

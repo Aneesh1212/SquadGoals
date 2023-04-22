@@ -26,7 +26,7 @@ struct UserPage: View {
             Text("\(String(completedTargets)) / \(String(totalTargets)) weekly tasks completed")
                 .multilineTextAlignment(.leading)
                 .font(.system(size: 18).italic())
-                .padding(.top, 10)
+                .padding(.top, 2)
                 .padding(.bottom, 22)
                 .foregroundColor(Colors.blueText)
             

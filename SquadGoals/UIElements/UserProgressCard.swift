@@ -15,7 +15,7 @@ struct UserProgressCard: View {
     var momentum : Int
     var primaryAction: () -> Void
     var buttonAction: () -> Void
-
+    
     var body: some View {
         
         Button(action: primaryAction, label: {

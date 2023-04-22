@@ -58,6 +58,7 @@ struct CreateGoal: View {
         VStack(){
             VStack(alignment: .leading) {
                 Title(text: "Let's Create Goals!")
+                Spacing(height:6)
                 Subtitle(text: "What are 1-3 goals that are important and realistic for you?")
                 
                 Spacing(height: Styling.mediumUnit)

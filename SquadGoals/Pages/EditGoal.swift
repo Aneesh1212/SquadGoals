@@ -57,10 +57,9 @@ struct EditGoal: View {
             Subtitle(text: "Goal Category")
             OnboardingTextEntry(placeholder: "Enter here", value: $goalCategory)
             
-            RedActionButton(text: "Delete Goal", action: { viewModel.deleteGoal(goalKey: goal.key)})
-            
             Filler()
-            
+
+            RedActionButton(text: "Delete Goal", action: { viewModel.deleteGoal(goalKey: goal.key)})
             BlueActionButton(text: "Save Changes", action: {
                 viewModel.editGoal(key: goalKey, goalTitle: goalTitle, goalReason: goalReason, goalCategory: goalCategory)
                 self.goal.title = goalTitle

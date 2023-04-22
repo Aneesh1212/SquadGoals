@@ -18,6 +18,7 @@ struct GoalAdded: View {
     var body: some View {
         VStack(alignment: .leading){
             Title(text: goalTitle, lineLimit: 2)
+            Spacing(height:6)
             Subtitle(text: "Added")
             
             Spacer()
@@ -25,6 +26,8 @@ struct GoalAdded: View {
             BlueActionButton(text: "+ Add Another Goal", action: {
                 self.navigateToCreateGoal = true
             })
+            
+            Spacing(height:Styling.smallUnit)
             
             OrangeActionButton(text: "Finished", action: {
                 self.navigateToMondayPlanning = true

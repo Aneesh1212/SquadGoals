@@ -23,6 +23,7 @@ struct JoinGroup: View {
         VStack(alignment: .leading){
             Title(text: "Welcome \(viewModel.currentUser.name)!")
                 .lineLimit(nil)
+            Spacing(height:6)
             Subtitle(text: "Let's join a squad")
             
             Spacing(height: Styling.largeUnit)

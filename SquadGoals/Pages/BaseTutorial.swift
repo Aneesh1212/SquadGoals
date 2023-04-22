@@ -39,13 +39,14 @@ struct BaseTutorial: View {
                 
                 Title(text: "How It Works")
             }
-            
+            Spacing(height:Styling.extraSmallUnit)
             Subtitle(text: subtitles[count])
             
             Spacer()
             
             Image(uiImage: UIImage(named: images[count])!)
                 .resizable()
+                .aspectRatio(contentMode: .fit)
             
             Filler()
             

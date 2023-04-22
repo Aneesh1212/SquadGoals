@@ -143,7 +143,6 @@ class GoalViewModel : ObservableObject {
     }
     
     func getTeammateInfo(){
-        print("GETTING TEAMMATE INFO")
         self.user.teammates = []
         let usersRef = self.ref.child("users").getData(completion:  { error, usersSnapshot in
             guard error == nil else {
