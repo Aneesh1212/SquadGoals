@@ -30,12 +30,12 @@ class GoalViewModel : ObservableObject {
     func createGoal(phoneNumber : String, goalTitle : String, goalReason : String, goalCategory: String) {
         let goalRef = self.ref.child("goals").child(phoneNumber).child("goals")
         let goalKey = goalRef.childByAutoId().key ?? ""
-        goalRef.child(goalKey).setValue(["title" : goalTitle, "reason": goalReason, "category" : goalCategory])
+        goalRef.child(goalKey).setValue(["title" : goalTitle, "reason": goalReason, "category" : goalCategory, "momentumScore": "0", "positiveMomentum": "1", "negativeMomentum": "-1", "crossedOff": "false"])
     }
     
     func editGoal(key: String, goalTitle: String, goalReason: String, goalCategory: String) {
         let goalRef = self.ref.child("goals").child(self.user.phoneNumber).child("goals").child(key)
-        goalRef.setValue(["title" : goalTitle, "reason": goalReason, "category" : goalCategory])
+        goalRef.updateChildValues(["title" : goalTitle, "reason": goalReason, "category" : goalCategory])
     }
     
     func deleteGoal(goalKey: String) {
@@ -86,7 +86,11 @@ class GoalViewModel : ObservableObject {
                 let goalTitle = goalData["title"] ?? ""
                 let goalReason = goalData["reason"] ?? ""
                 let goalCategory = goalData["category"] ?? ""
-                var newGoal = Goal(title: goalTitle, reason: goalReason, category: goalCategory, currTargets: [], key : goalDataPair.key)
+                let goalMomentumScore = Int(goalData["momentumScore"] ?? "0") ?? 0
+                let goalPositiveMomentum = Int(goalData["positiveMomentum"] ?? "0") ?? 0
+                let goalNegativeMomentum = Int(goalData["negativeMomentum"] ?? "0") ?? 0
+                let goalCrossedOff = Bool(goalData["crossedOff"] ?? "false") ?? false
+                var newGoal = Goal(title: goalTitle, reason: goalReason, category: goalCategory, currTargets: [], momentumScore: goalMomentumScore, positiveMomentum: goalPositiveMomentum, negativeMomentum: goalNegativeMomentum, crossedOff: goalCrossedOff, key : goalDataPair.key)
                 
                 let goalKey = goalDataPair.key
                 
@@ -108,7 +112,6 @@ class GoalViewModel : ObservableObject {
                         newGoal.pastTargets[targetMonday]?.append(newTarget)
                     }
                     for mondayDate in newGoal.pastTargets.keys {
-                        
                         if (Calendar.current.dateComponents([.day], from: mondayDate, to: lastSetMonday).day == 0){
                             newGoal.currTargets = newGoal.pastTargets[mondayDate] ?? []
                             
@@ -176,7 +179,11 @@ class GoalViewModel : ObservableObject {
                     let goalTitle = goalData["title"] ?? ""
                     let goalReason = goalData["reason"] ?? ""
                     let goalCategory = goalData["category"] ?? ""
-                    var newGoal = Goal(title: goalTitle, reason: goalReason, category: goalCategory, currTargets: [], key : goalDataPair.key)
+                    let goalMomentumScore = Int(goalData["momentumScore"] ?? "0") ?? 0
+                    let goalPositiveMomentum = Int(goalData["positiveMomentum"] ?? "0") ?? 0
+                    let goalNegativeMomentum = Int(goalData["negativeMomentum"] ?? "0") ?? 0
+                    let goalCrossedOff = Bool(goalData["crossedOff"] ?? "false") ?? false
+                    var newGoal = Goal(title: goalTitle, reason: goalReason, category: goalCategory, currTargets: [], momentumScore: goalMomentumScore, positiveMomentum: goalPositiveMomentum, negativeMomentum: goalNegativeMomentum, crossedOff: goalCrossedOff, key : goalDataPair.key)
                     
                     let goalKey = goalDataPair.key
                     self.ref.child("targets/\(goalKey)").getData(completion:  { error, targetsSnapshot in

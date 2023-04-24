@@ -51,6 +51,7 @@ struct MondayPlanning: View {
                 let targetCompletedNum = completedNums[goalIndex][targetIndex]
                 let newTarget = Target(title: targetTitle, frequency: max(targetFrequency - targetCompletedNum, 0), original: targetFrequency, key: targetKey)
                 if (targetTitle != "") {
+                    print(targetTitle)
                     viewModel.createTargets(goalId: goal.key, targets: [newTarget])
                 }
             }
