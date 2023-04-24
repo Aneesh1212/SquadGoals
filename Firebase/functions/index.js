@@ -10,13 +10,22 @@ const admin = require("firebase-admin");
 }); */
 
 admin.initializeApp();
+const db = admin.database();
+const currentDate = Math.round(Date.now() / 1000);
+const dayOfWeek = mod(((new Date()).getDay() - 1), 7);
+const daysLeftInWeek = 7 - dayOfWeek;
+const secondsPerDay = 86400;
+
+
+function mod(n, m) {
+    return ((n % m) + m) % m;
+}
 
 /**
  * @param {string} title
  *  @param {string} body
  */
 function sendMessageToAllUsers(title, body) {
-    const db = admin.database();
     const ref = db.ref("fcmTokens");
     ref.on(
         "value",
@@ -38,23 +47,18 @@ function sendMessageToAllUsers(title, body) {
                     .messaging()
                     .send(payload)
                     .then((response) => {
-                        // Response is a message ID string.
-                        console.log("Successfully sent message:", response);
                         return {
                             success: true,
                         };
                     })
                     .catch((error) => {
-                        console.log(error);
                         return {
                             error: error.code,
                         };
                     });
             }
         },
-        (errorObject) => {
-            console.log(`The read failed: ${errorObject.name}`);
-        },
+        (errorObject) => {},
     );
 }
 
@@ -65,7 +69,6 @@ function sendMessageToAllUsers(title, body) {
  *   @param {array} phoneNumbers
  */
 function sendMessageToSomeUsers(title, body, phoneNumbers) {
-    const db = admin.database();
     const ref = db.ref("fcmTokens");
     ref.on(
         "value",
@@ -89,13 +92,11 @@ function sendMessageToSomeUsers(title, body, phoneNumbers) {
                         .send(payload)
                         .then((response) => {
                             // Response is a message ID string.
-                            console.log("Successfully sent message:", response);
                             return {
                                 success: true,
                             };
                         })
                         .catch((error) => {
-                            console.log(error);
                             return {
                                 error: error.code,
                             };
@@ -103,9 +104,7 @@ function sendMessageToSomeUsers(title, body, phoneNumbers) {
                 }
             }
         },
-        (errorObject) => {
-            console.log(`Send message to some users failed: ${errorObject.name}`);
-        },
+        (errorObject) => {},
     );
 }
 
@@ -116,7 +115,6 @@ function sendMessageToSomeUsers(title, body, phoneNumbers) {
  */
 function getPhoneNumbersForGroupId(groupId) {
     const phoneNumbers = [];
-    const db = admin.database();
     const ref = db.ref(`groups/${groupId}/users`);
     const snapshot = ref.once("value");
     const usersMap = snapshot.val();
@@ -141,6 +139,66 @@ async function getResults() {
         const phoneNumbers = await getPhoneNumbersForGroupId(groupId);
         sendMessageToSomeUsers("Squad Goals: Week Results!", `${winner} was the MVP this week with ${winnerPercentage}% done!
           Congratulate them on a job well done. The team percentage was ${teamPercentage}%`, phoneNumbers);
+    }
+}
+
+/**
+ * @param {int} creationDate
+ * @return {boolean}
+ */
+function isTargetInThisWeek(creationDate) {
+    const differenceInSeconds = currentDate - creationDate;
+    const differenceInDays = Math.floor(differenceInSeconds / secondsPerDay);
+    return differenceInDays <= dayOfWeek
+}
+
+/**
+ * @param {string} goalKey
+ * @return {Promise<dictionary>}
+ */
+async function getTargetsForGoalKey(goalKey) {
+    const goalRef = db.ref(`targets/${goalKey}`);
+    var totalTargets = 0;
+    var finishedTargets = 0;
+    var goalMap = await (await goalRef.get()).val();
+    for (const targetKey in goalMap) {
+        const target = goalMap[targetKey];
+        const targetCreationDate = parseInt(target.creationDate);
+        if (isTargetInThisWeek(targetCreationDate)){
+            console.log(target.title);
+            totalTargets += parseInt(target.original);
+            finishedTargets += (parseInt(target.original) - parseInt(target.frequency));
+        }
+    }
+    return {"totalTargets": totalTargets, "finishedTargets": finishedTargets};
+}
+
+function calculateMomentumChanges(totalTasks, finishedTasks, positiveMomentum, negativeMomentum, momentumScore, crossedOffScore) {
+    if (!crossedOffScore && ((totalTasks - finishedTasks) >= daysLeftInWeek)) {
+        momentumScore -= negativeMomentum;
+        positiveMomentum = (positiveMomentum - negativeMomentum + 1);
+        negativeMomentum = negativeMomentum - 1;
+        crossedOffScore = false;
+        }
+    return {"momentumScore": momentumScore.toString(), "positiveMomentum": positiveMomentum.toString(), "negativeMomentum": negativeMomentum.toString(), "crossedOffScore": crossedOffScore ? "true" : "false"};
+}
+
+async function updateMomScore() {
+    const usersRef = db.ref("goals");
+    var goalsMap = await (await usersRef.get()).val();
+    for (const userPhoneNumber in goalsMap) {
+        const goalMap = goalsMap[userPhoneNumber].goals;
+        for (const goalKey in goalMap) {
+            const goal = goalMap[goalKey];
+            const targetData = await getTargetsForGoalKey(goalKey);
+            const crossedOffScore = goal.crossedOffScore == "true" ? true : false;
+            const positiveMomentum = goal.positiveMomentum != undefined ? parseInt(goal.positiveMomentum) : 0
+            const negativeMomentum = goal.negativeMomentum != undefined ? parseInt(goal.negativeMomentum) : 0
+            const momentumScore = goal.momentumScore != undefined ? parseInt(goal.momentumScore) : 0
+            const momentumData = calculateMomentumChanges(targetData.totalTargets, targetData.finishedTargets, positiveMomentum, negativeMomentum, momentumScore, crossedOffScore);
+            const goalRef = db.ref(`goals/${userPhoneNumber}/goals/${goalKey}`)
+            goalRef.update(momentumData);
+        }
     }
 }
 
@@ -180,3 +238,7 @@ exports.results = functions.pubsub
     .onRun((context) => {
         getResults();
     });
+
+exports.updateMomScore = functions.https.onCall((request, response) => {
+   updateMomScore()
+});
