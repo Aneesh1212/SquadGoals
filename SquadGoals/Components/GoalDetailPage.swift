@@ -14,19 +14,15 @@ struct GoalDetailPage: View {
     var viewModel : GoalViewModel
     var sortedDates : Array<Date> = []
     @State var shouldNavigateToEditGoal = false
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @ViewBuilder func getView(date : String, targets : Array<Target>) -> some View {
         
         let completedTargets = viewModel.calculateCompletedTargetsFromTarget(targets: targets)
         let totalTargets = viewModel.calculateTotalTargetsFromTarget(targets: targets)
         
-        VStack(alignment: .leading){
-            Text("\(String(date)) - \(String(completedTargets)) / \(String(totalTargets)) this week")
-                .multilineTextAlignment(.leading)
-                .font(.system(size: 18).italic())
-                .padding(.top, 10)
-                .padding(.bottom, 4)
-                .foregroundColor(Colors.blueText)
+        VStack(alignment: .leading) {
+            Subtitle(text: "\(String(date)) - \(String(completedTargets)) / \(String(totalTargets)) this week")
             
             VStack(alignment: .leading, spacing:0) {
                 ForEach(targets, id: \.self) { target in
@@ -47,7 +43,7 @@ struct GoalDetailPage: View {
                         }
                         .fixedSize(horizontal: false, vertical: true)
                         .padding()
-                        .background(Rectangle().fill(Colors.targetsListBackground).shadow(radius: 3))
+                        .background(Rectangle().fill(.white).shadow(radius: 3))
                         .opacity(0.8)
                     }
                     ForEach(0..<unfinished) { _ in
@@ -61,7 +57,7 @@ struct GoalDetailPage: View {
                         }
                         .fixedSize(horizontal: false, vertical: true)
                         .padding()
-                        .background(Rectangle().fill(Colors.targetsListBackground).shadow(radius: 3))
+                        .background(Rectangle().fill(.white).shadow(radius: 3))
                     }
                 }
             }.border(.gray, width: 0.5)
@@ -76,62 +72,56 @@ struct GoalDetailPage: View {
         NavigationLink(destination: EditGoal(viewModel: self.viewModel, goal: self.$goal), isActive: $shouldNavigateToEditGoal) { EmptyView() }
         
         VStack(spacing:0){
-            ScrollView(showsIndicators: false){
-                HStack{
+            BlueCard {
+                HStack(alignment: .top) {
+                    TitleV2(text: goal.title, lineLimit: 2, size: 28, shouldLeftAlign: true)
                     Spacer()
-                    Button(action: {
-                        self.shouldNavigateToEditGoal = true
-                    }, label: {
-                        Text("Edit goal")
-                            .font(.system(size:14))
-                            .foregroundColor(Colors.darkOrangeForeground)
-                            .padding(.trailing, 10)
+                    PillActionButton(text: "Edit Goal", icon: "pencil", foregroundColor: .white, backgroundColor: Colors.opaqueWhite, action: {
+                        shouldNavigateToEditGoal = true
                     })
                 }
-                
-                Text(goal.title)
-                    .font(.system(size: 36, weight: .heavy))
-                    .lineLimit(nil)
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(Colors.darkOrangeForeground)
-                
-                ZStack{
-                    Image(uiImage: UIImage(named: "completion_badge_light")!)
-                        .resizable()
-                        .offset(y: 10)
-                    Text("\(String(completedTargets)) / \(String(totalTargets)) \n TARGETS \n COMPLETED")
-                        .foregroundColor(Colors.blueText)
-                        .font(.system(size: 17))
-                        .multilineTextAlignment(.center)
-                }
-                .frame(width: 175.0, height: 150.0)
-                .padding(.bottom, 20)
-                
-                BragTable(goalKey: self.goal.key ?? "")
-                    .padding(.bottom, 25)
-                
-                VStack(alignment: .leading, spacing:0) {
-                    Text("ACCOMPLISHED TARGETS")
-                        .font(.system(size: 20))
-                        .foregroundColor(Colors.darkOrangeForeground)
-                        .padding(.bottom, 5)
-                    
-                    VStack{
-                        ForEach(self.goal.pastTargets.keys.sorted{
-                            $0 > $1
-                        }, id: \.self) {pastTargetDate in
-                            getView(date: goodFormat(date: pastTargetDate), targets: self.goal.pastTargets[pastTargetDate] ?? [])
-                        }
-                    }
-                }
-                
+                Spacing(height: Styling.smallUnit)
                 HStack{
+                    SubtitleV2(text: "Current Momentum:🔥45")
                     Spacer()
+                    SubtitleV2(text: "Record:🔥50")
                 }
             }
+            
+            Spacing(height: Styling.mediumUnit)
+            
+            ScrollView(showsIndicators: false){
+                VStack(alignment: .leading, spacing: 0) {
+                    LeftAligner(content: AnyView(SubtitleV2(text: "Brag about your Proud Acheivements", weight: .semibold)))
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 50)
+                        .background(Colors.darkOrangeForeground)
+                        .cornerRadius(50, corners: [.topLeft, .topRight])
+                    BragTable(goalKey: self.goal.key)
+                }
+                
+                Spacing(height: Styling.mediumUnit)
+                
+                LeftAligner(content: AnyView(SubtitleV2(text: "Accomplished Targets", weight: .semibold)))
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 50)
+                    .background(Colors.darkOrangeForeground)
+                    .cornerRadius(50, corners: [.topLeft, .topRight])
+                ForEach(self.goal.pastTargets.keys.sorted{
+                    $0 > $1
+                }, id: \.self) {pastTargetDate in
+                    getView(date: goodFormat(date: pastTargetDate), targets: self.goal.pastTargets[pastTargetDate] ?? [])
+                }
+            }
+            
+            RedActionButton(text:"Delete Goal", action: {
+                self.presentationMode.wrappedValue.dismiss()
+                viewModel.deleteGoal(goalKey: goal.key)
+            })
+                .padding(.vertical, Styling.smallUnit)
         }
         .padding(.horizontal, 25)
-        .background(Colors.lightOrangeBackground)
+        .background(Colors.background)
         .onTapGesture {
             UIApplication.shared.endEditing()
         }
@@ -145,3 +135,14 @@ func goodFormat(date : Date) -> String{
     return dateFormatter.string(from: date)
 }
 
+/*ZStack{
+ Image(uiImage: UIImage(named: "completion_badge_light")!)
+ .resizable()
+ .offset(y: 10)
+ Text("\(String(completedTargets)) / \(String(totalTargets)) \n TARGETS \n COMPLETED")
+ .foregroundColor(Colors.blueText)
+ .font(.system(size: 17))
+ .multilineTextAlignment(.center)
+ }
+ .frame(width: 175.0, height: 150.0)
+ .padding(.bottom, 20)*/

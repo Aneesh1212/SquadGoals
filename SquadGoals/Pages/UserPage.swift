@@ -11,20 +11,14 @@ import SwiftUI
 struct UserPage: View {
     
     @State var user : User
-    @State var selectedGoal : Goal = Goal(title: "", reason: "", category: "", isPrivate: false, currTargets: [])
+    @State var selectedGoal : Goal = Goal(title: "", reason: "", category: "", currTargets: [])
     @State var shouldNavigateToGoalDetails = false
 
     var viewModel = GoalViewModel(user: User(name: "", phoneNumber: "", groupId: "", goals: [], teammates: []))
     
     var body: some View {
         VStack{
-            Text(user.name)
-                .multilineTextAlignment(.center)
-                .font(.system(size: 40, weight: .heavy))
-                .frame(width: .infinity, height: 80)
-                .frame(maxWidth: .infinity)
-                .foregroundColor(Colors.lightOrangeBackground)
-                .background(Colors.darkOrangeForeground)
+            Title(text:user.name, size: 48)
             
             let totalTargets = viewModel.calculateTotalTargets(goals: user.goals)
             let completedTargets = viewModel.calculateCompletedTargets(goals: user.goals)
@@ -32,7 +26,7 @@ struct UserPage: View {
             Text("\(String(completedTargets)) / \(String(totalTargets)) weekly tasks completed")
                 .multilineTextAlignment(.leading)
                 .font(.system(size: 18).italic())
-                .padding(.top, 10)
+                .padding(.top, 2)
                 .padding(.bottom, 22)
                 .foregroundColor(Colors.blueText)
             
@@ -47,6 +41,7 @@ struct UserPage: View {
                 Spacer()
             }
         }
-        .background(Colors.lightOrangeBackground)
+        .padding(.horizontal, 25)
+        .background(Colors.background)
     }
 }

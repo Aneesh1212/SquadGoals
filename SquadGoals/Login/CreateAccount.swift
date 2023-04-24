@@ -10,60 +10,40 @@ import Foundation
 struct CreateAccount: View {
     
     @StateObject var viewModel = LoginViewModel()
-    
-    @State private var shouldNavigate = false
-    
+        
     @State private var name: String = ""
     @State private var phoneNumber: String = ""
     
     @State private var showInvalidNameOrPhone = false
     
     var body: some View {
-        VStack{
-            OnboardingTitle(text: "CREATE ACCOUNT")
-                .padding(.bottom, Styling.largeUnit)
-                .padding(.top, Styling.onboardingTitlePadding)
-            
-            OnboardingTextEntry(placeholder: "Name", value: $name)
-            
-            Spacing(height: Styling.mediumUnit)
-            
-            HStack {
-                Text("+1")
-                    .frame(height: 45, alignment: .center)
-                    .font(.system(size: 20))
-                    .foregroundColor(.gray)
-                    .padding(.leading, 15)
+        VStack(alignment: .leading){
+            VStack(alignment: .leading){
+                Title(text: "Create New Account")
+                Spacing(height:6)
+                Subtitle(text: "Please enter your information below to create a new account for using the app.")
                 
-                TextField(
-                    "Phone Number",
-                    text: $phoneNumber
-                )
-                .font(.system(size: 20))
-                .frame(height: 50, alignment: .center)
-                .padding(.leading, 2)
-                .foregroundColor(.black)
+                Spacing(height: Styling.largeUnit)
+                
+                Subtitle(text: "Name")
+                OnboardingTextEntry(placeholder: "Enter here", value: $name)
+                
+                Spacing(height: Styling.smallUnit)
+                
+                Subtitle(text: "Phone number")
+                OnboardingTextEntry(placeholder: "Enter here", value: $phoneNumber)
             }
-            .background(Colors.lightOrangeBackground)
-            .cornerRadius(5)
             
-            Spacing(height: Styling.largeUnit)
+            Filler()
             
-            OnboardingActionButton(action: {
-                let parsedPhoneNumber = viewModel.parsePhoneNumber(phoneNumber: self.phoneNumber)
-                if (viewModel.isValidNameAndPhone(name: self.name, phoneNumber: parsedPhoneNumber)) {
-                    viewModel.createUser(userName: self.name, phoneNumber: parsedPhoneNumber)
-                    shouldNavigate = true
-                } else {
-                    self.showInvalidNameOrPhone = true
-                }
-            }, text: "CREATE ACCOUNT")
+            BlueActionButton(text: "Create Account", action: createAccount)
             
             NavigationLink(destination: JoinGroup(viewModel: self.viewModel), isActive: $viewModel.navigateToJoinGroup) { EmptyView() }
-            Filler()
+            
         }
+        .padding(.bottom, Styling.mediumUnit)
         .padding(.horizontal, Styling.mediumUnit)
-        .background(Colors.darkOrangeForeground)
+        .background(Colors.background)
         .alert("Please enter a name and valid 10 digit phone number", isPresented: $showInvalidNameOrPhone) {
             Button("OK", role: .cancel) { }
         }
@@ -73,5 +53,16 @@ struct CreateAccount: View {
         .onTapGesture {
             UIApplication.shared.endEditing()
         }
+    }
+    
+    func createAccount() {
+        let parsedPhoneNumber = viewModel.parsePhoneNumber(phoneNumber: self.phoneNumber)
+        if (viewModel.isValidNameAndPhone(name: self.name, phoneNumber: parsedPhoneNumber)) {
+            viewModel.createUser(userName: self.name, phoneNumber: parsedPhoneNumber)
+            shouldNavigate = true
+        } else {
+            self.showInvalidNameOrPhone = true
+        }
+        self.viewModel.navigateToJoinGroup = true
     }
 }

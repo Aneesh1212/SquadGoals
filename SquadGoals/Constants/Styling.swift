@@ -11,9 +11,11 @@ import SwiftUI
 struct Styling{
     
     // Standard units
+    static let extraSmallUnit = 8.0
     static let smallUnit = 16.0
     static let mediumUnit = 32.0
     static let largeUnit = 64.0
+    static let extraLargeUnit = 88.0
     
     static let fullScreenHorizontalPadding = largeUnit
     

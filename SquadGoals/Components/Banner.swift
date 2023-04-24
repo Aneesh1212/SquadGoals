@@ -36,7 +36,7 @@ struct BannerModifier: View {
         .transition(AnyTransition.move(edge: .top).combined(with: .opacity))
         .padding(.horizontal)
         .padding(.bottom, 4)
-        .background(tab == 1 ? Colors.lightOrangeBackground : Colors.darkOrangeForeground)
+        .background(Colors.background)
         .onTapGesture {
             self.navigateToPlanning = true
         }

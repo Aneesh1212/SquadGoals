@@ -18,11 +18,11 @@ struct OnboardingTextEntry : View {
             placeholder,
             text: value
         )
-            .font(.system(size: 20))
-            .frame(height: 50, alignment: .center)
+            .font(.system(size: 16))
+            .frame(height: 42, alignment: .center)
             .padding(.leading, 15)
-            .background(Colors.lightOrangeBackground)
-            .cornerRadius(5)
+            .background(.white)
+            .cornerRadius(Styling.smallUnit)
             .foregroundColor(.black)
     }
 }

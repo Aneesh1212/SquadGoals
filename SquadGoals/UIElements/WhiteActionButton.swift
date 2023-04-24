@@ -1,25 +1,19 @@
-//
-//  WhiteActionButton.swift
-//  SquadGoals
-//
-//  Created by Aneesh Agrawal on 1/9/22.
-//
 
 import Foundation
 import SwiftUI
 
-struct WhiteActionButton : View {
+struct BlueActionButton : View {
     
     var text : String
     
     var body : some View {
         Text(text)
-            .foregroundColor(Colors.blueText)
-            .font(.system(size: 22))
-            .frame(width: 300, height: 60, alignment: .center)
-            .background(Color.white)
+            .foregroundColor(.white)
+            .font(.system(size: 16))
+            .frame(height: 40, alignment: .center)
+            .frame(maxWidth: .infinity)
+            .background(Colors.buttonBlue)
             .cornerRadius(15)
-            .shadow(radius: 15)
     }
     
 }

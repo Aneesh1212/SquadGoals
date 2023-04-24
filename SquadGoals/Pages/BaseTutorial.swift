@@ -22,6 +22,14 @@ struct BaseTutorial: View {
         "Track the progress of your squad, and their contribution to your team score. Send them a congrats or motivational push notification to keep them accountable."
     ]
     
+    func incrementStepper() -> Void {
+        if (count < 3) {
+            count += 1
+        } else {
+            navigateToCreateGoal = true
+        }
+    }
+    
     var body: some View {
         VStack (spacing: 4){
             HStack(alignment: .top) {
@@ -29,53 +37,28 @@ struct BaseTutorial: View {
                     .resizable()
                     .frame(width: 28.0, height: 28.0)
                 
-                Text("HOW IT WORKS")
-                    .font(.system(size: 24, weight: .heavy))
-                    .foregroundColor(Colors.lightOrangeBackground)
+                Title(text: "How It Works")
             }
-            
-            Text("STEP \(String(count + 1))")
-                .font(.system(size: 16, weight: .heavy))
-                .foregroundColor(Colors.lightOrangeBackground)
-                .padding(.bottom, 24)
-            
-            Text(subtitles[count])
-                .font(.system(size: 16))
-                .foregroundColor(Colors.lightOrangeBackground)
-                .padding(.bottom, 24)
-            
-            Image(uiImage: UIImage(named: images[count])!)
-                .resizable()
+            Spacing(height:Styling.extraSmallUnit)
+            Subtitle(text: subtitles[count])
             
             Spacer()
             
-            Button(action: {
-                if (count < 3) {
-                    count += 1
-                } else {
-                    navigateToCreateGoal = true
-                }
-            }) {
-                Text(count < 3 ? "NEXT" : "GOT IT")
-                    .foregroundColor(Colors.lightOrangeBackground)
-                    .font(.system(size: 22))
-                    .frame(width: 160, height: 40, alignment: .center)
-                    .background(Colors.blueText)
-                    .cornerRadius(20)
-                    .padding(.bottom, 8)
-                    .shadow(radius: 5)
-            }
+            Image(uiImage: UIImage(named: images[count])!)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+            
+            Filler()
+            
+            BlueActionButton(text: count < 3 ? "Next" : "Got It", action: incrementStepper)
+                .padding(.bottom, 6)
             
             CarouselCounter(count: count + 1)
-            
-            HStack {
-                Spacer()
-            }
             
             NavigationLink(destination: CreateGoal(user: self.user, isSingleGoal: false), isActive: $navigateToCreateGoal) { EmptyView() }
             
         }
         .padding(.horizontal, 16)
-        .background(Colors.darkOrangeForeground)
+        .background(Colors.background)
     }
 }

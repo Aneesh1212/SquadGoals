@@ -8,19 +8,18 @@
 import Foundation
 import SwiftUI
 
-struct Subtitle : View {
+struct SubtitleV2 : View {
     
     var text : String
     var weight: Font.Weight?
-    var size : CGFloat?
-    
+
     var body : some View {
         VStack{
             Text(text)
-                .foregroundColor(.black)
-                .font(.system(size: size ?? 16, weight: weight ?? .regular))
+                .foregroundColor(.white)
+                .font(.system(size: 16, weight: weight ?? .regular))
                 .lineLimit(nil)
-                .multilineTextAlignment(.leading)
+                .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
         }
     }

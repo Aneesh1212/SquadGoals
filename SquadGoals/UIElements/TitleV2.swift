@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct Title : View {
+struct TitleV2 : View {
     
     var text : String
     var lineLimit : Int?
@@ -18,7 +18,7 @@ struct Title : View {
     var body : some View {
         VStack{
             Text(text)
-                .foregroundColor(.black)
+                .foregroundColor(.white)
                 .font(.system(size: size ?? 24, weight: .semibold))
                 .minimumScaleFactor(0.5)
                 .lineLimit(lineLimit ?? 1)

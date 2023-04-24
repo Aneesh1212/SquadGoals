@@ -22,7 +22,6 @@ struct Race : View {
                     let index = teamList.firstIndex(of: teammate) ?? 0
                     ZStack {
                         Circle()
-                            .stroke()
                             .background(Circle().foregroundColor(colorList[index % 6]))
                             .foregroundColor(colorList[index % 7])
                             .frame(width: 25, height: 25)
@@ -32,11 +31,13 @@ struct Race : View {
                     }
                     .offset(x: CGFloat.init(self.viewModel.calculateWeeklyTargetPercent(goals: teammate.goals) * 320.0))
                     .offset(y: CGFloat.init(Float(index)*10.0))
+                    .zIndex(Double(teamList.count - index))
                 }
             }
             
             Divider()
-                .frame(width: 320, height: 1)
+                .frame(height: 1)
+                .frame(maxWidth: .infinity)
                 .background(Colors.lightOrangeBackground)
                 .foregroundColor(Colors.lightOrangeBackground)
                 .padding(.bottom, 5)
@@ -51,7 +52,6 @@ struct Race : View {
                 
                 Text("Finished")
                     .multilineTextAlignment(.trailing)
-                    .padding(.trailing, 21)
                     .foregroundColor(Colors.lightOrangeBackground)
             }
         }

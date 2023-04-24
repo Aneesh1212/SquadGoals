@@ -16,42 +16,32 @@ struct GoalAdded: View {
     @State var navigateToCreateGoal = false
     
     var body: some View {
-        VStack{
-            Title(text:"\"\(goalTitle.uppercased())\" ADDED!", lineLimit: 2)
-                .padding(.top, Styling.onboardingTitlePadding)
-                .padding(.bottom, Styling.largeUnit)
-
-            Button(action: {
-                self.navigateToCreateGoal = true
-            }) {
-                Text("Add Another Goal")
-                    .foregroundColor(Colors.lightOrangeBackground)
-                    .font(.system(size: 22))
-                    .frame(width: 300, height: 70, alignment: .center)
-                    .background(Colors.blueText)
-                    .cornerRadius(15)
-                    .padding(.bottom, Styling.mediumUnit)
-            }
+        VStack(alignment: .leading){
+            Title(text: goalTitle, lineLimit: 2)
+            Spacing(height:6)
+            Subtitle(text: "Added")
             
-            Button(action: {
+            Spacer()
+
+            BlueActionButton(text: "+ Add Another Goal", action: {
+                self.navigateToCreateGoal = true
+            })
+            
+            Spacing(height:Styling.smallUnit)
+            
+            OrangeActionButton(text: "Finished", action: {
                 self.navigateToMondayPlanning = true
-            }) {
-                Text("Finished")
-                    .foregroundColor(Colors.lightOrangeBackground)
-                    .font(.system(size: 22))
-                    .frame(width: 300, height: 70, alignment: .center)
-                    .background(Colors.blueText)
-                    .cornerRadius(15)
-            }
+            })
+            
+            Filler()
             
             NavigationLink(destination: CreateGoal(user: self.user, isSingleGoal: false), isActive: $navigateToCreateGoal) { EmptyView() }
             
             NavigationLink(destination: MondayPlanning(user: self.user, viewModel: GoalViewModel(user:self.user), mode: Mode.initial), isActive: $navigateToMondayPlanning) { EmptyView() }
-            
-            Filler()
-            
+                        
         }
-        .padding(.horizontal, 25)
-        .background(Colors.darkOrangeForeground)
+        .padding(.bottom, Styling.mediumUnit)
+        .padding(.horizontal, Styling.mediumUnit)
+        .background(Colors.background)
     }
 }

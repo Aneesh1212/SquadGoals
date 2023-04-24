@@ -1,0 +1,23 @@
+//
+//  OrangeCard.swift
+//  SquadGoals
+//
+//  Created by Aneesh Agrawal on 3/27/23.
+//
+import SwiftUI
+
+struct OrangeCard<Content: View>: View {
+    var content: () -> Content
+    
+    init(@ViewBuilder content: @escaping () -> Content) {
+        self.content = content
+    }
+
+    var body: some View {
+        VStack(content: content)
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(Colors.darkOrangeForeground)
+            .cornerRadius(20)
+    }
+}

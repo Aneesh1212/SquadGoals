@@ -15,47 +15,29 @@ struct Welcome: View {
     @StateObject var viewModel = LoginViewModel()
 
     var body: some View {
-        VStack{
-            Image(uiImage: UIImage(named: "boat")!)
-                .padding(.top, 50)
-            
-            Title(text: "SQUAD GOALS")
-            
-            Text("A rising tide lifts all boats")
-                .font(.system(size: 16))
-                .foregroundColor(.white)
-                .padding(.bottom, 35)
-                        
-            Button(action: {
-                navigateToCreateAccount = true
-            }) {
-                WhiteActionButton(text: "CREATE ACCOUNT")
-            }
-            
+        VStack(alignment: .center) {
             Spacer()
-                .frame(height: 25)
+            Image(uiImage: UIImage(named: "boat")!)
+            Filler()
             
-            Button(action: {
-                navigateToSignIn = true
-            }) {
-                WhiteActionButton(text: "SIGN IN")
-            }
-            
+            Title(text: "Squad Goals", size: 40)
+
+            Subtitle(text: "A rising tide lifts all boats")
+                .padding(.bottom, Styling.mediumUnit)
+                        
+            BlueActionButton(text: "Log In", action: signIn)
+            Spacing(height: 20)
+            OrangeActionButton(text: "Create Account", action: createAccount)
             
             VStack {
                 NavigationLink(destination: CreateAccount(), isActive: $navigateToCreateAccount) { EmptyView() }
                 NavigationLink(destination: SignIn(), isActive: $navigateToSignIn) { EmptyView() }
                 NavigationLink(destination: Main(user: viewModel.currentUser, showReflection: viewModel.showReflection), isActive: $viewModel.navigateToHome) { EmptyView() }
             }
-            
-            HStack {
-                Spacer()
-            }
-            
-            Spacer()
-            
         }
-        .background(Colors.darkOrangeForeground)
+        .padding(.bottom, Styling.mediumUnit)
+        .padding(.horizontal, Styling.mediumUnit)
+        .background(Colors.background)
         .navigationBarTitle("", displayMode: .inline)
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)
@@ -64,5 +46,13 @@ struct Welcome: View {
                 viewModel.tryAutoSignIn()
             }
         }
+    }
+    
+    func signIn(){
+        navigateToSignIn = true
+    }
+    
+    func createAccount() {
+        navigateToCreateAccount = true
     }
 }

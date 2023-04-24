@@ -15,46 +15,25 @@ struct SignIn: View {
     @State private var showInvalidNameOrPhone = false
     
     var body: some View {
-        VStack{
-            OnboardingTitle(text: "SIGN IN")
-                .padding(.bottom, Styling.largeUnit)
-                .padding(.top, Styling.onboardingTitlePadding)
+        VStack(alignment: .leading){
+            Title(text: "Welcome Back!")
+            Spacing(height: 6)
+            Subtitle(text: "Please enter your address below to start using app.")
             
-            HStack {
-                Text("+1")
-                    .frame(height: 45, alignment: .center)
-                    .font(.system(size: 20))
-                    .foregroundColor(.gray)
-                    .padding(.leading, 15)
-                
-                TextField(
-                    "Enter your phone number",
-                    text: $phoneNumber)
-                
-                .font(.system(size: 20))
-                .frame(height: 50, alignment: .center)
-                .padding(.leading, 2)
-                .foregroundColor(.black)
-            }
-            .background(Color.white)
-            .cornerRadius(5)
-            .padding(.bottom, Styling.mediumUnit)
+            Spacing(height: Styling.mediumUnit)
             
-            NavigationLink(destination: Main(user: viewModel.currentUser, showReflection : viewModel.showReflection), isActive: $viewModel.navigateToHome) { EmptyView() }
-            
-            OnboardingActionButton(action: {
-                let parsedPhoneNumber = viewModel.parsePhoneNumber(phoneNumber: self.phoneNumber)
-                if (viewModel.isValidNameAndPhone(name: "Ansh", phoneNumber: parsedPhoneNumber)) {
-                    viewModel.signUserIn(phoneNumber: parsedPhoneNumber)
-                } else {
-                    self.showInvalidNameOrPhone = true
-                }
-            }, text: "SIGN IN")
+            Subtitle(text: "Phone number")
+            OnboardingTextEntry(placeholder: "Enter here", value: $phoneNumber)
             
             Filler()
+            
+            BlueActionButton(text: "Log In", action: signIn)
+            
+            NavigationLink(destination: Main(user: viewModel.currentUser, showReflection : viewModel.showReflection), isActive: $viewModel.navigateToHome) { EmptyView() }
         }
+        .padding(.bottom, Styling.mediumUnit)
         .padding(.horizontal, Styling.mediumUnit)
-        .background(Colors.darkOrangeForeground)
+        .background(Colors.background)
         .alert("Unable to find a user account with this phone number", isPresented: $viewModel.showUnableToFindUser) {
             Button("Retry", role: .cancel) { }
         }
@@ -63,6 +42,15 @@ struct SignIn: View {
         }
         .onTapGesture {
             UIApplication.shared.endEditing()
+        }
+    }
+    
+    func signIn() {
+        let parsedPhoneNumber = viewModel.parsePhoneNumber(phoneNumber: self.phoneNumber)
+        if (viewModel.isValidNameAndPhone(name: "Ansh", phoneNumber: parsedPhoneNumber)) {
+            viewModel.signUserIn(phoneNumber: parsedPhoneNumber)
+        } else {
+            self.showInvalidNameOrPhone = true
         }
     }
 }
