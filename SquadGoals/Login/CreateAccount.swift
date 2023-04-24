@@ -56,13 +56,13 @@ struct CreateAccount: View {
     }
     
     func createAccount() {
-        /*let parsedPhoneNumber = viewModel.parsePhoneNumber(phoneNumber: self.phoneNumber)
+        let parsedPhoneNumber = viewModel.parsePhoneNumber(phoneNumber: self.phoneNumber)
         if (viewModel.isValidNameAndPhone(name: self.name, phoneNumber: parsedPhoneNumber)) {
             viewModel.createUser(userName: self.name, phoneNumber: parsedPhoneNumber)
             shouldNavigate = true
         } else {
             self.showInvalidNameOrPhone = true
-        }*/
+        }
         self.viewModel.navigateToJoinGroup = true
     }
 }

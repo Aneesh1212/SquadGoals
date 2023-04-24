@@ -50,7 +50,7 @@ struct CreateGoal: View {
     }
     
     func addGoal() -> Void {
-        // viewModel.createGoal(phoneNumber: user.phoneNumber, goalTitle: self.goalTitle, goalReason: self.goalReason, goalCategory: self.goalCategory)
+        viewModel.createGoal(phoneNumber: user.phoneNumber, goalTitle: self.goalTitle, goalReason: self.goalReason, goalCategory: self.goalCategory)
         self.shouldNavigate = true
     }
     
