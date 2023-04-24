@@ -239,6 +239,9 @@ exports.results = functions.pubsub
         getResults();
     });
 
-exports.updateMomScore = functions.https.onCall((request, response) => {
-   updateMomScore()
-});
+exports.calculateMomentum = functions.pubsub
+    .schedule("0 1 * * *")
+    .timeZone("America/New_York")
+    .onRun((context) => {
+        updateMomScore();
+    });
