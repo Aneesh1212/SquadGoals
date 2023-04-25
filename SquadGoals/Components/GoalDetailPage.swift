@@ -82,9 +82,9 @@ struct GoalDetailPage: View {
                 }
                 Spacing(height: Styling.smallUnit)
                 HStack{
-                    SubtitleV2(text: "Current Momentum:🔥45")
+                    SubtitleV2(text: "Current Momentum:🔥\(String(goal.momentumScore))")
                     Spacer()
-                    SubtitleV2(text: "Record:🔥50")
+                    SubtitleV2(text: "Record:🔥\(String(goal.recordMomentum))")
                 }
             }
             

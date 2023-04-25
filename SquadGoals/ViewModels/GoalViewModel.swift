@@ -40,7 +40,7 @@ class GoalViewModel : ObservableObject {
     
     func updateGoalMomentum(goal: Goal) {
         let goalRef = self.ref.child("goals").child(self.user.phoneNumber).child("goals").child(goal.key)
-        goalRef.updateChildValues(["momentumScore" : String(goal.momentumScore), "positiveMomentum": String(goal.positiveMomentum), "negativeMomentum" : String(goal.negativeMomentum), "crossedOff" : goal.crossedOff ? "true" : "false"])
+        goalRef.updateChildValues(["momentumScore" : String(goal.momentumScore), "positiveMomentum": String(goal.positiveMomentum), "negativeMomentum" : String(goal.negativeMomentum), "crossedOff" : goal.crossedOff ? "true" : "false", "recordMomentum": String(goal.recordMomentum)])
     }
     
     func deleteGoal(goalKey: String) {
@@ -95,7 +95,8 @@ class GoalViewModel : ObservableObject {
                 let goalPositiveMomentum = Int(goalData["positiveMomentum"] ?? "1") ?? 1
                 let goalNegativeMomentum = Int(goalData["negativeMomentum"] ?? "-1") ?? -1
                 let goalCrossedOff = Bool(goalData["crossedOff"] ?? "false") ?? false
-                var newGoal = Goal(title: goalTitle, reason: goalReason, category: goalCategory, currTargets: [], momentumScore: goalMomentumScore, positiveMomentum: goalPositiveMomentum, negativeMomentum: goalNegativeMomentum, crossedOff: goalCrossedOff, key : goalDataPair.key)
+                let goalRecordMomentum = Int(goalData["recordMomentum"] ?? "0") ?? 0
+                var newGoal = Goal(title: goalTitle, reason: goalReason, category: goalCategory, currTargets: [], momentumScore: goalMomentumScore, positiveMomentum: goalPositiveMomentum, negativeMomentum: goalNegativeMomentum, recordMomentum: goalRecordMomentum, crossedOff: goalCrossedOff, key : goalDataPair.key)
                 
                 let goalKey = goalDataPair.key
                 
@@ -188,7 +189,8 @@ class GoalViewModel : ObservableObject {
                     let goalPositiveMomentum = Int(goalData["positiveMomentum"] ?? "1") ?? 1
                     let goalNegativeMomentum = Int(goalData["negativeMomentum"] ?? "-1") ?? -1
                     let goalCrossedOff = Bool(goalData["crossedOff"] ?? "false") ?? false
-                    var newGoal = Goal(title: goalTitle, reason: goalReason, category: goalCategory, currTargets: [], momentumScore: goalMomentumScore, positiveMomentum: goalPositiveMomentum, negativeMomentum: goalNegativeMomentum, crossedOff: goalCrossedOff, key : goalDataPair.key)
+                    let goalRecordMomentum = Int(goalData["recordMomentum"] ?? "0") ?? 0
+                    var newGoal = Goal(title: goalTitle, reason: goalReason, category: goalCategory, currTargets: [], momentumScore: goalMomentumScore, positiveMomentum: goalPositiveMomentum, negativeMomentum: goalNegativeMomentum, recordMomentum: goalRecordMomentum, crossedOff: goalCrossedOff, key : goalDataPair.key)
                     
                     let goalKey = goalDataPair.key
                     self.ref.child("targets/\(goalKey)").getData(completion:  { error, targetsSnapshot in

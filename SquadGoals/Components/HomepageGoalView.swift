@@ -88,7 +88,7 @@ struct HomepageGoalView : View {
             viewModel.completedTargets += 1
         }
         crossedTaskOffMomentum()
-        viewModel.sendUpdateNotification(targetTitle: target.title)
+        //viewModel.sendUpdateNotification(targetTitle: target.title)
         viewModel.writeResults()
     }
     
@@ -98,6 +98,7 @@ struct HomepageGoalView : View {
             goal.momentumScore = goal.momentumScore + goal.positiveMomentum
             goal.positiveMomentum = goal.positiveMomentum + 1
             goal.negativeMomentum = -1
+            goal.recordMomentum = max(goal.recordMomentum, goal.momentumScore)
             goal.crossedOff = true
             viewModel.user.goals[goalIndex] = goal
             viewModel.updateGoalMomentum(goal: goal)

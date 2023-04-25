@@ -48,8 +48,8 @@ struct SquadPage: View {
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(teamList, id: \.self) { teammate in
                         let teammatePercentage = viewModel.calculateWeeklyTargetPercent(goals: teammate.goals)
-                        
-                        UserProgressCard(percentage: teammatePercentage, weekPercentage: weekPercentage, name: teammate.name, momentum: 12, primaryAction: { onUserProgressCardClick(teammate: teammate) }, buttonAction: { onMessageUserClick(teammate: teammate) })
+                        let momentum = teammate.goals.map{ $0.momentumScore}.max() ?? 0
+                        UserProgressCard(percentage: teammatePercentage, weekPercentage: weekPercentage, name: teammate.name, momentum: momentum, primaryAction: { onUserProgressCardClick(teammate: teammate) }, buttonAction: { onMessageUserClick(teammate: teammate) })
                     }
                 }
             }

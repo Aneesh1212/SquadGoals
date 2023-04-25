@@ -11,7 +11,7 @@ import SwiftUI
 struct UserPage: View {
     
     @State var user : User
-    @State var selectedGoal : Goal = Goal(title: "", reason: "", category: "", currTargets: [], momentumScore: 0, positiveMomentum: 0, negativeMomentum: 0, crossedOff: false)
+    @State var selectedGoal : Goal = Goal(title: "", reason: "", category: "", currTargets: [], momentumScore: 0, positiveMomentum: 0, negativeMomentum: 0, recordMomentum: 0, crossedOff: false)
     @State var shouldNavigateToGoalDetails = false
 
     var viewModel = GoalViewModel(user: User(name: "", phoneNumber: "", groupId: "", goals: [], teammates: []))
