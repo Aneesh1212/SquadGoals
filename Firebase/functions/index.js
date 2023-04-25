@@ -165,7 +165,6 @@ async function getTargetsForGoalKey(goalKey) {
         const target = goalMap[targetKey];
         const targetCreationDate = parseInt(target.creationDate);
         if (isTargetInThisWeek(targetCreationDate)){
-            console.log(target.title);
             totalTargets += parseInt(target.original);
             finishedTargets += (parseInt(target.original) - parseInt(target.frequency));
         }
@@ -173,14 +172,13 @@ async function getTargetsForGoalKey(goalKey) {
     return {"totalTargets": totalTargets, "finishedTargets": finishedTargets};
 }
 
-function calculateMomentumChanges(totalTasks, finishedTasks, positiveMomentum, negativeMomentum, momentumScore, OffOffScore) {
-    if (!crossedOff && ((totalTasks - finishedTasks) >= daysLeftInWeek)) {
-        momentumScore -= negativeMomentum;
-        positiveMomentum = (positiveMomentum - negativeMomentum + 1);
+function calculateMomentumChanges(totalTasks, finishedTasks, positiveMomentum, negativeMomentum, momentumScore, crossedOff) {
+    if (!crossedOff && (((totalTasks - finishedTasks) >= daysLeftInWeek) || (totalTasks == 0 && dayOfWeek > 2))) {
+        momentumScore = max(0, momentumScore - negativeMomentum);
+        positiveMomentum = max(1, positiveMomentum - 1);
         negativeMomentum = negativeMomentum - 1;
-        crossedOff = false;
         }
-    return {"momentumScore": momentumScore.toString(), "positiveMomentum": positiveMomentum.toString(), "negativeMomentum": negativeMomentum.toString(), "crossedOff": crossedOff ? "true" : "false"};
+    return {"momentumScore": momentumScore.toString(), "positiveMomentum": positiveMomentum.toString(), "negativeMomentum": negativeMomentum.toString(), "crossedOff": "false"};
 }
 
 async function updateMomScore() {
