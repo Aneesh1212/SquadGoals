@@ -173,14 +173,14 @@ async function getTargetsForGoalKey(goalKey) {
     return {"totalTargets": totalTargets, "finishedTargets": finishedTargets};
 }
 
-function calculateMomentumChanges(totalTasks, finishedTasks, positiveMomentum, negativeMomentum, momentumScore, crossedOffScore) {
-    if (!crossedOffScore && ((totalTasks - finishedTasks) >= daysLeftInWeek)) {
+function calculateMomentumChanges(totalTasks, finishedTasks, positiveMomentum, negativeMomentum, momentumScore, OffOffScore) {
+    if (!crossedOff && ((totalTasks - finishedTasks) >= daysLeftInWeek)) {
         momentumScore -= negativeMomentum;
         positiveMomentum = (positiveMomentum - negativeMomentum + 1);
         negativeMomentum = negativeMomentum - 1;
-        crossedOffScore = false;
+        crossedOff = false;
         }
-    return {"momentumScore": momentumScore.toString(), "positiveMomentum": positiveMomentum.toString(), "negativeMomentum": negativeMomentum.toString(), "crossedOffScore": crossedOffScore ? "true" : "false"};
+    return {"momentumScore": momentumScore.toString(), "positiveMomentum": positiveMomentum.toString(), "negativeMomentum": negativeMomentum.toString(), "crossedOff": crossedOff ? "true" : "false"};
 }
 
 async function updateMomScore() {
@@ -191,11 +191,11 @@ async function updateMomScore() {
         for (const goalKey in goalMap) {
             const goal = goalMap[goalKey];
             const targetData = await getTargetsForGoalKey(goalKey);
-            const crossedOffScore = goal.crossedOffScore == "true" ? true : false;
+            const crossedOff = goal.crossedOff == "true" ? true : false;
             const positiveMomentum = goal.positiveMomentum != undefined ? parseInt(goal.positiveMomentum) : 0
             const negativeMomentum = goal.negativeMomentum != undefined ? parseInt(goal.negativeMomentum) : 0
             const momentumScore = goal.momentumScore != undefined ? parseInt(goal.momentumScore) : 0
-            const momentumData = calculateMomentumChanges(targetData.totalTargets, targetData.finishedTargets, positiveMomentum, negativeMomentum, momentumScore, crossedOffScore);
+            const momentumData = calculateMomentumChanges(targetData.totalTargets, targetData.finishedTargets, positiveMomentum, negativeMomentum, momentumScore, crossedOff);
             const goalRef = db.ref(`goals/${userPhoneNumber}/goals/${goalKey}`)
             goalRef.update(momentumData);
         }

@@ -31,6 +31,7 @@ struct CongratsModal: View {
             .fixedSize(horizontal: false, vertical: false)
             .padding(Styling.extraSmallUnit)
             .background(Color.white)
+            .cornerRadius(10)
             .foregroundColor(self.customMessage == placeholder ? .gray : .black)
             .onTapGesture {
                 if self.customMessage == placeholder {
