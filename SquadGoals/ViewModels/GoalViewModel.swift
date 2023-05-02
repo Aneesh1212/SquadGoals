@@ -116,6 +116,7 @@ class GoalViewModel : ObservableObject {
                         let targetMonday = targetCreationDate.previous(.monday, considerToday: true)
                         newGoal.pastTargets[targetMonday] = newGoal.pastTargets[targetMonday] ?? []
                         newGoal.pastTargets[targetMonday]?.append(newTarget)
+                        newGoal.pastTargets[targetMonday]?.sort(by: {$0.title < $1.title})
                     }
                     for mondayDate in newGoal.pastTargets.keys {
                         if (Calendar.current.dateComponents([.day], from: mondayDate, to: lastSetMonday).day == 0){
@@ -127,8 +128,8 @@ class GoalViewModel : ObservableObject {
                             }
                         }
                     }
-                    print("added goal")
                     self.user.goals.append(newGoal)
+                    self.user.goals.sort(by: {$0.title < $1.title })
                 })
             }
         });
@@ -166,6 +167,7 @@ class GoalViewModel : ObservableObject {
                     let userGroup = userDataPair.value["groupId"] ?? ""
                     let newTeammate = User(name: userName, phoneNumber: userPhoneNumber, groupId: userGroup, goals: [], teammates: [])
                     self.user.teammates.append(newTeammate)
+                    self.user.teammates.sort(by: {$0.name < $1.name})
                 }
             }
             self.getTeammateGoals()
@@ -209,6 +211,7 @@ class GoalViewModel : ObservableObject {
                             let targetMonday = targetCreationDate.previous(.monday, considerToday: true)
                             newGoal.pastTargets[targetMonday] = newGoal.pastTargets[targetMonday] ?? []
                             newGoal.pastTargets[targetMonday]?.append(newTarget)
+                            newGoal.pastTargets[targetMonday]?.sort(by: {$0.title < $1.title})
                         }
                         for mondayDate in newGoal.pastTargets.keys {
                             if (Calendar.current.dateComponents([.day], from: mondayDate, to: lastSetMonday).day == 0){
@@ -216,6 +219,7 @@ class GoalViewModel : ObservableObject {
                             }
                         }
                         self.user.teammates[teammateIndex].goals.append(newGoal)
+                        self.user.teammates[teammateIndex].goals.sort(by: {$0.title < $1.title})
                         self.calculateTeamPercentages()
                     })
                 }

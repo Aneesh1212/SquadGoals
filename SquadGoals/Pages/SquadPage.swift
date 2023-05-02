@@ -22,7 +22,7 @@ struct SquadPage: View {
         let weekPercentage : Float = isReviewing ? 1.0 : Float(UtilFunctions.getDayOfWeek()) / 7.0
         let teamPercentage : Float = viewModel.calculateTeamTargetPercent()
         let progressString = isReviewing ? getFinishedProgressString(teamPercentage: teamPercentage) : getCurrentProgressString(teamPercentage: teamPercentage, weekPercentage: weekPercentage)
-        let teamList = [viewModel.user] + viewModel.user.teammates
+        let teamList = ([viewModel.user] + viewModel.user.teammates)
         let columns = [GridItem(.flexible(), alignment: .top), GridItem(.flexible(), alignment: .top)]
         
         
