@@ -17,7 +17,10 @@ struct Welcome: View {
     var body: some View {
         VStack(alignment: .center) {
             Spacer()
-            Image(uiImage: UIImage(named: "boat")!)
+            Image(uiImage: UIImage(named: "home_logo")!)
+                .resizable()
+                .padding()
+                .aspectRatio(contentMode: .fit)
             Filler()
             
             Title(text: "Squad Goals", size: 40)

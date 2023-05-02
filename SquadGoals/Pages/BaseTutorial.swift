@@ -14,7 +14,7 @@ struct BaseTutorial: View {
     @State var count = 0
     @State var navigateToCreateGoal = false
     
-    let images = ["Tutorial1", "Tutorial2", "Tutorial3", "Tutorial4"]
+    let images = ["Tutorial1New", "Tutorial2New", "Tutorial3New", "Tutorial4New"]
     let subtitles = [
         "Choose 1-3 personal goals to progress and track over the next few months. Here are some examples for inspiration.",
         "Every week, you will break down your goals into tasks. Some tasks you do just once, like Editing a Resume, and some are recurring like Meditate 7x/week.",
@@ -40,7 +40,7 @@ struct BaseTutorial: View {
                 Title(text: "How It Works")
             }
             Spacing(height:Styling.extraSmallUnit)
-            Subtitle(text: subtitles[count])
+            Subtitle(text: subtitles[count], size: 14)
             
             Spacer()
             

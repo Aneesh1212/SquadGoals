@@ -51,7 +51,6 @@ struct MondayPlanning: View {
                 let targetCompletedNum = completedNums[goalIndex][targetIndex]
                 let newTarget = Target(title: targetTitle, frequency: max(targetFrequency - targetCompletedNum, 0), original: targetFrequency, key: targetKey)
                 if (targetTitle != "") {
-                    print(targetTitle)
                     viewModel.createTargets(goalId: goal.key, targets: [newTarget])
                 }
             }
@@ -134,21 +133,21 @@ struct MondayPlanning: View {
                         .padding(.top, 10)
                 }
                 
-                BlueActionButton(text:"Submit", action: {
+                BlueActionButton(text:"Submit all", action: {
                     self.showEditWarning = true
                 })
                                 
                 NavigationLink(destination: Main(user: self.user, showReflection: false), isActive: $navigateToHome) { EmptyView() }
             }
+            .padding(.horizontal, Styling.mediumUnit)
+            .padding(.bottom, Styling.extraSmallUnit)
             .overlay(Color.gray.opacity(showExample ? 0.6 : 0.0))
+            .background(Colors.background)
             
             if (showExample) {
                 ExampleTargetsModal(shown: $showExample)
             }
         }
-        .padding(.horizontal, Styling.mediumUnit)
-        .padding(.bottom, Styling.mediumUnit)
-        .background(Colors.background)
         .alert("Weekly tasks are cleared every Sunday at Midnight. Please ensure your tasks fit this timeline", isPresented: $showEditWarning) {
             Button("Submit") {
                 self.navigateToHome = true

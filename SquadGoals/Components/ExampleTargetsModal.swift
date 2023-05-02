@@ -25,6 +25,7 @@ struct ExampleTargetsModal: View {
             
             Image(uiImage: UIImage(named: "Tutorial2")!)
                 .resizable()
+                .aspectRatio(contentMode: .fit)
                 .padding(.horizontal, 4)
             Spacer()
         }

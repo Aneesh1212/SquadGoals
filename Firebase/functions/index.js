@@ -17,6 +17,11 @@ const daysLeftInWeek = 7 - dayOfWeek;
 const secondsPerDay = 86400;
 
 
+/**
+ * @param {int} n
+ *  @param {int} m
+ *  @return {int}
+ */
 function mod(n, m) {
     return ((n % m) + m) % m;
 }
@@ -149,7 +154,7 @@ async function getResults() {
 function isTargetInThisWeek(creationDate) {
     const differenceInSeconds = currentDate - creationDate;
     const differenceInDays = Math.floor(differenceInSeconds / secondsPerDay);
-    return differenceInDays <= dayOfWeek
+    return differenceInDays <= dayOfWeek;
 }
 
 /**
@@ -158,13 +163,13 @@ function isTargetInThisWeek(creationDate) {
  */
 async function getTargetsForGoalKey(goalKey) {
     const goalRef = db.ref(`targets/${goalKey}`);
-    var totalTargets = 0;
-    var finishedTargets = 0;
-    var goalMap = await (await goalRef.get()).val();
+    let totalTargets = 0;
+    let finishedTargets = 0;
+    const goalMap = await (await goalRef.get()).val();
     for (const targetKey in goalMap) {
         const target = goalMap[targetKey];
         const targetCreationDate = parseInt(target.creationDate);
-        if (isTargetInThisWeek(targetCreationDate)){
+        if (isTargetInThisWeek(targetCreationDate)) {
             totalTargets += parseInt(target.original);
             finishedTargets += (parseInt(target.original) - parseInt(target.frequency));
         }
@@ -172,29 +177,41 @@ async function getTargetsForGoalKey(goalKey) {
     return {"totalTargets": totalTargets, "finishedTargets": finishedTargets};
 }
 
+/**
+ * @param {int} totalTasks
+ * @param {int} finishedTasks
+ * @param {int} positiveMomentum
+ * @param {int} negativeMomentum
+ * @param {int} momentumScore
+ * @param {bool} crossedOff
+ * @return {dictionary}
+ */
 function calculateMomentumChanges(totalTasks, finishedTasks, positiveMomentum, negativeMomentum, momentumScore, crossedOff) {
     if (!crossedOff && (((totalTasks - finishedTasks) >= daysLeftInWeek) || (totalTasks == 0 && dayOfWeek > 2))) {
-        momentumScore = max(0, momentumScore - negativeMomentum);
-        positiveMomentum = max(1, positiveMomentum - 1);
+        momentumScore = Math.max(0, momentumScore - negativeMomentum);
+        positiveMomentum = Math.max(1, positiveMomentum - 1);
         negativeMomentum = negativeMomentum - 1;
         }
     return {"momentumScore": momentumScore.toString(), "positiveMomentum": positiveMomentum.toString(), "negativeMomentum": negativeMomentum.toString(), "crossedOff": "false"};
 }
 
+/**
+ *
+ */
 async function updateMomScore() {
     const usersRef = db.ref("goals");
-    var goalsMap = await (await usersRef.get()).val();
+    const goalsMap = await (await usersRef.get()).val();
     for (const userPhoneNumber in goalsMap) {
         const goalMap = goalsMap[userPhoneNumber].goals;
         for (const goalKey in goalMap) {
             const goal = goalMap[goalKey];
             const targetData = await getTargetsForGoalKey(goalKey);
             const crossedOff = goal.crossedOff == "true" ? true : false;
-            const positiveMomentum = goal.positiveMomentum != undefined ? parseInt(goal.positiveMomentum) : 0
-            const negativeMomentum = goal.negativeMomentum != undefined ? parseInt(goal.negativeMomentum) : 0
-            const momentumScore = goal.momentumScore != undefined ? parseInt(goal.momentumScore) : 0
+            const positiveMomentum = goal.positiveMomentum != undefined ? parseInt(goal.positiveMomentum) : 0;
+            const negativeMomentum = goal.negativeMomentum != undefined ? parseInt(goal.negativeMomentum) : 0;
+            const momentumScore = goal.momentumScore != undefined ? parseInt(goal.momentumScore) : 0;
             const momentumData = calculateMomentumChanges(targetData.totalTargets, targetData.finishedTargets, positiveMomentum, negativeMomentum, momentumScore, crossedOff);
-            const goalRef = db.ref(`goals/${userPhoneNumber}/goals/${goalKey}`)
+            const goalRef = db.ref(`goals/${userPhoneNumber}/goals/${goalKey}`);
             goalRef.update(momentumData);
         }
     }

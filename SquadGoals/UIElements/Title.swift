@@ -20,7 +20,6 @@ struct Title : View {
             Text(text)
                 .foregroundColor(.black)
                 .font(.system(size: size ?? 24, weight: .semibold))
-                .minimumScaleFactor(0.5)
                 .lineLimit(lineLimit ?? 1)
                 .multilineTextAlignment(shouldLeftAlign ?? false ? .leading : .center)
         }

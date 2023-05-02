@@ -23,12 +23,9 @@ struct UserPage: View {
             let totalTargets = viewModel.calculateTotalTargets(goals: user.goals)
             let completedTargets = viewModel.calculateCompletedTargets(goals: user.goals)
             
-            Text("\(String(completedTargets)) / \(String(totalTargets)) weekly tasks completed")
-                .multilineTextAlignment(.leading)
-                .font(.system(size: 18).italic())
-                .padding(.top, 2)
+            Subtitle(text:"\(String(completedTargets)) / \(String(totalTargets)) weekly tasks completed", size: 16)
+                .padding(.top, 1)
                 .padding(.bottom, 22)
-                .foregroundColor(Colors.blueText)
             
             ScrollView(showsIndicators: false){
                 ForEach(user.goals, id: \.self) { goal in

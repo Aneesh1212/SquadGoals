@@ -62,7 +62,7 @@ struct JoinGroup: View {
         .alert(isPresented: $showNewGroupId) {
             Alert(title: Text("\(self.groupName) Created!"), message: Text("You group ID is \(self.newGroupId). Share with squad members so they can join the same group. You can also find the code on your profile page"), dismissButton: .default(Text("Copy and Proceed"), action: {
                 UIPasteboard.general.setValue(self.newGroupId, forPasteboardType: "public.plain-text")
-                self.viewModel.navigateToCreateGoal = true }))
+                self.shouldNavigate = true }))
         }
         .onTapGesture {
             UIApplication.shared.endEditing()
@@ -74,7 +74,7 @@ struct JoinGroup: View {
     
     func joinSquad(){
         if (viewModel.isValidGroupId(groupId: self.groupID)) {
-            // viewModel.joinGroup(phoneNumber: viewModel.currentUser.phoneNumber, groupId: self.groupID)
+            viewModel.joinGroup(phoneNumber: viewModel.currentUser.phoneNumber, groupId: self.groupID)
             self.shouldNavigate = true
         } else {
             self.showInvalidGroupId = true
@@ -87,6 +87,6 @@ struct JoinGroup: View {
         }
         let groupId = viewModel.createGroup(groupName: self.groupName)
         self.newGroupId = groupId
-        // showNewGroupId = true
+        showNewGroupId = true
     }
 }
