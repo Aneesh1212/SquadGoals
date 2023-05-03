@@ -17,11 +17,11 @@ struct Homepage : View {
     
     var openTargets : some View {
         VStack {
-            BlueCard{
+            LightBlueCard{
                 HStack(spacing: 0) {
-                    Label ("", systemImage: "doc.plaintext")
-                        .foregroundColor(.white)
-                    TitleV2(text: "\(String(viewModel.completedTargets)) / \(String(viewModel.totalTargets)) Weekly Tasks Completed", size: 16)
+                    Label ("", systemImage: "list.bullet.clipboard")
+                        .foregroundColor(.black)
+                    Subtitle(text: "\(String(viewModel.completedTargets)) / \(String(viewModel.totalTargets)) Weekly Tasks Completed", size: 16)
                 }
             }
                 
@@ -42,18 +42,19 @@ struct Homepage : View {
         VStack(alignment: .leading){
             Title(text: "Hi, \(viewModel.user.name)", size: 20)
             OrangeCard {
-                HStack(alignment: .top) {
-                    VStack(alignment: .leading) {
-                        TitleV2(text: "Week \(viewModel.week + 1)")
-                        SubtitleV2(text: "\(UtilFunctions.getDaysLeftInCycle()) days remaining in cycle")
-                    }
-                    PillActionButton(text: "Edit tasks", icon: "pencil",foregroundColor: .white, backgroundColor: Colors.opaqueWhite, action: {
+                    HStack(alignment: .top) {
+                        VStack(alignment: .leading) {
+                            TitleV2(text: "Week \(viewModel.week + 1)")
+                            SubtitleV2(text: "\(UtilFunctions.getDaysLeftInCycle()) days remaining in cycle")
+                        }
+                        Spacer()
+                        PillActionButton(text: "Edit tasks", icon: "pencil",foregroundColor: .white, backgroundColor: Colors.opaqueWhite, action: {
                             self.shouldNavigateToEditGoals = true
-                    })
-                }
-                
-                Race(viewModel: self.viewModel)
-                    .frame(alignment: .leading)
+                        })
+                    }
+                    
+                    Race(viewModel: self.viewModel)
+                        .frame(alignment: .leading)
             }
             
             if (viewModel.completedTargets >= viewModel.totalTargets) {

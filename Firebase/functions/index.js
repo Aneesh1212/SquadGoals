@@ -10,13 +10,27 @@ const admin = require("firebase-admin");
 }); */
 
 admin.initializeApp();
+const db = admin.database();
+const currentDate = Math.round(Date.now() / 1000);
+const dayOfWeek = mod(((new Date()).getDay() - 1), 7);
+const daysLeftInWeek = 7 - dayOfWeek;
+const secondsPerDay = 86400;
+
+
+/**
+ * @param {int} n
+ *  @param {int} m
+ *  @return {int}
+ */
+function mod(n, m) {
+    return ((n % m) + m) % m;
+}
 
 /**
  * @param {string} title
  *  @param {string} body
  */
 function sendMessageToAllUsers(title, body) {
-    const db = admin.database();
     const ref = db.ref("fcmTokens");
     ref.on(
         "value",
@@ -38,23 +52,18 @@ function sendMessageToAllUsers(title, body) {
                     .messaging()
                     .send(payload)
                     .then((response) => {
-                        // Response is a message ID string.
-                        console.log("Successfully sent message:", response);
                         return {
                             success: true,
                         };
                     })
                     .catch((error) => {
-                        console.log(error);
                         return {
                             error: error.code,
                         };
                     });
             }
         },
-        (errorObject) => {
-            console.log(`The read failed: ${errorObject.name}`);
-        },
+        (errorObject) => {},
     );
 }
 
@@ -65,7 +74,6 @@ function sendMessageToAllUsers(title, body) {
  *   @param {array} phoneNumbers
  */
 function sendMessageToSomeUsers(title, body, phoneNumbers) {
-    const db = admin.database();
     const ref = db.ref("fcmTokens");
     ref.on(
         "value",
@@ -89,13 +97,11 @@ function sendMessageToSomeUsers(title, body, phoneNumbers) {
                         .send(payload)
                         .then((response) => {
                             // Response is a message ID string.
-                            console.log("Successfully sent message:", response);
                             return {
                                 success: true,
                             };
                         })
                         .catch((error) => {
-                            console.log(error);
                             return {
                                 error: error.code,
                             };
@@ -103,9 +109,7 @@ function sendMessageToSomeUsers(title, body, phoneNumbers) {
                 }
             }
         },
-        (errorObject) => {
-            console.log(`Send message to some users failed: ${errorObject.name}`);
-        },
+        (errorObject) => {},
     );
 }
 
@@ -116,7 +120,6 @@ function sendMessageToSomeUsers(title, body, phoneNumbers) {
  */
 function getPhoneNumbersForGroupId(groupId) {
     const phoneNumbers = [];
-    const db = admin.database();
     const ref = db.ref(`groups/${groupId}/users`);
     const snapshot = ref.once("value");
     const usersMap = snapshot.val();
@@ -141,6 +144,76 @@ async function getResults() {
         const phoneNumbers = await getPhoneNumbersForGroupId(groupId);
         sendMessageToSomeUsers("Squad Goals: Week Results!", `${winner} was the MVP this week with ${winnerPercentage}% done!
           Congratulate them on a job well done. The team percentage was ${teamPercentage}%`, phoneNumbers);
+    }
+}
+
+/**
+ * @param {int} creationDate
+ * @return {boolean}
+ */
+function isTargetInThisWeek(creationDate) {
+    const differenceInSeconds = currentDate - creationDate;
+    const differenceInDays = Math.floor(differenceInSeconds / secondsPerDay);
+    return differenceInDays <= dayOfWeek;
+}
+
+/**
+ * @param {string} goalKey
+ * @return {Promise<dictionary>}
+ */
+async function getTargetsForGoalKey(goalKey) {
+    const goalRef = db.ref(`targets/${goalKey}`);
+    let totalTargets = 0;
+    let finishedTargets = 0;
+    const goalMap = await (await goalRef.get()).val();
+    for (const targetKey in goalMap) {
+        const target = goalMap[targetKey];
+        const targetCreationDate = parseInt(target.creationDate);
+        if (isTargetInThisWeek(targetCreationDate)) {
+            totalTargets += parseInt(target.original);
+            finishedTargets += (parseInt(target.original) - parseInt(target.frequency));
+        }
+    }
+    return {"totalTargets": totalTargets, "finishedTargets": finishedTargets};
+}
+
+/**
+ * @param {int} totalTasks
+ * @param {int} finishedTasks
+ * @param {int} positiveMomentum
+ * @param {int} negativeMomentum
+ * @param {int} momentumScore
+ * @param {bool} crossedOff
+ * @return {dictionary}
+ */
+function calculateMomentumChanges(totalTasks, finishedTasks, positiveMomentum, negativeMomentum, momentumScore, crossedOff) {
+    if (!crossedOff && (((totalTasks - finishedTasks) >= daysLeftInWeek) || (totalTasks == 0 && dayOfWeek > 2))) {
+        momentumScore = Math.max(0, momentumScore - negativeMomentum);
+        positiveMomentum = Math.max(1, positiveMomentum - 1);
+        negativeMomentum = negativeMomentum - 1;
+        }
+    return {"momentumScore": momentumScore.toString(), "positiveMomentum": positiveMomentum.toString(), "negativeMomentum": negativeMomentum.toString(), "crossedOff": "false"};
+}
+
+/**
+ *
+ */
+async function updateMomScore() {
+    const usersRef = db.ref("goals");
+    const goalsMap = await (await usersRef.get()).val();
+    for (const userPhoneNumber in goalsMap) {
+        const goalMap = goalsMap[userPhoneNumber].goals;
+        for (const goalKey in goalMap) {
+            const goal = goalMap[goalKey];
+            const targetData = await getTargetsForGoalKey(goalKey);
+            const crossedOff = goal.crossedOff == "true" ? true : false;
+            const positiveMomentum = goal.positiveMomentum != undefined ? parseInt(goal.positiveMomentum) : 0;
+            const negativeMomentum = goal.negativeMomentum != undefined ? parseInt(goal.negativeMomentum) : 0;
+            const momentumScore = goal.momentumScore != undefined ? parseInt(goal.momentumScore) : 0;
+            const momentumData = calculateMomentumChanges(targetData.totalTargets, targetData.finishedTargets, positiveMomentum, negativeMomentum, momentumScore, crossedOff);
+            const goalRef = db.ref(`goals/${userPhoneNumber}/goals/${goalKey}`);
+            goalRef.update(momentumData);
+        }
     }
 }
 
@@ -179,4 +252,11 @@ exports.results = functions.pubsub
     .timeZone("America/New_York")
     .onRun((context) => {
         getResults();
+    });
+
+exports.calculateMomentum = functions.pubsub
+    .schedule("0 1 * * *")
+    .timeZone("America/New_York")
+    .onRun((context) => {
+        updateMomScore();
     });

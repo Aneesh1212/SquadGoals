@@ -19,12 +19,13 @@ struct HomepageGoalView : View {
         WhiteCard {
             VStack(spacing: 0) {
                 HStack{
-                    Subtitle(text: self.goal.title, size: 18)
+                    Subtitle(text: self.goal.title, weight: .medium, size: 18)
                     Spacer()
-                    Subtitle(text: "🔥12")
+                    Subtitle(text: "🔥\(String(goal.momentumScore))")
                 }
                 .fixedSize(horizontal: false, vertical: true)
-                .padding(6)
+                .padding(.horizontal, 6)
+                .padding(.bottom, 6)
                 
                 ForEach(self.goal.currTargets, id: \.self) { target in
                     let finished : Int = target.original - target.frequency
@@ -82,12 +83,26 @@ struct HomepageGoalView : View {
             let targetIndex = self.goal.currTargets.firstIndex(of: target) ?? 0
             let goalIndex = viewModel.user.goals.firstIndex(of: self.goal) ?? 0
             self.goal.currTargets[targetIndex].frequency = newFrequency
-            viewModel.overwriteTarget(goalId: goal.key ?? "", targetId: target.key ?? "", targetTitle: target.title, targetFrequency: newFrequency, targetOriginal: target.original, creationDate : target.creationDate)
+            viewModel.overwriteTarget(goalId: goal.key, targetId: target.key, targetTitle: target.title, targetFrequency: newFrequency, targetOriginal: target.original, creationDate : target.creationDate)
             viewModel.user.goals[goalIndex] = self.goal
             viewModel.completedTargets += 1
         }
+        crossedTaskOffMomentum()
         viewModel.sendUpdateNotification(targetTitle: target.title)
         viewModel.writeResults()
+    }
+    
+    func crossedTaskOffMomentum() {
+        if (!self.goal.crossedOff) {
+            let goalIndex = viewModel.user.goals.firstIndex(of: goal) ?? 0
+            goal.momentumScore = goal.momentumScore + goal.positiveMomentum
+            goal.positiveMomentum = goal.positiveMomentum + 1
+            goal.negativeMomentum = -1
+            goal.recordMomentum = max(goal.recordMomentum, goal.momentumScore)
+            goal.crossedOff = true
+            viewModel.user.goals[goalIndex] = goal
+            viewModel.updateGoalMomentum(goal: goal)
+        }
     }
 }
 

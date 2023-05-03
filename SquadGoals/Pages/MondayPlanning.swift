@@ -133,21 +133,21 @@ struct MondayPlanning: View {
                         .padding(.top, 10)
                 }
                 
-                BlueActionButton(text:"Submit", action: {
+                BlueActionButton(text:"Submit all", action: {
                     self.showEditWarning = true
                 })
                                 
                 NavigationLink(destination: Main(user: self.user, showReflection: false), isActive: $navigateToHome) { EmptyView() }
             }
+            .padding(.horizontal, Styling.mediumUnit)
+            .padding(.bottom, Styling.extraSmallUnit)
             .overlay(Color.gray.opacity(showExample ? 0.6 : 0.0))
+            .background(Colors.background)
             
             if (showExample) {
                 ExampleTargetsModal(shown: $showExample)
             }
         }
-        .padding(.horizontal, Styling.mediumUnit)
-        .padding(.bottom, Styling.mediumUnit)
-        .background(Colors.background)
         .alert("Weekly tasks are cleared every Sunday at Midnight. Please ensure your tasks fit this timeline", isPresented: $showEditWarning) {
             Button("Submit") {
                 self.navigateToHome = true

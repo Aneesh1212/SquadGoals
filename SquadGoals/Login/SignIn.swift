@@ -18,7 +18,7 @@ struct SignIn: View {
         VStack(alignment: .leading){
             Title(text: "Welcome Back!")
             Spacing(height: 6)
-            Subtitle(text: "Please enter your address below to start using app.")
+            Subtitle(text: "Please enter your phone number below to start using app.")
             
             Spacing(height: Styling.mediumUnit)
             

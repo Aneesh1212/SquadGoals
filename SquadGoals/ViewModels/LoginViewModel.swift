@@ -24,7 +24,6 @@ class LoginViewModel : ObservableObject {
     @Published var showUserExists = false
     @Published var navigateToJoinGroup = false
     @Published var showGroupNotFound = false
-    @Published var navigateToCreateGoal = false
     @Published var navigateToHome = false
     @Published var navigateToReflection = false
     @Published var showUnableToFindUser = false
@@ -75,7 +74,6 @@ class LoginViewModel : ObservableObject {
                 groupRef.child(userKey).setValue(phoneNumber)
                 self.addGroupToUser(name: self.currentUser.name, phoneNumber: phoneNumber, groupId: groupId)
                 self.currentUser.groupId = groupId
-                self.navigateToCreateGoal = true
             }
             else {
                 self.showGroupNotFound = true
