@@ -88,7 +88,7 @@ struct HomepageGoalView : View {
             viewModel.completedTargets += 1
         }
         crossedTaskOffMomentum()
-        viewModel.sendUpdateNotification(targetTitle: target.title)
+        viewModel.sendUpdateNotification(targetTitle: target.title, goalMomentum: goal.momentumScore)
         viewModel.writeResults()
     }
     
