@@ -52,6 +52,11 @@ struct SquadPage: View {
                         UserProgressCard(percentage: teammatePercentage, weekPercentage: weekPercentage, name: teammate.name, momentum: momentum, primaryAction: { onUserProgressCardClick(teammate: teammate) }, buttonAction: { onMessageUserClick(teammate: teammate) })
                     }
                 }
+                
+                if (teamList.count <= 1) {
+                    InviteFriendsComponent()
+                        .padding(.top, Styling.smallUnit)
+                }
             }
             
             Spacer()

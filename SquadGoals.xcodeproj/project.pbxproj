@@ -21,6 +21,8 @@
 		552F69EB288674D300AAF287 /* ReflectionAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F69EA288674D300AAF287 /* ReflectionAlert.swift */; };
 		5538D6E729D556F100BF76D4 /* GrayActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5538D6E629D556F100BF76D4 /* GrayActionButton.swift */; };
 		553D66772A016AF500A85C32 /* LightBlueCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553D66762A016AF500A85C32 /* LightBlueCard.swift */; };
+		553E3C632A03721D00E14620 /* GreenCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553E3C622A03721D00E14620 /* GreenCard.swift */; };
+		553E3C692A0379CE00E14620 /* InviteFriendsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553E3C682A0379CE00E14620 /* InviteFriendsComponent.swift */; };
 		5544594B295E463500F21D9F /* SwiftUITooltip in Frameworks */ = {isa = PBXBuildFile; productRef = 5544594A295E463500F21D9F /* SwiftUITooltip */; };
 		55663CDF29DA48F80037F522 /* RedActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55663CDE29DA48F80037F522 /* RedActionButton.swift */; };
 		55663CE229DA5F830037F522 /* LeftAligner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55663CE129DA5F830037F522 /* LeftAligner.swift */; };
@@ -123,6 +125,8 @@
 		552F69EA288674D300AAF287 /* ReflectionAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectionAlert.swift; sourceTree = "<group>"; };
 		5538D6E629D556F100BF76D4 /* GrayActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayActionButton.swift; sourceTree = "<group>"; };
 		553D66762A016AF500A85C32 /* LightBlueCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightBlueCard.swift; sourceTree = "<group>"; };
+		553E3C622A03721D00E14620 /* GreenCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenCard.swift; sourceTree = "<group>"; };
+		553E3C682A0379CE00E14620 /* InviteFriendsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendsComponent.swift; sourceTree = "<group>"; };
 		55663CDE29DA48F80037F522 /* RedActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedActionButton.swift; sourceTree = "<group>"; };
 		55663CE129DA5F830037F522 /* LeftAligner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAligner.swift; sourceTree = "<group>"; };
 		55663CE329DA85290037F522 /* CornerRadiusExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadiusExtension.swift; sourceTree = "<group>"; };
@@ -421,6 +425,7 @@
 				55D77E0729CB495900BAFA1D /* PillActionButton.swift */,
 				55D77E0929CB4E4000BAFA1D /* TrailingViewHelper.swift */,
 				55FDF84129D3FBCD00082B72 /* UserProgressCard.swift */,
+				553E3C682A0379CE00E14620 /* InviteFriendsComponent.swift */,
 			);
 			path = UIElements;
 			sourceTree = "<group>";
@@ -457,6 +462,7 @@
 				55766C2229D2A5780060E6D7 /* OrangeCard.swift */,
 				55FDF82F29D3CD5400082B72 /* BlueCard.swift */,
 				553D66762A016AF500A85C32 /* LightBlueCard.swift */,
+				553E3C622A03721D00E14620 /* GreenCard.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -723,6 +729,7 @@
 				5587C8AB27878855001A9999 /* GoalAdded.swift in Sources */,
 				55D696ED296E304200E9EA7D /* ContentView.swift in Sources */,
 				55FDF83F29D3FAC400082B72 /* WhiteActionButtonWithArrow.swift in Sources */,
+				553E3C632A03721D00E14620 /* GreenCard.swift in Sources */,
 				553D66772A016AF500A85C32 /* LightBlueCard.swift in Sources */,
 				5587C8A527878855001A9999 /* Welcome.swift in Sources */,
 				552F69EB288674D300AAF287 /* ReflectionAlert.swift in Sources */,
@@ -784,6 +791,7 @@
 				55D77E0829CB495900BAFA1D /* PillActionButton.swift in Sources */,
 				552F625A28FCEFFE002F0A5F /* OnboardingTitle.swift in Sources */,
 				55766C2329D2A5780060E6D7 /* OrangeCard.swift in Sources */,
+				553E3C692A0379CE00E14620 /* InviteFriendsComponent.swift in Sources */,
 				5587C8A627878855001A9999 /* CreateAccount.swift in Sources */,
 				55FDF83329D3DC5800082B72 /* UtilFunctions.swift in Sources */,
 				55FDF83D29D3F78000082B72 /* WhiteActionButton.swift in Sources */,
@@ -949,7 +957,7 @@
 				CODE_SIGN_ENTITLEMENTS = SquadGoals/SquadGoals.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 44;
 				DEVELOPMENT_ASSET_PATHS = "\"SquadGoals/Preview Content\"";
 				DEVELOPMENT_TEAM = HPRJ8CFMWR;
 				ENABLE_PREVIEWS = YES;
@@ -986,7 +994,7 @@
 				CODE_SIGN_ENTITLEMENTS = SquadGoals/SquadGoals.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 44;
 				DEVELOPMENT_ASSET_PATHS = "\"SquadGoals/Preview Content\"";
 				DEVELOPMENT_TEAM = HPRJ8CFMWR;
 				ENABLE_PREVIEWS = YES;

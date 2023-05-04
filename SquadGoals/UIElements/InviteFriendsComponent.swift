@@ -1,0 +1,48 @@
+//
+//  InviteFriendsComponent.swift
+//  SquadGoals
+//
+//  Created by Aneesh Agrawal on 5/3/23.
+//
+
+import UIKit
+import SwiftUI
+
+// 1. Activity View
+struct ActivityView: UIViewControllerRepresentable {
+    let text: String
+
+    func makeUIViewController(context: UIViewControllerRepresentableContext<ActivityView>) -> UIActivityViewController {
+        return UIActivityViewController(activityItems: [text], applicationActivities: nil)
+    }
+
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: UIViewControllerRepresentableContext<ActivityView>) {}
+}
+
+// 2. Share Text
+struct ShareText: Identifiable {
+    let id = UUID()
+    let text: String
+}
+
+struct InviteFriendsComponent: View {
+    @State var shareText: ShareText?
+
+    var body: some View {
+        GreenCard {
+            VStack(spacing: Styling.smallUnit) {
+                SubtitleV2(text: "Add more Teammates to your Squad", weight: .semibold)
+                PurpleActionButton(text: "Invite a friend", height: 42, action: {
+                    shareText = ShareText(text: "www.facebook.com")
+                })
+                .padding(.horizontal, Styling.largeUnit)
+            }
+            .padding(.vertical, 16)
+            .padding(.bottom, 16)
+        }
+        .sheet(item: $shareText) { shareText in
+            ActivityView(text: shareText.text)
+        }
+    }
+}
+

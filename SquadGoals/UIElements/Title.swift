@@ -14,6 +14,7 @@ struct Title : View {
     var lineLimit : Int?
     var size : CGFloat?
     var shouldLeftAlign: Bool?
+    var scaleFactor : CGFloat = 1.0
     
     var body : some View {
         VStack{
@@ -21,6 +22,7 @@ struct Title : View {
                 .foregroundColor(.black)
                 .font(.system(size: size ?? 24, weight: .semibold))
                 .lineLimit(lineLimit ?? 1)
+                .minimumScaleFactor(scaleFactor)
                 .multilineTextAlignment(shouldLeftAlign ?? false ? .leading : .center)
         }
     }

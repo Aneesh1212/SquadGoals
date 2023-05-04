@@ -237,7 +237,7 @@ class GoalViewModel : ObservableObject {
         else if (old < 0.75 && new >= 0.75){
             UtilFunctions.sendNotification(users: self.user.teammates + [self.user], title: "Squad Goals: Team Update", message: "Omg \(self.user.name) has finished 75% of their week goals. A little bit more for that 100% and 🍷")
         } else {
-            UtilFunctions.sendNotification(users: self.user.teammates + [self.user], title: "\(String(self.user.name)) completed:  \(targetTitle)", message: getProgressUpdateString(goalMomentum: goalMomentum, weeklyPercentage: Int(new * 100)))
+            UtilFunctions.sendNotification(users: self.user.teammates + [self.user], title: "\(String(self.user.name)) completed \(targetTitle)", message: getProgressUpdateString(goalMomentum: goalMomentum, weeklyPercentage: Int(new * 100)))
         }
     }
     

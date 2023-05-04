@@ -27,6 +27,14 @@ struct HomepageGoalView : View {
                 .padding(.horizontal, 6)
                 .padding(.bottom, 6)
                 
+                if (self.goal.currTargets.count == 0) {
+                    WhiteCard(verticalPadding: Styling.extraSmallUnit) {
+                        Subtitle(text:"No tasks this week")
+                    }
+                    .padding(.vertical, Styling.extraSmallUnit)
+                    .shadow(color: .gray, radius: 1, x: 0.0, y: 1.0)
+                }
+                
                 ForEach(self.goal.currTargets, id: \.self) { target in
                     let finished : Int = target.original - target.frequency
                     let unfinished : Int = target.frequency
@@ -90,6 +98,7 @@ struct HomepageGoalView : View {
         crossedTaskOffMomentum()
         viewModel.sendUpdateNotification(targetTitle: target.title, goalMomentum: goal.momentumScore)
         viewModel.writeResults()
+        UINotificationFeedbackGenerator().notificationOccurred(.success)
     }
     
     func crossedTaskOffMomentum() {

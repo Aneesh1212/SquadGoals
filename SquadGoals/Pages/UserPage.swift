@@ -18,7 +18,7 @@ struct UserPage: View {
     
     var body: some View {
         VStack{
-            Title(text:user.name, size: 48)
+            Title(text:user.name, size: 48, scaleFactor: 0.5)
             
             let totalTargets = viewModel.calculateTotalTargets(goals: user.goals)
             let completedTargets = viewModel.calculateCompletedTargets(goals: user.goals)
