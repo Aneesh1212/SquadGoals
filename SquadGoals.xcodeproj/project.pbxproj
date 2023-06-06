@@ -957,12 +957,14 @@
 				CODE_SIGN_ENTITLEMENTS = SquadGoals/SquadGoals.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 44;
+				CURRENT_PROJECT_VERSION = 48;
 				DEVELOPMENT_ASSET_PATHS = "\"SquadGoals/Preview Content\"";
 				DEVELOPMENT_TEAM = HPRJ8CFMWR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SquadGoals/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SquadGoals;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -975,7 +977,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "agrawals.Squad-Goals";
 				PRODUCT_NAME = "Squad Goals";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -994,12 +996,14 @@
 				CODE_SIGN_ENTITLEMENTS = SquadGoals/SquadGoals.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 44;
+				CURRENT_PROJECT_VERSION = 48;
 				DEVELOPMENT_ASSET_PATHS = "\"SquadGoals/Preview Content\"";
 				DEVELOPMENT_TEAM = HPRJ8CFMWR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SquadGoals/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SquadGoals;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1012,7 +1016,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "agrawals.Squad-Goals";
 				PRODUCT_NAME = "Squad Goals";
 				PROVISIONING_PROFILE_SPECIFIER = "";

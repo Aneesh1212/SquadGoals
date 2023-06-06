@@ -22,8 +22,8 @@ struct Race : View {
                     let index = teamList.firstIndex(of: teammate) ?? 0
                     ZStack {
                         Circle()
-                            .background(Circle().foregroundColor(colorList[index % 6]))
-                            .foregroundColor(colorList[index % 7])
+                            .background(Circle().foregroundColor(colorList[index % colorList.count]))
+                            .foregroundColor(colorList[index % colorList.count])
                             .frame(width: 25, height: 25)
                         Text(teammate.name.prefix(1))
                             .foregroundColor(.white)

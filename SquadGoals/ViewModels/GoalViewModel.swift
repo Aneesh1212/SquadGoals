@@ -237,18 +237,18 @@ class GoalViewModel : ObservableObject {
         else if (old < 0.75 && new >= 0.75){
             UtilFunctions.sendNotification(users: self.user.teammates + [self.user], title: "Squad Goals: Team Update", message: "Omg \(self.user.name) has finished 75% of their week goals. A little bit more for that 100% and 🍷")
         } else {
-            UtilFunctions.sendNotification(users: self.user.teammates + [self.user], title: "\(String(self.user.name)) completed \(targetTitle)", message: getProgressUpdateString(goalMomentum: goalMomentum, weeklyPercentage: Int(new * 100)))
+            UtilFunctions.sendNotification(users: self.user.teammates + [self.user], title: "Squad Goals: Team Update", message:
+                                            "\(String(self.user.name)) completed \"\(targetTitle.trimmingCharacters(in: .whitespaces))\". \(getProgressUpdateString(goalMomentum: goalMomentum))")
         }
     }
     
-    func getProgressUpdateString(goalMomentum: Int, weeklyPercentage: Int) -> String {
+    func getProgressUpdateString(goalMomentum: Int) -> String {
         let possibleStrings = [
-            "Their goal momentum is now \(String(goalMomentum)), and their weekly percentage is \(String(weeklyPercentage))%.",
-            "This brings their goal momentum to \(String(goalMomentum)), while their weekly percentage is \(String(weeklyPercentage))%.",
-            "With \(String(goalMomentum)) as their goal momentum, and \(String(weeklyPercentage))% as their weekly percentage, they're on the path to success.",
-            "\(String(goalMomentum)) is their new goal momentum, and they're proudly achieving a weekly percentage of \(String(weeklyPercentage))%",
-            "Their hard work pays off with \(String(goalMomentum)) as their goal momentum, and a weekly percentage of \(String(weeklyPercentage))%.",
-            "\(String(goalMomentum)) is their shining goal momentum, and they're making strides with a weekly percentage of \(String(weeklyPercentage))%."
+            "Their goal momentum is now \(String(goalMomentum)).",
+            "This brings their goal momentum to \(String(goalMomentum)).",
+            "With \(String(goalMomentum)) as their goal momentum, they're on the path to success.",
+            "They're proudly achieving a goal momentum of \(String(goalMomentum))",
+            "Their hard work pays off with \(String(goalMomentum)) as their goal momentum.",
         ]
         return possibleStrings.randomElement()!
     }

@@ -33,7 +33,7 @@ struct InviteFriendsComponent: View {
             VStack(spacing: Styling.smallUnit) {
                 SubtitleV2(text: "Add more Teammates to your Squad", weight: .semibold)
                 PurpleActionButton(text: "Invite a friend", height: 42, action: {
-                    shareText = ShareText(text: "www.facebook.com")
+                    shareText = ShareText(text: "https://apps.apple.com/us/app/squadgoals/id1603697577")
                 })
                 .padding(.horizontal, Styling.largeUnit)
             }

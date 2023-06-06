@@ -163,7 +163,7 @@ struct MondayPlanning: View {
         }
         .onAppear {
             Task {
-                await self.viewModel.getGoals(phoneNumber: user.phoneNumber, isMondayPlanning: true)
+                self.viewModel.getGoals(phoneNumber: user.phoneNumber, isMondayPlanning: true)
             }
         }
     }

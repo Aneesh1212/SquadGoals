@@ -188,7 +188,7 @@ async function getTargetsForGoalKey(goalKey) {
  */
 function calculateMomentumChanges(totalTasks, finishedTasks, positiveMomentum, negativeMomentum, momentumScore, crossedOff) {
     if (!crossedOff && (((totalTasks - finishedTasks) >= daysLeftInWeek) || (totalTasks == 0 && dayOfWeek > 2))) {
-        momentumScore = Math.max(0, momentumScore - negativeMomentum);
+        momentumScore = Math.max(0, momentumScore + negativeMomentum);
         positiveMomentum = Math.max(1, positiveMomentum - 1);
         negativeMomentum = negativeMomentum - 1;
         }
