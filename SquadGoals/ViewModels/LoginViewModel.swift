@@ -19,6 +19,7 @@ class LoginViewModel : ObservableObject {
     var ref = Database.database().reference()
     
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 =======
@@ -152,6 +153,8 @@ class LoginViewModel : ObservableObject {
         self.ref.child("fcmTokens").child(phoneNumber).setValue(["token" : fcmToken])
     }
 =======
+=======
+>>>>>>> e62c1b1 (Big user session refactor)
 
 
 >>>>>>> e62c1b1 (Big user session refactor)

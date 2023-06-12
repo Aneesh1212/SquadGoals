@@ -30,9 +30,7 @@ struct SignIn: View {
             BlueActionButton(text: "Log In", action: signIn)
             
             NavigationLink(destination: Main(viewModel: viewModel, showResultsModal: viewModel.showReflection)) { EmptyView() }
-            NavigationLink(destination: JoinGroup(viewModel: self.viewModel), isActive: $viewModel.navigateToMissingGroup) {
-                EmptyView()
-            }
+            NavigationLink(destination: JoinGroup(viewModel: self.viewModel), isActive: $viewModel.navigateToMissingGroup) { EmptyView() }
         }
         .padding(.bottom, Styling.mediumUnit)
         .padding(.horizontal, Styling.mediumUnit)
