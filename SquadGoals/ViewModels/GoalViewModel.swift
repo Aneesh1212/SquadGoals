@@ -15,7 +15,7 @@ let ref = Database.database().reference()
 let pastMonday = Calendar(identifier: .gregorian).startOfDay(for: Date()).previous(.monday, considerToday: true)
 
 class GoalViewModel : ObservableObject {
-    
+
     @Published var user : User = User(name: "", phoneNumber: "", groupId: "", goals: [], teammates: [])
     @Published var completedTargets : Int = 0
     @Published var teammatePhones : Array<String> = []
@@ -33,7 +33,7 @@ class GoalViewModel : ObservableObject {
     @Published var showUnableToFindUser = false
     @Published var showReflection = false
     @Published var navigateToMissingGroup = false
-    
+
     weak var gestureRecognizer: GestureRecognizerInteractor? = UIApplication.shared
     
     func createGoal(goalTitle : String, goalReason : String, goalCategory: String) {
@@ -380,7 +380,7 @@ class GoalViewModel : ObservableObject {
         let lastSetMonday = (defaults.object(forKey: "lastSetMonday") as? Date) ?? Date(timeIntervalSince1970: 0)
         let daysSinceMonday = (Calendar.current.dateComponents([.day], from: lastSetMonday, to: Date())).day!
         if (daysSinceMonday >= 7) {
-            // if (true) {
+        // if (true) {
             self.showReflection = true
         } else {
             self.showReflection = false
