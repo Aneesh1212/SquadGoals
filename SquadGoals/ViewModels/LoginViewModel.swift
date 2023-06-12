@@ -95,9 +95,9 @@ class LoginViewModel : ObservableObject {
             }
             if (snapshot.exists()) {
                 let userData = snapshot.value as? Dictionary<String, String> ?? [:]
-                let userName = userData["name"] ?? "NA"
-                let userPhone = userData["phone"] ?? "NA"
-                let userGroup = userData["groupId"] ?? "NA"
+                let userName = userData["name"] ?? ""
+                let userPhone = userData["phone"] ?? ""
+                let userGroup = userData["groupId"] ?? ""
                 self.currentUser = User(name: userName, phoneNumber: userPhone, groupId: userGroup, goals: [], teammates: [])
                 self.showUnableToFindUser = false
                 self.logUserFCMtoken(phoneNumber: phoneNumber)
@@ -129,7 +129,7 @@ class LoginViewModel : ObservableObject {
     }
     
     private func signInNavigation() {
-        if (self.currentUser.groupId == "NA") {
+        if (self.currentUser.groupId == "") {
             self.navigateToMissingGroup = true
             return
         }
