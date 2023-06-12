@@ -9,8 +9,7 @@ import Foundation
 
 struct CreateGoal: View {
     
-    var viewModel = GoalViewModel(user: User(name: "", phoneNumber: "", groupId: "", goals: [], teammates: []))
-    @State var user : User
+    @State var viewModel : GoalViewModel
     @State var isSingleGoal : Bool
     @State private var shouldNavigate = false
     @State private var shouldNavigateSingleGoal = false
@@ -50,7 +49,7 @@ struct CreateGoal: View {
     }
     
     func addGoal() -> Void {
-        viewModel.createGoal(phoneNumber: user.phoneNumber, goalTitle: self.goalTitle, goalReason: self.goalReason, goalCategory: self.goalCategory)
+        viewModel.createGoal(goalTitle: self.goalTitle, goalReason: self.goalReason, goalCategory: self.goalCategory)
         self.shouldNavigate = true
     }
     
@@ -82,8 +81,8 @@ struct CreateGoal: View {
             BlueActionButton(text: "Add Goal", action: addGoal)
             
             VStack {
-                NavigationLink(destination: GoalAdded(user: self.user, goalTitle: self.goalTitle), isActive: $shouldNavigate) { EmptyView() }
-                NavigationLink(destination: MondayPlanning(user: self.user, viewModel: GoalViewModel(user:self.user), mode: Mode.initial), isActive: $shouldNavigateSingleGoal) { EmptyView() }
+                NavigationLink(destination: GoalAdded(viewModel: self.viewModel, goalTitle: self.goalTitle), isActive: $shouldNavigate) { EmptyView() }
+                NavigationLink(destination: MondayPlanning(viewModel: self.viewModel, mode: Mode.initial), isActive: $shouldNavigateSingleGoal) { EmptyView() }
             }
         }
         .padding(.bottom, Styling.mediumUnit)

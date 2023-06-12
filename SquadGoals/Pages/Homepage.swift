@@ -63,7 +63,7 @@ struct Homepage : View {
                 openTargets
             }
         
-            NavigationLink(destination: MondayPlanning(user: self.viewModel.user, viewModel: self.viewModel, mode: Mode.editing), isActive: $shouldNavigateToEditGoals) { EmptyView() }
+            NavigationLink(destination: MondayPlanning(viewModel: self.viewModel, mode: Mode.editing), isActive: $shouldNavigateToEditGoals) { EmptyView() }
             
             Spacer()
         }

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct BaseTutorial: View {
     
-    var user : User
+    var viewModel : GoalViewModel
     @State var count = 0
     @State var navigateToCreateGoal = false
     
@@ -55,7 +55,7 @@ struct BaseTutorial: View {
             
             CarouselCounter(count: count + 1)
             
-            NavigationLink(destination: CreateGoal(user: self.user, isSingleGoal: false), isActive: $navigateToCreateGoal) { EmptyView() }
+            NavigationLink(destination: CreateGoal(viewModel: self.viewModel, isSingleGoal: false), isActive: $navigateToCreateGoal) { EmptyView() }
             
         }
         .padding(.horizontal, 16)

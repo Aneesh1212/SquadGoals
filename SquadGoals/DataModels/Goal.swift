@@ -23,7 +23,7 @@ struct Goal : Hashable {
     var pastTargets : Dictionary<Date, Array<Target>>
     var brags : Array<Brag>
     
-    init(title: String, reason : String, category : String, currTargets : Array<Target>, momentumScore : Int, positiveMomentum : Int, negativeMomentum : Int, recordMomentum : Int, crossedOff: Bool, key: String = "", pastTargets: Dictionary<Date, Array<Target>> = [:], brags: Array<Brag> = []) {
+    init(title: String, reason : String, category : String, currTargets : Array<Target>, momentumScore : Int, positiveMomentum : Int, negativeMomentum : Int, recordMomentum : Int, crossedOff: Bool, key: String, pastTargets: Dictionary<Date, Array<Target>> = [:], brags: Array<Brag> = []) {
         self.title = title
         self.reason = reason
         self.category = category

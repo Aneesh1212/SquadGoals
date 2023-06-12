@@ -14,7 +14,6 @@ enum Mode {
 }
 struct MondayPlanning: View {
     
-    @State var user : User
     @StateObject var viewModel : GoalViewModel
     var mode: Mode
     @State var navigateToHome = false
@@ -43,6 +42,7 @@ struct MondayPlanning: View {
     func saveGoals() {
         for goalIndex in 0..<goals.count {
             let goal = goals[goalIndex]
+            var updatedTargets : Array<Target> = []
             for targetIndex in 0..<titles[goalIndex].count {
                 let targetTitle = titles[goalIndex][targetIndex]
                 let targetFrequencyString = frequencies[goalIndex][targetIndex]
@@ -51,19 +51,20 @@ struct MondayPlanning: View {
                 let targetCompletedNum = completedNums[goalIndex][targetIndex]
                 let newTarget = Target(title: targetTitle, frequency: max(targetFrequency - targetCompletedNum, 0), original: targetFrequency, key: targetKey)
                 if (targetTitle != "") {
-                    viewModel.createTargets(goalId: goal.key, targets: [newTarget])
+                    updatedTargets.append(newTarget)
                 }
             }
+            viewModel.createTargets(goalId: goal.key, targets: updatedTargets)
         }
     }
     
-    func loadPastTargets(user: User, justGoals: Bool, newGoals: Bool) {
+    func loadPastTargets(justGoals: Bool, newGoals: Bool) {
         self.goals = []
         self.titles = []
         self.frequencies = []
         self.completedNums = []
         self.keys = []
-        for goal in user.goals {
+        for goal in viewModel.user.goals {
             self.goals.append(goal)
             var currentTitles : [String] = []
             var currentFrequencies : [String] = []
@@ -115,7 +116,7 @@ struct MondayPlanning: View {
                 
                 if (mode == Mode.weekly) {
                     GreenActionButton(text: "Load Past Targets", action: {
-                        loadPastTargets(user: self.viewModel.user, justGoals: false, newGoals: true)
+                        loadPastTargets(justGoals: false, newGoals: true)
                     })
                 }
                 
@@ -127,9 +128,6 @@ struct MondayPlanning: View {
                 
                 ScrollView {
                     targetEntryTable
-                        .onChange(of: self.viewModel.user) { value in
-                            loadPastTargets(user: value, justGoals: (mode == Mode.weekly), newGoals:false)
-                        }
                         .padding(.top, 10)
                 }
                 
@@ -137,7 +135,7 @@ struct MondayPlanning: View {
                     self.showEditWarning = true
                 })
                                 
-                NavigationLink(destination: Main(user: self.user, showReflection: false), isActive: $navigateToHome) { EmptyView() }
+                NavigationLink(destination: Main(viewModel: self.viewModel, showResultsModal: false), isActive: $navigateToHome) { EmptyView() }
             }
             .padding(.horizontal, Styling.mediumUnit)
             .padding(.bottom, Styling.extraSmallUnit)
@@ -161,7 +159,7 @@ struct MondayPlanning: View {
         }
         .onAppear {
             Task {
-                self.viewModel.getGoals(phoneNumber: user.phoneNumber, isMondayPlanning: true)
+             loadPastTargets(justGoals: (mode == Mode.weekly), newGoals:false)
             }
         }
     }

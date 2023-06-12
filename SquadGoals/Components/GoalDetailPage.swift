@@ -18,8 +18,8 @@ struct GoalDetailPage: View {
     
     @ViewBuilder func getView(date : String, targets : Array<Target>) -> some View {
         
-        let completedTargets = viewModel.calculateCompletedTargetsFromTarget(targets: targets)
-        let totalTargets = viewModel.calculateTotalTargetsFromTarget(targets: targets)
+        let completedTargets = UtilFunctions.calculateCompletedTargetsFromTarget(targets: targets)
+        let totalTargets = UtilFunctions.calculateTotalTargetsFromTarget(targets: targets)
         
         VStack(alignment: .leading) {
             Subtitle(text: "\(String(date)) - \(String(completedTargets)) / \(String(totalTargets)) this week")
@@ -65,8 +65,8 @@ struct GoalDetailPage: View {
     }
     
     var body: some View {
-        let totalTargets = viewModel.calculateTotalTargets(goals: [self.goal])
-        let completedTargets = viewModel.calculateCompletedTargets(goals: [self.goal])
+        let totalTargets = UtilFunctions.calculateTotalTargets(goals: [self.goal])
+        let completedTargets = UtilFunctions.calculateCompletedTargets(goals: [self.goal])
         let completionPercentage = viewModel.calculateWeeklyTargetPercent(goals: [self.goal])
         
         NavigationLink(destination: EditGoal(viewModel: self.viewModel, goal: self.$goal), isActive: $shouldNavigateToEditGoal) { EmptyView() }
@@ -97,7 +97,7 @@ struct GoalDetailPage: View {
                         .frame(height: 50)
                         .background(Colors.darkOrangeForeground)
                         .cornerRadius(50, corners: [.topLeft, .topRight])
-                    BragTable(goalKey: self.goal.key)
+                    BragTable(goalKey: self.goal.key, viewModel: self.viewModel)
                 }
                 
                 Spacing(height: Styling.mediumUnit)

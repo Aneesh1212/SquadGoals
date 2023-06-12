@@ -12,7 +12,7 @@ struct SquadPage: View {
     
     @StateObject var viewModel : GoalViewModel
     @Binding var isReviewing: Bool
-    @State var selectedUser : User = User(name: "", phoneNumber: "", groupId: "", goals: [], teammates: [])
+    @State var teammate : User = User(name: "", phoneNumber: "", groupId: "", goals: [], teammates: [])
     @State var shouldNavigateToProfile = false
     @State var showEncouragementModal = false
     @State var showCongratsModal = false
@@ -42,7 +42,7 @@ struct SquadPage: View {
             }
             .padding(.bottom, Styling.smallUnit)
             
-            NavigationLink(destination: UserPage(user: self.selectedUser), isActive: $shouldNavigateToProfile) { EmptyView() }
+            NavigationLink(destination: UserPage(teammate: self.teammate), isActive: $shouldNavigateToProfile) { EmptyView() }
             
             ScrollView{
                 LazyVGrid(columns: columns, spacing: 20) {
@@ -68,17 +68,17 @@ struct SquadPage: View {
             
         })
         .sheet(isPresented: $showCongratsModal, onDismiss: {}, content: {
-            CongratsModal(viewModel: self.viewModel, showModal: $showCongratsModal, teammate: self.selectedUser)
+            CongratsModal(viewModel: self.viewModel, showModal: $showCongratsModal, teammate: self.teammate)
         })
     }
     
     func onUserProgressCardClick(teammate: User) -> Void {
-        self.selectedUser = teammate
+        self.teammate = teammate
         self.shouldNavigateToProfile = true
     }
     
     func onMessageUserClick(teammate: User) -> Void {
-        self.selectedUser = teammate
+        self.teammate = teammate
         self.showCongratsModal = true
     }
 }

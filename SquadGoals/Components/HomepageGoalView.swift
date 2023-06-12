@@ -103,13 +103,11 @@ struct HomepageGoalView : View {
     
     func crossedTaskOffMomentum() {
         if (!self.goal.crossedOff) {
-            let goalIndex = viewModel.user.goals.firstIndex(of: goal) ?? 0
             goal.momentumScore = goal.momentumScore + goal.positiveMomentum
             goal.positiveMomentum = goal.positiveMomentum + 1
             goal.negativeMomentum = -1
             goal.recordMomentum = max(goal.recordMomentum, goal.momentumScore)
             goal.crossedOff = true
-            viewModel.user.goals[goalIndex] = goal
             viewModel.updateGoalMomentum(goal: goal)
         }
     }
