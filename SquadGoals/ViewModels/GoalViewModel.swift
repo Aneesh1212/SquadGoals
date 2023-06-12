@@ -15,7 +15,6 @@ let ref = Database.database().reference()
 let pastMonday = Calendar(identifier: .gregorian).startOfDay(for: Date()).previous(.monday, considerToday: true)
 
 class GoalViewModel : ObservableObject {
-
     @Published var user : User = User(name: "", phoneNumber: "", groupId: "", goals: [], teammates: [])
     @Published var completedTargets : Int = 0
     @Published var teammatePhones : Array<String> = []

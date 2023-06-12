@@ -64,6 +64,7 @@ struct GoalDetailPage: View {
     }
     
     var body: some View {
+
         NavigationLink(destination: EditGoal(viewModel: self.viewModel, goal: self.$goal), isActive: $shouldNavigateToEditGoal) { EmptyView() }
         
         VStack(spacing:0){
