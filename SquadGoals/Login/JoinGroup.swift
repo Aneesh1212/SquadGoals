@@ -44,7 +44,6 @@ struct JoinGroup: View {
             
             NavigationLink(destination: BaseTutorial(user: viewModel.currentUser), isActive: $shouldNavigate) { EmptyView() }
             
-            
             Filler()
         }
         .padding(.bottom, Styling.mediumUnit)
@@ -75,7 +74,7 @@ struct JoinGroup: View {
     func joinSquad(){
         if (viewModel.isValidGroupId(groupId: self.groupID)) {
             viewModel.joinGroup(phoneNumber: viewModel.currentUser.phoneNumber, groupId: self.groupID)
-            self.shouldNavigate = true
+            shouldNavigate = true
         } else {
             self.showInvalidGroupId = true
         }

@@ -54,7 +54,7 @@ struct SquadPage: View {
                 }
                 
                 if (teamList.count <= 1) {
-                    InviteFriendsComponent()
+                    InviteFriendsComponent(groupId: viewModel.user.groupId)
                         .padding(.top, Styling.smallUnit)
                 }
             }

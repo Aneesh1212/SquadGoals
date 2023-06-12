@@ -27,11 +27,12 @@ struct ShareText: Identifiable {
 
 struct InviteFriendsComponent: View {
     @State var shareText: ShareText?
+    var groupId: String
 
     var body: some View {
         GreenCard {
             VStack(spacing: Styling.smallUnit) {
-                SubtitleV2(text: "Add more Teammates to your Squad", weight: .semibold)
+                SubtitleV2(text: "Add more Teammates to your Squad \n Group ID: \(groupId)", weight: .semibold)
                 PurpleActionButton(text: "Invite a friend", height: 42, action: {
                     shareText = ShareText(text: "https://apps.apple.com/us/app/squadgoals/id1603697577")
                 })

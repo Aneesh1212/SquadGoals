@@ -28,6 +28,7 @@ class LoginViewModel : ObservableObject {
     @Published var navigateToReflection = false
     @Published var showUnableToFindUser = false
     @Published var showReflection = false
+    @Published var navigateToMissingGroup = false
     weak var gestureRecognizer: GestureRecognizerInteractor? = UIApplication.shared
     
     func createUser(userName : String, phoneNumber : String) {
@@ -56,18 +57,11 @@ class LoginViewModel : ObservableObject {
                 return;
             }
             self.userName = snapshot.value as? String;
-            print("Found user with name: \(self.userName ?? "")")
         });
     }
     
-    func joinGroup(phoneNumber : String, groupId : String) {
-        print("Phone number \(phoneNumber) joining groupId: \(groupId)")
-        
+    func joinGroup(phoneNumber : String, groupId : String) {        
         ref.child("groups/\(groupId)").getData(completion:  { error, snapshot in
-            guard error == nil else {
-                print(error!.localizedDescription)
-                return;
-            }
             if (snapshot.exists()) {
                 let groupRef = self.ref.child("groups").child(groupId).child("users")
                 let userKey = groupRef.childByAutoId().key ?? ""
@@ -101,9 +95,9 @@ class LoginViewModel : ObservableObject {
             }
             if (snapshot.exists()) {
                 let userData = snapshot.value as? Dictionary<String, String> ?? [:]
-                let userName = userData["name"] ?? ""
-                let userPhone = userData["phone"] ?? ""
-                let userGroup = userData["groupId"] ?? ""
+                let userName = userData["name"] ?? "NA"
+                let userPhone = userData["phone"] ?? "NA"
+                let userGroup = userData["groupId"] ?? "NA"
                 self.currentUser = User(name: userName, phoneNumber: userPhone, groupId: userGroup, goals: [], teammates: [])
                 self.showUnableToFindUser = false
                 self.logUserFCMtoken(phoneNumber: phoneNumber)
@@ -135,6 +129,10 @@ class LoginViewModel : ObservableObject {
     }
     
     private func signInNavigation() {
+        if (self.currentUser.groupId == "NA") {
+            self.navigateToMissingGroup = true
+            return
+        }
         let defaults = UserDefaults.standard
         let lastSetSunday = ((defaults.object(forKey: "lastSetSunday") as? Date) ?? Date(timeIntervalSince1970: 0))
         let fakeLastSetMonday = Calendar.current.date(byAdding: .day, value: 1, to: lastSetSunday)
@@ -153,5 +151,4 @@ class LoginViewModel : ObservableObject {
         let fcmToken = UserDefaults.standard.object(forKey: "fcmToken")
         self.ref.child("fcmTokens").child(phoneNumber).setValue(["token" : fcmToken])
     }
-
 }
