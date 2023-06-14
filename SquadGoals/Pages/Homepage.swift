@@ -57,8 +57,8 @@ struct Homepage : View {
                         .frame(alignment: .leading)
             }
             
-            if (viewModel.completedTargets >= viewModel.totalTargets) {
-                Completion(viewModel: self.viewModel)
+            if (!viewModel.user.goals.contains(where: { $0.title != "" })) {
+                EmptyState()
             } else {
                 openTargets
             }

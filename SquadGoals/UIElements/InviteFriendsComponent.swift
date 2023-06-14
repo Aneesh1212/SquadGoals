@@ -32,7 +32,12 @@ struct InviteFriendsComponent: View {
     var body: some View {
         GreenCard {
             VStack(spacing: Styling.smallUnit) {
-                SubtitleV2(text: "Add more Teammates to your Squad \n Group ID: \(groupId)", weight: .semibold)
+
+                Text("Add more Teammates to your Squad \n Group ID: \(Text(groupId).underline())")
+                    .foregroundColor(.white)
+                    .font(.system(size: 16, weight: .semibold))
+                    .multilineTextAlignment(.center)
+
                 PurpleActionButton(text: "Invite a friend", height: 42, action: {
                     shareText = ShareText(text: "https://apps.apple.com/us/app/squadgoals/id1603697577")
                 })

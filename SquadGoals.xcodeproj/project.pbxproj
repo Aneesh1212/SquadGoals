@@ -63,6 +63,8 @@
 		5587C8B427878855001A9999 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C89727878855001A9999 /* User.swift */; };
 		5587C8B527878855001A9999 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C89827878855001A9999 /* Colors.swift */; };
 		5587C8B7278798C8001A9999 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5587C8B6278798C8001A9999 /* LaunchScreen.storyboard */; };
+		55A6187A2A397A3600003280 /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A618792A397A3600003280 /* EmptyState.swift */; };
+		55A6187C2A397CC800003280 /* TurqoiseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A6187B2A397CC800003280 /* TurqoiseCard.swift */; };
 		55BE93EA283B3F8B0004EDB9 /* EditGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BE93E9283B3F8B0004EDB9 /* EditGoal.swift */; };
 		55C0B09E28F67896008BFA61 /* CarouselCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0B09D28F67896008BFA61 /* CarouselCounter.swift */; };
 		55C0B0A228F67FAC008BFA61 /* BaseTutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0B0A128F67FAC008BFA61 /* BaseTutorial.swift */; };
@@ -171,6 +173,8 @@
 		5587C89727878855001A9999 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5587C89827878855001A9999 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		5587C8B6278798C8001A9999 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		55A618792A397A3600003280 /* EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
+		55A6187B2A397CC800003280 /* TurqoiseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurqoiseCard.swift; sourceTree = "<group>"; };
 		55BE93E9283B3F8B0004EDB9 /* EditGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGoal.swift; sourceTree = "<group>"; };
 		55C0B09D28F67896008BFA61 /* CarouselCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCounter.swift; sourceTree = "<group>"; };
 		55C0B0A128F67FAC008BFA61 /* BaseTutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTutorial.swift; sourceTree = "<group>"; };
@@ -426,6 +430,7 @@
 				55D77E0929CB4E4000BAFA1D /* TrailingViewHelper.swift */,
 				55FDF84129D3FBCD00082B72 /* UserProgressCard.swift */,
 				553E3C682A0379CE00E14620 /* InviteFriendsComponent.swift */,
+				55A618792A397A3600003280 /* EmptyState.swift */,
 			);
 			path = UIElements;
 			sourceTree = "<group>";
@@ -463,6 +468,7 @@
 				55FDF82F29D3CD5400082B72 /* BlueCard.swift */,
 				553D66762A016AF500A85C32 /* LightBlueCard.swift */,
 				553E3C622A03721D00E14620 /* GreenCard.swift */,
+				55A6187B2A397CC800003280 /* TurqoiseCard.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -742,6 +748,7 @@
 				5587C8A127878855001A9999 /* LoginViewModel.swift in Sources */,
 				5587C8AA27878855001A9999 /* SquadPage.swift in Sources */,
 				5587C8B427878855001A9999 /* User.swift in Sources */,
+				55A6187C2A397CC800003280 /* TurqoiseCard.swift in Sources */,
 				55BE93EA283B3F8B0004EDB9 /* EditGoal.swift in Sources */,
 				552F625E28FCF8BD002F0A5F /* OnboardingActionButton.swift in Sources */,
 				5587C8AD27878855001A9999 /* UserPage.swift in Sources */,
@@ -767,6 +774,7 @@
 				5587C89F27878855001A9999 /* Completion.swift in Sources */,
 				5587C8B227878855001A9999 /* Goal.swift in Sources */,
 				55C1811E2803D81C002F956B /* CongratsModal.swift in Sources */,
+				55A6187A2A397A3600003280 /* EmptyState.swift in Sources */,
 				55663CDF29DA48F80037F522 /* RedActionButton.swift in Sources */,
 				5587C8A027878855001A9999 /* ProgressButton.swift in Sources */,
 				55FDF82E29D3CC7100082B72 /* WhiteCard.swift in Sources */,

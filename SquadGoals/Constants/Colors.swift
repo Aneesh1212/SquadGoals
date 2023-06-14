@@ -15,6 +15,7 @@ struct Colors{
     static let progressBarBackground = Color(UIColor(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)))
     static let lightOrangeBackground = Color(UIColor(#colorLiteral(red: 1, green: 0.9568627451, blue: 0.9411764706, alpha: 1)))
     static let darkOrangeForeground = Color(UIColor(#colorLiteral(red: 0.9450980392, green: 0.4980392157, blue: 0.3450980392, alpha: 1)))
+    static let turqoiseBackground = Color(UIColor(#colorLiteral(red: 0.568627451, green: 0.8, blue: 0.8392156863, alpha: 1)))
     static let blueText = Color(UIColor(#colorLiteral(red: 0.1529411765, green: 0.3490196078, blue: 0.5568627451, alpha: 1)))
     
     static let background = Color(UIColor(#colorLiteral(red: 1, green: 0.9508908391, blue: 0.8695777655, alpha: 1)))
