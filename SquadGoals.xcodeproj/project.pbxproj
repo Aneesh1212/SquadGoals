@@ -965,7 +965,7 @@
 				CODE_SIGN_ENTITLEMENTS = SquadGoals/SquadGoals.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 52;
+				CURRENT_PROJECT_VERSION = 53;
 				DEVELOPMENT_ASSET_PATHS = "\"SquadGoals/Preview Content\"";
 				DEVELOPMENT_TEAM = HPRJ8CFMWR;
 				ENABLE_PREVIEWS = YES;
@@ -985,7 +985,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "agrawals.Squad-Goals";
 				PRODUCT_NAME = "Squad Goals";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1004,7 +1004,7 @@
 				CODE_SIGN_ENTITLEMENTS = SquadGoals/SquadGoals.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 52;
+				CURRENT_PROJECT_VERSION = 53;
 				DEVELOPMENT_ASSET_PATHS = "\"SquadGoals/Preview Content\"";
 				DEVELOPMENT_TEAM = HPRJ8CFMWR;
 				ENABLE_PREVIEWS = YES;
@@ -1024,7 +1024,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "agrawals.Squad-Goals";
 				PRODUCT_NAME = "Squad Goals";
 				PROVISIONING_PROFILE_SPECIFIER = "";

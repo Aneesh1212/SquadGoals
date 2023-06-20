@@ -34,10 +34,6 @@ class LoginViewModel : ObservableObject {
     func createUser(userName : String, phoneNumber : String) {
         print("Creating user with name: \(userName) and phoneNumber \(phoneNumber)")
         ref.child("users/\(phoneNumber)").getData(completion:  { error, snapshot in
-            guard error == nil else {
-                print(error!.localizedDescription)
-                return;
-            }
             if (snapshot.exists()) {
                 self.showUserExists = true
             } else {
@@ -45,6 +41,7 @@ class LoginViewModel : ObservableObject {
                 self.logUserFCMtoken(phoneNumber: phoneNumber)
                 self.currentUser = User(name: userName, phoneNumber: phoneNumber, groupId: "", goals : [], teammates: [])
                 self.navigateToJoinGroup = true
+                UtilFunctions.setLastSetMonday()
             }
         })
     }

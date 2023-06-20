@@ -83,9 +83,10 @@ struct JoinGroup: View {
     func createSquad(){
         if (self.groupName == "") {
             self.showNoGroupName = true
+            return
         }
         let groupId = viewModel.createGroup(groupName: self.groupName)
         self.newGroupId = groupId
-        showNewGroupId = true
+        self.showNewGroupId = true
     }
 }

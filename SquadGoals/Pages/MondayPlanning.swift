@@ -151,9 +151,7 @@ struct MondayPlanning: View {
         .alert("Weekly tasks are cleared every Sunday at Midnight. Please ensure your tasks fit this timeline", isPresented: $showEditWarning) {
             Button("Submit") {
                 self.navigateToHome = true
-                let defaults = UserDefaults.standard
-                let previousMonday = Calendar(identifier: .gregorian).startOfDay(for: Date.today().previous(.monday, considerToday: true))
-                defaults.set(previousMonday, forKey: "lastSetMonday")
+                UtilFunctions.setLastSetMonday()
                 saveGoals()
             }
             Button("Edit", role: .cancel) { self.showEditWarning = false }
