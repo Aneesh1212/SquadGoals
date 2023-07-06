@@ -1,0 +1,1190 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D49F8F8C0E9CCD4C14B8144 /* Pods_SquadGoalsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA76E685F7262ADC1F92FDA /* Pods_SquadGoalsTests.framework */; };
+		550FD659278F8C18005BE35D /* Brag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FD658278F8C18005BE35D /* Brag.swift */; };
+		550FD65B278F8DCB005BE35D /* BragTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FD65A278F8DCB005BE35D /* BragTable.swift */; };
+		552F625828FB7F25002F0A5F /* Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F625728FB7F25002F0A5F /* Styling.swift */; };
+		552F625A28FCEFFE002F0A5F /* OnboardingTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F625928FCEFFE002F0A5F /* OnboardingTitle.swift */; };
+		552F625C28FCF69E002F0A5F /* OnboardingTextEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F625B28FCF69E002F0A5F /* OnboardingTextEntry.swift */; };
+		552F625E28FCF8BD002F0A5F /* OnboardingActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F625D28FCF8BD002F0A5F /* OnboardingActionButton.swift */; };
+		552F626228FCFE39002F0A5F /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F626128FCFE39002F0A5F /* Spacing.swift */; };
+		552F626428FD0812002F0A5F /* OnboardingTextEntryWithTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F626328FD0812002F0A5F /* OnboardingTextEntryWithTitle.swift */; };
+		552F626628FD0953002F0A5F /* Subtitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F626528FD0953002F0A5F /* Subtitle.swift */; };
+		552F69E92886548800AAF287 /* ResultsAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F69E82886548800AAF287 /* ResultsAlert.swift */; };
+		552F69EB288674D300AAF287 /* ReflectionAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F69EA288674D300AAF287 /* ReflectionAlert.swift */; };
+		5538D6E729D556F100BF76D4 /* GrayActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5538D6E629D556F100BF76D4 /* GrayActionButton.swift */; };
+		553D66772A016AF500A85C32 /* LightBlueCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553D66762A016AF500A85C32 /* LightBlueCard.swift */; };
+		553E3C632A03721D00E14620 /* GreenCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553E3C622A03721D00E14620 /* GreenCard.swift */; };
+		553E3C692A0379CE00E14620 /* InviteFriendsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553E3C682A0379CE00E14620 /* InviteFriendsComponent.swift */; };
+		5544594B295E463500F21D9F /* SwiftUITooltip in Frameworks */ = {isa = PBXBuildFile; productRef = 5544594A295E463500F21D9F /* SwiftUITooltip */; };
+		55663CDF29DA48F80037F522 /* RedActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55663CDE29DA48F80037F522 /* RedActionButton.swift */; };
+		55663CE229DA5F830037F522 /* LeftAligner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55663CE129DA5F830037F522 /* LeftAligner.swift */; };
+		55663CE429DA85290037F522 /* CornerRadiusExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55663CE329DA85290037F522 /* CornerRadiusExtension.swift */; };
+		557568B829CC131A005C9A76 /* BlueActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557568B729CC131A005C9A76 /* BlueActionButton.swift */; };
+		557568BA29CC1335005C9A76 /* OrangeActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557568B929CC1335005C9A76 /* OrangeActionButton.swift */; };
+		55766C2329D2A5780060E6D7 /* OrangeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55766C2229D2A5780060E6D7 /* OrangeCard.swift */; };
+		55766C2529D2ABD40060E6D7 /* SubtitleV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55766C2429D2ABD40060E6D7 /* SubtitleV2.swift */; };
+		55766C2729D2AC270060E6D7 /* TitleV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55766C2629D2AC270060E6D7 /* TitleV2.swift */; };
+		5587C840278780CF001A9999 /* SquadGoalsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C83F278780CF001A9999 /* SquadGoalsApp.swift */; };
+		5587C844278780D0001A9999 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5587C843278780D0001A9999 /* Assets.xcassets */; };
+		5587C847278780D0001A9999 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5587C846278780D0001A9999 /* Preview Assets.xcassets */; };
+		5587C851278780D1001A9999 /* SquadGoalsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C850278780D1001A9999 /* SquadGoalsTests.swift */; };
+		5587C85B278780D1001A9999 /* SquadGoalsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C85A278780D1001A9999 /* SquadGoalsUITests.swift */; };
+		5587C85D278780D1001A9999 /* SquadGoalsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C85C278780D1001A9999 /* SquadGoalsUITestsLaunchTests.swift */; };
+		5587C8742787837C001A9999 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5587C8732787837C001A9999 /* GoogleService-Info.plist */; };
+		5587C89A27878855001A9999 /* HomepageGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C8792787884E001A9999 /* HomepageGoalView.swift */; };
+		5587C89C27878855001A9999 /* Race.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C87B2787884E001A9999 /* Race.swift */; };
+		5587C89D27878855001A9999 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C87C2787884E001A9999 /* ProgressBar.swift */; };
+		5587C89E27878855001A9999 /* GoalDetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C87D2787884E001A9999 /* GoalDetailPage.swift */; };
+		5587C89F27878855001A9999 /* Completion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C87E2787884E001A9999 /* Completion.swift */; };
+		5587C8A027878855001A9999 /* ProgressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C87F2787884E001A9999 /* ProgressButton.swift */; };
+		5587C8A227878855001A9999 /* GoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C88227878850001A9999 /* GoalViewModel.swift */; };
+		5587C8A527878855001A9999 /* Welcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C88627878852001A9999 /* Welcome.swift */; };
+		5587C8A627878855001A9999 /* CreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C88727878852001A9999 /* CreateAccount.swift */; };
+		5587C8A727878855001A9999 /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C88827878852001A9999 /* SignIn.swift */; };
+		5587C8A827878855001A9999 /* JoinGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C88927878852001A9999 /* JoinGroup.swift */; };
+		5587C8A927878855001A9999 /* CreateGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C88B27878853001A9999 /* CreateGoal.swift */; };
+		5587C8AA27878855001A9999 /* SquadPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C88C27878853001A9999 /* SquadPage.swift */; };
+		5587C8AB27878855001A9999 /* GoalAdded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C88D27878853001A9999 /* GoalAdded.swift */; };
+		5587C8AC27878855001A9999 /* Homepage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C88E27878853001A9999 /* Homepage.swift */; };
+		5587C8AD27878855001A9999 /* UserPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C88F27878853001A9999 /* UserPage.swift */; };
+		5587C8AF27878855001A9999 /* ProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C89127878853001A9999 /* ProfilePage.swift */; };
+		5587C8B027878855001A9999 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C89227878853001A9999 /* Main.swift */; };
+		5587C8B227878855001A9999 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C89527878855001A9999 /* Goal.swift */; };
+		5587C8B327878855001A9999 /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C89627878855001A9999 /* Target.swift */; };
+		5587C8B427878855001A9999 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C89727878855001A9999 /* User.swift */; };
+		5587C8B527878855001A9999 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5587C89827878855001A9999 /* Colors.swift */; };
+		5587C8B7278798C8001A9999 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5587C8B6278798C8001A9999 /* LaunchScreen.storyboard */; };
+		55A6187A2A397A3600003280 /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A618792A397A3600003280 /* EmptyState.swift */; };
+		55A6187C2A397CC800003280 /* TurqoiseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A6187B2A397CC800003280 /* TurqoiseCard.swift */; };
+		55BE93EA283B3F8B0004EDB9 /* EditGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BE93E9283B3F8B0004EDB9 /* EditGoal.swift */; };
+		55C0B09E28F67896008BFA61 /* CarouselCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0B09D28F67896008BFA61 /* CarouselCounter.swift */; };
+		55C0B0A228F67FAC008BFA61 /* BaseTutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0B0A128F67FAC008BFA61 /* BaseTutorial.swift */; };
+		55C1811C2803CB6B002F956B /* EncouragementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1811B2803CB6B002F956B /* EncouragementModel.swift */; };
+		55C1811E2803D81C002F956B /* CongratsModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1811D2803D81C002F956B /* CongratsModal.swift */; };
+		55C1D908279384E000B9F4E4 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1D907279384E000B9F4E4 /* Banner.swift */; };
+		55C81EDC278B9F8E00F341D5 /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C81EDB278B9F8E00F341D5 /* BottomSheet.swift */; };
+		55C81EE1278C060800F341D5 /* Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C81EE0278C060800F341D5 /* Title.swift */; };
+		55D696ED296E304200E9EA7D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D696EC296E304200E9EA7D /* ContentView.swift */; };
+		55D77E0829CB495900BAFA1D /* PillActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D77E0729CB495900BAFA1D /* PillActionButton.swift */; };
+		55D77E0A29CB4E4000BAFA1D /* TrailingViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D77E0929CB4E4000BAFA1D /* TrailingViewHelper.swift */; };
+		55D7CEFC283C9AED0064CE4D /* TestTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D7CEFB283C9AED0064CE4D /* TestTable.swift */; };
+		55E3174B295A26B400311024 /* ExampleTargetsModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E3174A295A26B400311024 /* ExampleTargetsModal.swift */; };
+		55EA757C28FD120500ACB448 /* Filler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EA757B28FD120500ACB448 /* Filler.swift */; };
+		55F7CAE42919AB7700448F10 /* MondayReflection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F7CAE32919AB7700448F10 /* MondayReflection.swift */; };
+		55F7CAE62919ABAE00448F10 /* MondayPlanning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F7CAE52919ABAE00448F10 /* MondayPlanning.swift */; };
+		55FDF82E29D3CC7100082B72 /* WhiteCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FDF82D29D3CC7100082B72 /* WhiteCard.swift */; };
+		55FDF83029D3CD5400082B72 /* BlueCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FDF82F29D3CD5400082B72 /* BlueCard.swift */; };
+		55FDF83329D3DC5800082B72 /* UtilFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FDF83229D3DC5800082B72 /* UtilFunctions.swift */; };
+		55FDF83529D3E04B00082B72 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FDF83429D3E04B00082B72 /* DateExtension.swift */; };
+		55FDF83729D3E57900082B72 /* GreenActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FDF83629D3E57900082B72 /* GreenActionButton.swift */; };
+		55FDF83D29D3F78000082B72 /* WhiteActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FDF83C29D3F78000082B72 /* WhiteActionButton.swift */; };
+		55FDF83F29D3FAC400082B72 /* WhiteActionButtonWithArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FDF83E29D3FAC400082B72 /* WhiteActionButtonWithArrow.swift */; };
+		55FDF84229D3FBCD00082B72 /* UserProgressCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FDF84129D3FBCD00082B72 /* UserProgressCard.swift */; };
+		55FDF84429D3FF0900082B72 /* PurpleActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FDF84329D3FF0900082B72 /* PurpleActionButton.swift */; };
+		C691A93F2EC28C9E1D22E05A /* Pods_SquadGoals_SquadGoalsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5781A7B9BA2083BDC8B11F45 /* Pods_SquadGoals_SquadGoalsUITests.framework */; };
+		F4BCFFEC69633D405BF38435 /* Pods_SquadGoals.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AAC44B50437FA1D41861F86 /* Pods_SquadGoals.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5587C84D278780D1001A9999 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5587C834278780CF001A9999 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5587C83B278780CF001A9999;
+			remoteInfo = SquadGoals;
+		};
+		5587C857278780D1001A9999 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5587C834278780CF001A9999 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5587C83B278780CF001A9999;
+			remoteInfo = SquadGoals;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		107D316E5D5DEC8D075EF14C /* Pods-SquadGoals-SquadGoalsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SquadGoals-SquadGoalsUITests.debug.xcconfig"; path = "Target Support Files/Pods-SquadGoals-SquadGoalsUITests/Pods-SquadGoals-SquadGoalsUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		52046A11B4C1B67780265C43 /* Pods-SquadGoals-SquadGoalsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SquadGoals-SquadGoalsUITests.release.xcconfig"; path = "Target Support Files/Pods-SquadGoals-SquadGoalsUITests/Pods-SquadGoals-SquadGoalsUITests.release.xcconfig"; sourceTree = "<group>"; };
+		550FD658278F8C18005BE35D /* Brag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brag.swift; sourceTree = "<group>"; };
+		550FD65A278F8DCB005BE35D /* BragTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BragTable.swift; sourceTree = "<group>"; };
+		552F625728FB7F25002F0A5F /* Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styling.swift; sourceTree = "<group>"; };
+		552F625928FCEFFE002F0A5F /* OnboardingTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTitle.swift; sourceTree = "<group>"; };
+		552F625B28FCF69E002F0A5F /* OnboardingTextEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTextEntry.swift; sourceTree = "<group>"; };
+		552F625D28FCF8BD002F0A5F /* OnboardingActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingActionButton.swift; sourceTree = "<group>"; };
+		552F626128FCFE39002F0A5F /* Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
+		552F626328FD0812002F0A5F /* OnboardingTextEntryWithTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTextEntryWithTitle.swift; sourceTree = "<group>"; };
+		552F626528FD0953002F0A5F /* Subtitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subtitle.swift; sourceTree = "<group>"; };
+		552F69E82886548800AAF287 /* ResultsAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsAlert.swift; sourceTree = "<group>"; };
+		552F69EA288674D300AAF287 /* ReflectionAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectionAlert.swift; sourceTree = "<group>"; };
+		5538D6E629D556F100BF76D4 /* GrayActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayActionButton.swift; sourceTree = "<group>"; };
+		553D66762A016AF500A85C32 /* LightBlueCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightBlueCard.swift; sourceTree = "<group>"; };
+		553E3C622A03721D00E14620 /* GreenCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenCard.swift; sourceTree = "<group>"; };
+		553E3C682A0379CE00E14620 /* InviteFriendsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendsComponent.swift; sourceTree = "<group>"; };
+		55663CDE29DA48F80037F522 /* RedActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedActionButton.swift; sourceTree = "<group>"; };
+		55663CE129DA5F830037F522 /* LeftAligner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAligner.swift; sourceTree = "<group>"; };
+		55663CE329DA85290037F522 /* CornerRadiusExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadiusExtension.swift; sourceTree = "<group>"; };
+		557568B729CC131A005C9A76 /* BlueActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueActionButton.swift; sourceTree = "<group>"; };
+		557568B929CC1335005C9A76 /* OrangeActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrangeActionButton.swift; sourceTree = "<group>"; };
+		55766C2229D2A5780060E6D7 /* OrangeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrangeCard.swift; sourceTree = "<group>"; };
+		55766C2429D2ABD40060E6D7 /* SubtitleV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleV2.swift; sourceTree = "<group>"; };
+		55766C2629D2AC270060E6D7 /* TitleV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleV2.swift; sourceTree = "<group>"; };
+		5587C83C278780CF001A9999 /* Squad Goals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Squad Goals.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5587C83F278780CF001A9999 /* SquadGoalsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadGoalsApp.swift; sourceTree = "<group>"; };
+		5587C843278780D0001A9999 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5587C846278780D0001A9999 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5587C84C278780D1001A9999 /* SquadGoalsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SquadGoalsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5587C850278780D1001A9999 /* SquadGoalsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadGoalsTests.swift; sourceTree = "<group>"; };
+		5587C856278780D1001A9999 /* SquadGoalsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SquadGoalsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5587C85A278780D1001A9999 /* SquadGoalsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadGoalsUITests.swift; sourceTree = "<group>"; };
+		5587C85C278780D1001A9999 /* SquadGoalsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadGoalsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5587C8732787837C001A9999 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5587C87527878462001A9999 /* SquadGoals.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SquadGoals.entitlements; sourceTree = "<group>"; };
+		5587C8762787849E001A9999 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		5587C8792787884E001A9999 /* HomepageGoalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomepageGoalView.swift; sourceTree = "<group>"; };
+		5587C87B2787884E001A9999 /* Race.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Race.swift; sourceTree = "<group>"; };
+		5587C87C2787884E001A9999 /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		5587C87D2787884E001A9999 /* GoalDetailPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalDetailPage.swift; sourceTree = "<group>"; };
+		5587C87E2787884E001A9999 /* Completion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Completion.swift; sourceTree = "<group>"; };
+		5587C87F2787884E001A9999 /* ProgressButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressButton.swift; sourceTree = "<group>"; };
+		5587C88227878850001A9999 /* GoalViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalViewModel.swift; sourceTree = "<group>"; };
+		5587C88627878852001A9999 /* Welcome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Welcome.swift; sourceTree = "<group>"; };
+		5587C88727878852001A9999 /* CreateAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccount.swift; sourceTree = "<group>"; };
+		5587C88827878852001A9999 /* SignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
+		5587C88927878852001A9999 /* JoinGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinGroup.swift; sourceTree = "<group>"; };
+		5587C88B27878853001A9999 /* CreateGoal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGoal.swift; sourceTree = "<group>"; };
+		5587C88C27878853001A9999 /* SquadPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquadPage.swift; sourceTree = "<group>"; };
+		5587C88D27878853001A9999 /* GoalAdded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalAdded.swift; sourceTree = "<group>"; };
+		5587C88E27878853001A9999 /* Homepage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Homepage.swift; sourceTree = "<group>"; };
+		5587C88F27878853001A9999 /* UserPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPage.swift; sourceTree = "<group>"; };
+		5587C89127878853001A9999 /* ProfilePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePage.swift; sourceTree = "<group>"; };
+		5587C89227878853001A9999 /* Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
+		5587C89527878855001A9999 /* Goal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
+		5587C89627878855001A9999 /* Target.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Target.swift; sourceTree = "<group>"; };
+		5587C89727878855001A9999 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5587C89827878855001A9999 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		5587C8B6278798C8001A9999 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		55A618792A397A3600003280 /* EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
+		55A6187B2A397CC800003280 /* TurqoiseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurqoiseCard.swift; sourceTree = "<group>"; };
+		55BE93E9283B3F8B0004EDB9 /* EditGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGoal.swift; sourceTree = "<group>"; };
+		55C0B09D28F67896008BFA61 /* CarouselCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCounter.swift; sourceTree = "<group>"; };
+		55C0B0A128F67FAC008BFA61 /* BaseTutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTutorial.swift; sourceTree = "<group>"; };
+		55C1811B2803CB6B002F956B /* EncouragementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncouragementModel.swift; sourceTree = "<group>"; };
+		55C1811D2803D81C002F956B /* CongratsModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratsModal.swift; sourceTree = "<group>"; };
+		55C1D907279384E000B9F4E4 /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
+		55C81EDB278B9F8E00F341D5 /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
+		55C81EE0278C060800F341D5 /* Title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Title.swift; sourceTree = "<group>"; };
+		55D696EC296E304200E9EA7D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		55D77E0729CB495900BAFA1D /* PillActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillActionButton.swift; sourceTree = "<group>"; };
+		55D77E0929CB4E4000BAFA1D /* TrailingViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailingViewHelper.swift; sourceTree = "<group>"; };
+		55D7CEFB283C9AED0064CE4D /* TestTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTable.swift; sourceTree = "<group>"; };
+		55E3174A295A26B400311024 /* ExampleTargetsModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleTargetsModal.swift; sourceTree = "<group>"; };
+		55EA757B28FD120500ACB448 /* Filler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filler.swift; sourceTree = "<group>"; };
+		55F7CAE32919AB7700448F10 /* MondayReflection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MondayReflection.swift; sourceTree = "<group>"; };
+		55F7CAE52919ABAE00448F10 /* MondayPlanning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MondayPlanning.swift; sourceTree = "<group>"; };
+		55FDF82D29D3CC7100082B72 /* WhiteCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteCard.swift; sourceTree = "<group>"; };
+		55FDF82F29D3CD5400082B72 /* BlueCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueCard.swift; sourceTree = "<group>"; };
+		55FDF83229D3DC5800082B72 /* UtilFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilFunctions.swift; sourceTree = "<group>"; };
+		55FDF83429D3E04B00082B72 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		55FDF83629D3E57900082B72 /* GreenActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenActionButton.swift; sourceTree = "<group>"; };
+		55FDF83C29D3F78000082B72 /* WhiteActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteActionButton.swift; sourceTree = "<group>"; };
+		55FDF83E29D3FAC400082B72 /* WhiteActionButtonWithArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteActionButtonWithArrow.swift; sourceTree = "<group>"; };
+		55FDF84129D3FBCD00082B72 /* UserProgressCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProgressCard.swift; sourceTree = "<group>"; };
+		55FDF84329D3FF0900082B72 /* PurpleActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurpleActionButton.swift; sourceTree = "<group>"; };
+		5781A7B9BA2083BDC8B11F45 /* Pods_SquadGoals_SquadGoalsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SquadGoals_SquadGoalsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A44A3827C3CC6A909862ED8 /* Pods-SquadGoals.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SquadGoals.release.xcconfig"; path = "Target Support Files/Pods-SquadGoals/Pods-SquadGoals.release.xcconfig"; sourceTree = "<group>"; };
+		6AAC44B50437FA1D41861F86 /* Pods_SquadGoals.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SquadGoals.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A7A0CC836B6A1BD5F8D8EA0 /* Pods-SquadGoals.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SquadGoals.debug.xcconfig"; path = "Target Support Files/Pods-SquadGoals/Pods-SquadGoals.debug.xcconfig"; sourceTree = "<group>"; };
+		A05765F5B551058846B858D1 /* Pods-SquadGoalsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SquadGoalsTests.release.xcconfig"; path = "Target Support Files/Pods-SquadGoalsTests/Pods-SquadGoalsTests.release.xcconfig"; sourceTree = "<group>"; };
+		CDA76E685F7262ADC1F92FDA /* Pods_SquadGoalsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SquadGoalsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6E8AF655F9959DB0EA0A07C /* Pods-SquadGoalsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SquadGoalsTests.debug.xcconfig"; path = "Target Support Files/Pods-SquadGoalsTests/Pods-SquadGoalsTests.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5587C839278780CF001A9999 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5544594B295E463500F21D9F /* SwiftUITooltip in Frameworks */,
+				F4BCFFEC69633D405BF38435 /* Pods_SquadGoals.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5587C849278780D1001A9999 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D49F8F8C0E9CCD4C14B8144 /* Pods_SquadGoalsTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5587C853278780D1001A9999 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C691A93F2EC28C9E1D22E05A /* Pods_SquadGoals_SquadGoalsUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		29962AB617D774F660BD6DBC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7A7A0CC836B6A1BD5F8D8EA0 /* Pods-SquadGoals.debug.xcconfig */,
+				5A44A3827C3CC6A909862ED8 /* Pods-SquadGoals.release.xcconfig */,
+				107D316E5D5DEC8D075EF14C /* Pods-SquadGoals-SquadGoalsUITests.debug.xcconfig */,
+				52046A11B4C1B67780265C43 /* Pods-SquadGoals-SquadGoalsUITests.release.xcconfig */,
+				E6E8AF655F9959DB0EA0A07C /* Pods-SquadGoalsTests.debug.xcconfig */,
+				A05765F5B551058846B858D1 /* Pods-SquadGoalsTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		552F625628FB7F14002F0A5F /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				5587C89827878855001A9999 /* Colors.swift */,
+				552F625728FB7F25002F0A5F /* Styling.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		55663CE029DA5F6A0037F522 /* HelperComponents */ = {
+			isa = PBXGroup;
+			children = (
+				55EA757B28FD120500ACB448 /* Filler.swift */,
+				552F626128FCFE39002F0A5F /* Spacing.swift */,
+				55663CE129DA5F830037F522 /* LeftAligner.swift */,
+			);
+			path = HelperComponents;
+			sourceTree = "<group>";
+		};
+		5587C833278780CF001A9999 = {
+			isa = PBXGroup;
+			children = (
+				5587C83E278780CF001A9999 /* SquadGoals */,
+				5587C84F278780D1001A9999 /* SquadGoalsTests */,
+				5587C859278780D1001A9999 /* SquadGoalsUITests */,
+				5587C83D278780CF001A9999 /* Products */,
+				29962AB617D774F660BD6DBC /* Pods */,
+				F97693B9D0F796323018D6AA /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5587C83D278780CF001A9999 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5587C83C278780CF001A9999 /* Squad Goals.app */,
+				5587C84C278780D1001A9999 /* SquadGoalsTests.xctest */,
+				5587C856278780D1001A9999 /* SquadGoalsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5587C83E278780CF001A9999 /* SquadGoals */ = {
+			isa = PBXGroup;
+			children = (
+				55FDF83129D3DC4800082B72 /* Utils */,
+				552F625628FB7F14002F0A5F /* Constants */,
+				55C81EDF278C05F400F341D5 /* UIElements */,
+				5587C8772787884E001A9999 /* Components */,
+				5587C89427878855001A9999 /* DataModels */,
+				5587C88527878852001A9999 /* Login */,
+				5587C88A27878853001A9999 /* Pages */,
+				5587C88027878850001A9999 /* ViewModels */,
+				5587C8762787849E001A9999 /* Info.plist */,
+				5587C87527878462001A9999 /* SquadGoals.entitlements */,
+				55D696EC296E304200E9EA7D /* ContentView.swift */,
+				5587C83F278780CF001A9999 /* SquadGoalsApp.swift */,
+				5587C843278780D0001A9999 /* Assets.xcassets */,
+				5587C8732787837C001A9999 /* GoogleService-Info.plist */,
+				5587C845278780D0001A9999 /* Preview Content */,
+				5587C8B6278798C8001A9999 /* LaunchScreen.storyboard */,
+			);
+			path = SquadGoals;
+			sourceTree = "<group>";
+		};
+		5587C845278780D0001A9999 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				5587C846278780D0001A9999 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5587C84F278780D1001A9999 /* SquadGoalsTests */ = {
+			isa = PBXGroup;
+			children = (
+				5587C850278780D1001A9999 /* SquadGoalsTests.swift */,
+			);
+			path = SquadGoalsTests;
+			sourceTree = "<group>";
+		};
+		5587C859278780D1001A9999 /* SquadGoalsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5587C85A278780D1001A9999 /* SquadGoalsUITests.swift */,
+				5587C85C278780D1001A9999 /* SquadGoalsUITestsLaunchTests.swift */,
+			);
+			path = SquadGoalsUITests;
+			sourceTree = "<group>";
+		};
+		5587C8772787884E001A9999 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				5587C8792787884E001A9999 /* HomepageGoalView.swift */,
+				5587C87B2787884E001A9999 /* Race.swift */,
+				5587C87C2787884E001A9999 /* ProgressBar.swift */,
+				5587C87D2787884E001A9999 /* GoalDetailPage.swift */,
+				5587C87E2787884E001A9999 /* Completion.swift */,
+				5587C87F2787884E001A9999 /* ProgressButton.swift */,
+				55C81EDB278B9F8E00F341D5 /* BottomSheet.swift */,
+				550FD65A278F8DCB005BE35D /* BragTable.swift */,
+				55C1D907279384E000B9F4E4 /* Banner.swift */,
+				55C1811B2803CB6B002F956B /* EncouragementModel.swift */,
+				55C1811D2803D81C002F956B /* CongratsModal.swift */,
+				55D7CEFB283C9AED0064CE4D /* TestTable.swift */,
+				552F69E82886548800AAF287 /* ResultsAlert.swift */,
+				55E3174A295A26B400311024 /* ExampleTargetsModal.swift */,
+				552F69EA288674D300AAF287 /* ReflectionAlert.swift */,
+				55C0B09D28F67896008BFA61 /* CarouselCounter.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		5587C88027878850001A9999 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				5587C88227878850001A9999 /* GoalViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		5587C88527878852001A9999 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				5587C88627878852001A9999 /* Welcome.swift */,
+				5587C88727878852001A9999 /* CreateAccount.swift */,
+				5587C88827878852001A9999 /* SignIn.swift */,
+				5587C88927878852001A9999 /* JoinGroup.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		5587C88A27878853001A9999 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				55C0B0A128F67FAC008BFA61 /* BaseTutorial.swift */,
+				5587C88B27878853001A9999 /* CreateGoal.swift */,
+				55BE93E9283B3F8B0004EDB9 /* EditGoal.swift */,
+				5587C88C27878853001A9999 /* SquadPage.swift */,
+				5587C88D27878853001A9999 /* GoalAdded.swift */,
+				5587C88E27878853001A9999 /* Homepage.swift */,
+				5587C88F27878853001A9999 /* UserPage.swift */,
+				55F7CAE32919AB7700448F10 /* MondayReflection.swift */,
+				5587C89127878853001A9999 /* ProfilePage.swift */,
+				5587C89227878853001A9999 /* Main.swift */,
+				55F7CAE52919ABAE00448F10 /* MondayPlanning.swift */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
+		5587C89427878855001A9999 /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+				5587C89527878855001A9999 /* Goal.swift */,
+				5587C89627878855001A9999 /* Target.swift */,
+				5587C89727878855001A9999 /* User.swift */,
+				550FD658278F8C18005BE35D /* Brag.swift */,
+			);
+			path = DataModels;
+			sourceTree = "<group>";
+		};
+		55C81EDF278C05F400F341D5 /* UIElements */ = {
+			isa = PBXGroup;
+			children = (
+				55663CE029DA5F6A0037F522 /* HelperComponents */,
+				55FDF84029D3FBB600082B72 /* Cards */,
+				55FDF83929D3F75900082B72 /* ActionButtons */,
+				55C81EE0278C060800F341D5 /* Title.swift */,
+				55766C2629D2AC270060E6D7 /* TitleV2.swift */,
+				552F626528FD0953002F0A5F /* Subtitle.swift */,
+				55766C2429D2ABD40060E6D7 /* SubtitleV2.swift */,
+				552F625928FCEFFE002F0A5F /* OnboardingTitle.swift */,
+				552F625B28FCF69E002F0A5F /* OnboardingTextEntry.swift */,
+				552F626328FD0812002F0A5F /* OnboardingTextEntryWithTitle.swift */,
+				552F625D28FCF8BD002F0A5F /* OnboardingActionButton.swift */,
+				55D77E0729CB495900BAFA1D /* PillActionButton.swift */,
+				55D77E0929CB4E4000BAFA1D /* TrailingViewHelper.swift */,
+				55FDF84129D3FBCD00082B72 /* UserProgressCard.swift */,
+				553E3C682A0379CE00E14620 /* InviteFriendsComponent.swift */,
+				55A618792A397A3600003280 /* EmptyState.swift */,
+			);
+			path = UIElements;
+			sourceTree = "<group>";
+		};
+		55FDF83129D3DC4800082B72 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				55FDF83229D3DC5800082B72 /* UtilFunctions.swift */,
+				55FDF83429D3E04B00082B72 /* DateExtension.swift */,
+				55663CE329DA85290037F522 /* CornerRadiusExtension.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		55FDF83929D3F75900082B72 /* ActionButtons */ = {
+			isa = PBXGroup;
+			children = (
+				557568B729CC131A005C9A76 /* BlueActionButton.swift */,
+				557568B929CC1335005C9A76 /* OrangeActionButton.swift */,
+				55FDF83629D3E57900082B72 /* GreenActionButton.swift */,
+				55FDF83C29D3F78000082B72 /* WhiteActionButton.swift */,
+				55FDF83E29D3FAC400082B72 /* WhiteActionButtonWithArrow.swift */,
+				55FDF84329D3FF0900082B72 /* PurpleActionButton.swift */,
+				5538D6E629D556F100BF76D4 /* GrayActionButton.swift */,
+				55663CDE29DA48F80037F522 /* RedActionButton.swift */,
+			);
+			path = ActionButtons;
+			sourceTree = "<group>";
+		};
+		55FDF84029D3FBB600082B72 /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				55FDF82D29D3CC7100082B72 /* WhiteCard.swift */,
+				55766C2229D2A5780060E6D7 /* OrangeCard.swift */,
+				55FDF82F29D3CD5400082B72 /* BlueCard.swift */,
+				553D66762A016AF500A85C32 /* LightBlueCard.swift */,
+				553E3C622A03721D00E14620 /* GreenCard.swift */,
+				55A6187B2A397CC800003280 /* TurqoiseCard.swift */,
+			);
+			path = Cards;
+			sourceTree = "<group>";
+		};
+		F97693B9D0F796323018D6AA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6AAC44B50437FA1D41861F86 /* Pods_SquadGoals.framework */,
+				5781A7B9BA2083BDC8B11F45 /* Pods_SquadGoals_SquadGoalsUITests.framework */,
+				CDA76E685F7262ADC1F92FDA /* Pods_SquadGoalsTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5587C83B278780CF001A9999 /* SquadGoals */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5587C860278780D1001A9999 /* Build configuration list for PBXNativeTarget "SquadGoals" */;
+			buildPhases = (
+				83015356525D60F860581AB1 /* [CP] Check Pods Manifest.lock */,
+				5587C838278780CF001A9999 /* Sources */,
+				5587C839278780CF001A9999 /* Frameworks */,
+				5587C83A278780CF001A9999 /* Resources */,
+				15A25837FD830A11E25FFA66 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SquadGoals;
+			packageProductDependencies = (
+				5544594A295E463500F21D9F /* SwiftUITooltip */,
+			);
+			productName = SquadGoals;
+			productReference = 5587C83C278780CF001A9999 /* Squad Goals.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5587C84B278780D1001A9999 /* SquadGoalsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5587C863278780D1001A9999 /* Build configuration list for PBXNativeTarget "SquadGoalsTests" */;
+			buildPhases = (
+				3A08BCC1AB71C6175B1830EE /* [CP] Check Pods Manifest.lock */,
+				5587C848278780D1001A9999 /* Sources */,
+				5587C849278780D1001A9999 /* Frameworks */,
+				5587C84A278780D1001A9999 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5587C84E278780D1001A9999 /* PBXTargetDependency */,
+			);
+			name = SquadGoalsTests;
+			productName = SquadGoalsTests;
+			productReference = 5587C84C278780D1001A9999 /* SquadGoalsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5587C855278780D1001A9999 /* SquadGoalsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5587C866278780D1001A9999 /* Build configuration list for PBXNativeTarget "SquadGoalsUITests" */;
+			buildPhases = (
+				CE977570D176D4CD3509439B /* [CP] Check Pods Manifest.lock */,
+				5587C852278780D1001A9999 /* Sources */,
+				5587C853278780D1001A9999 /* Frameworks */,
+				5587C854278780D1001A9999 /* Resources */,
+				C19F106EC5EC8FC0796B6FAD /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5587C858278780D1001A9999 /* PBXTargetDependency */,
+			);
+			name = SquadGoalsUITests;
+			productName = SquadGoalsUITests;
+			productReference = 5587C856278780D1001A9999 /* SquadGoalsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5587C834278780CF001A9999 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1300;
+				LastUpgradeCheck = 1300;
+				TargetAttributes = {
+					5587C83B278780CF001A9999 = {
+						CreatedOnToolsVersion = 13.0;
+					};
+					5587C84B278780D1001A9999 = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = 5587C83B278780CF001A9999;
+					};
+					5587C855278780D1001A9999 = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = 5587C83B278780CF001A9999;
+					};
+				};
+			};
+			buildConfigurationList = 5587C837278780CF001A9999 /* Build configuration list for PBXProject "SquadGoals" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5587C833278780CF001A9999;
+			packageReferences = (
+				55445949295E463500F21D9F /* XCRemoteSwiftPackageReference "SwiftUI-Tooltip" */,
+			);
+			productRefGroup = 5587C83D278780CF001A9999 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5587C83B278780CF001A9999 /* SquadGoals */,
+				5587C84B278780D1001A9999 /* SquadGoalsTests */,
+				5587C855278780D1001A9999 /* SquadGoalsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5587C83A278780CF001A9999 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5587C847278780D0001A9999 /* Preview Assets.xcassets in Resources */,
+				5587C8B7278798C8001A9999 /* LaunchScreen.storyboard in Resources */,
+				5587C844278780D0001A9999 /* Assets.xcassets in Resources */,
+				5587C8742787837C001A9999 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5587C84A278780D1001A9999 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5587C854278780D1001A9999 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		15A25837FD830A11E25FFA66 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SquadGoals/Pods-SquadGoals-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SquadGoals/Pods-SquadGoals-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SquadGoals/Pods-SquadGoals-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3A08BCC1AB71C6175B1830EE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SquadGoalsTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		83015356525D60F860581AB1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SquadGoals-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C19F106EC5EC8FC0796B6FAD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SquadGoals-SquadGoalsUITests/Pods-SquadGoals-SquadGoalsUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SquadGoals-SquadGoalsUITests/Pods-SquadGoals-SquadGoalsUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SquadGoals-SquadGoalsUITests/Pods-SquadGoals-SquadGoalsUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CE977570D176D4CD3509439B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SquadGoals-SquadGoalsUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5587C838278780CF001A9999 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55766C2529D2ABD40060E6D7 /* SubtitleV2.swift in Sources */,
+				55FDF83529D3E04B00082B72 /* DateExtension.swift in Sources */,
+				552F626428FD0812002F0A5F /* OnboardingTextEntryWithTitle.swift in Sources */,
+				5587C8AB27878855001A9999 /* GoalAdded.swift in Sources */,
+				55D696ED296E304200E9EA7D /* ContentView.swift in Sources */,
+				55FDF83F29D3FAC400082B72 /* WhiteActionButtonWithArrow.swift in Sources */,
+				553E3C632A03721D00E14620 /* GreenCard.swift in Sources */,
+				553D66772A016AF500A85C32 /* LightBlueCard.swift in Sources */,
+				5587C8A527878855001A9999 /* Welcome.swift in Sources */,
+				552F69EB288674D300AAF287 /* ReflectionAlert.swift in Sources */,
+				552F626628FD0953002F0A5F /* Subtitle.swift in Sources */,
+				5587C8A727878855001A9999 /* SignIn.swift in Sources */,
+				552F69E92886548800AAF287 /* ResultsAlert.swift in Sources */,
+				55E3174B295A26B400311024 /* ExampleTargetsModal.swift in Sources */,
+				5587C8B027878855001A9999 /* Main.swift in Sources */,
+				5587C8B527878855001A9999 /* Colors.swift in Sources */,
+				5587C8AA27878855001A9999 /* SquadPage.swift in Sources */,
+				5587C8B427878855001A9999 /* User.swift in Sources */,
+				55A6187C2A397CC800003280 /* TurqoiseCard.swift in Sources */,
+				55BE93EA283B3F8B0004EDB9 /* EditGoal.swift in Sources */,
+				552F625E28FCF8BD002F0A5F /* OnboardingActionButton.swift in Sources */,
+				5587C8AD27878855001A9999 /* UserPage.swift in Sources */,
+				55FDF84429D3FF0900082B72 /* PurpleActionButton.swift in Sources */,
+				55FDF83029D3CD5400082B72 /* BlueCard.swift in Sources */,
+				5538D6E729D556F100BF76D4 /* GrayActionButton.swift in Sources */,
+				55C0B09E28F67896008BFA61 /* CarouselCounter.swift in Sources */,
+				5587C8AC27878855001A9999 /* Homepage.swift in Sources */,
+				5587C8A827878855001A9999 /* JoinGroup.swift in Sources */,
+				55D7CEFC283C9AED0064CE4D /* TestTable.swift in Sources */,
+				552F625C28FCF69E002F0A5F /* OnboardingTextEntry.swift in Sources */,
+				5587C89E27878855001A9999 /* GoalDetailPage.swift in Sources */,
+				55C1811C2803CB6B002F956B /* EncouragementModel.swift in Sources */,
+				5587C89A27878855001A9999 /* HomepageGoalView.swift in Sources */,
+				5587C8A227878855001A9999 /* GoalViewModel.swift in Sources */,
+				5587C840278780CF001A9999 /* SquadGoalsApp.swift in Sources */,
+				55FDF84229D3FBCD00082B72 /* UserProgressCard.swift in Sources */,
+				55C81EE1278C060800F341D5 /* Title.swift in Sources */,
+				5587C8B327878855001A9999 /* Target.swift in Sources */,
+				55D77E0A29CB4E4000BAFA1D /* TrailingViewHelper.swift in Sources */,
+				55663CE229DA5F830037F522 /* LeftAligner.swift in Sources */,
+				5587C89C27878855001A9999 /* Race.swift in Sources */,
+				5587C89F27878855001A9999 /* Completion.swift in Sources */,
+				5587C8B227878855001A9999 /* Goal.swift in Sources */,
+				55C1811E2803D81C002F956B /* CongratsModal.swift in Sources */,
+				55A6187A2A397A3600003280 /* EmptyState.swift in Sources */,
+				55663CDF29DA48F80037F522 /* RedActionButton.swift in Sources */,
+				5587C8A027878855001A9999 /* ProgressButton.swift in Sources */,
+				55FDF82E29D3CC7100082B72 /* WhiteCard.swift in Sources */,
+				557568B829CC131A005C9A76 /* BlueActionButton.swift in Sources */,
+				55766C2729D2AC270060E6D7 /* TitleV2.swift in Sources */,
+				5587C8A927878855001A9999 /* CreateGoal.swift in Sources */,
+				550FD65B278F8DCB005BE35D /* BragTable.swift in Sources */,
+				550FD659278F8C18005BE35D /* Brag.swift in Sources */,
+				552F625828FB7F25002F0A5F /* Styling.swift in Sources */,
+				55C1D908279384E000B9F4E4 /* Banner.swift in Sources */,
+				55F7CAE42919AB7700448F10 /* MondayReflection.swift in Sources */,
+				55C81EDC278B9F8E00F341D5 /* BottomSheet.swift in Sources */,
+				55FDF83729D3E57900082B72 /* GreenActionButton.swift in Sources */,
+				557568BA29CC1335005C9A76 /* OrangeActionButton.swift in Sources */,
+				55F7CAE62919ABAE00448F10 /* MondayPlanning.swift in Sources */,
+				5587C89D27878855001A9999 /* ProgressBar.swift in Sources */,
+				552F626228FCFE39002F0A5F /* Spacing.swift in Sources */,
+				55663CE429DA85290037F522 /* CornerRadiusExtension.swift in Sources */,
+				5587C8AF27878855001A9999 /* ProfilePage.swift in Sources */,
+				55C0B0A228F67FAC008BFA61 /* BaseTutorial.swift in Sources */,
+				55EA757C28FD120500ACB448 /* Filler.swift in Sources */,
+				55D77E0829CB495900BAFA1D /* PillActionButton.swift in Sources */,
+				552F625A28FCEFFE002F0A5F /* OnboardingTitle.swift in Sources */,
+				55766C2329D2A5780060E6D7 /* OrangeCard.swift in Sources */,
+				553E3C692A0379CE00E14620 /* InviteFriendsComponent.swift in Sources */,
+				5587C8A627878855001A9999 /* CreateAccount.swift in Sources */,
+				55FDF83329D3DC5800082B72 /* UtilFunctions.swift in Sources */,
+				55FDF83D29D3F78000082B72 /* WhiteActionButton.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5587C848278780D1001A9999 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5587C851278780D1001A9999 /* SquadGoalsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5587C852278780D1001A9999 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5587C85D278780D1001A9999 /* SquadGoalsUITestsLaunchTests.swift in Sources */,
+				5587C85B278780D1001A9999 /* SquadGoalsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5587C84E278780D1001A9999 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5587C83B278780CF001A9999 /* SquadGoals */;
+			targetProxy = 5587C84D278780D1001A9999 /* PBXContainerItemProxy */;
+		};
+		5587C858278780D1001A9999 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5587C83B278780CF001A9999 /* SquadGoals */;
+			targetProxy = 5587C857278780D1001A9999 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		5587C85E278780D1001A9999 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5587C85F278780D1001A9999 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5587C861278780D1001A9999 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7A7A0CC836B6A1BD5F8D8EA0 /* Pods-SquadGoals.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon2;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = SquadGoals/SquadGoals.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 54;
+				DEVELOPMENT_ASSET_PATHS = "\"SquadGoals/Preview Content\"";
+				DEVELOPMENT_TEAM = HPRJ8CFMWR;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SquadGoals/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SquadGoals;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.5;
+				PRODUCT_BUNDLE_IDENTIFIER = "agrawals.Squad-Goals";
+				PRODUCT_NAME = "Squad Goals";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5587C862278780D1001A9999 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5A44A3827C3CC6A909862ED8 /* Pods-SquadGoals.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon2;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = SquadGoals/SquadGoals.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 54;
+				DEVELOPMENT_ASSET_PATHS = "\"SquadGoals/Preview Content\"";
+				DEVELOPMENT_TEAM = HPRJ8CFMWR;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SquadGoals/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SquadGoals;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.5;
+				PRODUCT_BUNDLE_IDENTIFIER = "agrawals.Squad-Goals";
+				PRODUCT_NAME = "Squad Goals";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5587C864278780D1001A9999 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6E8AF655F9959DB0EA0A07C /* Pods-SquadGoalsTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = agrawals.SquadGoalsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SquadGoals.app/SquadGoals";
+			};
+			name = Debug;
+		};
+		5587C865278780D1001A9999 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A05765F5B551058846B858D1 /* Pods-SquadGoalsTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = agrawals.SquadGoalsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SquadGoals.app/SquadGoals";
+			};
+			name = Release;
+		};
+		5587C867278780D1001A9999 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 107D316E5D5DEC8D075EF14C /* Pods-SquadGoals-SquadGoalsUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = agrawals.SquadGoalsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SquadGoals;
+			};
+			name = Debug;
+		};
+		5587C868278780D1001A9999 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52046A11B4C1B67780265C43 /* Pods-SquadGoals-SquadGoalsUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = agrawals.SquadGoalsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SquadGoals;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5587C837278780CF001A9999 /* Build configuration list for PBXProject "SquadGoals" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5587C85E278780D1001A9999 /* Debug */,
+				5587C85F278780D1001A9999 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5587C860278780D1001A9999 /* Build configuration list for PBXNativeTarget "SquadGoals" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5587C861278780D1001A9999 /* Debug */,
+				5587C862278780D1001A9999 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5587C863278780D1001A9999 /* Build configuration list for PBXNativeTarget "SquadGoalsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5587C864278780D1001A9999 /* Debug */,
+				5587C865278780D1001A9999 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5587C866278780D1001A9999 /* Build configuration list for PBXNativeTarget "SquadGoalsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5587C867278780D1001A9999 /* Debug */,
+				5587C868278780D1001A9999 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		55445949295E463500F21D9F /* XCRemoteSwiftPackageReference "SwiftUI-Tooltip" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/quassum/SwiftUI-Tooltip.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5544594A295E463500F21D9F /* SwiftUITooltip */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 55445949295E463500F21D9F /* XCRemoteSwiftPackageReference "SwiftUI-Tooltip" */;
+			productName = SwiftUITooltip;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 5587C834278780CF001A9999 /* Project object */;
+}
