@@ -15,7 +15,7 @@ let ref = Database.database().reference()
 let pastMonday = Calendar(identifier: .gregorian).startOfDay(for: Date()).previous(.monday, considerToday: true)
 
 class GoalViewModel : ObservableObject {
-        
+    
     @Published var user : User = User(name: "", phoneNumber: "", groupId: "", goals: [], teammates: [])
     @Published var completedTargets : Int = 0
     @Published var teammatePhones : Array<String> = []
@@ -33,7 +33,6 @@ class GoalViewModel : ObservableObject {
     @Published var showUnableToFindUser = false
     @Published var showReflection = false
     @Published var navigateToMissingGroup = false
-
     
     weak var gestureRecognizer: GestureRecognizerInteractor? = UIApplication.shared
     
@@ -109,7 +108,7 @@ class GoalViewModel : ObservableObject {
         let lastSetMonday = (UserDefaults.standard.object(forKey: "lastSetMonday") as? Date) ?? (fakeLastSetMonday ?? Date(timeIntervalSince1970: 0))
         self.completedTargets = 0
         self.totalTargets = 0
-                
+        
         ref.child("goals/\(phoneNumber)/goals").getData(completion: { error, goalSnapshot in
             self.user.goals = []
             let goals = goalSnapshot.value as? Dictionary<String, Dictionary<String, String>> ?? [:]
@@ -348,10 +347,6 @@ class GoalViewModel : ObservableObject {
     
     func signUserIn(phoneNumber : String) {
         ref.child("users/\(phoneNumber)").getData(completion:  { error, snapshot in
-            guard error == nil else {
-                // TODO create no wifi error dialog
-                return;
-            }
             if (snapshot.exists()) {
                 let userData = snapshot.value as? Dictionary<String, String> ?? [:]
                 let userName = userData["name"] ?? "NA"
@@ -385,7 +380,7 @@ class GoalViewModel : ObservableObject {
         let lastSetMonday = (defaults.object(forKey: "lastSetMonday") as? Date) ?? Date(timeIntervalSince1970: 0)
         let daysSinceMonday = (Calendar.current.dateComponents([.day], from: lastSetMonday, to: Date())).day!
         if (daysSinceMonday >= 7) {
-        // if (true) {
+            // if (true) {
             self.showReflection = true
         } else {
             self.showReflection = false
@@ -431,6 +426,7 @@ class GoalViewModel : ObservableObject {
                 UtilFunctions.logUserFCMtoken(phoneNumber: phoneNumber)
                 self.user = User(name: userName, phoneNumber: phoneNumber, groupId: "", goals : [], teammates: [])
                 self.navigateToJoinGroup = true
+                UtilFunctions.setLastSetMonday()
             }
         })
     }
