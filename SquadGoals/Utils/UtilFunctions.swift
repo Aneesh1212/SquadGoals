@@ -129,6 +129,7 @@ struct UtilFunctions {
             return "Once"
         }
     }
+
     
     static func setLastSetMonday() {
         let previousMonday = Calendar(identifier: .gregorian).startOfDay(for: Date.today().previous(.monday, considerToday: true))

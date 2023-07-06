@@ -58,7 +58,7 @@ struct Homepage : View {
             }
             
             if (!viewModel.user.goals.contains(where: { $0.title != "" })) {
-                EmptyState()
+                openTargets
             } else {
                 openTargets
             }
