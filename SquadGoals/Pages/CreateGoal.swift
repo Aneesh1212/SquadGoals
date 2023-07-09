@@ -21,6 +21,7 @@ struct CreateGoal: View {
     @State private var currTargetTitle : String = ""
     @State private var currTargetFrequency : String = ""
     
+    @State private var showNoGoalTitle: Bool = false
     
     let placeholder = "Don't skip this step! It's valuable to write this down, so you can look back when lacking motivation"
     
@@ -49,6 +50,10 @@ struct CreateGoal: View {
     }
     
     func addGoal() -> Void {
+        if (goalTitle == "") {
+            self.showNoGoalTitle = true
+            return
+        }
         viewModel.createGoal(goalTitle: self.goalTitle, goalReason: self.goalReason, goalCategory: self.goalCategory)
         self.shouldNavigate = true
     }
@@ -93,6 +98,9 @@ struct CreateGoal: View {
         }
         .onAppear {
             UITextView.appearance().backgroundColor = .clear
+        }
+        .alert("Goal must have a title", isPresented: $showNoGoalTitle) {
+            Button("Retry", role: .cancel) { }
         }
     }
     

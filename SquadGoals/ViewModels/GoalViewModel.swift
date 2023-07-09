@@ -58,7 +58,7 @@ class GoalViewModel : ObservableObject {
     func updateGoalMomentum(goal: Goal) {
         let goalRef = ref.child("goals").child(self.user.phoneNumber).child("goals").child(goal.key)
         goalRef.updateChildValues(["momentumScore" : String(goal.momentumScore), "positiveMomentum": String(goal.positiveMomentum), "negativeMomentum" : String(goal.negativeMomentum), "crossedOff" : goal.crossedOff ? "true" : "false", "recordMomentum": String(goal.recordMomentum)])
-        let goalIndex = self.user.goals.firstIndex(of: goal) ?? 0
+        let goalIndex = self.user.goals.firstIndex { $0.key ==  goal.key } ?? 0
         self.user.goals[goalIndex] = goal
     }
     
@@ -76,7 +76,6 @@ class GoalViewModel : ObservableObject {
             targetsRef.child(target.key).setValue(["title" : target.title, "frequency" : String(target.frequency), "original": String(target.original), "creationDate" : String(target.creationDate.timeIntervalSince1970)])
         }
         let goalIndex = self.user.goals.firstIndex { $0.key == goalId } ?? 0
-        // TODO update past targets
         self.user.goals[goalIndex].currTargets = targets
         self.user.goals[goalIndex].pastTargets[pastMonday] = targets
         self.resetUserTargetNumbers()
@@ -98,8 +97,15 @@ class GoalViewModel : ObservableObject {
         });
     }
     
-    func overwriteTarget(goalId : String, targetId: String, targetTitle: String, targetFrequency : Int, targetOriginal : Int, creationDate : Date){
+    func incrementTarget(goalId : String, targetId: String, targetTitle: String, targetFrequency : Int, targetOriginal : Int, creationDate : Date) {
+        completedTargets += 1
         ref.child("targets").child(goalId).child(targetId).setValue(["title" : targetTitle, "frequency" : String(targetFrequency), "original": String(targetOriginal), "creationDate" : String(creationDate.timeIntervalSince1970)])
+        let goalIndex = self.user.goals.firstIndex { $0.key == goalId } ?? 10
+        let targetIndex = self.user.goals[goalIndex].currTargets.firstIndex { $0.key == targetId } ?? 10
+        self.user.goals[goalIndex].currTargets[targetIndex].frequency = targetFrequency
+        if (self.user.goals[goalIndex].pastTargets[pastMonday] != nil) {
+            self.user.goals[goalIndex].pastTargets[pastMonday]![targetIndex].frequency = targetFrequency
+        }
     }
     
     func getGoals(phoneNumber : String) {
@@ -166,10 +172,6 @@ class GoalViewModel : ObservableObject {
     func getTeamMemberPhoneNumbers() {
         self.teammatePhones = []
         let groupRef = ref.child("groups").child(self.user.groupId).child("users").getData(completion:  { error, usersSnapshot in
-            guard error == nil else {
-                print(error!.localizedDescription)
-                return;
-            }
             let users = usersSnapshot.value as? Dictionary<String, String> ?? [:]
             for userDataPair in users {
                 if (userDataPair.value != self.user.phoneNumber) {
@@ -183,10 +185,6 @@ class GoalViewModel : ObservableObject {
     func getTeammateInfo(){
         self.user.teammates = []
         let usersRef = ref.child("users").getData(completion:  { error, usersSnapshot in
-            guard error == nil else {
-                print(error!.localizedDescription)
-                return;
-            }
             let users = usersSnapshot.value as? Dictionary<String, Dictionary<String, String>> ?? [:]
             for userDataPair in users{
                 if (self.teammatePhones.contains(userDataPair.key)) {
@@ -202,9 +200,7 @@ class GoalViewModel : ObservableObject {
     }
     
     func getTeammateGoals(){
-        let lastSetSunday = ((UserDefaults.standard.object(forKey: "lastSetSunday") as? Date) ?? Date(timeIntervalSince1970: 0))
-        let fakeLastSetMonday = Calendar.current.date(byAdding: .day, value: 1, to: lastSetSunday)
-        let lastSetMonday = (UserDefaults.standard.object(forKey: "lastSetMonday") as? Date) ?? (fakeLastSetMonday ?? Date(timeIntervalSince1970: 0))
+        let lastSetMonday = (UserDefaults.standard.object(forKey: "lastSetMonday") as? Date) ?? Date(timeIntervalSince1970: 0)
         for teammate in user.teammates {
             ref.child("goals/\(teammate.phoneNumber)/goals").observe(DataEventType.value, with: { goalSnapshot in
                 let teammateIndex : Int = self.user.teammates.firstIndex(of: teammate) ?? 0
@@ -327,6 +323,8 @@ class GoalViewModel : ObservableObject {
         let bragsRef = ref.child("brags").child(goalId)
         let bragKey = bragsRef.childByAutoId().key ?? ""
         bragsRef.child(bragKey).setValue(["text" : brag.text])
+        let goalIndex = self.user.goals.firstIndex { $0.key == goalId } ?? 0
+        self.user.goals[goalIndex].brags.append(brag)
     }
     
     func getBrags(goalKey : String) {
@@ -366,8 +364,8 @@ class GoalViewModel : ObservableObject {
         })
     }
     
-    func addGroupToUser(name : String?, phoneNumber : String, groupId : String) {
-        ref.child("users").child(phoneNumber).setValue(["name" : name, "phone" : phoneNumber, "groupId" : groupId])
+    func addGroupToUser(groupId : String) {
+        ref.child("users").child(user.phoneNumber).setValue(["name" : user.name, "phone" : user.phoneNumber, "groupId" : groupId])
         // TODO write concurrent update
     }
     
@@ -376,8 +374,7 @@ class GoalViewModel : ObservableObject {
             self.navigateToMissingGroup = true
             return
         }
-        let defaults = UserDefaults.standard
-        let lastSetMonday = (defaults.object(forKey: "lastSetMonday") as? Date) ?? Date(timeIntervalSince1970: 0)
+        let lastSetMonday = (UserDefaults.standard.object(forKey: "lastSetMonday") as? Date) ?? Date(timeIntervalSince1970: 0)
         let daysSinceMonday = (Calendar.current.dateComponents([.day], from: lastSetMonday, to: Date())).day!
         if (daysSinceMonday >= 7) {
         // if (true) {
@@ -396,19 +393,19 @@ class GoalViewModel : ObservableObject {
     func createGroup(groupName : String) -> String {
         let groupId = String(Int.random(in: 100000..<999999))
         ref.child("groups").child(groupId).setValue(["groupName" : groupName, "creationDate" : String(Date().timeIntervalSince1970)])
-        joinGroup(phoneNumber: self.user.phoneNumber, groupId: groupId) // TODO take away need for passing phone number
+        joinGroup(groupId: groupId)
         return groupId
     }
     
-    func joinGroup(phoneNumber : String, groupId : String) {
+    func joinGroup(groupId : String) {
         ref.child("groups/\(groupId)").getData(completion:  { error, snapshot in
             if (snapshot.exists()) {
                 let groupRef = ref.child("groups").child(groupId).child("users")
                 let userKey = groupRef.childByAutoId().key ?? ""
-                groupRef.child(userKey).setValue(phoneNumber)
-                self.addGroupToUser(name: self.user.name, phoneNumber: phoneNumber, groupId: groupId) // TODO take away need to pass anything here
+                groupRef.child(userKey).setValue(user.phoneNumber)
+                self.addGroupToUser(groupId: groupId)
                 self.user.groupId = groupId // TODO nice concurrency already done
-                self.getGoals(phoneNumber: self.user.phoneNumber)
+                self.getGoals(phoneNumber: user.phoneNumber)
                 self.getTeamMemberPhoneNumbers()
                 self.calculateWeek()
             } else {
