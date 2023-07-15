@@ -18,17 +18,19 @@ struct GoalDetailPage: View {
     
     @ViewBuilder func getView(date : String, targets : Array<Target>) -> some View {
         
-        let completedTargets = viewModel.calculateCompletedTargetsFromTarget(targets: targets)
-        let totalTargets = viewModel.calculateTotalTargetsFromTarget(targets: targets)
+        let completedTargets = UtilFunctions.calculateCompletedTargetsFromTarget(targets: targets)
+        let totalTargets = UtilFunctions.calculateTotalTargetsFromTarget(targets: targets)
         
         VStack(alignment: .leading) {
-            Subtitle(text: "\(String(date)) - \(String(completedTargets)) / \(String(totalTargets)) this week")
+            VStack {
+                Subtitle(text: "\(String(date)) - \(String(completedTargets)) / \(String(totalTargets)) this week")
+            }
             
             VStack(alignment: .leading, spacing:0) {
                 ForEach(targets, id: \.self) { target in
                     let finished : Int = target.original - target.frequency
                     let unfinished : Int = target.frequency
-                    ForEach(0..<finished) { _ in
+                    ForEach(0..<finished, id: \.self) { _ in
                         HStack(spacing : 0){
                             Text(target.title)
                                 .foregroundColor(.black)
@@ -46,14 +48,11 @@ struct GoalDetailPage: View {
                         .background(Rectangle().fill(.white).shadow(radius: 3))
                         .opacity(0.8)
                     }
-                    ForEach(0..<unfinished) { _ in
+                    ForEach(0..<unfinished, id: \.self) { _ in
                         HStack(spacing : 0){
                             Text(target.title)
                                 .foregroundColor(.black)
                             Spacer()
-                            Circle()
-                                .strokeBorder(Color.green,lineWidth: 2)
-                                .frame(width: 24, height: 24)
                         }
                         .fixedSize(horizontal: false, vertical: true)
                         .padding()
@@ -65,10 +64,6 @@ struct GoalDetailPage: View {
     }
     
     var body: some View {
-        let totalTargets = viewModel.calculateTotalTargets(goals: [self.goal])
-        let completedTargets = viewModel.calculateCompletedTargets(goals: [self.goal])
-        let completionPercentage = viewModel.calculateWeeklyTargetPercent(goals: [self.goal])
-        
         NavigationLink(destination: EditGoal(viewModel: self.viewModel, goal: self.$goal), isActive: $shouldNavigateToEditGoal) { EmptyView() }
         
         VStack(spacing:0){
@@ -97,7 +92,7 @@ struct GoalDetailPage: View {
                         .frame(height: 50)
                         .background(Colors.darkOrangeForeground)
                         .cornerRadius(50, corners: [.topLeft, .topRight])
-                    BragTable(goalKey: self.goal.key)
+                    BragTable(goalKey: self.goal.key, viewModel: self.viewModel)
                 }
                 
                 Spacing(height: Styling.mediumUnit)
@@ -118,7 +113,7 @@ struct GoalDetailPage: View {
                 self.presentationMode.wrappedValue.dismiss()
                 viewModel.deleteGoal(goalKey: goal.key)
             })
-                .padding(.vertical, Styling.smallUnit)
+            .padding(.vertical, Styling.smallUnit)
         }
         .padding(.horizontal, 25)
         .background(Colors.background)

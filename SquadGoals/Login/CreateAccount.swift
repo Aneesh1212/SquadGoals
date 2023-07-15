@@ -9,7 +9,7 @@ import Foundation
 
 struct CreateAccount: View {
     
-    @StateObject var viewModel = LoginViewModel()
+    @StateObject var viewModel = GoalViewModel()
         
     @State private var name: String = ""
     @State private var phoneNumber: String = ""
@@ -56,8 +56,8 @@ struct CreateAccount: View {
     }
     
     func createAccount() {
-        let parsedPhoneNumber = viewModel.parsePhoneNumber(phoneNumber: self.phoneNumber)
-        if (viewModel.isValidNameAndPhone(name: self.name, phoneNumber: parsedPhoneNumber)) {
+        let parsedPhoneNumber = UtilFunctions.parsePhoneNumber(phoneNumber: self.phoneNumber)
+        if (UtilFunctions.isValidNameAndPhone(name: self.name, phoneNumber: parsedPhoneNumber)) {
             viewModel.createUser(userName: self.name, phoneNumber: parsedPhoneNumber)
         } else {
             self.showInvalidNameOrPhone = true

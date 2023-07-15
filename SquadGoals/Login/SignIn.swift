@@ -9,7 +9,7 @@ import Foundation
 
 struct SignIn: View {
     
-    @StateObject var viewModel = LoginViewModel()
+    @StateObject var viewModel = GoalViewModel()
     
     @State private var phoneNumber: String = ""
     @State private var showInvalidNameOrPhone = false
@@ -29,10 +29,8 @@ struct SignIn: View {
             
             BlueActionButton(text: "Log In", action: signIn)
             
-            NavigationLink(destination: Main(user: viewModel.currentUser, showReflection : viewModel.showReflection), isActive: $viewModel.navigateToHome) { EmptyView() }
-            NavigationLink(destination: JoinGroup(viewModel: self.viewModel), isActive: $viewModel.navigateToMissingGroup) {
-                EmptyView()
-            }
+            NavigationLink(destination: Main(viewModel: viewModel, showResultsModal: viewModel.showReflection)) { EmptyView() }
+            NavigationLink(destination: JoinGroup(viewModel: self.viewModel), isActive: $viewModel.navigateToMissingGroup) { EmptyView() }
         }
         .padding(.bottom, Styling.mediumUnit)
         .padding(.horizontal, Styling.mediumUnit)
@@ -49,8 +47,8 @@ struct SignIn: View {
     }
     
     func signIn() {
-        let parsedPhoneNumber = viewModel.parsePhoneNumber(phoneNumber: self.phoneNumber)
-        if (viewModel.isValidNameAndPhone(name: "Ansh", phoneNumber: parsedPhoneNumber)) {
+        let parsedPhoneNumber = UtilFunctions.parsePhoneNumber(phoneNumber: self.phoneNumber)
+        if (UtilFunctions.isValidNameAndPhone(name: "Ansh", phoneNumber: parsedPhoneNumber)) {
             viewModel.signUserIn(phoneNumber: parsedPhoneNumber)
         } else {
             self.showInvalidNameOrPhone = true

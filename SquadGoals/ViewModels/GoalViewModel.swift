@@ -1,5 +1,5 @@
 //
-//  LoginViewModel.swift
+//  GoalViewModel.swift
 //  Goal2
 //
 //  Created by Aneesh Agrawal on 12/15/21.
@@ -11,55 +11,80 @@ import UserNotifications
 import FirebaseAuth
 import FirebaseMessaging
 
+let ref = Database.database().reference()
+let pastMonday = Calendar(identifier: .gregorian).startOfDay(for: Date()).previous(.monday, considerToday: true)
+
 class GoalViewModel : ObservableObject {
-    
-    @Published var user : User
+
+    @Published var user : User = User(name: "", phoneNumber: "", groupId: "", goals: [], teammates: [])
     @Published var completedTargets : Int = 0
     @Published var teammatePhones : Array<String> = []
-    var ref = Database.database().reference()
     @Published var totalTargets : Int = 0
     @Published var currBrags : Array<Brag> = []
-    @Published var titles : Array<String> = []
     @Published var teammatePercentages : [String: Float] = [:]
     @Published var week : Int = 4
     
-    init (user : User) {
-        self.user = user
-    }
+    // Flags
+    @Published var showUserExists = false
+    @Published var navigateToJoinGroup = false
+    @Published var showGroupNotFound = false
+    @Published var navigateToHome = false
+    @Published var navigateToReflection = false
+    @Published var showUnableToFindUser = false
+    @Published var showReflection = false
+    @Published var navigateToMissingGroup = false
+
+    weak var gestureRecognizer: GestureRecognizerInteractor? = UIApplication.shared
     
-    func createGoal(phoneNumber : String, goalTitle : String, goalReason : String, goalCategory: String) {
-        let goalRef = self.ref.child("goals").child(phoneNumber).child("goals")
+    func createGoal(goalTitle : String, goalReason : String, goalCategory: String) {
+        let goalRef = ref.child("goals").child(user.phoneNumber).child("goals")
         let goalKey = goalRef.childByAutoId().key ?? ""
         goalRef.child(goalKey).setValue(["title" : goalTitle, "reason": goalReason, "category" : goalCategory, "momentumScore": "0", "positiveMomentum": "1", "negativeMomentum": "-1", "crossedOff": "false"])
+        self.user.goals.append(Goal(title: goalTitle, reason: goalReason, category: goalCategory, currTargets: [], momentumScore: 0, positiveMomentum: 1, negativeMomentum: -1, recordMomentum: 0, crossedOff: false, key: goalKey))
     }
     
     func editGoal(key: String, goalTitle: String, goalReason: String, goalCategory: String) {
-        let goalRef = self.ref.child("goals").child(self.user.phoneNumber).child("goals").child(key)
+        let goalRef = ref.child("goals").child(self.user.phoneNumber).child("goals").child(key)
         goalRef.updateChildValues(["title" : goalTitle, "reason": goalReason, "category" : goalCategory])
+        for (index, _) in user.goals.enumerated() {
+            if (user.goals[index].key == key) {
+                user.goals[index].title = goalTitle
+                user.goals[index].reason = goalReason
+                user.goals[index].category = goalCategory
+            }
+        }
     }
     
     func updateGoalMomentum(goal: Goal) {
-        let goalRef = self.ref.child("goals").child(self.user.phoneNumber).child("goals").child(goal.key)
+        let goalRef = ref.child("goals").child(self.user.phoneNumber).child("goals").child(goal.key)
         goalRef.updateChildValues(["momentumScore" : String(goal.momentumScore), "positiveMomentum": String(goal.positiveMomentum), "negativeMomentum" : String(goal.negativeMomentum), "crossedOff" : goal.crossedOff ? "true" : "false", "recordMomentum": String(goal.recordMomentum)])
+        let goalIndex = self.user.goals.firstIndex { $0.key ==  goal.key } ?? 0
+        self.user.goals[goalIndex] = goal
     }
     
     func deleteGoal(goalKey: String) {
-        self.ref.child("goals").child(user.phoneNumber).child("goals").child(goalKey).removeValue()
-        self.ref.child("targets").child(goalKey).removeValue()
-        self.ref.child("brags").child(goalKey).removeValue()
+        ref.child("goals").child(user.phoneNumber).child("goals").child(goalKey).removeValue()
+        ref.child("targets").child(goalKey).removeValue()
+        ref.child("brags").child(goalKey).removeValue()
+        self.user.goals.removeAll { $0.key == goalKey }
+        self.resetUserTargetNumbers()
     }
     
     func createTargets(goalId : String, targets : Array<Target>) {
-        let targetsRef = self.ref.child("targets").child(goalId)
+        let targetsRef = ref.child("targets").child(goalId)
         for target in targets {
             targetsRef.child(target.key).setValue(["title" : target.title, "frequency" : String(target.frequency), "original": String(target.original), "creationDate" : String(target.creationDate.timeIntervalSince1970)])
         }
+        let goalIndex = self.user.goals.firstIndex { $0.key == goalId } ?? 0
+        self.user.goals[goalIndex].currTargets = targets
+        self.user.goals[goalIndex].pastTargets[pastMonday] = targets
+        self.resetUserTargetNumbers()
     }
     
     func writeResults() {
         let teamPercentage = calculateTeamTargetPercent()
         let currPercentage = calculateWeeklyTargetPercent(goals: user.goals)
-        let resultRef = self.ref.child("results").child(user.groupId)
+        let resultRef = ref.child("results").child(user.groupId)
         ref.child("results/\(user.groupId)").getData(completion:  { error, snapshot in
             let data = snapshot.value as? Dictionary<String, String> ?? [:];
             var winner = data["winner"] ?? ""
@@ -72,18 +97,25 @@ class GoalViewModel : ObservableObject {
         });
     }
     
-    func overwriteTarget(goalId : String, targetId: String, targetTitle: String, targetFrequency : Int, targetOriginal : Int, creationDate : Date){
-        self.ref.child("targets").child(goalId).child(targetId).setValue(["title" : targetTitle, "frequency" : String(targetFrequency), "original": String(targetOriginal), "creationDate" : String(creationDate.timeIntervalSince1970)])
+    func incrementTarget(goalId : String, targetId: String, targetTitle: String, targetFrequency : Int, targetOriginal : Int, creationDate : Date) {
+        completedTargets += 1
+        ref.child("targets").child(goalId).child(targetId).setValue(["title" : targetTitle, "frequency" : String(targetFrequency), "original": String(targetOriginal), "creationDate" : String(creationDate.timeIntervalSince1970)])
+        let goalIndex = self.user.goals.firstIndex { $0.key == goalId } ?? 10
+        let targetIndex = self.user.goals[goalIndex].currTargets.firstIndex { $0.key == targetId } ?? 10
+        self.user.goals[goalIndex].currTargets[targetIndex].frequency = targetFrequency
+        if (self.user.goals[goalIndex].pastTargets[pastMonday] != nil) {
+            self.user.goals[goalIndex].pastTargets[pastMonday]![targetIndex].frequency = targetFrequency
+        }
     }
     
-    func getGoals(phoneNumber : String, isMondayPlanning: Bool = false) {
+    func getGoals() {
         let lastSetSunday = ((UserDefaults.standard.object(forKey: "lastSetSunday") as? Date) ?? Date(timeIntervalSince1970: 0))
         let fakeLastSetMonday = Calendar.current.date(byAdding: .day, value: 1, to: lastSetSunday)
         let lastSetMonday = (UserDefaults.standard.object(forKey: "lastSetMonday") as? Date) ?? (fakeLastSetMonday ?? Date(timeIntervalSince1970: 0))
         self.completedTargets = 0
         self.totalTargets = 0
-                
-        ref.child("goals/\(phoneNumber)/goals").getData(completion: { error, goalSnapshot in
+        
+        ref.child("goals/\(user.phoneNumber)/goals").getData(completion: { error, goalSnapshot in
             self.user.goals = []
             let goals = goalSnapshot.value as? Dictionary<String, Dictionary<String, String>> ?? [:]
             for goalDataPair in goals {
@@ -100,11 +132,7 @@ class GoalViewModel : ObservableObject {
                 
                 let goalKey = goalDataPair.key
                 
-                self.ref.child("targets/\(goalKey)").getData(completion:  { error, targetsSnapshot in
-                    guard error == nil else {
-                        print(error!.localizedDescription)
-                        return;
-                    }
+                ref.child("targets/\(goalKey)").getData(completion:  { error, targetsSnapshot in
                     let targets = targetsSnapshot.value as? Dictionary<String, Dictionary<String, String>> ?? [:]
                     for targetDataPair in targets {
                         let targetData = targetDataPair.value
@@ -118,28 +146,32 @@ class GoalViewModel : ObservableObject {
                         newGoal.pastTargets[targetMonday]?.append(newTarget)
                     }
                     for mondayDate in newGoal.pastTargets.keys {
-                        if (Calendar.current.dateComponents([.day], from: mondayDate, to: lastSetMonday).day == 0){
+                        if (Calendar.current.dateComponents([.day], from: mondayDate, to: lastSetMonday).day == 0) {
                             newGoal.currTargets = newGoal.pastTargets[mondayDate] ?? []
-                            
-                            for target in newGoal.currTargets {
-                                self.totalTargets += target.original
-                                self.completedTargets += target.original - target.frequency
-                            }
                         }
                     }
                     self.user.goals.append(newGoal)
+                    self.resetUserTargetNumbers()
+                    // TODO add ARC strongWeak self
                 })
             }
         });
     }
     
+    func resetUserTargetNumbers() {
+        self.totalTargets = 0
+        self.completedTargets = 0
+        for goal in user.goals {
+            for target in goal.currTargets {
+                self.totalTargets += target.original
+                self.completedTargets += target.original - target.frequency
+            }
+        }
+    }
+    
     func getTeamMemberPhoneNumbers() {
         self.teammatePhones = []
-        let groupRef = self.ref.child("groups").child(self.user.groupId).child("users").getData(completion:  { error, usersSnapshot in
-            guard error == nil else {
-                print(error!.localizedDescription)
-                return;
-            }
+        ref.child("groups").child(self.user.groupId).child("users").getData(completion:  { error, usersSnapshot in
             let users = usersSnapshot.value as? Dictionary<String, String> ?? [:]
             for userDataPair in users {
                 if (userDataPair.value != self.user.phoneNumber) {
@@ -152,11 +184,7 @@ class GoalViewModel : ObservableObject {
     
     func getTeammateInfo(){
         self.user.teammates = []
-        let usersRef = self.ref.child("users").getData(completion:  { error, usersSnapshot in
-            guard error == nil else {
-                print(error!.localizedDescription)
-                return;
-            }
+        ref.child("users").getData(completion:  { error, usersSnapshot in
             let users = usersSnapshot.value as? Dictionary<String, Dictionary<String, String>> ?? [:]
             for userDataPair in users{
                 if (self.teammatePhones.contains(userDataPair.key)) {
@@ -172,9 +200,7 @@ class GoalViewModel : ObservableObject {
     }
     
     func getTeammateGoals(){
-        let lastSetSunday = ((UserDefaults.standard.object(forKey: "lastSetSunday") as? Date) ?? Date(timeIntervalSince1970: 0))
-        let fakeLastSetMonday = Calendar.current.date(byAdding: .day, value: 1, to: lastSetSunday)
-        let lastSetMonday = (UserDefaults.standard.object(forKey: "lastSetMonday") as? Date) ?? (fakeLastSetMonday ?? Date(timeIntervalSince1970: 0))
+        let lastSetMonday = (UserDefaults.standard.object(forKey: "lastSetMonday") as? Date) ?? Date(timeIntervalSince1970: 0)
         for teammate in user.teammates {
             ref.child("goals/\(teammate.phoneNumber)/goals").observe(DataEventType.value, with: { goalSnapshot in
                 let teammateIndex : Int = self.user.teammates.firstIndex(of: teammate) ?? 0
@@ -192,7 +218,7 @@ class GoalViewModel : ObservableObject {
                     var newGoal = Goal(title: goalTitle, reason: goalReason, category: goalCategory, currTargets: [], momentumScore: goalMomentumScore, positiveMomentum: goalPositiveMomentum, negativeMomentum: goalNegativeMomentum, recordMomentum: goalRecordMomentum, crossedOff: goalCrossedOff, key : goalDataPair.key)
                     
                     let goalKey = goalDataPair.key
-                    self.ref.child("targets/\(goalKey)").getData(completion:  { error, targetsSnapshot in
+                    ref.child("targets/\(goalKey)").getData(completion:  { error, targetsSnapshot in
                         guard error == nil else {
                             return;
                         }
@@ -262,7 +288,7 @@ class GoalViewModel : ObservableObject {
     }
     
     func calculateWeek() {
-        self.ref.child("groups").child(self.user.groupId).child("creationDate").getData(completion:  { error, creationDateString in
+        ref.child("groups").child(self.user.groupId).child("creationDate").getData(completion:  { error, creationDateString in
             let creationDate = Date(timeIntervalSince1970: Double(creationDateString.value as? String ?? "0") ?? 0.0)
             let nextMonday = Calendar(identifier: .gregorian).startOfDay(for: (creationDate.next(.monday, considerToday: true)))
             if (nextMonday.compare(Date()) != ComparisonResult.orderedAscending) {
@@ -275,8 +301,8 @@ class GoalViewModel : ObservableObject {
     }
     
     func calculateWeeklyTargetPercent(goals : Array<Goal>) -> Float {
-        let totalTargets = calculateTotalTargets(goals: goals)
-        let completedTargets = calculateCompletedTargets(goals: goals)
+        let totalTargets = UtilFunctions.calculateTotalTargets(goals: goals)
+        let completedTargets = UtilFunctions.calculateCompletedTargets(goals: goals)
         let result = (totalTargets == 0) ? 0.0 : Float(Float(completedTargets) / Float(totalTargets))
         return result
     }
@@ -286,72 +312,118 @@ class GoalViewModel : ObservableObject {
         var completedTargets =  0
         let teammates = self.user.teammates + [self.user]
         for teammate in teammates {
-            totalTargets += calculateTotalTargets(goals: teammate.goals)
-            completedTargets += calculateCompletedTargets(goals: teammate.goals)
+            totalTargets += UtilFunctions.calculateTotalTargets(goals: teammate.goals)
+            completedTargets += UtilFunctions.calculateCompletedTargets(goals: teammate.goals)
         }
         if (totalTargets == 0) { return Float(0)}
         return Float(Float(completedTargets) / Float(totalTargets))
     }
     
-    func calculateTotalTargets(goals : Array<Goal>) -> Int {
-        var totalTargets = 0
-        for goal in goals {
-            for target in goal.currTargets {
-                totalTargets += target.original
-            }
-        }
-        return totalTargets
-    }
-    
-    func calculateCompletedTargets(goals : Array<Goal>) -> Int {
-        var completedTargets = 0
-        for goal in goals {
-            for target in goal.currTargets {
-                completedTargets += (target.original - target.frequency)
-            }
-        }
-        return completedTargets
-    }
-    
-    func calculateTotalTargetsFromTarget(targets : Array<Target>) -> Int {
-        var totalTargets = 0
-        for target in targets {
-            totalTargets += target.original
-        }
-        return totalTargets
-    }
-    
-    func calculateCompletedTargetsFromTarget(targets : Array<Target>) -> Int {
-        var completedTargets = 0
-        for target in targets {
-            completedTargets += (target.original - target.frequency)
-        }
-        return completedTargets
-    }
-    
-    func deleteAllGoals(phoneNumber : String) {
-        ref.child("goals/\(phoneNumber)/goals").removeValue()
-        ref.child("targets").removeValue()
-    }
-    
     func createBrag(goalId : String, brag : Brag) {
-        let bragsRef = self.ref.child("brags").child(goalId)
+        let bragsRef = ref.child("brags").child(goalId)
         let bragKey = bragsRef.childByAutoId().key ?? ""
         bragsRef.child(bragKey).setValue(["text" : brag.text])
+        let goalIndex = self.user.goals.firstIndex { $0.key == goalId } ?? 0
+        self.user.goals[goalIndex].brags.append(brag)
     }
     
     func getBrags(goalKey : String) {
         self.currBrags = []
-        self.ref.child("brags/\(goalKey)").getData(completion:  { error, bragsSnapshot in
-            guard error == nil else {
-                return;
-            }
+        ref.child("brags/\(goalKey)").getData(completion:  { error, bragsSnapshot in
             let brags = bragsSnapshot.value as? Dictionary<String, Dictionary<String, String>> ?? [:]
             for bragDataPair in brags {
                 let bragData = bragDataPair.value
                 let bragText = bragData["text"] ?? ""
                 let newBrag = Brag(text: bragText)
                 self.currBrags.append(newBrag)
+            }
+        })
+    }
+    
+    
+    // Pragma mark - LoginViewModel
+    
+    func signUserIn(phoneNumber : String) {
+        ref.child("users/\(phoneNumber)").getData(completion:  { error, snapshot in
+            if (snapshot.exists()) {
+                let userData = snapshot.value as? Dictionary<String, String> ?? [:]
+                let userName = userData["name"] ?? "NA"
+                let userPhone = userData["phone"] ?? "NA"
+                let userGroup = userData["groupId"] ?? "NA"
+                self.user = User(name: userName, phoneNumber: userPhone, groupId: userGroup, goals: [], teammates: [])
+                UtilFunctions.logUserFCMtoken(phoneNumber: phoneNumber)
+                UserDefaults.standard.set(phoneNumber, forKey: "phoneNumber")
+                self.signInNavigation()
+                self.getGoals()
+                self.getTeamMemberPhoneNumbers()
+                self.calculateWeek()
+            }
+            else {
+                self.showUnableToFindUser = true
+            }
+        })
+    }
+    
+    func addGroupToUser(groupId : String) {
+        ref.child("users").child(user.phoneNumber).setValue(["name" : user.name, "phone" : user.phoneNumber, "groupId" : groupId])
+        // TODO write concurrent update
+    }
+    
+    private func signInNavigation() {
+        if (self.user.groupId == "") {
+            self.navigateToMissingGroup = true
+            return
+        }
+        let lastSetMonday = (UserDefaults.standard.object(forKey: "lastSetMonday") as? Date) ?? Date(timeIntervalSince1970: 0)
+        let daysSinceMonday = (Calendar.current.dateComponents([.day], from: lastSetMonday, to: Date())).day!
+        if (daysSinceMonday >= 7) {
+            // if (true) {
+            self.showReflection = true
+        } else {
+            self.showReflection = false
+        }
+        self.navigateToHome = true
+    }
+    
+    func tryAutoSignIn() {
+        let phoneNumber : String = UserDefaults.standard.string(forKey: "phoneNumber") ?? "X"
+        signUserIn(phoneNumber: phoneNumber)
+    }
+    
+    func createGroup(groupName : String) -> String {
+        let groupId = String(Int.random(in: 100000..<999999))
+        ref.child("groups").child(groupId).setValue(["groupName" : groupName, "creationDate" : String(Date().timeIntervalSince1970)])
+        joinGroup(groupId: groupId)
+        return groupId
+    }
+    
+    func joinGroup(groupId : String) {
+        ref.child("groups/\(groupId)").getData(completion:  { error, snapshot in
+            if (snapshot.exists()) {
+                let groupRef = ref.child("groups").child(groupId).child("users")
+                let userKey = groupRef.childByAutoId().key ?? ""
+                groupRef.child(userKey).setValue(self.user.phoneNumber)
+                self.addGroupToUser(groupId: groupId)
+                self.user.groupId = groupId // TODO nice concurrency already done
+                self.getGoals()
+                self.getTeamMemberPhoneNumbers()
+                self.calculateWeek()
+            } else {
+                self.showGroupNotFound = true
+            }
+        })
+    }
+    
+    func createUser(userName : String, phoneNumber : String) {
+        ref.child("users/\(phoneNumber)").getData(completion:  { error, snapshot in
+            if (snapshot.exists()) {
+                self.showUserExists = true
+            } else {
+                ref.child("users").child(phoneNumber).setValue(["name" : userName, "phone" : phoneNumber])
+                UtilFunctions.logUserFCMtoken(phoneNumber: phoneNumber)
+                self.user = User(name: userName, phoneNumber: phoneNumber, groupId: "", goals : [], teammates: [])
+                self.navigateToJoinGroup = true
+                UtilFunctions.setLastSetMonday()
             }
         })
     }

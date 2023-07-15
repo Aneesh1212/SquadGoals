@@ -39,7 +39,7 @@ struct HomepageGoalView : View {
                     let finished : Int = target.original - target.frequency
                     let unfinished : Int = target.frequency
                     
-                    ForEach(0..<unfinished) { _ in
+                    ForEach(0..<unfinished, id: \.self) { _ in
                         WhiteCard(verticalPadding: Styling.extraSmallUnit) {
                             HStack(){
                                 Button(action: {
@@ -60,7 +60,7 @@ struct HomepageGoalView : View {
                         .shadow(color: .gray, radius: 1, x: 0.0, y: 1.0)
                     }
                     
-                    ForEach(0..<finished) { _ in
+                    ForEach(0..<finished, id: \.self) { _ in
                         WhiteCard(verticalPadding: Styling.extraSmallUnit) {
                             HStack{
                                 Image(systemName: "checkmark")
@@ -88,12 +88,9 @@ struct HomepageGoalView : View {
     func mainThing(target : Target) {
         withAnimation {
             let newFrequency = target.frequency - 1
-            let targetIndex = self.goal.currTargets.firstIndex(of: target) ?? 0
-            let goalIndex = viewModel.user.goals.firstIndex(of: self.goal) ?? 0
+            let targetIndex = goal.currTargets.firstIndex { $0.key == target.key } ?? 10
             self.goal.currTargets[targetIndex].frequency = newFrequency
-            viewModel.overwriteTarget(goalId: goal.key, targetId: target.key, targetTitle: target.title, targetFrequency: newFrequency, targetOriginal: target.original, creationDate : target.creationDate)
-            viewModel.user.goals[goalIndex] = self.goal
-            viewModel.completedTargets += 1
+            viewModel.incrementTarget(goalId: goal.key, targetId: target.key, targetTitle: target.title, targetFrequency: newFrequency, targetOriginal: target.original, creationDate : target.creationDate)
         }
         crossedTaskOffMomentum()
         viewModel.sendUpdateNotification(targetTitle: target.title, goalMomentum: goal.momentumScore)
@@ -103,13 +100,11 @@ struct HomepageGoalView : View {
     
     func crossedTaskOffMomentum() {
         if (!self.goal.crossedOff) {
-            let goalIndex = viewModel.user.goals.firstIndex(of: goal) ?? 0
             goal.momentumScore = goal.momentumScore + goal.positiveMomentum
             goal.positiveMomentum = goal.positiveMomentum + 1
             goal.negativeMomentum = -1
             goal.recordMomentum = max(goal.recordMomentum, goal.momentumScore)
             goal.crossedOff = true
-            viewModel.user.goals[goalIndex] = goal
             viewModel.updateGoalMomentum(goal: goal)
         }
     }

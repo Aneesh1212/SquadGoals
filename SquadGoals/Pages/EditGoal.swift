@@ -59,10 +59,14 @@ struct EditGoal: View {
             
             Filler()
 
-            RedActionButton(text: "Delete Goal", action: { viewModel.deleteGoal(goalKey: goal.key)})
+            RedActionButton(text: "Delete Goal", action: {
+                viewModel.deleteGoal(goalKey: goal.key)
+            })
             BlueActionButton(text: "Save Changes", action: {
                 viewModel.editGoal(key: goalKey, goalTitle: goalTitle, goalReason: goalReason, goalCategory: goalCategory)
                 self.goal.title = goalTitle
+                self.goal.reason = goalReason
+                self.goal.category = goalCategory
                 self.presentationMode.wrappedValue.dismiss()
             })
         }

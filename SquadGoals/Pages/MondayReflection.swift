@@ -10,7 +10,7 @@ import SwiftUI
 
 struct MondayReflection: View {
     
-    @State var user : User
+    @State var viewModel : GoalViewModel
     @State var navigateToPlanning = false
     @State var wentWell : String = ""
     @State var improve : String = ""
@@ -121,7 +121,7 @@ struct MondayReflection: View {
                 .foregroundColor(Colors.lightOrangeBackground)
                 .fixedSize(horizontal: false, vertical: true)
             
-            NavigationLink(destination: MondayPlanning(user: self.user, viewModel: GoalViewModel(user:self.user), mode: Mode.weekly), isActive: $navigateToPlanning) { EmptyView() }
+            NavigationLink(destination: MondayPlanning(viewModel: viewModel, mode: Mode.weekly), isActive: $navigateToPlanning) { EmptyView() }
             
             VStack(alignment: .leading) {
                 wentWellView

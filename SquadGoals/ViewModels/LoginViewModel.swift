@@ -17,9 +17,13 @@ import FirebaseFirestore
 class LoginViewModel : ObservableObject {
     
     var ref = Database.database().reference()
-    @Published var userName : String? = nil
-    @Published var currentUser : User = User(name: "", phoneNumber: "", groupId: "", goals : [], teammates: [])
     
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+
+=======
+<<<<<<< HEAD
     // Flags
     @Published var showUserExists = false
     @Published var navigateToJoinGroup = false
@@ -148,4 +152,11 @@ class LoginViewModel : ObservableObject {
         let fcmToken = UserDefaults.standard.object(forKey: "fcmToken")
         self.ref.child("fcmTokens").child(phoneNumber).setValue(["token" : fcmToken])
     }
+=======
+=======
+>>>>>>> e62c1b1 (Big user session refactor)
+
+
+>>>>>>> e62c1b1 (Big user session refactor)
+>>>>>>> f5e0c52 (Big user session refactor)
 }

@@ -48,7 +48,7 @@ struct ResultsAlert: View {
             .padding(.top, Styling.extraSmallUnit)
             
             
-            NavigationLink(destination: MondayPlanning(user: self.viewModel.user, viewModel:self.viewModel, mode: Mode.weekly), isActive: $navigateToMondayPlanning) { EmptyView() }
+            NavigationLink(destination: MondayPlanning(viewModel:self.viewModel, mode: Mode.weekly), isActive: $navigateToMondayPlanning) { EmptyView() }
         }
         .padding(.horizontal, 25)
     }
