@@ -108,14 +108,14 @@ class GoalViewModel : ObservableObject {
         }
     }
     
-    func getGoals(phoneNumber : String) {
+    func getGoals() {
         let lastSetSunday = ((UserDefaults.standard.object(forKey: "lastSetSunday") as? Date) ?? Date(timeIntervalSince1970: 0))
         let fakeLastSetMonday = Calendar.current.date(byAdding: .day, value: 1, to: lastSetSunday)
         let lastSetMonday = (UserDefaults.standard.object(forKey: "lastSetMonday") as? Date) ?? (fakeLastSetMonday ?? Date(timeIntervalSince1970: 0))
         self.completedTargets = 0
         self.totalTargets = 0
         
-        ref.child("goals/\(phoneNumber)/goals").getData(completion: { error, goalSnapshot in
+        ref.child("goals/\(user.phoneNumber)/goals").getData(completion: { error, goalSnapshot in
             self.user.goals = []
             let goals = goalSnapshot.value as? Dictionary<String, Dictionary<String, String>> ?? [:]
             for goalDataPair in goals {
@@ -171,7 +171,7 @@ class GoalViewModel : ObservableObject {
     
     func getTeamMemberPhoneNumbers() {
         self.teammatePhones = []
-        let groupRef = ref.child("groups").child(self.user.groupId).child("users").getData(completion:  { error, usersSnapshot in
+        ref.child("groups").child(self.user.groupId).child("users").getData(completion:  { error, usersSnapshot in
             let users = usersSnapshot.value as? Dictionary<String, String> ?? [:]
             for userDataPair in users {
                 if (userDataPair.value != self.user.phoneNumber) {
@@ -184,7 +184,7 @@ class GoalViewModel : ObservableObject {
     
     func getTeammateInfo(){
         self.user.teammates = []
-        let usersRef = ref.child("users").getData(completion:  { error, usersSnapshot in
+        ref.child("users").getData(completion:  { error, usersSnapshot in
             let users = usersSnapshot.value as? Dictionary<String, Dictionary<String, String>> ?? [:]
             for userDataPair in users{
                 if (self.teammatePhones.contains(userDataPair.key)) {
@@ -354,7 +354,7 @@ class GoalViewModel : ObservableObject {
                 UtilFunctions.logUserFCMtoken(phoneNumber: phoneNumber)
                 UserDefaults.standard.set(phoneNumber, forKey: "phoneNumber")
                 self.signInNavigation()
-                self.getGoals(phoneNumber: self.user.phoneNumber)
+                self.getGoals()
                 self.getTeamMemberPhoneNumbers()
                 self.calculateWeek()
             }
@@ -402,10 +402,10 @@ class GoalViewModel : ObservableObject {
             if (snapshot.exists()) {
                 let groupRef = ref.child("groups").child(groupId).child("users")
                 let userKey = groupRef.childByAutoId().key ?? ""
-                groupRef.child(userKey).setValue(user.phoneNumber)
+                groupRef.child(userKey).setValue(self.user.phoneNumber)
                 self.addGroupToUser(groupId: groupId)
                 self.user.groupId = groupId // TODO nice concurrency already done
-                self.getGoals(phoneNumber: user.phoneNumber)
+                self.getGoals()
                 self.getTeamMemberPhoneNumbers()
                 self.calculateWeek()
             } else {

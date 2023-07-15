@@ -151,6 +151,9 @@ struct MondayPlanning: View {
                 self.navigateToHome = true
                 UtilFunctions.setLastSetMonday()
                 saveGoals()
+                viewModel.getGoals()
+                viewModel.getTeamMemberPhoneNumbers()
+                viewModel.calculateWeek()
             }
             Button("Edit", role: .cancel) { self.showEditWarning = false }
         }

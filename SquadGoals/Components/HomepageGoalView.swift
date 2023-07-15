@@ -39,7 +39,7 @@ struct HomepageGoalView : View {
                     let finished : Int = target.original - target.frequency
                     let unfinished : Int = target.frequency
                     
-                    ForEach(0..<unfinished) { _ in
+                    ForEach(0..<unfinished, id: \.self) { _ in
                         WhiteCard(verticalPadding: Styling.extraSmallUnit) {
                             HStack(){
                                 Button(action: {
@@ -60,7 +60,7 @@ struct HomepageGoalView : View {
                         .shadow(color: .gray, radius: 1, x: 0.0, y: 1.0)
                     }
                     
-                    ForEach(0..<finished) { _ in
+                    ForEach(0..<finished, id: \.self) { _ in
                         WhiteCard(verticalPadding: Styling.extraSmallUnit) {
                             HStack{
                                 Image(systemName: "checkmark")

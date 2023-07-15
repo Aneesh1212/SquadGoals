@@ -73,7 +73,7 @@ struct JoinGroup: View {
     
     func joinSquad(){
         if (UtilFunctions.isValidGroupId(groupId: self.groupID)) {
-            viewModel.joinGroup(phoneNumber: viewModel.user.phoneNumber, groupId: self.groupID)
+            viewModel.joinGroup(groupId: self.groupID)
             self.shouldNavigate = true
         } else {
             self.showInvalidGroupId = true
