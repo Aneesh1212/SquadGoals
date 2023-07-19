@@ -4,12 +4,11 @@
 //
 //  Created by Aneesh Agrawal on 5/2/23.
 //
-
 import SwiftUI
 
 struct TurqoiseCard<Content: View>: View {
     var content: () -> Content
-    
+
     init(@ViewBuilder content: @escaping () -> Content) {
         self.content = content
     }

@@ -10,26 +10,23 @@ import SwiftUI
 
 struct UserPage: View {
     
-    @State var user : User
-    @State var selectedGoal : Goal = Goal(title: "", reason: "", category: "", currTargets: [], momentumScore: 0, positiveMomentum: 0, negativeMomentum: 0, recordMomentum: 0, crossedOff: false)
+    @State var teammate : User
     @State var shouldNavigateToGoalDetails = false
-
-    var viewModel = GoalViewModel(user: User(name: "", phoneNumber: "", groupId: "", goals: [], teammates: []))
     
     var body: some View {
         VStack{
-            Title(text:user.name, size: 48, scaleFactor: 0.5)
+            Title(text:teammate.name, size: 48, scaleFactor: 0.5)
             
-            let totalTargets = viewModel.calculateTotalTargets(goals: user.goals)
-            let completedTargets = viewModel.calculateCompletedTargets(goals: user.goals)
+            let totalTargets = UtilFunctions.calculateTotalTargets(goals: teammate.goals)
+            let completedTargets = UtilFunctions.calculateCompletedTargets(goals: teammate.goals)
             
             Subtitle(text:"\(String(completedTargets)) / \(String(totalTargets)) weekly tasks completed", size: 16)
                 .padding(.top, 1)
                 .padding(.bottom, 22)
             
             ScrollView(showsIndicators: false){
-                ForEach(user.goals, id: \.self) { goal in
-                    HomepageGoalView(goal: goal, viewModel: self.viewModel, clickableTargets: false)
+                ForEach(teammate.goals, id: \.self) { goal in
+                    HomepageGoalView(goal: goal, viewModel: GoalViewModel(), clickableTargets: false)
                         .padding(.bottom, 20)
                 }
             }

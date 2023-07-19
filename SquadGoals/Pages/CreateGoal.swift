@@ -9,8 +9,7 @@ import Foundation
 
 struct CreateGoal: View {
     
-    var viewModel = GoalViewModel(user: User(name: "", phoneNumber: "", groupId: "", goals: [], teammates: []))
-    @State var user : User
+    @State var viewModel : GoalViewModel
     @State var isSingleGoal : Bool
     @State private var shouldNavigate = false
     @State private var shouldNavigateSingleGoal = false
@@ -22,6 +21,7 @@ struct CreateGoal: View {
     @State private var currTargetTitle : String = ""
     @State private var currTargetFrequency : String = ""
     
+    @State private var showNoGoalTitle: Bool = false
     
     let placeholder = "Don't skip this step! It's valuable to write this down, so you can look back when lacking motivation"
     
@@ -50,7 +50,11 @@ struct CreateGoal: View {
     }
     
     func addGoal() -> Void {
-        viewModel.createGoal(phoneNumber: user.phoneNumber, goalTitle: self.goalTitle, goalReason: self.goalReason, goalCategory: self.goalCategory)
+        if (goalTitle == "") {
+            self.showNoGoalTitle = true
+            return
+        }
+        viewModel.createGoal(goalTitle: self.goalTitle, goalReason: self.goalReason, goalCategory: self.goalCategory)
         self.shouldNavigate = true
     }
     
@@ -82,8 +86,8 @@ struct CreateGoal: View {
             BlueActionButton(text: "Add Goal", action: addGoal)
             
             VStack {
-                NavigationLink(destination: GoalAdded(user: self.user, goalTitle: self.goalTitle), isActive: $shouldNavigate) { EmptyView() }
-                NavigationLink(destination: MondayPlanning(user: self.user, viewModel: GoalViewModel(user:self.user), mode: Mode.initial), isActive: $shouldNavigateSingleGoal) { EmptyView() }
+                NavigationLink(destination: GoalAdded(viewModel: self.viewModel, goalTitle: self.goalTitle), isActive: $shouldNavigate) { EmptyView() }
+                NavigationLink(destination: MondayPlanning(viewModel: self.viewModel, mode: Mode.initial), isActive: $shouldNavigateSingleGoal) { EmptyView() }
             }
         }
         .padding(.bottom, Styling.mediumUnit)
@@ -94,6 +98,9 @@ struct CreateGoal: View {
         }
         .onAppear {
             UITextView.appearance().backgroundColor = .clear
+        }
+        .alert("Goal must have a title", isPresented: $showNoGoalTitle) {
+            Button("Retry", role: .cancel) { }
         }
     }
     

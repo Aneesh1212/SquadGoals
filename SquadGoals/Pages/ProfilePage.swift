@@ -11,7 +11,7 @@ import SwiftUI
 struct ProfilePage: View {
     
     @StateObject var viewModel : GoalViewModel
-    @State var selectedGoal : Goal = Goal(title: "", reason: "", category: "", currTargets: [], momentumScore: 0, positiveMomentum: 0, negativeMomentum: 0, recordMomentum: 0, crossedOff: false)
+    @State var selectedGoal : Goal = Goal(title: "", reason: "", category: "", currTargets: [], momentumScore: 0, positiveMomentum: 0, negativeMomentum: 0, recordMomentum: 0, crossedOff: false, key: ".")
     @State var shouldNavigateToGoalDetails = false
     @State var shouldNavigateToWelcome = false
     @State var bottomSheetOpen = false
@@ -51,7 +51,7 @@ struct ProfilePage: View {
             VStack {
                 NavigationLink(destination: GoalDetailPage(goal: self.selectedGoal, viewModel: self.viewModel), isActive: $shouldNavigateToGoalDetails) { EmptyView() }
                 NavigationLink(destination: Welcome(shouldTryToSignIn: false), isActive: $shouldNavigateToWelcome) { EmptyView() }
-                NavigationLink(destination: CreateGoal(user: self.viewModel.user, isSingleGoal: true), isActive: $navigateToCreateGoal) { EmptyView() }
+                NavigationLink(destination: CreateGoal(viewModel: self.viewModel, isSingleGoal: true), isActive: $navigateToCreateGoal) { EmptyView() }
             }
         }
         .padding(.horizontal, 25)

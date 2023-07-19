@@ -10,7 +10,7 @@ import UIKit
 
 struct ReflectionAlert: View {
     
-    var user : User
+    var viewModel : GoalViewModel
     @Binding var shown : Bool
     @State var navigateToReflection = false
     @State var navigateToMondayPlanning = false
@@ -52,10 +52,9 @@ struct ReflectionAlert: View {
                     .stroke(Colors.blueText, lineWidth: 2)
             )
             
-            NavigationLink(destination: MondayReflection(user: self.user), isActive: $navigateToReflection) { EmptyView() }
+            NavigationLink(destination: MondayReflection(viewModel: self.viewModel), isActive: $navigateToReflection) { EmptyView() }
             
-            NavigationLink(destination: MondayPlanning(user: self.user, viewModel: GoalViewModel(user:self.user), mode: Mode.weekly), isActive: $navigateToMondayPlanning) { EmptyView() }
-            
+            NavigationLink(destination: MondayPlanning(viewModel: self.viewModel, mode: Mode.weekly), isActive: $navigateToMondayPlanning) { EmptyView() }
             
         }
         .padding(.vertical, 10)

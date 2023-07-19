@@ -9,7 +9,7 @@ import Foundation
 
 struct JoinGroup: View {
     
-    @StateObject var viewModel = LoginViewModel()
+    @StateObject var viewModel = GoalViewModel()
     @State private var shouldNavigate: Bool = false
     @State private var groupID: String = ""
     @State private var groupName: String = ""
@@ -21,7 +21,7 @@ struct JoinGroup: View {
     
     var body: some View {
         VStack(alignment: .leading){
-            Title(text: "Welcome \(viewModel.currentUser.name)!")
+            Title(text: "Welcome \(viewModel.user.name)!")
                 .lineLimit(nil)
             Spacing(height:6)
             Subtitle(text: "Let's join a squad")
@@ -42,7 +42,7 @@ struct JoinGroup: View {
                 BlueActionButton(text: "Create a New Squad", action: createSquad)
             }
             
-            NavigationLink(destination: BaseTutorial(user: viewModel.currentUser), isActive: $shouldNavigate) { EmptyView() }
+            NavigationLink(destination: BaseTutorial(viewModel: self.viewModel), isActive: $shouldNavigate) { EmptyView() }
             
             Filler()
         }
@@ -72,8 +72,8 @@ struct JoinGroup: View {
     }
     
     func joinSquad(){
-        if (viewModel.isValidGroupId(groupId: self.groupID)) {
-            viewModel.joinGroup(phoneNumber: viewModel.currentUser.phoneNumber, groupId: self.groupID)
+        if (UtilFunctions.isValidGroupId(groupId: self.groupID)) {
+            viewModel.joinGroup(groupId: self.groupID)
             self.shouldNavigate = true
         } else {
             self.showInvalidGroupId = true

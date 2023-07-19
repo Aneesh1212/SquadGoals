@@ -10,14 +10,14 @@ import SwiftUI
 
 struct GoalAdded: View {
     
-    @State var user : User
+    @State var viewModel : GoalViewModel
     @State var goalTitle : String
     @State var navigateToMondayPlanning = false
     @State var navigateToCreateGoal = false
     
     var body: some View {
         VStack(alignment: .leading){
-            Title(text: goalTitle, lineLimit: 2)
+            Title(text: goalTitle, lineLimit: 2, shouldLeftAlign: true)
             Spacing(height:6)
             Subtitle(text: "Added")
             
@@ -35,9 +35,9 @@ struct GoalAdded: View {
             
             Filler()
             
-            NavigationLink(destination: CreateGoal(user: self.user, isSingleGoal: false), isActive: $navigateToCreateGoal) { EmptyView() }
+            NavigationLink(destination: CreateGoal(viewModel: self.viewModel, isSingleGoal: false), isActive: $navigateToCreateGoal) { EmptyView() }
             
-            NavigationLink(destination: MondayPlanning(user: self.user, viewModel: GoalViewModel(user:self.user), mode: Mode.initial), isActive: $navigateToMondayPlanning) { EmptyView() }
+            NavigationLink(destination: MondayPlanning(viewModel: viewModel, mode: Mode.initial), isActive: $navigateToMondayPlanning) { EmptyView() }
                         
         }
         .padding(.bottom, Styling.mediumUnit)

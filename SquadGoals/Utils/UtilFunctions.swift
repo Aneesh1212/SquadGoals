@@ -44,6 +44,42 @@ struct UtilFunctions {
         task.resume()
     }
     
+    static func calculateTotalTargets(goals : Array<Goal>) -> Int {
+        var totalTargets = 0
+        for goal in goals {
+            for target in goal.currTargets {
+                totalTargets += target.original
+            }
+        }
+        return totalTargets
+    }
+    
+    static func calculateTotalTargetsFromTarget(targets : Array<Target>) -> Int {
+        var totalTargets = 0
+        for target in targets {
+            totalTargets += target.original
+        }
+        return totalTargets
+    }
+    
+    static func calculateCompletedTargets(goals : Array<Goal>) -> Int {
+        var completedTargets = 0
+        for goal in goals {
+            for target in goal.currTargets {
+                completedTargets += (target.original - target.frequency)
+            }
+        }
+        return completedTargets
+    }
+    
+    static func calculateCompletedTargetsFromTarget(targets : Array<Target>) -> Int {
+        var completedTargets = 0
+        for target in targets {
+            completedTargets += (target.original - target.frequency)
+        }
+        return completedTargets
+    }
+    
     static func getDayOfWeek() -> Int {
         return max(Calendar.current.component(.weekday, from: Date()) - 1, 0)
     }
@@ -97,5 +133,24 @@ struct UtilFunctions {
     static func setLastSetMonday() {
         let previousMonday = Calendar(identifier: .gregorian).startOfDay(for: Date.today().previous(.monday, considerToday: true))
         UserDefaults.standard.set(previousMonday, forKey: "lastSetMonday")
+    }
+
+    static func isValidNameAndPhone(name : String, phoneNumber: String) -> Bool {
+        let intPhone = Int(phoneNumber) ?? 0
+        return (name != "") && (1000000000 <= intPhone) && (intPhone <= 9999999999)
+    }
+    
+    static func isValidGroupId(groupId : String) -> Bool {
+        let intGroupId = Int(groupId) ?? 0
+        return (100000 <= intGroupId) && (intGroupId <= 999999)
+    }
+    
+    static func parsePhoneNumber(phoneNumber : String) -> String {
+        return phoneNumber.replacingOccurrences(of: "-", with: "")
+    }
+    
+    static func logUserFCMtoken(phoneNumber : String) {
+        let fcmToken = UserDefaults.standard.object(forKey: "fcmToken")
+        self.ref.child("fcmTokens").child(phoneNumber).setValue(["token" : fcmToken])
     }
 }
