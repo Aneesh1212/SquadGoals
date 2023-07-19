@@ -16,7 +16,7 @@ struct UtilFunctions {
     
     static var ref = Database.database().reference()
 
-    static func sendNotification(users: Array<User>, title : String, message : String){
+    static func sendNotification(users: Array<User>, title : String, message : String) {
         for user in users {
             ref.child("fcmTokens").child(user.phoneNumber).child("token").getData(completion:  { error, fcmTokenSnapshot in
                 let token = fcmTokenSnapshot.value as? String ?? ""

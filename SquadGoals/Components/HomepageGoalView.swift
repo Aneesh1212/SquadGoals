@@ -88,8 +88,8 @@ struct HomepageGoalView : View {
     func mainThing(target : Target) {
         withAnimation {
             let newFrequency = target.frequency - 1
-            let targetIndex = self.goal.currTargets.firstIndex(of: target) ?? 0
-            let goalIndex = viewModel.user.goals.firstIndex(of: self.goal) ?? 0
+            let targetIndex = self.goal.currTargets.firstIndex { $0.key == target.key } ?? 0
+            let goalIndex = viewModel.user.goals.firstIndex { $0.key == self.goal.key } ?? 0
             self.goal.currTargets[targetIndex].frequency = newFrequency
             viewModel.overwriteTarget(goalId: goal.key, targetId: target.key, targetTitle: target.title, targetFrequency: newFrequency, targetOriginal: target.original, creationDate : target.creationDate)
             viewModel.user.goals[goalIndex] = self.goal
@@ -103,7 +103,7 @@ struct HomepageGoalView : View {
     
     func crossedTaskOffMomentum() {
         if (!self.goal.crossedOff) {
-            let goalIndex = viewModel.user.goals.firstIndex(of: goal) ?? 0
+            let goalIndex = viewModel.user.goals.firstIndex { $0.key == goal.key } ?? 0
             goal.momentumScore = goal.momentumScore + goal.positiveMomentum
             goal.positiveMomentum = goal.positiveMomentum + 1
             goal.negativeMomentum = -1

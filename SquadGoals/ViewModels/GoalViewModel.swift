@@ -172,12 +172,10 @@ class GoalViewModel : ObservableObject {
     }
     
     func getTeammateGoals(){
-        let lastSetSunday = ((UserDefaults.standard.object(forKey: "lastSetSunday") as? Date) ?? Date(timeIntervalSince1970: 0))
-        let fakeLastSetMonday = Calendar.current.date(byAdding: .day, value: 1, to: lastSetSunday)
-        let lastSetMonday = (UserDefaults.standard.object(forKey: "lastSetMonday") as? Date) ?? (fakeLastSetMonday ?? Date(timeIntervalSince1970: 0))
+        let lastSetMonday = (UserDefaults.standard.object(forKey: "lastSetMonday") as? Date) ?? Date(timeIntervalSince1970: 0)
         for teammate in user.teammates {
             ref.child("goals/\(teammate.phoneNumber)/goals").observe(DataEventType.value, with: { goalSnapshot in
-                let teammateIndex : Int = self.user.teammates.firstIndex(of: teammate) ?? 0
+                let teammateIndex : Int = self.user.teammates.firstIndex { $0.phoneNumber == teammate.phoneNumber } ?? 0
                 let goals = goalSnapshot.value as? Dictionary<String, Dictionary<String, String>> ?? [:]
                 for goalDataPair in goals {
                     let goalData = goalDataPair.value
@@ -229,13 +227,13 @@ class GoalViewModel : ObservableObject {
             UtilFunctions.sendNotification(users: self.user.teammates + [self.user], title: "Squad Goals: Team Update", message: "Chef's Kiss! \(self.user.name) has finished ALL their goals this week. Congratulate \(self.user.name) on their determination and grit!")
         }
         else if (old < 0.25 && new >= 0.25){
-            UtilFunctions.sendNotification(users: self.user.teammates + [self.user], title: "Squad Goals: Team Update", message: "\(self.user.name) is out of the gates with 25% of their goals done!")
+            UtilFunctions.sendNotification(users: self.user.teammates + [self.user], title: "Out of the gates with 25%", message: "\(String(self.user.name)) completed \"\(targetTitle.trimmingCharacters(in: .whitespaces))\". \(getProgressUpdateString(goalMomentum: goalMomentum))")
         }
         else if (old < 0.5 && new >= 0.5){
-            UtilFunctions.sendNotification(users: self.user.teammates + [self.user], title: "Squad Goals: Team Update", message: "\(self.user.name) is halfway there! Let's send a note of encouragement to keep up the progress.")
+            UtilFunctions.sendNotification(users: self.user.teammates + [self.user], title: "Halfway there!", message: "\(String(self.user.name)) completed \"\(targetTitle.trimmingCharacters(in: .whitespaces))\". \(getProgressUpdateString(goalMomentum: goalMomentum))")
         }
         else if (old < 0.75 && new >= 0.75){
-            UtilFunctions.sendNotification(users: self.user.teammates + [self.user], title: "Squad Goals: Team Update", message: "Omg \(self.user.name) has finished 75% of their week goals. A little bit more for that 100% and 🍷")
+            UtilFunctions.sendNotification(users: self.user.teammates + [self.user], title: "Squad Goals: Team Update", message: "Wow \(self.user.name) has finished 75% of their week goals. A little bit more for that 100% and 🍷")
         } else {
             UtilFunctions.sendNotification(users: self.user.teammates + [self.user], title: "Squad Goals: Team Update", message:
                                             "\(String(self.user.name)) completed \"\(targetTitle.trimmingCharacters(in: .whitespaces))\". \(getProgressUpdateString(goalMomentum: goalMomentum))")
