@@ -370,14 +370,15 @@ class GoalViewModel : ObservableObject {
     }
     
     private func signInNavigation() {
-        if (self.user.groupId == "") {
+        print("ANEESH", self.user.groupId)
+        if (self.user.groupId == "NA") {
             self.navigateToMissingGroup = true
             return
         }
         let lastSetMonday = (UserDefaults.standard.object(forKey: "lastSetMonday") as? Date) ?? Date(timeIntervalSince1970: 0)
         let daysSinceMonday = (Calendar.current.dateComponents([.day], from: lastSetMonday, to: Date())).day!
         if (daysSinceMonday >= 7) {
-            // if (true) {
+        //    if (true) {
             self.showReflection = true
         } else {
             self.showReflection = false

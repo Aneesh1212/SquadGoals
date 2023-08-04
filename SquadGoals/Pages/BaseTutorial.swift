@@ -59,6 +59,7 @@ struct BaseTutorial: View {
             
         }
         .padding(.horizontal, 16)
+        .padding(.top, Styling.smallUnit)
         .background(Colors.background)
     }
 }

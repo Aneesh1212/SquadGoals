@@ -23,16 +23,29 @@ struct SignIn: View {
             Spacing(height: Styling.mediumUnit)
             
             Subtitle(text: "Phone number")
-            OnboardingTextEntry(placeholder: "Enter here", value: $phoneNumber)
+            TextField(
+                "XXX-XXX-XXXX",
+                text: $phoneNumber
+            )
+                .font(.system(size: 16))
+                .frame(height: 42, alignment: .center)
+                .padding(.leading, 15)
+                .background(.white)
+                .cornerRadius(Styling.smallUnit)
+                .foregroundColor(.black)
+                .onChange(of: phoneNumber, perform: { _ in
+                    phoneNumber = UtilFunctions.formatPhoneNumber(phone: phoneNumber)
+                })
             
             Filler()
             
             BlueActionButton(text: "Log In", action: signIn)
             
-            NavigationLink(destination: Main(viewModel: viewModel, showResultsModal: viewModel.showReflection)) { EmptyView() }
+            NavigationLink(destination: Main(viewModel: viewModel, showResultsModal: viewModel.showReflection), isActive: $viewModel.navigateToHome) { EmptyView() }
             NavigationLink(destination: JoinGroup(viewModel: self.viewModel), isActive: $viewModel.navigateToMissingGroup) { EmptyView() }
         }
         .padding(.bottom, Styling.mediumUnit)
+        .padding(.top, Styling.smallUnit)
         .padding(.horizontal, Styling.mediumUnit)
         .background(Colors.background)
         .alert("Unable to find a user account with this phone number", isPresented: $viewModel.showUnableToFindUser) {

@@ -10,6 +10,9 @@
 		1D49F8F8C0E9CCD4C14B8144 /* Pods_SquadGoalsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA76E685F7262ADC1F92FDA /* Pods_SquadGoalsTests.framework */; };
 		550FD659278F8C18005BE35D /* Brag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FD658278F8C18005BE35D /* Brag.swift */; };
 		550FD65B278F8DCB005BE35D /* BragTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550FD65A278F8DCB005BE35D /* BragTable.swift */; };
+		551441FC2A795A16003A1BFA /* GoalSuggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551441FB2A795A16003A1BFA /* GoalSuggestions.swift */; };
+		551441FE2A7965BA003A1BFA /* WrappingHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551441FD2A7965BA003A1BFA /* WrappingHStack.swift */; };
+		551442002A796AE5003A1BFA /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551441FF2A796AE5003A1BFA /* ViewExtensions.swift */; };
 		552F625828FB7F25002F0A5F /* Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F625728FB7F25002F0A5F /* Styling.swift */; };
 		552F625A28FCEFFE002F0A5F /* OnboardingTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F625928FCEFFE002F0A5F /* OnboardingTitle.swift */; };
 		552F625C28FCF69E002F0A5F /* OnboardingTextEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F625B28FCF69E002F0A5F /* OnboardingTextEntry.swift */; };
@@ -26,8 +29,6 @@
 		5544594B295E463500F21D9F /* SwiftUITooltip in Frameworks */ = {isa = PBXBuildFile; productRef = 5544594A295E463500F21D9F /* SwiftUITooltip */; };
 		55663CDF29DA48F80037F522 /* RedActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55663CDE29DA48F80037F522 /* RedActionButton.swift */; };
 		55663CE229DA5F830037F522 /* LeftAligner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55663CE129DA5F830037F522 /* LeftAligner.swift */; };
-		55663CE429DA85290037F522 /* CornerRadiusExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55663CE329DA85290037F522 /* CornerRadiusExtension.swift */; };
-		556CEDBF2A567C660096581C /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556CEDBE2A567C660096581C /* EmptyState.swift */; };
 		556CEDC12A567C9A0096581C /* TurqoiseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556CEDC02A567C9A0096581C /* TurqoiseCard.swift */; };
 		557568B829CC131A005C9A76 /* BlueActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557568B729CC131A005C9A76 /* BlueActionButton.swift */; };
 		557568BA29CC1335005C9A76 /* OrangeActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557568B929CC1335005C9A76 /* OrangeActionButton.swift */; };
@@ -74,11 +75,12 @@
 		55C1D908279384E000B9F4E4 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C1D907279384E000B9F4E4 /* Banner.swift */; };
 		55C81EDC278B9F8E00F341D5 /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C81EDB278B9F8E00F341D5 /* BottomSheet.swift */; };
 		55C81EE1278C060800F341D5 /* Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C81EE0278C060800F341D5 /* Title.swift */; };
-		55D4D9382A5A38990024BBE6 /* BorderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D4D9372A5A38990024BBE6 /* BorderExtension.swift */; };
+		55CFF82E2A7CB1C200E3A8F2 /* SampleGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CFF82D2A7CB1C200E3A8F2 /* SampleGoal.swift */; };
 		55D696ED296E304200E9EA7D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D696EC296E304200E9EA7D /* ContentView.swift */; };
 		55D77E0829CB495900BAFA1D /* PillActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D77E0729CB495900BAFA1D /* PillActionButton.swift */; };
 		55D77E0A29CB4E4000BAFA1D /* TrailingViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D77E0929CB4E4000BAFA1D /* TrailingViewHelper.swift */; };
 		55D7CEFC283C9AED0064CE4D /* TestTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D7CEFB283C9AED0064CE4D /* TestTable.swift */; };
+		55D9C8482A775889004B15E7 /* InviteFriendsComponent2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D9C8472A775889004B15E7 /* InviteFriendsComponent2.swift */; };
 		55E3174B295A26B400311024 /* ExampleTargetsModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E3174A295A26B400311024 /* ExampleTargetsModal.swift */; };
 		55EA757C28FD120500ACB448 /* Filler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EA757B28FD120500ACB448 /* Filler.swift */; };
 		55F7CAE42919AB7700448F10 /* MondayReflection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F7CAE32919AB7700448F10 /* MondayReflection.swift */; };
@@ -118,6 +120,9 @@
 		52046A11B4C1B67780265C43 /* Pods-SquadGoals-SquadGoalsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SquadGoals-SquadGoalsUITests.release.xcconfig"; path = "Target Support Files/Pods-SquadGoals-SquadGoalsUITests/Pods-SquadGoals-SquadGoalsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		550FD658278F8C18005BE35D /* Brag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brag.swift; sourceTree = "<group>"; };
 		550FD65A278F8DCB005BE35D /* BragTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BragTable.swift; sourceTree = "<group>"; };
+		551441FB2A795A16003A1BFA /* GoalSuggestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSuggestions.swift; sourceTree = "<group>"; };
+		551441FD2A7965BA003A1BFA /* WrappingHStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrappingHStack.swift; sourceTree = "<group>"; };
+		551441FF2A796AE5003A1BFA /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		552F625728FB7F25002F0A5F /* Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styling.swift; sourceTree = "<group>"; };
 		552F625928FCEFFE002F0A5F /* OnboardingTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTitle.swift; sourceTree = "<group>"; };
 		552F625B28FCF69E002F0A5F /* OnboardingTextEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTextEntry.swift; sourceTree = "<group>"; };
@@ -133,8 +138,6 @@
 		553E3C682A0379CE00E14620 /* InviteFriendsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendsComponent.swift; sourceTree = "<group>"; };
 		55663CDE29DA48F80037F522 /* RedActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedActionButton.swift; sourceTree = "<group>"; };
 		55663CE129DA5F830037F522 /* LeftAligner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAligner.swift; sourceTree = "<group>"; };
-		55663CE329DA85290037F522 /* CornerRadiusExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadiusExtension.swift; sourceTree = "<group>"; };
-		556CEDBE2A567C660096581C /* EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
 		556CEDC02A567C9A0096581C /* TurqoiseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurqoiseCard.swift; sourceTree = "<group>"; };
 		557568B729CC131A005C9A76 /* BlueActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueActionButton.swift; sourceTree = "<group>"; };
 		557568B929CC1335005C9A76 /* OrangeActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrangeActionButton.swift; sourceTree = "<group>"; };
@@ -186,11 +189,12 @@
 		55C1D907279384E000B9F4E4 /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
 		55C81EDB278B9F8E00F341D5 /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
 		55C81EE0278C060800F341D5 /* Title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Title.swift; sourceTree = "<group>"; };
-		55D4D9372A5A38990024BBE6 /* BorderExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderExtension.swift; sourceTree = "<group>"; };
+		55CFF82D2A7CB1C200E3A8F2 /* SampleGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleGoal.swift; sourceTree = "<group>"; };
 		55D696EC296E304200E9EA7D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		55D77E0729CB495900BAFA1D /* PillActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillActionButton.swift; sourceTree = "<group>"; };
 		55D77E0929CB4E4000BAFA1D /* TrailingViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailingViewHelper.swift; sourceTree = "<group>"; };
 		55D7CEFB283C9AED0064CE4D /* TestTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTable.swift; sourceTree = "<group>"; };
+		55D9C8472A775889004B15E7 /* InviteFriendsComponent2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendsComponent2.swift; sourceTree = "<group>"; };
 		55E3174A295A26B400311024 /* ExampleTargetsModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleTargetsModal.swift; sourceTree = "<group>"; };
 		55EA757B28FD120500ACB448 /* Filler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filler.swift; sourceTree = "<group>"; };
 		55F7CAE32919AB7700448F10 /* MondayReflection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MondayReflection.swift; sourceTree = "<group>"; };
@@ -255,6 +259,20 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		551441FA2A7959F4003A1BFA /* TextElements */ = {
+			isa = PBXGroup;
+			children = (
+				55C81EE0278C060800F341D5 /* Title.swift */,
+				55766C2629D2AC270060E6D7 /* TitleV2.swift */,
+				552F626528FD0953002F0A5F /* Subtitle.swift */,
+				55766C2429D2ABD40060E6D7 /* SubtitleV2.swift */,
+				552F625928FCEFFE002F0A5F /* OnboardingTitle.swift */,
+				552F625B28FCF69E002F0A5F /* OnboardingTextEntry.swift */,
+				552F626328FD0812002F0A5F /* OnboardingTextEntryWithTitle.swift */,
+			);
+			path = TextElements;
+			sourceTree = "<group>";
+		};
 		552F625628FB7F14002F0A5F /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -267,9 +285,11 @@
 		55663CE029DA5F6A0037F522 /* HelperComponents */ = {
 			isa = PBXGroup;
 			children = (
+				55D77E0929CB4E4000BAFA1D /* TrailingViewHelper.swift */,
 				55EA757B28FD120500ACB448 /* Filler.swift */,
 				552F626128FCFE39002F0A5F /* Spacing.swift */,
 				55663CE129DA5F830037F522 /* LeftAligner.swift */,
+				551441FD2A7965BA003A1BFA /* WrappingHStack.swift */,
 			);
 			path = HelperComponents;
 			sourceTree = "<group>";
@@ -347,6 +367,10 @@
 		5587C8772787884E001A9999 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				55A618792A397A3600003280 /* EmptyState.swift */,
+				55FDF84129D3FBCD00082B72 /* UserProgressCard.swift */,
+				553E3C682A0379CE00E14620 /* InviteFriendsComponent.swift */,
+				55D9C8472A775889004B15E7 /* InviteFriendsComponent2.swift */,
 				5587C8792787884E001A9999 /* HomepageGoalView.swift */,
 				5587C87B2787884E001A9999 /* Race.swift */,
 				5587C87C2787884E001A9999 /* ProgressBar.swift */,
@@ -363,6 +387,8 @@
 				55E3174A295A26B400311024 /* ExampleTargetsModal.swift */,
 				552F69EA288674D300AAF287 /* ReflectionAlert.swift */,
 				55C0B09D28F67896008BFA61 /* CarouselCounter.swift */,
+				551441FB2A795A16003A1BFA /* GoalSuggestions.swift */,
+				55CFF82D2A7CB1C200E3A8F2 /* SampleGoal.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -418,23 +444,10 @@
 		55C81EDF278C05F400F341D5 /* UIElements */ = {
 			isa = PBXGroup;
 			children = (
+				551441FA2A7959F4003A1BFA /* TextElements */,
 				55663CE029DA5F6A0037F522 /* HelperComponents */,
 				55FDF84029D3FBB600082B72 /* Cards */,
 				55FDF83929D3F75900082B72 /* ActionButtons */,
-				55C81EE0278C060800F341D5 /* Title.swift */,
-				55766C2629D2AC270060E6D7 /* TitleV2.swift */,
-				552F626528FD0953002F0A5F /* Subtitle.swift */,
-				55766C2429D2ABD40060E6D7 /* SubtitleV2.swift */,
-				552F625928FCEFFE002F0A5F /* OnboardingTitle.swift */,
-				552F625B28FCF69E002F0A5F /* OnboardingTextEntry.swift */,
-				552F626328FD0812002F0A5F /* OnboardingTextEntryWithTitle.swift */,
-				552F625D28FCF8BD002F0A5F /* OnboardingActionButton.swift */,
-				55D77E0729CB495900BAFA1D /* PillActionButton.swift */,
-				55D77E0929CB4E4000BAFA1D /* TrailingViewHelper.swift */,
-				55FDF84129D3FBCD00082B72 /* UserProgressCard.swift */,
-				553E3C682A0379CE00E14620 /* InviteFriendsComponent.swift */,
-				55A618792A397A3600003280 /* EmptyState.swift */,
-				556CEDBE2A567C660096581C /* EmptyState.swift */,
 			);
 			path = UIElements;
 			sourceTree = "<group>";
@@ -444,8 +457,7 @@
 			children = (
 				55FDF83229D3DC5800082B72 /* UtilFunctions.swift */,
 				55FDF83429D3E04B00082B72 /* DateExtension.swift */,
-				55663CE329DA85290037F522 /* CornerRadiusExtension.swift */,
-				55D4D9372A5A38990024BBE6 /* BorderExtension.swift */,
+				551441FF2A796AE5003A1BFA /* ViewExtensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -461,6 +473,8 @@
 				55FDF84329D3FF0900082B72 /* PurpleActionButton.swift */,
 				5538D6E629D556F100BF76D4 /* GrayActionButton.swift */,
 				55663CDE29DA48F80037F522 /* RedActionButton.swift */,
+				55D77E0729CB495900BAFA1D /* PillActionButton.swift */,
+				552F625D28FCF8BD002F0A5F /* OnboardingActionButton.swift */,
 			);
 			path = ActionButtons;
 			sourceTree = "<group>";
@@ -740,6 +754,7 @@
 				552F626428FD0812002F0A5F /* OnboardingTextEntryWithTitle.swift in Sources */,
 				5587C8AB27878855001A9999 /* GoalAdded.swift in Sources */,
 				55D696ED296E304200E9EA7D /* ContentView.swift in Sources */,
+				551441FE2A7965BA003A1BFA /* WrappingHStack.swift in Sources */,
 				55FDF83F29D3FAC400082B72 /* WhiteActionButtonWithArrow.swift in Sources */,
 				553E3C632A03721D00E14620 /* GreenCard.swift in Sources */,
 				553D66772A016AF500A85C32 /* LightBlueCard.swift in Sources */,
@@ -749,6 +764,7 @@
 				5587C8A727878855001A9999 /* SignIn.swift in Sources */,
 				552F69E92886548800AAF287 /* ResultsAlert.swift in Sources */,
 				55E3174B295A26B400311024 /* ExampleTargetsModal.swift in Sources */,
+				551441FC2A795A16003A1BFA /* GoalSuggestions.swift in Sources */,
 				5587C8B027878855001A9999 /* Main.swift in Sources */,
 				5587C8B527878855001A9999 /* Colors.swift in Sources */,
 				5587C8AA27878855001A9999 /* SquadPage.swift in Sources */,
@@ -765,6 +781,7 @@
 				55C0B09E28F67896008BFA61 /* CarouselCounter.swift in Sources */,
 				5587C8AC27878855001A9999 /* Homepage.swift in Sources */,
 				5587C8A827878855001A9999 /* JoinGroup.swift in Sources */,
+				55CFF82E2A7CB1C200E3A8F2 /* SampleGoal.swift in Sources */,
 				55D7CEFC283C9AED0064CE4D /* TestTable.swift in Sources */,
 				552F625C28FCF69E002F0A5F /* OnboardingTextEntry.swift in Sources */,
 				5587C89E27878855001A9999 /* GoalDetailPage.swift in Sources */,
@@ -773,12 +790,14 @@
 				5587C8A227878855001A9999 /* GoalViewModel.swift in Sources */,
 				5587C840278780CF001A9999 /* SquadGoalsApp.swift in Sources */,
 				55FDF84229D3FBCD00082B72 /* UserProgressCard.swift in Sources */,
+				551442002A796AE5003A1BFA /* ViewExtensions.swift in Sources */,
 				55C81EE1278C060800F341D5 /* Title.swift in Sources */,
 				5587C8B327878855001A9999 /* Target.swift in Sources */,
 				55D77E0A29CB4E4000BAFA1D /* TrailingViewHelper.swift in Sources */,
 				55663CE229DA5F830037F522 /* LeftAligner.swift in Sources */,
 				556CEDC12A567C9A0096581C /* TurqoiseCard.swift in Sources */,
 				5587C89C27878855001A9999 /* Race.swift in Sources */,
+				55D9C8482A775889004B15E7 /* InviteFriendsComponent2.swift in Sources */,
 				5587C89F27878855001A9999 /* Completion.swift in Sources */,
 				5587C8B227878855001A9999 /* Goal.swift in Sources */,
 				55C1811E2803D81C002F956B /* CongratsModal.swift in Sources */,
@@ -791,18 +810,15 @@
 				5587C8A927878855001A9999 /* CreateGoal.swift in Sources */,
 				550FD65B278F8DCB005BE35D /* BragTable.swift in Sources */,
 				550FD659278F8C18005BE35D /* Brag.swift in Sources */,
-				556CEDBF2A567C660096581C /* EmptyState.swift in Sources */,
 				552F625828FB7F25002F0A5F /* Styling.swift in Sources */,
 				55C1D908279384E000B9F4E4 /* Banner.swift in Sources */,
 				55F7CAE42919AB7700448F10 /* MondayReflection.swift in Sources */,
 				55C81EDC278B9F8E00F341D5 /* BottomSheet.swift in Sources */,
-				55D4D9382A5A38990024BBE6 /* BorderExtension.swift in Sources */,
 				55FDF83729D3E57900082B72 /* GreenActionButton.swift in Sources */,
 				557568BA29CC1335005C9A76 /* OrangeActionButton.swift in Sources */,
 				55F7CAE62919ABAE00448F10 /* MondayPlanning.swift in Sources */,
 				5587C89D27878855001A9999 /* ProgressBar.swift in Sources */,
 				552F626228FCFE39002F0A5F /* Spacing.swift in Sources */,
-				55663CE429DA85290037F522 /* CornerRadiusExtension.swift in Sources */,
 				5587C8AF27878855001A9999 /* ProfilePage.swift in Sources */,
 				55C0B0A228F67FAC008BFA61 /* BaseTutorial.swift in Sources */,
 				55EA757C28FD120500ACB448 /* Filler.swift in Sources */,
@@ -975,9 +991,7 @@
 				CODE_SIGN_ENTITLEMENTS = SquadGoals/SquadGoals.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 60;
-				CURRENT_PROJECT_VERSION = 56;
-				CURRENT_PROJECT_VERSION = 51;
+				CURRENT_PROJECT_VERSION = 61;
 				DEVELOPMENT_ASSET_PATHS = "\"SquadGoals/Preview Content\"";
 				DEVELOPMENT_TEAM = HPRJ8CFMWR;
 				ENABLE_PREVIEWS = YES;
@@ -997,7 +1011,6 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.6;
 				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "agrawals.Squad-Goals";
 				PRODUCT_NAME = "Squad Goals";
@@ -1017,9 +1030,7 @@
 				CODE_SIGN_ENTITLEMENTS = SquadGoals/SquadGoals.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 60;
-				CURRENT_PROJECT_VERSION = 56;
-				CURRENT_PROJECT_VERSION = 51;
+				CURRENT_PROJECT_VERSION = 61;
 				DEVELOPMENT_ASSET_PATHS = "\"SquadGoals/Preview Content\"";
 				DEVELOPMENT_TEAM = HPRJ8CFMWR;
 				ENABLE_PREVIEWS = YES;
@@ -1039,7 +1050,6 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.6;
 				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "agrawals.Squad-Goals";
 				PRODUCT_NAME = "Squad Goals";

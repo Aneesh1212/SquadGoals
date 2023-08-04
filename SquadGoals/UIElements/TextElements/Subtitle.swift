@@ -14,11 +14,12 @@ struct Subtitle : View {
     var weight: Font.Weight?
     var size : CGFloat?
     var alignment: TextAlignment?
+    var textColor : Color?
     
     var body : some View {
         VStack{
             Text(text)
-                .foregroundColor(.black)
+                .foregroundColor(textColor ?? .black)
                 .font(.system(size: size ?? 16, weight: weight ?? .regular))
                 .lineLimit(nil)
                 .multilineTextAlignment(alignment ?? .leading)

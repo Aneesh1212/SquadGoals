@@ -81,7 +81,12 @@ struct UtilFunctions {
     }
     
     static func getDayOfWeek() -> Int {
-        return max(Calendar.current.component(.weekday, from: Date()) - 1, 0)
+        let day = Calendar.current.component(.weekday, from: Date().localDate())
+        if (day == 1) {
+            return 6
+        } else {
+            return day - 1
+        }
     }
     
     static func getDaysLeftInCycle() -> Int {
@@ -146,11 +151,32 @@ struct UtilFunctions {
     }
     
     static func parsePhoneNumber(phoneNumber : String) -> String {
-        return phoneNumber.replacingOccurrences(of: "-", with: "")
+        return phoneNumber.replacingOccurrences(of: "-", with: "") ?? ""
     }
     
     static func logUserFCMtoken(phoneNumber : String) {
         let fcmToken = UserDefaults.standard.object(forKey: "fcmToken")
         self.ref.child("fcmTokens").child(phoneNumber).setValue(["token" : fcmToken])
+    }
+    
+    static func formatPhoneNumber(phone: String) -> String {
+        let numbers = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+        var result = ""
+        var index = numbers.startIndex // numbers iterator
+
+        // iterate over the mask characters until the iterator of numbers ends
+        for ch in "XXX-XXX-XXXX" where index < numbers.endIndex {
+            if ch == "X" {
+                // mask requires a number in this place, so take the next one
+                result.append(numbers[index])
+
+                // move numbers iterator to the next index
+                index = numbers.index(after: index)
+
+            } else {
+                result.append(ch) // just append a mask character
+            }
+        }
+        return result
     }
 }

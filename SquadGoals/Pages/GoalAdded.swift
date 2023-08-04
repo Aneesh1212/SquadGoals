@@ -41,6 +41,7 @@ struct GoalAdded: View {
                         
         }
         .padding(.bottom, Styling.mediumUnit)
+        .padding(.top, Styling.smallUnit)
         .padding(.horizontal, Styling.mediumUnit)
         .background(Colors.background)
     }

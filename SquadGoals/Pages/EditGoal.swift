@@ -41,21 +41,21 @@ struct EditGoal: View {
     var body: some View {
         VStack(alignment: .leading){
             Title(text: "Edit Goal")
-            Spacing(height: Styling.mediumUnit)
+            Spacing(height: Styling.largeUnit)
             
             VStack(alignment: .leading) { // Need to be <= 10 elements
                 Subtitle(text: "Goal Title")
-                OnboardingTextEntry(placeholder: "Enter here", value: $goalTitle)
+                OnboardingTextEntry(placeholder: "Enter goal", value: $goalTitle)
                     .padding(.bottom, Styling.smallUnit)
                 
                 
-                Subtitle(text: "Why is this goal important to you?")
+                /*Subtitle(text: "Why is this goal important to you?")
                 goalReasonView
                     .padding(.bottom, Styling.smallUnit)
+                
+                Subtitle(text: "Goal Category")
+                OnboardingTextEntry(placeholder: "Enter category", value: $goalCategory)*/
             }
-            
-            Subtitle(text: "Goal Category")
-            OnboardingTextEntry(placeholder: "Enter here", value: $goalCategory)
             
             Filler()
 
@@ -71,6 +71,7 @@ struct EditGoal: View {
             })
         }
         .padding(.bottom, Styling.mediumUnit)
+        .padding(.top, Styling.smallUnit)
         .padding(.horizontal, Styling.mediumUnit)
         .background(Colors.background)
         .onTapGesture {

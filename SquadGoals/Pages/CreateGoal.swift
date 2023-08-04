@@ -68,16 +68,19 @@ struct CreateGoal: View {
                 Spacing(height: Styling.mediumUnit)
                 
                 Subtitle(text: "Goal Title")
-                OnboardingTextEntry(placeholder: "Enter here", value: $goalTitle)
-                    .padding(.bottom, Styling.smallUnit)
+                OnboardingTextEntry(placeholder: "Enter goal", value: $goalTitle)
+                    .padding(.bottom, Styling.mediumUnit)
                 
+                GoalSuggestions(viewModel: viewModel, chosenSuggestion: $goalTitle)
+
                 
-                Subtitle(text: "Why is this goal important to you?")
+                /*Subtitle(text: "Why is this goal important to you?")
                 goalReasonView
                     .padding(.bottom, Styling.smallUnit)
                 
                 Subtitle(text: "Goal Category")
-                OnboardingTextEntry(placeholder: "Enter here", value: $goalCategory)
+                OnboardingTextEntry(placeholder: "Enter reason", value: $goalCategory)*/
+                
             }
             
             Filler()
@@ -88,9 +91,11 @@ struct CreateGoal: View {
             VStack {
                 NavigationLink(destination: GoalAdded(viewModel: self.viewModel, goalTitle: self.goalTitle), isActive: $shouldNavigate) { EmptyView() }
                 NavigationLink(destination: MondayPlanning(viewModel: self.viewModel, mode: Mode.initial), isActive: $shouldNavigateSingleGoal) { EmptyView() }
+                
             }
         }
         .padding(.bottom, Styling.mediumUnit)
+        .padding(.top, Styling.smallUnit)
         .padding(.horizontal, Styling.mediumUnit)
         .background(Colors.background)
         .onTapGesture {

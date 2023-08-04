@@ -1,5 +1,5 @@
 //
-//  ProfilePage.swift
+//  UserPage.swift
 //  Goal2
 //
 //  Created by Aneesh Agrawal on 12/27/21.
