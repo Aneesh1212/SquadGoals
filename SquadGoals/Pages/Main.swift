@@ -12,7 +12,7 @@ import SwiftUI
 struct Main: View {
     @State var viewModel : GoalViewModel
     @State var showResultsModal : Bool
-    @State var selection = 2
+    @State var selection = 1
     @State var showBanner = false
     
     var body: some View {
@@ -22,24 +22,24 @@ struct Main: View {
                     BannerModifier(viewModel: self.viewModel, tab: $selection)
                 }
                 TabView(selection: $selection) {
-                    ProfilePage(viewModel: viewModel)
-                        .tabItem {
-                            Label ("Profile", systemImage: "person.crop.circle")
-                                .foregroundColor(.black)
-                        }
-                        .tag(1)
-                        .navigationBarTitle("", displayMode: .inline)
-                        .navigationBarBackButtonHidden(true)
                     Homepage(viewModel: viewModel, showReflectionPrompt: showBanner)
                         .tabItem {
                             Label ("Home", systemImage: "house.fill")
                         }
-                        .tag(2)
+                        .tag(1)
                         .navigationBarTitle("", displayMode: .inline)
                         .navigationBarBackButtonHidden(true)
                     SquadPage(viewModel: viewModel, isReviewing: $showBanner)
                         .tabItem {
                             Label ("Squad", systemImage: "person.3.fill")
+                        }
+                        .tag(2)
+                        .navigationBarTitle("", displayMode: .inline)
+                        .navigationBarBackButtonHidden(true)
+                    ProfilePage(viewModel: viewModel)
+                        .tabItem {
+                            Label ("Profile", systemImage: "person.crop.circle")
+                                .foregroundColor(.black)
                         }
                         .tag(3)
                         .navigationBarTitle("", displayMode: .inline)

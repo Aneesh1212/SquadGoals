@@ -26,12 +26,24 @@ struct CreateAccount: View {
                 Spacing(height: Styling.largeUnit)
                 
                 Subtitle(text: "Name")
-                OnboardingTextEntry(placeholder: "Enter here", value: $name)
+                OnboardingTextEntry(placeholder: "Enter name", value: $name)
                 
                 Spacing(height: Styling.smallUnit)
                 
                 Subtitle(text: "Phone number")
-                OnboardingTextEntry(placeholder: "Enter here", value: $phoneNumber)
+                TextField(
+                    "XXX-XXX-XXXX",
+                    text: $phoneNumber
+                )
+                    .font(.system(size: 16))
+                    .frame(height: 42, alignment: .center)
+                    .padding(.leading, 15)
+                    .background(.white)
+                    .cornerRadius(Styling.smallUnit)
+                    .foregroundColor(.black)
+                    .onChange(of: phoneNumber, perform: { _ in
+                        phoneNumber = UtilFunctions.formatPhoneNumber(phone: phoneNumber)
+                    })
             }
             
             Filler()
@@ -42,6 +54,7 @@ struct CreateAccount: View {
             
         }
         .padding(.bottom, Styling.mediumUnit)
+        .padding(.top, Styling.smallUnit)
         .padding(.horizontal, Styling.mediumUnit)
         .background(Colors.background)
         .alert("Please enter a name and valid 10 digit phone number", isPresented: $showInvalidNameOrPhone) {

@@ -30,13 +30,16 @@ struct ResultsAlert: View {
                 .padding(.top, 20)
             }
             
-            HStack{
+            BlueActionButton(text: "Continue", action: {
+                navigateToMondayPlanning = true
+            })
+            .padding(.top, Styling.smallUnit)
+
+            /*
+             HStack{
                 BlueActionButton(text: "Review Week", action: {
                     showBanner = true
                     shown.toggle()
-                })
-                OrangeActionButton(text: "Continue", action: {
-                    navigateToMondayPlanning = true
                 })
             }
             .padding(.top, Styling.smallUnit)
@@ -46,6 +49,7 @@ struct ResultsAlert: View {
                 shown.toggle()
             })
             .padding(.top, Styling.extraSmallUnit)
+             */
             
             
             NavigationLink(destination: MondayPlanning(viewModel:self.viewModel, mode: Mode.weekly), isActive: $navigateToMondayPlanning) { EmptyView() }

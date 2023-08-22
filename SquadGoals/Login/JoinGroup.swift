@@ -24,22 +24,23 @@ struct JoinGroup: View {
             Title(text: "Welcome \(viewModel.user.name)!")
                 .lineLimit(nil)
             Spacing(height:6)
-            Subtitle(text: "Let's join a squad")
+            Subtitle(text: "Let’s join a Squad! Enter an ID for an existing Squad, or create a new one")
             
             Spacing(height: Styling.largeUnit)
-            
-            VStack(alignment: .leading){
-                Subtitle(text: "Squad ID")
-                OnboardingTextEntry(placeholder: "Enter an existing squad ID", value: $groupID)
-                BlueActionButton(text: "Join Squad", action: joinSquad)
-            }
-            
             Spacing(height: Styling.largeUnit)
-            
-            VStack(alignment: .leading){
-                Subtitle(text: "Don't have one?")
-                OnboardingTextEntry(placeholder: "Name your new squad", value: $groupName)
+
+            VStack(alignment: .center){
                 BlueActionButton(text: "Create a New Squad", action: createSquad)
+                
+                Subtitle(text: "or")
+                    .padding(.vertical, Styling.mediumUnit)
+                
+                VStack(alignment: .leading){
+                    OnboardingTextEntry(placeholder: "Enter an existing squad ID", value: $groupID)
+                    Spacing(height: Styling.smallUnit)
+                    BlueActionButton(text: "Join an Existing Squad", action: joinSquad)
+                }
+                
             }
             
             NavigationLink(destination: BaseTutorial(viewModel: self.viewModel), isActive: $shouldNavigate) { EmptyView() }
@@ -47,6 +48,7 @@ struct JoinGroup: View {
             Filler()
         }
         .padding(.bottom, Styling.mediumUnit)
+        .padding(.top, Styling.smallUnit)
         .padding(.horizontal, Styling.mediumUnit)
         .background(Colors.background)
         .alert("Please enter a 6 digit group ID", isPresented: $showInvalidGroupId) {
@@ -81,10 +83,10 @@ struct JoinGroup: View {
     }
     
     func createSquad(){
-        if (self.groupName == "") {
+        /*if (self.groupName == "") {
             self.showNoGroupName = true
             return
-        }
+        }*/
         let groupId = viewModel.createGroup(groupName: self.groupName)
         self.newGroupId = groupId
         self.showNewGroupId = true

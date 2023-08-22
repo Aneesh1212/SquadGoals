@@ -15,7 +15,7 @@ struct OrangeActionButton : View {
                 .frame(height: 45, alignment: .center)
                 .frame(maxWidth: .infinity)
                 .background(Colors.darkOrangeForeground)
-                .cornerRadius(15)
+                .cornerRadius(10)
         })
     }
 }

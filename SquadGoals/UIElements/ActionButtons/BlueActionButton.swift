@@ -16,7 +16,7 @@ struct BlueActionButton : View {
                 .frame(height: height ?? 45, alignment: .center)
                 .frame(maxWidth: .infinity)
                 .background(Colors.buttonBlue)
-                .cornerRadius(15)
+                .cornerRadius(10)
         })
     }
 }

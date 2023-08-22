@@ -16,6 +16,5 @@ struct LeftAligner: View {
             content
             Spacer()
         }
-        .padding()
     }
 }

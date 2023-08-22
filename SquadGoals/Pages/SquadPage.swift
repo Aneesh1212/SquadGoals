@@ -16,7 +16,8 @@ struct SquadPage: View {
     @State var shouldNavigateToProfile = false
     @State var showEncouragementModal = false
     @State var showCongratsModal = false
-    
+    @State var shareText: ShareText?
+
     var body: some View {
         
         let weekPercentage : Float = isReviewing ? 1.0 : Float(UtilFunctions.getDayOfWeek()) / 7.0
@@ -31,7 +32,7 @@ struct SquadPage: View {
                 VStack(spacing: 16){
                     VStack{
                         TitleV2(text: "Team Progress this Week")
-                        SubtitleV2(text: progressString)
+                        // SubtitleV2(text: progressString)
                     }
                     ProgressBar(progressValue: teamPercentage, weekPercentage: weekPercentage, text: "\(String(Int(teamPercentage*100.0)))%", isLargeVersion: true)
                         .frame(width: 75.0, height: 75.0)
@@ -51,12 +52,13 @@ struct SquadPage: View {
                         let momentum = teammate.goals.map{ $0.momentumScore}.max() ?? 0
                         UserProgressCard(percentage: teammatePercentage, weekPercentage: weekPercentage, name: teammate.name, momentum: momentum, primaryAction: { onUserProgressCardClick(teammate: teammate) }, buttonAction: { onMessageUserClick(teammate: teammate) })
                     }
+                    InviteFriendsComponent2(shareText: $shareText, groupId: viewModel.user.groupId)
                 }
-                
-                if (teamList.count <= 1) {
+
+                /*if (teamList.count <= 1) {
                     InviteFriendsComponent(groupId: viewModel.user.groupId)
                         .padding(.top, Styling.smallUnit)
-                }
+                }*/
             }
             
             Spacer()
@@ -70,6 +72,9 @@ struct SquadPage: View {
         .sheet(isPresented: $showCongratsModal, onDismiss: {}, content: {
             CongratsModal(viewModel: self.viewModel, showModal: $showCongratsModal, teammate: self.teammate)
         })
+        .sheet(item: $shareText) { shareText in
+            ActivityView(text: shareText.text)
+        }
     }
     
     func onUserProgressCardClick(teammate: User) -> Void {

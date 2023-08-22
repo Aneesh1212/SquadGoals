@@ -29,7 +29,14 @@ struct ProfilePage: View {
             
             Title(text: viewModel.user.name, size: 48)
             Subtitle(text: "Team #\(viewModel.user.groupId)")
-                .padding(.bottom, Styling.largeUnit)
+                .padding(.bottom, Styling.mediumUnit)
+            
+            Text("[Learn How Momentum🔥Works](https://nagrawal44.wixsite.com/squad-goals/general-9)")
+                .underline()
+                .foregroundColor(.black)
+                .tint(.black)
+                .font(.system(size:  16, weight: .regular))
+                .padding(.bottom, Styling.mediumUnit)
                         
             ScrollView {
                 ForEach(viewModel.user.goals, id: \.self) { goal in
@@ -38,9 +45,9 @@ struct ProfilePage: View {
                         self.shouldNavigateToGoalDetails = true
                     })
                     
-                    Spacing(height: 36)
+                    Spacing(height: 24)
                 }
-            }
+          }
             
             Filler()
             

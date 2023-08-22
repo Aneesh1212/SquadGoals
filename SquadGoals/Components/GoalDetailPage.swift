@@ -86,22 +86,12 @@ struct GoalDetailPage: View {
             Spacing(height: Styling.mediumUnit)
             
             ScrollView(showsIndicators: false){
-                VStack(alignment: .leading, spacing: 0) {
-                    LeftAligner(content: AnyView(SubtitleV2(text: "Brag about your Proud Acheivements", weight: .semibold)))
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 50)
-                        .background(Colors.darkOrangeForeground)
-                        .cornerRadius(50, corners: [.topLeft, .topRight])
-                    BragTable(goalKey: self.goal.key, viewModel: self.viewModel)
-                }
-                
-                Spacing(height: Styling.mediumUnit)
-                
-                LeftAligner(content: AnyView(SubtitleV2(text: "Accomplished Targets", weight: .semibold)))
+                LeftAligner(content: AnyView(SubtitleV2(text: "Accomplished Past Targets", weight: .semibold)))
+                    .padding()
                     .frame(maxWidth: .infinity)
                     .frame(height: 50)
                     .background(Colors.darkOrangeForeground)
-                    .cornerRadius(50, corners: [.topLeft, .topRight])
+                    .cornerRadius(50)
                 ForEach(self.goal.pastTargets.keys.sorted{
                     $0 > $1
                 }, id: \.self) {pastTargetDate in
