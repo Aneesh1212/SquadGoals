@@ -13,6 +13,7 @@
 		551441FC2A795A16003A1BFA /* GoalSuggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551441FB2A795A16003A1BFA /* GoalSuggestions.swift */; };
 		551441FE2A7965BA003A1BFA /* WrappingHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551441FD2A7965BA003A1BFA /* WrappingHStack.swift */; };
 		551442002A796AE5003A1BFA /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551441FF2A796AE5003A1BFA /* ViewExtensions.swift */; };
+		552A361A2A9483C800FC6901 /* SquadsModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552A36192A9483C800FC6901 /* SquadsModal.swift */; };
 		552F625828FB7F25002F0A5F /* Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F625728FB7F25002F0A5F /* Styling.swift */; };
 		552F625A28FCEFFE002F0A5F /* OnboardingTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F625928FCEFFE002F0A5F /* OnboardingTitle.swift */; };
 		552F625C28FCF69E002F0A5F /* OnboardingTextEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F625B28FCF69E002F0A5F /* OnboardingTextEntry.swift */; };
@@ -123,6 +124,7 @@
 		551441FB2A795A16003A1BFA /* GoalSuggestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSuggestions.swift; sourceTree = "<group>"; };
 		551441FD2A7965BA003A1BFA /* WrappingHStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrappingHStack.swift; sourceTree = "<group>"; };
 		551441FF2A796AE5003A1BFA /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
+		552A36192A9483C800FC6901 /* SquadsModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadsModal.swift; sourceTree = "<group>"; };
 		552F625728FB7F25002F0A5F /* Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styling.swift; sourceTree = "<group>"; };
 		552F625928FCEFFE002F0A5F /* OnboardingTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTitle.swift; sourceTree = "<group>"; };
 		552F625B28FCF69E002F0A5F /* OnboardingTextEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTextEntry.swift; sourceTree = "<group>"; };
@@ -380,8 +382,6 @@
 				55C81EDB278B9F8E00F341D5 /* BottomSheet.swift */,
 				550FD65A278F8DCB005BE35D /* BragTable.swift */,
 				55C1D907279384E000B9F4E4 /* Banner.swift */,
-				55C1811B2803CB6B002F956B /* EncouragementModel.swift */,
-				55C1811D2803D81C002F956B /* CongratsModal.swift */,
 				55D7CEFB283C9AED0064CE4D /* TestTable.swift */,
 				552F69E82886548800AAF287 /* ResultsAlert.swift */,
 				55E3174A295A26B400311024 /* ExampleTargetsModal.swift */,
@@ -415,6 +415,9 @@
 		5587C88A27878853001A9999 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				55C1811D2803D81C002F956B /* CongratsModal.swift */,
+				552A36192A9483C800FC6901 /* SquadsModal.swift */,
+				55C1811B2803CB6B002F956B /* EncouragementModel.swift */,
 				55C0B0A128F67FAC008BFA61 /* BaseTutorial.swift */,
 				5587C88B27878853001A9999 /* CreateGoal.swift */,
 				55BE93E9283B3F8B0004EDB9 /* EditGoal.swift */,
@@ -775,6 +778,7 @@
 				55BE93EA283B3F8B0004EDB9 /* EditGoal.swift in Sources */,
 				552F625E28FCF8BD002F0A5F /* OnboardingActionButton.swift in Sources */,
 				5587C8AD27878855001A9999 /* UserPage.swift in Sources */,
+				552A361A2A9483C800FC6901 /* SquadsModal.swift in Sources */,
 				55FDF84429D3FF0900082B72 /* PurpleActionButton.swift in Sources */,
 				55FDF83029D3CD5400082B72 /* BlueCard.swift in Sources */,
 				5538D6E729D556F100BF76D4 /* GrayActionButton.swift in Sources */,

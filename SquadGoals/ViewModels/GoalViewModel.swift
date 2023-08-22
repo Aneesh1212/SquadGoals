@@ -16,13 +16,14 @@ let pastMonday = Calendar(identifier: .gregorian).startOfDay(for: Date()).previo
 
 class GoalViewModel : ObservableObject {
 
-    @Published var user : User = User(name: "", phoneNumber: "", groupId: "", goals: [], teammates: [])
+    @Published var user : User = User(name: "", phoneNumber: "", groupId: "", goals: [], teammates: [], squads: [])
     @Published var completedTargets : Int = 0
     @Published var teammatePhones : Array<String> = []
     @Published var totalTargets : Int = 0
     @Published var currBrags : Array<Brag> = []
     @Published var teammatePercentages : [String: Float] = [:]
     @Published var week : Int = 4
+    @Published var squads : Array<String> = []
     
     // Flags
     @Published var showUserExists = false
@@ -35,6 +36,10 @@ class GoalViewModel : ObservableObject {
     @Published var navigateToMissingGroup = false
 
     weak var gestureRecognizer: GestureRecognizerInteractor? = UIApplication.shared
+    
+    init() {
+        self.getTotalSquads()
+    }
     
     func createGoal(goalTitle : String, goalReason : String, goalCategory: String) {
         let goalRef = ref.child("goals").child(user.phoneNumber).child("goals")
@@ -191,7 +196,7 @@ class GoalViewModel : ObservableObject {
                     let userName = userDataPair.value["name"] ?? ""
                     let userPhoneNumber = userDataPair.value["phone"] ?? ""
                     let userGroup = userDataPair.value["groupId"] ?? ""
-                    let newTeammate = User(name: userName, phoneNumber: userPhoneNumber, groupId: userGroup, goals: [], teammates: [])
+                    let newTeammate = User(name: userName, phoneNumber: userPhoneNumber, groupId: userGroup, goals: [], teammates: [], squads: [])
                     self.user.teammates.append(newTeammate)
                 }
             }
@@ -350,11 +355,13 @@ class GoalViewModel : ObservableObject {
                 let userName = userData["name"] ?? "NA"
                 let userPhone = userData["phone"] ?? "NA"
                 let userGroup = userData["groupId"] ?? "NA"
-                self.user = User(name: userName, phoneNumber: userPhone, groupId: userGroup, goals: [], teammates: [])
+                self.user = User(name: userName, phoneNumber: userPhone, groupId: userGroup, goals: [], teammates: [], squads: [])
                 UtilFunctions.logUserFCMtoken(phoneNumber: phoneNumber)
                 UserDefaults.standard.set(phoneNumber, forKey: "phoneNumber")
                 self.signInNavigation()
                 self.getGoals()
+                self.user.squads = [self.user.groupId, "248412"]
+                self.getUserSquads()
                 self.getTeamMemberPhoneNumbers()
                 self.calculateWeek()
             }
@@ -370,7 +377,6 @@ class GoalViewModel : ObservableObject {
     }
     
     private func signInNavigation() {
-        print("ANEESH", self.user.groupId)
         if (self.user.groupId == "NA") {
             self.navigateToMissingGroup = true
             return
@@ -406,6 +412,7 @@ class GoalViewModel : ObservableObject {
                 groupRef.child(userKey).setValue(self.user.phoneNumber)
                 self.addGroupToUser(groupId: groupId)
                 self.user.groupId = groupId // TODO nice concurrency already done
+                self.user.squads.append(groupId)
                 self.getGoals()
                 self.getTeamMemberPhoneNumbers()
                 self.calculateWeek()
@@ -422,10 +429,21 @@ class GoalViewModel : ObservableObject {
             } else {
                 ref.child("users").child(phoneNumber).setValue(["name" : userName, "phone" : phoneNumber])
                 UtilFunctions.logUserFCMtoken(phoneNumber: phoneNumber)
-                self.user = User(name: userName, phoneNumber: phoneNumber, groupId: "", goals : [], teammates: [])
+                self.user = User(name: userName, phoneNumber: phoneNumber, groupId: "", goals : [], teammates: [], squads: [])
                 self.navigateToJoinGroup = true
                 UtilFunctions.setLastSetMonday()
             }
+        })
+    }
+    
+    func getUserSquads(){
+        // TODO
+    }
+    
+    func getTotalSquads(){
+        ref.child("groups").getData(completion:  { error, snapshot in
+            let groups = snapshot.value as? Dictionary<String, AnyObject> ?? [:]
+            self.squads = groups.keys.sorted()
         })
     }
 }

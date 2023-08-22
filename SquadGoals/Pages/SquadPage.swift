@@ -12,10 +12,11 @@ struct SquadPage: View {
     
     @StateObject var viewModel : GoalViewModel
     @Binding var isReviewing: Bool
-    @State var teammate : User = User(name: "", phoneNumber: "", groupId: "", goals: [], teammates: [])
+    @State var teammate : User = User(name: "", phoneNumber: "", groupId: "", goals: [], teammates: [], squads: [])
     @State var shouldNavigateToProfile = false
     @State var showEncouragementModal = false
     @State var showCongratsModal = false
+    @State var showSquadsModal = false
     @State var shareText: ShareText?
 
     var body: some View {
@@ -28,6 +29,14 @@ struct SquadPage: View {
         
         
         VStack(spacing: 0) {
+            HStack{
+                Spacer()
+                PillActionButton(text: "Change squad", icon: "pencil",foregroundColor: .black, backgroundColor: Colors.buttonSignOut, action: {
+                    self.showSquadsModal = true
+                })
+            }
+            .padding(.bottom, 12)
+            
             OrangeCard {
                 VStack(spacing: 16){
                     VStack{
@@ -71,6 +80,9 @@ struct SquadPage: View {
         })
         .sheet(isPresented: $showCongratsModal, onDismiss: {}, content: {
             CongratsModal(viewModel: self.viewModel, showModal: $showCongratsModal, teammate: self.teammate)
+        })
+        .sheet(isPresented: $showSquadsModal, onDismiss: {}, content: {
+            SquadsModal(viewModel: self.viewModel, showModal: $showSquadsModal)
         })
         .sheet(item: $shareText) { shareText in
             ActivityView(text: shareText.text)
